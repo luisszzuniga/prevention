@@ -33,8 +33,8 @@ class UserFactory extends Factory
             'zip_code' => fake()->numberBetween(1, 99999),
             'town' => fake()->text(35),
             'company_id' => Company::factory(1)->create()->first()->getAttribute("id"),
-            'user_id_trainer' => fake()->unique()->numberBetween(10, 200),
-            'user_id_learner' => fake()->unique()->numberBetween(10, 200),
+            'user_id_trainer' => fake()->unique()->numberBetween(10, 10000),
+            'user_id_learner' => fake()->unique()->numberBetween(10, 10000),
             'role_id' => Role::factory(1)->create()->first()->getAttribute("id")
         ];
 

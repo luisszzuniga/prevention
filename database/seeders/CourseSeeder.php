@@ -16,12 +16,5 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-
-        $criteria = Criterion::factory(10)->create();
-        Course::factory(10)->create()->each(function ($course) use ($criteria) {
-            $course->criteria()->attach($criteria->random(2));
-        });
-
-
     }
 }

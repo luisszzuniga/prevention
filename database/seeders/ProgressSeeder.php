@@ -15,6 +15,6 @@ class ProgressSeeder extends Seeder
      */
     public function run()
     {
-        Progress::factory()->create();
+
     }
 }

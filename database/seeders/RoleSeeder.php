@@ -16,10 +16,10 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('roles')->insert([
-//            'id' => 1,
-//            'role_name' => 'super-admin',
-//            'role_code' => '0001',
-//        ]);
+        DB::table('roles')->insert([
+            'id' => 1,
+            'role_name' => 'super-admin',
+            'role_code' => '0001',
+        ]);
     }
 }
