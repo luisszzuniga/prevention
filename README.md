@@ -3,6 +3,35 @@
 Le projet ayant le nom de code ACP consiste en le développement d'un service SaaS pour la formation des professionnels de la conduite.
 
 
+## Première installation du projet
+
+
+### installation LARAVEL
+
+`composer create-project laravel/laravel`  
+
+### installation BREEZE
+
+`php artisan breeze:install`
+
+### installation VUE
+
+`npm install vue@latest vue-router@4`
+
+### installation DEBUGBAR
+
+`composer require barryvdh/laravel-debugbar --dev`
+
+du projet : https://github.com/barryvdh/laravel-debugbar.git
+
+### installation LARAVEL IDE HELPER GENERATOR  
+
+`composer require --dev barryvdh/laravel-ide-helper`
+
+du projet : https://github.com/barryvdh/laravel-ide-helper.git
+
+
+
 ## Installation du projet en environnement de développement
 
 1. Cloner le projet 
@@ -59,3 +88,8 @@ Avec l'un des paramètres suivants : `vehicles`, `users`, `themes`, `roles`, `pr
 12.  lancer le serveur local
 
 `php artisan serve`
+
+
+
+
+
