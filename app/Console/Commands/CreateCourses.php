@@ -29,15 +29,15 @@ class CreateCourses extends Command
      */
     public function handle()
     {
-        $numberOfCriteria = $this->argument('count');
+        $numberOfCourses = $this->argument('count');
 
         $criteria = Criterion::factory(10)->create();
         Course::factory(10)->create()->each(function ($course) use ($criteria) {
             $course->criteria()->attach($criteria->random(2));
         });
 
-        for ($i = 0; $i < $numberOfCriteria; $i++) {
-            Criterion::factory()->create();
+        for ($i = 0; $i < $numberOfCourses; $i++) {
+            Course::factory()->create();
         }
 
         return 0;

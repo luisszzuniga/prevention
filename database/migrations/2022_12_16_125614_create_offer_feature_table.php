@@ -12,11 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('offers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50)->unique('name');
-            $table->double('price', 5, 2)->unique('price');
-            $table->string('description', 50)->nullable();
+        Schema::create('offer_feature', function (Blueprint $table) {
+            $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('feature_id');
+            $table->primary(['offer_id', 'feature_id']);
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('offer_feature');
     }
 };

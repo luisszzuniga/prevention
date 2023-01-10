@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone',10);
             $table->string('password', 60);
-            $table->string('address', 50);
+            $table->string('address', 100);
             $table->char('zip_code', 5)->nullable();
             $table->string('town', 35)->nullable();
             $table->rememberToken();

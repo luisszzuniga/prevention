@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Offer extends Model
+class Feature extends Model
 {
     use HasFactory;
     public $timestamps = false;
@@ -16,20 +16,11 @@ class Offer extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'price',
-        'description'
-
+        'text'
     ];
-
-
-    public function courses(){
-
-        return $this->hasMany(Course::class);
-    }
-
-    public function features()
+    public function offers()
     {
-        return $this->belongsToMany(Feature::class,'offer_feature');
+        return $this->belongsToMany(Offer::class);
     }
+
 }

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Center;
+use App\Models\Feature;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,7 +26,9 @@ class DatabaseSeeder extends Seeder
             ThemeSeeder::class,
             CriterionSeeder::class,
             CourseSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            CenterSeeder::class,
+            FeatureSeeder::class
         ]);
     }
 }

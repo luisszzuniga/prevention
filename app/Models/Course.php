@@ -15,7 +15,6 @@ class Course extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'center_acp_name',
         'observation',
         'seance_code'
     ];
@@ -33,6 +32,11 @@ class Course extends Model
     public function vehicles()
     {
         return $this->hasOne(Vehicle::class);
+    }
+
+    public function center()
+    {
+        return $this->hasOne(Center::class);
     }
 
     public function trainers()
