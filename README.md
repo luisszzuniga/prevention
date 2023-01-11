@@ -1,52 +1,54 @@
 # Prevention
 
-Le projet ayant le nom de code ACP consiste en le développement d'un service SaaS pour la formation des professionnels de la conduite.
+The project, codenamed ACP, consists of the development of a SaaS service for training driving professionals.
 
+## First installation of the project
 
-## Première installation du projet
+This section covers the first installation of the project, including the setup of various components and dependencies.
 
-
-### installation LARAVEL
+### installation of LARAVEL
 
 `composer create-project laravel/laravel`  
 
-### installation BREEZE
+### installation of BREEZE
 
 `php artisan breeze:install`
 
-### installation VUE
+### installation of VUE
 
 `npm install vue@latest vue-router@4`
 
-### installation DEBUGBAR
+### installation of DEBUGBAR
 
 `composer require barryvdh/laravel-debugbar --dev`
 
-du projet : https://github.com/barryvdh/laravel-debugbar.git
+from the projet : https://github.com/barryvdh/laravel-debugbar.git
 
 ### installation LARAVEL IDE HELPER GENERATOR  
 
 `composer require --dev barryvdh/laravel-ide-helper`
 
-du projet : https://github.com/barryvdh/laravel-ide-helper.git
+from the projet : https://github.com/barryvdh/laravel-ide-helper.git
 
 
 
-## Installation du projet en environnement de développement
+## Project Installation in Development Environment
 
-1. Cloner le projet 
+This section describes the steps required to install the project in a development environment. It is important to note that the project uses a Gitflow architecture for better organization. This means that development is done on a dedicated branch and production updates are merged onto another branch.  
+
+1. Clone the project 
 
 `git clone git@gitlab.com:maxime22440/acprevention.git`
 
-2. Basculer vers la branche develop 
+2. Switch to the develop branch
 
 `git checkout develop`
 
-3. Installer les dépendances composer
+3. Install the composer dependencies
 
 `composer install`
 
-4. Créer le fichier .env et configurer l'accès à la base de données mariadb
+4. Create the .env file and configure database access for mariadb
 
 `DB_CONNECTION=mysql`  
 `DB_HOST=127.0.0.1`  
@@ -55,41 +57,41 @@ du projet : https://github.com/barryvdh/laravel-ide-helper.git
 `DB_USERNAME=`  
 `DB_PASSWORD=`
 
-5. Créer la base de donnée `ACPreventionDB` en exécutant la commande sql 
+5. Create the database ACPreventionDB by running the sql command
 
 `CREATE DATABASE ACPreventionDB;`
 
-6. Lancer les migrations pour créer les tables de la base de données
+6. Run the migrations to create the database tables
 
 `php artisan migrate`
 
-7. Lancer les seeders 
+7. Run the seeders
 
 `php artisan db:seed`
 
-8. Générer des objets de test 
+8. Generate test objects
 
 `php artisan create:objects numberOfObject` 
 
-Avec l'un des paramètres suivants : `vehicles`, `users`, `themes`, `roles`, `progress`, `offers`, `evaluations`, `criteria`, `courses`, `companies`.
+With one of the following parameters:  `vehicles`, `users`, `themes`, `roles`, `progress`, `offers`, `evaluations`, `criteria`, `courses`, `companies`.
 
-9. Générer une clé d'application unique 
+9. Generate a unique application key
 
 `php artisan key:generate`
 
-10. Installer Vite
+10. Install Vite
 
 `npm install -g vite`
 
-11. Lancer le projet en mode développement
+11. Run the project in development mode on port: 5173
 
 `npm run dev`
 
-12.  lancer le serveur local
+12.  Start the local server on port:8000
 
 `php artisan serve`
 
-
+Now Server running on http://127.0.0.1:8000
 
 
 

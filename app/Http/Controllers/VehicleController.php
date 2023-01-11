@@ -20,7 +20,6 @@ class VehicleController extends Controller
         $vehicle->brand = $request->brand;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->type = $request->type;
-
         $vehicle->save();
 
         return redirect()->route('dashboard')->with('success', 'Le véhicule a été créé avec succès.');
