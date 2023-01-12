@@ -37,7 +37,21 @@ class OfferSeeder extends Seeder
         $offerEntreprise->description = 'Suivre les formations des stagiaires dans leur SIRH';
         $offerEntreprise->save();
 
-        $features = Feature::whereId(1)->get();
-        $offerPlus->features()->attach($features);
+        $features1 = Feature::whereId(1)->get();
+        $features2 = Feature::whereId(2)->get();
+        $features3 = Feature::whereId(3)->get();
+        $features4 = Feature::whereId(4)->get();
+
+        $offerPlus->features()->attach($features1);
+        $offerPlus->features()->attach($features2);
+
+        $offerBuisness->features()->attach($features1);
+        $offerBuisness->features()->attach($features2);
+        $offerBuisness->features()->attach($features3);
+
+        $offerEntreprise->features()->attach($features1);
+        $offerEntreprise->features()->attach($features2);
+        $offerEntreprise->features()->attach($features3);
+        $offerEntreprise->features()->attach($features4);
     }
 }

@@ -79,12 +79,15 @@ body {
     height: 100%;
     padding: 0 8px;
     position: relative;
-    width: 366px;
-    max-width: 366px;
+    width: 350px;
+    max-width: 350px;
     box-sizing: border-box;
 }
+.column-first-offer{
+    margin-left: 30px;
+}
 .column-second-offer, .column-third-offer{
-    margin-left: 25px;
+    margin-left: 30px;
 }
 .content-first-offer, .content-second-offer, .content-third-offer{
     text-align: left;
@@ -95,16 +98,10 @@ body {
     height: 362px;
     box-sizing: border-box;
 }
+.content-third-offer {
+    border-bottom-right-radius: 100px;
+}
 
-/*.content-first-offer{*/
-/*    background-color: #f2f1f5;*/
-/*}*/
-/*.content-second-offer{*/
-/*    background-color: #eee7fd;*/
-/*}*/
-/*.content-third-offer{*/
-/*    background-color: #DDBBE9;*/
-/*}*/
 
 .content-first-offer{
     background-color: #FFF3D0;
@@ -113,7 +110,9 @@ body {
     background-color: #f6d882;
 }
 .content-third-offer{
-    background-color: #DCB253;
+    border-style: none;
+    background: rgb(255,243,208);
+    background: linear-gradient(307deg, rgba(255,243,208,1) 35%, rgba(246,216,130,1) 61%, rgba(220,178,83,1) 88%);
 }
 .h2-first-order, .h2-second-order, .h2-third-order{
     font-size: 40px;
@@ -123,6 +122,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     color: inherit;
+    padding-bottom: 10px;
 }
 .description-first-offer, .description-second-offer, .description-third-offer{
     height: 48px;
@@ -130,9 +130,9 @@ body {
     font-family: Inter, sans-serif;
     font-size: 20px;
     line-height: 24px;
+    font-weight: 600;
     display: block;
     float: none;
-    font-weight: 500;
     position: static;
     margin-bottom: 8px;
     box-sizing: border-box;
@@ -275,7 +275,10 @@ body {
     }
     .carousel-cell{
         margin-right: 10px;
+        padding: 0 12px;
+        max-width: 320px;
     }
+
     .pricing-container{
         width: 100%;
         opacity: 1;
@@ -360,6 +363,10 @@ body {
     }
     .column-second-offer, .column-third-offer{
         margin-left: 0;
+    }
+    .description-first-offer, .description-second-offer, .description-third-offer{
+        overflow-wrap: break-word;
+        width: auto;
     }
 }
 
