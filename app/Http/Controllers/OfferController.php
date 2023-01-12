@@ -15,10 +15,10 @@ class OfferController extends Controller
         $offer3 = Offer::whereId(3);
 
 
-        return view('offers')->with(compact('offer1',$offer1));
-//            [ 'offer1' => $offer1,
-//                'offer2' => $offer2,
-//                'offer3' => $offer3,
-//            ]);
+        return view('offers')->with(
+            [ 'offer1' => $offer1,
+                'offer2' => $offer2,
+                'offer3' => $offer3,
+            ]);
     }
 }

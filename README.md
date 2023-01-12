@@ -18,6 +18,10 @@ This section covers the first installation of the project, including the setup o
 
 `npm install vue@latest vue-router@4`
 
+### installation of TYPE SCRIPT
+
+`npm add typescript`
+
 ### installation of DEBUGBAR
 
 `composer require barryvdh/laravel-debugbar --dev`

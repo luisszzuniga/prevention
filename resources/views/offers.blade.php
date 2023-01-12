@@ -33,7 +33,7 @@
                     <div class="column-first-offer" id="column-first-offer">
                         <div class="content-first-offer" id="first-offer">
                             <h2 class="h2-first-order">
-                                Plus {{$offer1->name}}
+                                Plus
                             </h2>
                             <p class="description-first-offer">
                                 Saisie des données du stagiaire
