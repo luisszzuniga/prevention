@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             CompanySeeder::class,
-            OfferSeeder::class,
             VehicleSeeder::class,
             ProgressSeeder::class,
             EvaluationSeeder::class,
@@ -28,7 +27,8 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             UserSeeder::class,
             CenterSeeder::class,
-            FeatureSeeder::class
+            FeatureSeeder::class,
+            OfferSeeder::class
         ]);
     }
 }

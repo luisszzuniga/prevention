@@ -9,6 +9,7 @@
 
 @section('content')
 
+
     <div class="pricing-container">
         <div class="box-center">
             <div class="title-offers">
@@ -32,7 +33,7 @@
                     <div class="column-first-offer" id="column-first-offer">
                         <div class="content-first-offer" id="first-offer">
                             <h2 class="h2-first-order">
-                                Plus
+                                Plus {{$offer1->name}}
                             </h2>
                             <p class="description-first-offer">
                                 Saisie des données du stagiaire

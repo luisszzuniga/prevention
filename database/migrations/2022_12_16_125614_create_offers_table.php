@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name', 50)->unique('name');
             $table->double('price', 5, 2)->unique('price');
-            $table->string('description', 50)->nullable();
+            $table->string('description', 100)->nullable();
         });
     }
 
