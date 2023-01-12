@@ -12,7 +12,7 @@ class CreateThemes extends Command
      *
      * @var string
      */
-    protected $signature = 'create:themes {count}';
+    protected $signature = 'create:themes';
 
     /**
      * The console command description.
@@ -28,12 +28,6 @@ class CreateThemes extends Command
      */
     public function handle()
     {
-        $numberOfThemes = $this->argument('count');
 
-        for ($i = 0; $i < $numberOfThemes; $i++) {
-            Theme::factory()->create();
-        }
-
-        return 0;
     }
 }

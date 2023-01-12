@@ -12,7 +12,7 @@ class CreateProgress extends Command
      *
      * @var string
      */
-    protected $signature = 'create:progress {count}';
+    protected $signature = 'create:progress';
 
     /**
      * The console command description.
@@ -28,12 +28,6 @@ class CreateProgress extends Command
      */
     public function handle()
     {
-        $numberOfProgress = $this->argument('count');
 
-        for ($i = 0; $i < $numberOfProgress; $i++) {
-            Progress::factory()->create();
-        }
-
-        return 0;
     }
 }

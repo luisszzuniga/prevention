@@ -69,15 +69,24 @@ This section describes the steps required to install the project in a developmen
 
 `php artisan migrate`
 
-7. Run the seeders
+7. Run actual data
 
-`php artisan db:seed`
+`php artisan create:all`  
+
+This command launches all the commands to add the data to the database
+
+Simple command can be issued like this
+
+`php artisan create:objects`
+
+With one of the following parameters:  `vehicles`, `users`, `themes`, `roles`, `progress`, `offers`, `evaluations`, `criteria`, `courses`, `companies`,`features`,`centers`.
+
 
 8. Generate test objects
 
-`php artisan create:objects numberOfObject` 
+`php artisan db:seed` 
 
-With one of the following parameters:  `vehicles`, `users`, `themes`, `roles`, `progress`, `offers`, `evaluations`, `criteria`, `courses`, `companies`.
+this will run all test objects 
 
 9. Generate a unique application key
 

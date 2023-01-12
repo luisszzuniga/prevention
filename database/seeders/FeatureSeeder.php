@@ -15,8 +15,6 @@ class FeatureSeeder extends Seeder
      */
     public function run()
     {
-        $feature = new Feature();
-        $feature->text = 'Gérer les stagiaires';
-        $feature->save();
+        Feature::factory(5)->create();
     }
 }

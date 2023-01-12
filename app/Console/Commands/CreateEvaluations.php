@@ -12,7 +12,7 @@ class CreateEvaluations extends Command
      *
      * @var string
      */
-    protected $signature = 'create:evaluations {count}';
+    protected $signature = 'create:evaluations';
 
     /**
      * The console command description.
@@ -28,12 +28,6 @@ class CreateEvaluations extends Command
      */
     public function handle()
     {
-        $numberOfEvaluations = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfEvaluations; $i++) {
-            Evaluation::factory()->create();
-        }
-
         return 0;
     }
 }
