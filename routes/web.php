@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/vehicle', function () {
         return view('vehicle.create-vehicle');
     });
-    Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
+
 
 });
 

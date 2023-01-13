@@ -4,8 +4,8 @@ import Vehicles from '@/components/Vehicles.vue'
 
 const routes = [
     {
-        path: '/vehicles',
-        name: 'Vehicles',
+        path: '/offers',
+        name: 'offers',
         component: Vehicles
     }
 ];
@@ -14,3 +14,4 @@ export default createRouter({
     history: createWebHistory(),
     routes
 })
+
