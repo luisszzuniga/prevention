@@ -19,13 +19,13 @@
             </div>
             <div class="gallery-nav">
                 <button>
-                    <span>Plus</span>
+                    <span>{{$offer1->name}}</span>
                 </button>
                 <button class="is-selected">
-                    <span>Buisness</span>
+                    <span>{{$offer2->name}}</span>
                 </button>
                 <button>
-                    <span>Entreprise</span>
+                    <span>{{$offer3->name}}</span>
                 </button>
             </div>
             <section class="section-pricing">
@@ -33,15 +33,15 @@
                     <div class="column-first-offer" id="column-first-offer">
                         <div class="content-first-offer" id="first-offer">
                             <h2 class="h2-first-order">
-                                Plus
+                                {{$offer1->name}}
                             </h2>
                             <p class="description-first-offer">
-                                Saisie des données du stagiaire
+                                {{$offer1->description}}
                             </p>
                             <div class="price-detail-first-offer">
                                 <div class="price-container-first-offer">
                                <span class="span-price-first-offer">
-                                   4,99
+                                   {{$offer1->price}}
                                </span>
                                     <span class="span-sign-first-offer">
                                    €
@@ -66,8 +66,9 @@
                             </div>
                             <div class="list-features-first-offer">
                                 <ul>
-                                    <li> Gérer les stagiaires</li>
-                                    <li> Saisir les informations</li>
+                                    @foreach($offer1->features as $feature)
+                                     <li> {{$feature->text}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -75,15 +76,15 @@
                     <div class="column-second-offer" id="column-second-offer">
                         <div class="content-second-offer" id="second-offer">
                             <h2 class="h2-second-order">
-                                Business
+                                {{$offer2->name}}
                             </h2>
                             <p class="description-second-offer">
-                                Envoi automatique des données
+                                {{$offer2->description}}
                             </p>
                             <div class="price-detail-second-offer">
                                 <div class="price-container-second-offer">
                                <span class="span-price-second-offer">
-                                   9,99
+                                   {{$offer2->price}}
                                </span>
                                     <span class="span-sign-second-offer">
                                    €
@@ -108,9 +109,9 @@
                             </div>
                             <div class="list-features-second-offer">
                                 <ul>
-                                    <li> Gérer les stagiaires</li>
-                                    <li> Saisir les informations</li>
-                                    <li> Données envoyées sur le LRS</li>
+                                    @foreach($offer2->features as $feature)
+                                        <li> {{$feature->text}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -118,15 +119,15 @@
                     <div class="column-third-offer" id="column-third-offer">
                         <div class="content-third-offer" id="third-offer">
                             <h2 class="h2-third-order">
-                                Entreprise
+                                {{$offer3->name}}
                             </h2>
                             <p class="description-third-offer">
-                                Suivre les formations des stagiaires dans leur SIRH
+                                {{$offer3->description}}
                             </p>
                             <div class="price-detail-third-offer">
                                 <div class="price-container-third-offer">
                                <span class="span-price-third-offer">
-                                   14,99
+                                {{$offer3->price}}
                                </span>
                                     <span class="span-sign-third-offer">
                                    €
@@ -151,10 +152,9 @@
                             </div>
                             <div class="list-features-third-offer">
                                 <ul>
-                                    <li> Gérer les stagiaires</li>
-                                    <li> Saisir les informations</li>
-                                    <li> Données envoyées sur le LRS</li>
-                                    <li> Suivi des formations avvec interface</li>
+                                    @foreach($offer3->features as $feature)
+                                        <li> {{$feature->text}}</li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
