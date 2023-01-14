@@ -5,5 +5,3 @@ const app = createApp({
        Vehicles
     },
 }).mount("#app");
-
-

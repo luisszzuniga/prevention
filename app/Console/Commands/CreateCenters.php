@@ -28,11 +28,6 @@ class CreateCenters extends Command
      */
     public function handle()
     {
-        $numberOfcenters = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfcenters; $i++) {
-            Center::factory()->create();
-        }
 
         return 0;
     }

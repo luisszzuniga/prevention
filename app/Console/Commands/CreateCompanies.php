@@ -12,7 +12,7 @@ class CreateCompanies extends Command
      *
      * @var string
      */
-    protected $signature = 'create:companies {count}';
+    protected $signature = 'create:companies';
 
     /**
      * The console command description.
@@ -28,12 +28,6 @@ class CreateCompanies extends Command
      */
     public function handle()
     {
-        $numberOfCompanies = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfCompanies; $i++) {
-            Company::factory()->create();
-        }
-
         return 0;
     }
 }

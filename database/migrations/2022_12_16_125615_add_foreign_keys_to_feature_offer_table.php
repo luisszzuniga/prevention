@@ -25,9 +25,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('feature_offer', function (Blueprint $table) {
-            $table->dropForeign('FK_offers_features');
-            $table->dropForeign('FK_features_offers');
-        });
+        Schema::drop('feature_offer');
     }
 };

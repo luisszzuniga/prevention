@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Vehicle;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class CreateVehicles extends Command
 {
@@ -12,7 +13,7 @@ class CreateVehicles extends Command
      *
      * @var string
      */
-    protected $signature = 'create:vehicles {count}';
+    protected $signature = 'create:vehicles';
 
     /**
      * The console command description.
@@ -28,12 +29,11 @@ class CreateVehicles extends Command
      */
     public function handle()
     {
-        $numberOfVehicles = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfVehicles; $i++) {
-            Vehicle::factory()->create();
-        }
-
-        return 0;
+       return DB::table('vehicles')->insert([
+            'name' => 'Opel Astra',
+            'brand' => 'Opel',
+            'license_plate' => 'AK-549-XL',
+            'type' => 'essence'
+        ]);
     }
 }
