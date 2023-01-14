@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/offers', function () {
-    return view('offers');
-});
+Route::get('/offers', [OfferController::class, 'index'])->name('offers');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

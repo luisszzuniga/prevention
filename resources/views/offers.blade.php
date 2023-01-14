@@ -9,6 +9,7 @@
 
 @section('content')
 
+
     <div class="pricing-container">
         <div class="box-center">
             <div class="title-offers">

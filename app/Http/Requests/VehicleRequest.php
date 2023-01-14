@@ -3,7 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+/**
+ * App\Http\requests\VehicleRequest
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $brand
+ * @property string|null $license_plate
+ * @property string|null $type
+ */
 class VehicleRequest extends FormRequest
 {
     /**
