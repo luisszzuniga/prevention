@@ -20,7 +20,7 @@ class CreateVehicles extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Vehicles for your App';
+    protected $description = 'Create Vehicles for your App';
 
     /**
      * Execute the console command.
@@ -29,11 +29,12 @@ class CreateVehicles extends Command
      */
     public function handle()
     {
-       return DB::table('vehicles')->insert([
+        DB::table('vehicles')->insert([
             'name' => 'Opel Astra',
             'brand' => 'Opel',
             'license_plate' => 'AK-549-XL',
             'type' => 'essence'
         ]);
+       return 0;
     }
 }

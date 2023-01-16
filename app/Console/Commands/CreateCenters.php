@@ -19,7 +19,7 @@ class CreateCenters extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Centers for your App';
+    protected $description = 'Create Centers for your App';
 
     /**
      * Execute the console command.
@@ -28,7 +28,6 @@ class CreateCenters extends Command
      */
     public function handle()
     {
-
         return 0;
     }
 }

@@ -19,7 +19,7 @@ class CreateProgress extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Progress for your App';
+    protected $description = 'Create Progress for your App';
 
     /**
      * Execute the console command.
@@ -28,6 +28,6 @@ class CreateProgress extends Command
      */
     public function handle()
     {
-
+        return 0;
     }
 }

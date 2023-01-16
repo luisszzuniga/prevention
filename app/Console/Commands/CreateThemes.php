@@ -19,7 +19,7 @@ class CreateThemes extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Themes for your App';
+    protected $description = 'Create Themes for your App';
 
     /**
      * Execute the console command.
@@ -28,6 +28,6 @@ class CreateThemes extends Command
      */
     public function handle()
     {
-
+        return 0;
     }
 }

@@ -19,7 +19,7 @@ class CreateFeatures extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Features for your App';
+    protected $description = 'Create Features for your App';
 
     /**
      * Execute the console command.

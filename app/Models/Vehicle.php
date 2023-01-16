@@ -41,10 +41,13 @@ class Vehicle extends Model
         'brand',
         'license_plate',
         'type'
-
     ];
 
-
+    /**
+     * Get the Courses that belongs to the vehicle.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function courses(){
 
         return $this->hasMany(Course::class);

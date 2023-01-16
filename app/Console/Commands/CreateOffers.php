@@ -20,7 +20,7 @@ class CreateOffers extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Offers for your App';
+    protected $description = 'Create the attached Offers and features for your App';
 
     /**
      * Execute the console command.
@@ -47,8 +47,6 @@ class CreateOffers extends Command
         $offerEntreprise->description = 'Suivre les formations des stagiaires dans leur SIRH';
         $offerEntreprise->save();
 
-
-
         $feature = new Feature();
         $feature->text = 'Gérer les stagiaires';
         $feature->save();
@@ -56,27 +54,27 @@ class CreateOffers extends Command
         $offerBuisness->features()->attach($feature);
         $offerEntreprise->features()->attach($feature);
 
-
         $feature = new Feature();
         $feature->text = 'Saisir les informations';
         $feature->save();
         $offerPlus->features()->attach($feature);
         $offerBuisness->features()->attach($feature);
-
         $offerEntreprise->features()->attach($feature);
 
+        $feature = new Feature();
+        $feature->text = 'Données envoyées en interne';
+        $feature->save();
+        $offerBuisness->features()->attach($feature);
 
         $feature = new Feature();
         $feature->text = 'Données envoyées sur le LRS';
         $feature->save();
-        $offerBuisness->features()->attach($feature);
         $offerEntreprise->features()->attach($feature);
 
         $feature = new Feature();
-        $feature->text = 'Suivi des formations avec interface';
+        $feature->text = 'interface et gestion des données sur demande';
         $feature->save();
         $offerEntreprise->features()->attach($feature);
-
 
         return 0;
     }

@@ -55,31 +55,61 @@ class Course extends Model
         'seance_code'
     ];
 
+    /**
+     * The criteria that the course belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function criteria()
     {
         return $this->belongsToMany(Criterion::class);
     }
 
+    /**
+     * The offer that the course has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function offers()
     {
         return $this->hasOne(Offer::class);
     }
 
+    /**
+     * The vehicle that the course has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function vehicles()
     {
         return $this->hasOne(Vehicle::class);
     }
 
+    /**
+     * The center that the course belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function center()
     {
         return $this->hasOne(Center::class);
     }
 
+    /**
+     * The trainer that the course has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function trainers()
     {
         return $this->hasOne(User::class);
     }
 
+    /**
+     * The learner that the course has.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function learners()
     {
         return $this->hasOne(User::class);

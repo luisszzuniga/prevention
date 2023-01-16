@@ -29,9 +29,10 @@ class CreateRoles extends Command
      */
     public function handle()
     {
-        return DB::table('roles')->insert([
+         DB::table('roles')->insert([
             'role_name' => 'super-admin',
             'role_code' => '0001',
         ]);
+        return 0;
     }
 }

@@ -8,11 +8,22 @@ use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
+    /**
+     * Show the form for creating a new vehicle.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         return view('vehicles.create');
     }
 
+    /**
+     * Store a newly created vehicle in storage.
+     *
+     * @param  \App\Http\Requests\VehicleRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(VehicleRequest $request)
     {
         $vehicle = new Vehicle();

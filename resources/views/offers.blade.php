@@ -9,7 +9,6 @@
 
 @section('content')
 
-
     <div class="pricing-container">
         <div class="box-center">
             <div class="title-offers">
@@ -67,7 +66,7 @@
                             <div class="list-features-first-offer">
                                 <ul>
                                     @foreach($offer1->features as $feature)
-                                     <li> {{$feature->text}}</li>
+                                        <li> {{$feature->text}}</li>
                                     @endforeach
                                 </ul>
                             </div>

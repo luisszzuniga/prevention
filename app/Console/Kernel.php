@@ -18,7 +18,6 @@ class Kernel extends ConsoleKernel
         Commands\CreateUsers::class,
         Commands\CreateVehicles::class,
         Commands\CreateCompanies::class,
-        Commands\CreateCourses::class,
         Commands\CreateCriteria::class,
         Commands\CreateEvaluations::class,
         Commands\CreateOffers::class,

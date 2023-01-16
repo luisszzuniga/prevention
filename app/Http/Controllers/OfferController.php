@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
-use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Display the listing of the offers.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
     {
         $offer1 = Offer::find(1);
         $offer2 = Offer::find(2);

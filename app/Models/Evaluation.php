@@ -36,6 +36,11 @@ class Evaluation extends Model
 
     ];
 
+    /**
+     * The theme that the evaluation belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function themes(){
 
         return $this->hasOne(Theme::class);

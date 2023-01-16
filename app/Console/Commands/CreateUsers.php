@@ -23,7 +23,7 @@ class CreateUsers extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Users for your App';
+    protected $description = 'Create Users for your App';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class CreateUsers extends Command
     {
         $companyId = Company::factory()->create()->first()->getAttribute("id");
         $roleId2 = Role::whereRoleCode(1)->first()->getAttribute("id");
-       return DB::table('users')->insert([
+        DB::table('users')->insert([
             'lastname' => 'rousseau',
             'firstname' => 'maxime',
             'email' => 'maxime.rousseau99@gmail.com',
@@ -46,5 +46,6 @@ class CreateUsers extends Command
             'company_id' => $companyId,
             'role_id' => $roleId2
         ]);
+       return 0;
     }
 }

@@ -33,6 +33,12 @@ class Feature extends Model
     protected $fillable = [
         'text'
     ];
+
+    /**
+     * The offers that the feature belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function offers()
     {
         return $this->belongsToMany(Offer::class);

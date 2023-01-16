@@ -19,7 +19,7 @@ class CreateEvaluations extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Evaluations for your App';
+    protected $description = 'Create Evaluations for your App';
 
     /**
      * Execute the console command.

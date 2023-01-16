@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Models;
-
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-
+use Database\Factories\UserFactory;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
-
+use Laravel\Sanctum\PersonalAccessToken;
 
 /**
  * App\Models\User
@@ -17,7 +22,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $lastname
  * @property string $firstname
  * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property Carbon|null $email_verified_at
  * @property string $phone
  * @property string $password
  * @property string $address
@@ -28,40 +33,40 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int|null $user_id_trainer
  * @property int|null $user_id_learner
  * @property int $role_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Company|null $companies
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $coursesLearners
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Company|null $companies
+ * @property-read Collection|Course[] $coursesLearners
  * @property-read int|null $courses_learners_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $coursesTrainers
+ * @property-read Collection|Course[] $coursesTrainers
  * @property-read int|null $courses_trainers_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read DatabaseNotificationCollection|DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @property-read \App\Models\Role|null $roles
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
+ * @property-read Role|null $roles
+ * @property-read Collection|PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
- * @method static \Database\Factories\UserFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|User query()
- * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereFirstname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereLastname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereTown($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUserIdLearner($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUserIdTrainer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereZipCode($value)
- * @mixin \Eloquent
+ * @method static UserFactory factory(...$parameters)
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User query()
+ * @method static Builder|User whereAddress($value)
+ * @method static Builder|User whereCompanyId($value)
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereFirstname($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereLastname($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User wherePhone($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereRoleId($value)
+ * @method static Builder|User whereTown($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @method static Builder|User whereUserIdLearner($value)
+ * @method static Builder|User whereUserIdTrainer($value)
+ * @method static Builder|User whereZipCode($value)
+ * @mixin Eloquent
  */
 class User extends Authenticatable
 {
@@ -102,28 +107,44 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /**
+     * Get the courses that the user is learner
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function coursesLearners()
     {
         return $this->hasMany(Course::class);
     }
 
+    /**
+     * Get the courses that the user is trainer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function coursesTrainers()
     {
         return $this->hasMany(Course::class);
     }
 
+    /**
+     * Get the company that the user belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function companies()
     {
         return $this->hasOne(Company::class);
     }
 
+    /**
+     * Get the role that the user belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function roles()
     {
         return $this->hasOne(Role::class);
     }
-
-
-
 
 }
