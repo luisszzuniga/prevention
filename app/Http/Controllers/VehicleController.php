@@ -22,7 +22,9 @@ class VehicleController extends Controller
         $vehicle->type = $request->type;
         $vehicle->save();
 
-        return redirect()->route('dashboard')->with('success', 'Le véhicule a été créé avec succès.');
-
+        return response()->json([
+            'message' => "Le véhicule " . $vehicle->name . " a été créé avec succès.",
+            'vehicle' => $vehicle
+        ], 201);
     }
 }
