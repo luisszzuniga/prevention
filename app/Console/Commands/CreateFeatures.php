@@ -12,7 +12,7 @@ class CreateFeatures extends Command
      *
      * @var string
      */
-    protected $signature = 'create:features {count}';
+    protected $signature = 'create:features';
 
     /**
      * The console command description.
@@ -28,12 +28,6 @@ class CreateFeatures extends Command
      */
     public function handle()
     {
-        $numberOfFeatures = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfFeatures; $i++) {
-            Feature::factory()->create();
-        }
-
         return 0;
     }
 }

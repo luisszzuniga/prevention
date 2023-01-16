@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Role;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class CreateRoles extends Command
 {
@@ -12,7 +13,7 @@ class CreateRoles extends Command
      *
      * @var string
      */
-    protected $signature = 'create:roles {count}';
+    protected $signature = 'create:roles';
 
     /**
      * The console command description.
@@ -28,12 +29,9 @@ class CreateRoles extends Command
      */
     public function handle()
     {
-        $numberOfRoles = $this->argument('count');
-
-        for ($i = 0; $i < $numberOfRoles; $i++) {
-            Role::factory()->create();
-        }
-
-        return 0;
+        return DB::table('roles')->insert([
+            'role_name' => 'super-admin',
+            'role_code' => '0001',
+        ]);
     }
 }
