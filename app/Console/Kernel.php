@@ -16,12 +16,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
 
         Commands\CreateUsers::class,
-        Commands\CreateVehicles::class,
         Commands\CreateCompanies::class,
         Commands\CreateCriteria::class,
-        Commands\CreateEvaluations::class,
         Commands\CreateOffers::class,
-        Commands\CreateProgress::class,
         Commands\CreateRoles::class,
         Commands\CreateThemes::class,
     ];

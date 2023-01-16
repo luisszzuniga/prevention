@@ -20,7 +20,7 @@ class CreateRoles extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Roles for your App';
+    protected $description = 'Create Roles for your App';
 
     /**
      * Execute the console command.
