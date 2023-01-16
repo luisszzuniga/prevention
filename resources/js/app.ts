@@ -1,7 +1,12 @@
-import { createApp } from "vue";
-import Vehicles from "./components/Vehicles.vue";
-const app = createApp({
+import {createApp} from 'vue';
+import router from './router'
+
+import Vehicles from '@/components/Vehicles.vue';
+
+createApp({
     components: {
-       Vehicles
-    },
-}).mount("#app");
+        Vehicles
+    }
+}).use(router).mount('#app')
+
+
