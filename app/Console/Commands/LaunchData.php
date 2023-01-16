@@ -37,6 +37,5 @@ class LaunchData extends Command
         $this->call('create:themes');
         $this->call('create:criteria');
         $this->call('create:users');
-        $this->call('create:courses');
     }
 }
