@@ -13,7 +13,7 @@ class CreateCourses extends Command
      *
      * @var string
      */
-    protected $signature = 'create:courses {count}';
+    protected $signature = 'create:courses';
 
     /**
      * The console command description.
@@ -29,17 +29,6 @@ class CreateCourses extends Command
      */
     public function handle()
     {
-        $numberOfCourses = $this->argument('count');
-
-        $criteria = Criterion::factory(10)->create();
-        Course::factory(10)->create()->each(function ($course) use ($criteria) {
-            $course->criteria()->attach($criteria->random(2));
-        });
-
-        for ($i = 0; $i < $numberOfCourses; $i++) {
-            Course::factory()->create();
-        }
-
         return 0;
     }
 }

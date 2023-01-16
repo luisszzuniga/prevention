@@ -17,5 +17,9 @@ class CriterionSeeder extends Seeder
      */
     public function run()
     {
+        $themes = Theme::factory(5)->create();
+        Criterion::factory(5)->create()->each(function ($criterion) use ($themes) {
+            $criterion->themes()->attach($themes->random(2));
+        });
     }
 }

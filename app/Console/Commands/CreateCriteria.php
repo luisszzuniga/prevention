@@ -14,7 +14,7 @@ class CreateCriteria extends Command
      *
      * @var string
      */
-    protected $signature = 'create:criteria {count}';
+    protected $signature = 'create:criteria';
 
     /**
      * The console command description.
@@ -30,19 +30,6 @@ class CreateCriteria extends Command
      */
     public function handle()
     {
-        $numberOfCriteria = $this->argument('count');
-
-
-
-        $themes = Theme::factory(10)->create();
-        Criterion::factory(10)->create()->each(function ($criterion) use ($themes) {
-            $criterion->themes()->attach($themes->random(2));
-        });
-
-        for ($i = 0; $i < $numberOfCriteria; $i++) {
-            Criterion::factory()->create();
-        }
-
         return 0;
     }
 }
