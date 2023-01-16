@@ -23,7 +23,7 @@ class VehicleController extends Controller
         $vehicle->save();
 
         return response()->json([
-            'message' => 'Le véhicule a été créé avec succès.',
+            'message' => "Le véhicule " . $vehicle->name . " a été créé avec succès.",
             'vehicle' => $vehicle
         ], 201);
     }
