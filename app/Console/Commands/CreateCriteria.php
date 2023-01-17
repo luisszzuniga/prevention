@@ -30,6 +30,7 @@ class CreateCriteria extends Command
      */
     public function handle()
     {
+        $this->line('  <fg=yellow;options=bold>CRITERIA :</> <fg=default>Nothing to create</>');
         return 0;
     }
 }

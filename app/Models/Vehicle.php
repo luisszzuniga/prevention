@@ -44,12 +44,12 @@ class Vehicle extends Model
     ];
 
     /**
-     * Get the Courses that belongs to the vehicle.
+     * Get the user that the vehicle belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function courses(){
-
-        return $this->hasMany(Course::class);
+    public function users()
+    {
+        return $this->hasOne(User::class);
     }
 }

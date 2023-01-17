@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use Database\Factories\CompanyFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Company
@@ -11,20 +16,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string|null $contact
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read Collection|User[] $users
  * @property-read int|null $users_count
- * @method static \Database\Factories\CompanyFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Company query()
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereContact($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Company whereName($value)
- * @mixin \Eloquent
+ * @method static CompanyFactory factory(...$parameters)
+ * @method static Builder|Company newModelQuery()
+ * @method static Builder|Company newQuery()
+ * @method static Builder|Company query()
+ * @method static Builder|Company whereContact($value)
+ * @method static Builder|Company whereId($value)
+ * @method static Builder|Company whereName($value)
+ * @mixin Eloquent
  */
 class Company extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
 
     /**
@@ -33,15 +39,19 @@ class Company extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'contact'
 
+        'name',
+        'address',
+        'zip_code',
+        'town',
+        'contact',
+        'zip_code',
     ];
 
     /**
      * The users that belong to the company.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function users()
     {

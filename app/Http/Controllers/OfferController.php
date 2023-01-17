@@ -13,15 +13,9 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offer1 = Offer::find(1);
-        $offer2 = Offer::find(2);
-        $offer3 = Offer::find(3);
-
+        $offers = Offer::all();
 
         return view('offers')->with(
-            ['offer1' => $offer1,
-                'offer2' => $offer2,
-                'offer3' => $offer3,
-            ]);
+            ['offers' => $offers]);
     }
 }

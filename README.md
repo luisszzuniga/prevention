@@ -40,19 +40,19 @@ from the projet : https://github.com/barryvdh/laravel-ide-helper.git
 
 This section describes the steps required to install the project in a development environment. It is important to note that the project uses a Gitflow architecture for better organization. This means that development is done on a dedicated branch and production updates are merged onto another branch.  
 
-1. Clone the project 
+#### Clone the project 
 
 `git clone git@gitlab.com:maxime22440/acprevention.git`
 
-2. Switch to the develop branch
+#### Switch to the develop branch
 
 `git checkout develop`
 
-3. Install the composer dependencies
+#### Install the composer dependencies
 
 `composer install`
 
-4. Create the .env file and configure database access for mariadb
+#### Create the .env file and configure database access for mariadb
 
 `DB_CONNECTION=mysql`  
 `DB_HOST=127.0.0.1`  
@@ -61,15 +61,15 @@ This section describes the steps required to install the project in a developmen
 `DB_USERNAME=`  
 `DB_PASSWORD=`
 
-5. Create the database ACPreventionDB by running the sql command
+#### Create the database ACPreventionDB by running the sql command
 
 `CREATE DATABASE ACPreventionDB;`
 
-6. Run the migrations to create the database tables
+#### Run the migrations to create the database tables
 
 `php artisan migrate`
 
-7. Run actual data
+#### Run actual data
 
 `php artisan create:all`  
 
@@ -82,25 +82,25 @@ Simple command can be issued like this
 With one of the following parameters:  `vehicles`, `users`, `themes`, `roles`, `progress`, `offers`, `evaluations`, `criteria`, `courses`, `companies`,`features`,`centers`.
 
 
-8. Generate test objects
+#### Generate test objects
 
 `php artisan db:seed` 
 
 this will run all test objects 
 
-9. Generate a unique application key
+#### Generate a unique application key
 
 `php artisan key:generate`
 
-10. Install Vite
+#### Install Vite
 
 `npm install -g vite`
 
-11. Run the project in development mode on port: 5173
+#### Run the project in development mode on port: 5173
 
 `npm run dev`
 
-12.  Start the local server on port:8000
+#### Start the local server on port:8000
 
 `php artisan serve`
 

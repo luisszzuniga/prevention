@@ -37,11 +37,11 @@ class Feature extends Model
     /**
      * The offers that the feature belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function offers()
     {
-        return $this->belongsToMany(Offer::class);
+        return $this->hasOne(Offer::class);
     }
 
 }

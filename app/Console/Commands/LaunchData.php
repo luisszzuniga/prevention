@@ -29,10 +29,13 @@ class LaunchData extends Command
     {
         $this->call('create:roles');
         $this->call('create:companies');
+        $this->call('create:users');
         $this->call('create:features');
         $this->call('create:offers');
         $this->call('create:themes');
         $this->call('create:criteria');
-        $this->call('create:users');
+        $this->call('create:centers');
+
+        return 0;
     }
 }

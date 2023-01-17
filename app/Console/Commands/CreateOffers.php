@@ -4,7 +4,11 @@ namespace App\Console\Commands;
 
 use App\Models\Feature;
 use App\Models\Offer;
+use App\Models\Role;
+use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Console\View\Components\TwoColumnDetail;
+use Illuminate\Support\Facades\DB;
 
 class CreateOffers extends Command
 {
@@ -29,60 +33,47 @@ class CreateOffers extends Command
      */
     public function handle()
     {
-        $startTime = microtime(true);
+
+        $offers = [
+            [
+                'name' => 'Plus',
+                'price' => 4.99,
+                'description' => 'Saisie des données du stagiaire'
+            ],
+            [
+                'name' => 'Business',
+                'price' => 9.99,
+                'description' => 'Envoi automatique des données'
+            ],
+            [
+                'name' => 'Enterprise',
+                'price' => 14.99,
+                'description' => 'Suivre les formations des stagiaires dans leur SIRH'
+            ],
+        ];
         try {
-            $offerPlus = new Offer();
-            $offerPlus->name = 'Plus';
-            $offerPlus->price = 4.99;
-            $offerPlus->description = 'Saisie des données du stagiaire';
-            $offerPlus->save();
+            foreach ($offers as $offer) {
+                if (!Offer::where('name', $offer['name'])->exists()) {
+                    DB::table('offers')->insert([
+                        $offer
+                    ]);
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>OFFER : </>' . $offer['name'],
+                        '<fg=yellow;options=bold>ADDED</>'
+                    );
+                } else {
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>OFFER : </>' . $offer['name'],
+                        '<bg=red;options=bold>EXISTS</>'
+                    );
+                }
+            }
+        } catch (Exception $e) {
 
-            $offerBuisness = new Offer();
-            $offerBuisness->name = 'Buisness';
-            $offerBuisness->price = 9.99;
-            $offerBuisness->description = 'Envoi automatique des données';
-            $offerBuisness->save();
-
-            $offerEntreprise = new Offer();
-            $offerEntreprise->name = 'Entreprise';
-            $offerEntreprise->price = 14.99;
-            $offerEntreprise->description = 'Suivre les formations des stagiaires dans leur SIRH';
-            $offerEntreprise->save();
-
-            $feature = new Feature();
-            $feature->text = 'Gérer les stagiaires';
-            $feature->save();
-            $offerPlus->features()->attach($feature);
-            $offerBuisness->features()->attach($feature);
-            $offerEntreprise->features()->attach($feature);
-
-            $feature = new Feature();
-            $feature->text = 'Saisir les informations';
-            $feature->save();
-            $offerPlus->features()->attach($feature);
-            $offerBuisness->features()->attach($feature);
-            $offerEntreprise->features()->attach($feature);
-
-            $feature = new Feature();
-            $feature->text = 'Données envoyées en interne';
-            $feature->save();
-            $offerBuisness->features()->attach($feature);
-
-            $feature = new Feature();
-            $feature->text = 'Données envoyées sur le LRS';
-            $feature->save();
-            $offerEntreprise->features()->attach($feature);
-
-            $feature = new Feature();
-            $feature->text = 'interface et gestion des données sur demande';
-            $feature->save();
-            $offerEntreprise->features()->attach($feature);
-
-            //gestion du message dans la console
-            $timeElapsed = round((microtime(true) - $startTime) * 1000);
-            $this->line(str_pad($this->signature, 139, '.') . $timeElapsed . 'ms'.(' DONE'));
-        } catch (\Exception $e) {
-            $this->error('wrong');
+            with(new TwoColumnDetail($this->getOutput()))->render(
+                '<fg=red;options=bold>Error: </>' . $e->getMessage(),
+                '<fg=red;options=bold>Failed to insert users</>'
+            );
         }
         return 0;
     }
