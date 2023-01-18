@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,242,104,269"/>
+<area shape="rect" id="node2" href="$class_app_1_1_http_1_1_middleware_1_1_authenticate.html" title=" " alt="" coords="204,5,363,47"/>
+<area shape="rect" id="node3" href="$class_app_1_1_http_1_1_middleware_1_1_encrypt_cookies.html" title=" " alt="" coords="204,71,363,112"/>
+<area shape="rect" id="node4" href="$class_app_1_1_http_1_1_middleware_1_1_prevent_requests_during_maintenance.html" title=" " alt="" coords="152,136,415,177"/>
+<area shape="rect" id="node5" href="$class_app_1_1_http_1_1_middleware_1_1_trim_strings.html" title=" " alt="" coords="204,201,363,243"/>
+<area shape="rect" id="node6" href="$class_app_1_1_http_1_1_middleware_1_1_trust_hosts.html" title=" " alt="" coords="204,267,363,308"/>
+<area shape="rect" id="node7" href="$class_app_1_1_http_1_1_middleware_1_1_trust_proxies.html" title=" " alt="" coords="204,332,363,373"/>
+<area shape="rect" id="node8" href="$class_app_1_1_http_1_1_middleware_1_1_validate_signature.html" title=" " alt="" coords="204,397,363,439"/>
+<area shape="rect" id="node9" href="$class_app_1_1_http_1_1_middleware_1_1_verify_csrf_token.html" title=" " alt="" coords="204,463,363,504"/>
+</map>

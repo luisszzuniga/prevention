@@ -1,0 +1,16 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_email_verification_notification_controller.html" title=" " alt="" coords="5,374,251,430"/>
+<area shape="rect" id="node2" href="$class_app_1_1_http_1_1_controllers_1_1_controller.html" title=" " alt="" coords="299,381,453,423"/>
+<area shape="rect" id="node3" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_authenticated_session_controller.html" title=" " alt="" coords="501,5,767,47"/>
+<area shape="rect" id="node4" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_confirmable_password_controller.html" title=" " alt="" coords="502,71,766,112"/>
+<area shape="rect" id="node5" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_email_verification_prompt_controller.html" title=" " alt="" coords="525,137,743,193"/>
+<area shape="rect" id="node6" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_new_password_controller.html" title=" " alt="" coords="527,217,741,259"/>
+<area shape="rect" id="node7" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_password_controller.html" title=" " alt="" coords="541,283,727,324"/>
+<area shape="rect" id="node8" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_password_reset_link_controller.html" title=" " alt="" coords="509,348,759,389"/>
+<area shape="rect" id="node9" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_registered_user_controller.html" title=" " alt="" coords="522,413,746,455"/>
+<area shape="rect" id="node10" href="$class_app_1_1_http_1_1_controllers_1_1_auth_1_1_verify_email_controller.html" title=" " alt="" coords="535,479,733,520"/>
+<area shape="rect" id="node11" href="$class_app_1_1_http_1_1_controllers_1_1_course_controller.html" title=" " alt="" coords="557,544,711,585"/>
+<area shape="rect" id="node12" href="$class_app_1_1_http_1_1_controllers_1_1_offer_controller.html" title=" " alt="" coords="557,609,711,651"/>
+<area shape="rect" id="node13" href="$class_app_1_1_http_1_1_controllers_1_1_profile_controller.html" title=" " alt="" coords="557,675,711,716"/>
+<area shape="rect" id="node14" href="$class_app_1_1_http_1_1_controllers_1_1_vehicle_controller.html" title=" " alt="" coords="557,740,711,781"/>
+</map>
