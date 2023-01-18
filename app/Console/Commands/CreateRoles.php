@@ -34,6 +34,7 @@ class CreateRoles extends Command
     {
         $roles = [
             [
+                'id' => 1,
                 'name' => 'super-admin',
                 'code' => '0001',
             ],

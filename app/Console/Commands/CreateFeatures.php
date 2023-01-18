@@ -78,7 +78,7 @@ class CreateFeatures extends Command
 
             with(new TwoColumnDetail($this->getOutput()))->render(
                 '<fg=red;options=bold>Error: </>' . $e->getMessage(),
-                '<fg=red;options=bold>Failed to insert users</>'
+                '<fg=red;options=bold>Failed to insert features</>'
             );
         }
         return 0;

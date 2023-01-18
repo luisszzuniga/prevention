@@ -37,8 +37,8 @@ class CreateUsers extends Command
      */
     public function handle()
     {
-        $companyId = Company::whereId(self::LERY_TECHNOLOGIES)->first()->getattribute("id");
-        $roleId = Role::whereId(self::SUPER_ADMIN)->first()->getattribute("id");
+        $companyId = Company::whereId(self::LERY_TECHNOLOGIES)->first()->getAttribute('id');
+        $roleId = Role::whereId(self::SUPER_ADMIN)->first()->getAttribute('id');
         $users = [
             [
                 'firstname' => 'stephane',
@@ -68,7 +68,7 @@ class CreateUsers extends Command
         try {
             foreach ($users as $user) {
                 if (!User::where('email', $user['email'])->exists()) {
-                    DB::table('user')->insert([
+                    DB::table('users')->insert([
                         $user
                     ]);
                     with(new TwoColumnDetail($this->getOutput()))->render(
