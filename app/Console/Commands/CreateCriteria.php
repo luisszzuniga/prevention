@@ -21,7 +21,7 @@ class CreateCriteria extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Criteria for your App';
+    protected $description = 'Create Criteria for your App';
 
     /**
      * Execute the console command.
@@ -30,6 +30,7 @@ class CreateCriteria extends Command
      */
     public function handle()
     {
+        $this->line('  <fg=yellow;options=bold>CRITERIA :</> <fg=default>Nothing to create</>');
         return 0;
     }
 }

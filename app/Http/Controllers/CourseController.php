@@ -21,7 +21,11 @@ class CourseController extends Controller
         //
     }
 
-
+    /**
+     * Show the form for creating a new course.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $vehicles = Vehicle::all();
@@ -40,32 +44,32 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $buttonName = $request->input('submit');
-        if ($buttonName === 'vehicle') {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'brand' => 'required|string|max:255',
-                'license_plate' => 'required|string|max:255',
-                'type' => 'required|string|max:255',
-            ]);
-            $vehicle = new Vehicle();
-            $vehicle->name = $request->name;
-            $vehicle->brand = $request->brand;
-            $vehicle->license_plate = $request->license_plate;
-            $vehicle->type = $request->type;
-
-            $vehicle->save();
-
-            return back()->withInput()->with('success', 'Le véhicule a été créé avec succès.');
-        } elseif ($buttonName === 'learner') {
-
-            return back()->withInput()->with('success', 'L\'apprenant a été ajouté avec succès.');
-        } elseif ($buttonName === 'trainer') {
-
-            return back()->withInput()->with('success', 'Le formateur a été ajouté avec succès.');
-        }
-
-        return back()->withInput()->with('success', 'la session n\'a pas pu être crée.');
+//        $buttonName = $request->input('submit');
+//        if ($buttonName === 'vehicle') {
+//            $request->validate([
+//                'name' => 'required|string|max:255',
+//                'brand' => 'required|string|max:255',
+//                'license_plate' => 'required|string|max:255',
+//                'type' => 'required|string|max:255',
+//            ]);
+//            $vehicle = new Vehicle();
+//            $vehicle->name = $request->name;
+//            $vehicle->brand = $request->brand;
+//            $vehicle->license_plate = $request->license_plate;
+//            $vehicle->type = $request->type;
+//
+//            $vehicle->save();
+//
+//            return back()->withInput()->with('success', 'Le véhicule a été créé avec succès.');
+//        } elseif ($buttonName === 'learner') {
+//
+//            return back()->withInput()->with('success', 'L\'apprenant a été ajouté avec succès.');
+//        } elseif ($buttonName === 'trainer') {
+//
+//            return back()->withInput()->with('success', 'Le formateur a été ajouté avec succès.');
+//        }
+//
+//        return back()->withInput()->with('success', 'la session n\'a pas pu être crée.');
     }
 
     /**

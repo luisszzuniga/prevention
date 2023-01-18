@@ -41,12 +41,15 @@ class Vehicle extends Model
         'brand',
         'license_plate',
         'type'
-
     ];
 
-
-    public function courses(){
-
-        return $this->hasMany(Course::class);
+    /**
+     * Get the user that the vehicle belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function users()
+    {
+        return $this->hasOne(User::class);
     }
 }

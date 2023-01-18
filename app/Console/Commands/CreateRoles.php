@@ -3,8 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Models\Role;
+use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Console\View\Components\TwoColumnDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateRoles extends Command
 {
@@ -20,7 +23,7 @@ class CreateRoles extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Roles for your App';
+    protected $description = 'Create Roles for your App';
 
     /**
      * Execute the console command.
@@ -29,9 +32,36 @@ class CreateRoles extends Command
      */
     public function handle()
     {
-        return DB::table('roles')->insert([
-            'role_name' => 'super-admin',
-            'role_code' => '0001',
-        ]);
+        $roles = [
+            [
+                'name' => 'super-admin',
+                'code' => '0001',
+            ],
+        ];
+        try {
+            foreach ($roles as $role) {
+                if (!Role::where('name', $role['name'])->exists()) {
+                    DB::table('roles')->insert([
+                        $role
+                    ]);
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>ROLE : </>' . $role['name'],
+                        '<fg=yellow;options=bold>ADDED</>'
+                    );
+                } else {
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>ROLE : </>' . $role['name'],
+                        '<bg=red;options=bold>EXISTS</>'
+                    );
+                }
+            }
+        } catch (Exception $e) {
+
+            with(new TwoColumnDetail($this->getOutput()))->render(
+                '<fg=red;options=bold>Error: </>' . $e->getMessage(),
+                '<fg=red;options=bold>Failed to insert roles</>'
+            );
+        }
+        return 0;
     }
 }

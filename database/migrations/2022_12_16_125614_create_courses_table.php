@@ -17,7 +17,6 @@ return new class extends Migration {
             $table->text('observation')->nullable();
             $table->integer('seance_code')->nullable();
             $table->unsignedBigInteger('offer_id');
-            $table->unsignedBigInteger('vehicle_id');
             $table->unsignedBigInteger('center_id');
             $table->unsignedBigInteger('user_id_trainer')->index();
             $table->unsignedBigInteger('user_id_learner')->index();

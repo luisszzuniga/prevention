@@ -37,15 +37,31 @@ class Theme extends Model
 
     ];
 
+    /**
+     * Get the Criteria that belongs to the Theme.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function criteria()
     {
         return $this->belongsToMany(Criterion::class);
     }
 
+    /**
+     * Get the Evaluation that belongs to the Theme.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function evaluations()
     {
         return $this->hasOne(Evaluation::class);
     }
+
+    /**
+     * Get the Progress that belongs to the Theme.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function progress()
     {
         return $this->hasOne(Progress::class);
