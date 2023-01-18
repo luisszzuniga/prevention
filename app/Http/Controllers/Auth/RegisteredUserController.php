@@ -53,6 +53,7 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'zip_code' => $request->zip_code,
             'town' => $request->town,
+            ''
         ]);
 
         event(new Registered($user));
