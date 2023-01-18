@@ -19,10 +19,7 @@ class OfferSeeder extends Seeder
      */
     public function run()
     {
-        $features = Feature::factory(5)->create();
-        Offer::factory(5)->create()->each(function ($offer) use ($features) {
-            $offer->features()->attach($features->random(2));
-        });
+        Offer::factory(5)->create();
     }
 
 }

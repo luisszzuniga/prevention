@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,11 @@ class FeatureFactory extends Factory
      */
     public function definition()
     {
+       $offerId = Offer::factory()->create()->first()->getAttribute('id');
+
         return [
-            'text'=> fake()->realTextBetween(1, 50)
+            'text'=> fake()->realTextBetween(1, 50),
+                'offer_id' => $offerId
         ];
     }
 }
