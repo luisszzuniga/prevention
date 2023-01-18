@@ -4,7 +4,11 @@ namespace App\Console\Commands;
 
 use App\Models\Feature;
 use App\Models\Offer;
+use App\Models\Role;
+use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Console\View\Components\TwoColumnDetail;
+use Illuminate\Support\Facades\DB;
 
 class CreateOffers extends Command
 {
@@ -20,7 +24,7 @@ class CreateOffers extends Command
      *
      * @var string
      */
-    protected $description = 'Create Dummy Offers for your App';
+    protected $description = 'Create the attached Offers and features for your App';
 
     /**
      * Execute the console command.
@@ -29,55 +33,48 @@ class CreateOffers extends Command
      */
     public function handle()
     {
-        $offerPlus = new Offer();
-        $offerPlus->name = 'Plus';
-        $offerPlus->price = 4.99;
-        $offerPlus->description = 'Saisie des données du stagiaire';
-        $offerPlus->save();
 
-        $offerBuisness = new Offer();
-        $offerBuisness->name = 'Buisness';
-        $offerBuisness->price = 9.99;
-        $offerBuisness->description = 'Envoi automatique des données';
-        $offerBuisness->save();
+        $offers = [
+            [
+                'name' => 'Plus',
+                'price' => 4.99,
+                'description' => 'Saisie des données du stagiaire'
+            ],
+            [
+                'name' => 'Business',
+                'price' => 9.99,
+                'description' => 'Envoi automatique des données'
+            ],
+            [
+                'name' => 'Enterprise',
+                'price' => 14.99,
+                'description' => 'Suivre les formations des stagiaires dans leur SIRH'
+            ],
+        ];
+        try {
+            foreach ($offers as $offer) {
+                if (!Offer::where('name', $offer['name'])->exists()) {
+                    DB::table('offers')->insert([
+                        $offer
+                    ]);
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>OFFER : </>' . $offer['name'],
+                        '<fg=yellow;options=bold>ADDED</>'
+                    );
+                } else {
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>OFFER : </>' . $offer['name'],
+                        '<bg=red;options=bold>EXISTS</>'
+                    );
+                }
+            }
+        } catch (Exception $e) {
 
-        $offerEntreprise = new Offer();
-        $offerEntreprise->name = 'Entreprise';
-        $offerEntreprise->price = 14.99;
-        $offerEntreprise->description = 'Suivre les formations des stagiaires dans leur SIRH';
-        $offerEntreprise->save();
-
-
-
-        $feature = new Feature();
-        $feature->text = 'Gérer les stagiaires';
-        $feature->save();
-        $offerPlus->features()->attach($feature);
-        $offerBuisness->features()->attach($feature);
-        $offerEntreprise->features()->attach($feature);
-
-
-        $feature = new Feature();
-        $feature->text = 'Saisir les informations';
-        $feature->save();
-        $offerPlus->features()->attach($feature);
-        $offerBuisness->features()->attach($feature);
-
-        $offerEntreprise->features()->attach($feature);
-
-
-        $feature = new Feature();
-        $feature->text = 'Données envoyées sur le LRS';
-        $feature->save();
-        $offerBuisness->features()->attach($feature);
-        $offerEntreprise->features()->attach($feature);
-
-        $feature = new Feature();
-        $feature->text = 'Suivi des formations avec interface';
-        $feature->save();
-        $offerEntreprise->features()->attach($feature);
-
-
+            with(new TwoColumnDetail($this->getOutput()))->render(
+                '<fg=red;options=bold>Error: </>' . $e->getMessage(),
+                '<fg=red;options=bold>Failed to insert users</>'
+            );
+        }
         return 0;
     }
 }

@@ -43,14 +43,23 @@ class Offer extends Model
 
     ];
 
-
+    /**
+     * Get the Courses that belongs to the offer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function courses(){
 
         return $this->hasMany(Course::class);
     }
 
+    /**
+     * Get the Features that belongs to the offer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function features()
     {
-        return $this->belongsToMany(Feature::class);
+        return $this->hasMany(Feature::class);
     }
 }

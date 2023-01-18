@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('role_name', 50)->unique('role_name');
-            $table->integer('role_code')->unique('role_code');
+            $table->string('name', 50)->unique('name');
+            $table->integer('code')->unique('code');
         });
     }
 
