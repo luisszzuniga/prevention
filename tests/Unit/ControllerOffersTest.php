@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Offer;
 use Tests\TestCase;
 
 class ControllerOffersTest extends TestCase

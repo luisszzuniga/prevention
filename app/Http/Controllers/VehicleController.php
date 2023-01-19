@@ -3,21 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VehicleRequest;
+use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VehicleController extends Controller
 {
-    /**
-     * Show the form for creating a new vehicle.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('vehicles.create');
-    }
-
     /**
      * Store a newly created vehicle in storage.
      *
@@ -31,6 +23,7 @@ class VehicleController extends Controller
         $vehicle->brand = $request->brand;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->type = $request->type;
+        $vehicle->learner_id =
         $vehicle->save();
 
         return response()->json([

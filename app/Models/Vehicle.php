@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $brand
  * @property string|null $license_plate
  * @property string|null $type
+ * @property int $learner_id
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
  * @property-read int|null $courses_count
  * @method static \Database\Factories\VehicleFactory factory(...$parameters)
@@ -40,7 +41,8 @@ class Vehicle extends Model
         'name',
         'brand',
         'license_plate',
-        'type'
+        'type',
+        'learner_id'
     ];
 
     /**

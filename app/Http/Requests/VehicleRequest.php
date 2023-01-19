@@ -11,6 +11,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string|null $brand
  * @property string|null $license_plate
  * @property string|null $type
+ * @property int| $learner_id
  */
 class VehicleRequest extends FormRequest
 {
@@ -33,9 +34,9 @@ class VehicleRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
-            'brand' => 'required|max:50',
-            'license_plate' => 'required|max:10',
-            'type' => 'required|max:20'
+            'brand' => 'max:50',
+            'license_plate' => 'max:10',
+            'type' => 'max:20'
         ];
     }
 
