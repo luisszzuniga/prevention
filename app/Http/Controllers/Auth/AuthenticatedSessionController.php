@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -20,19 +21,28 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function store(LoginRequest $request)
     {
+
+        Log::info('store');
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::guard('web')->user();
+        Log::info($request);
+
+        // Créez un nouveau token pour l'utilisateur
+        $token = $user->createToken('auth_token')->plainTextToken;
+        Log::info($token);
+
+        $request->session()->put('token', $token);
+
+        return redirect()->intended(RouteServiceProvider::HOME)->with(['token' => $token]);
+
+
     }
 
     /**

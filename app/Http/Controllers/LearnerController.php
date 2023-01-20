@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
@@ -14,12 +13,6 @@ class LearnerController extends Controller
 
     public function store(Request $request)
     {
-
-
-        Log::info('store');
-        Log::info(Auth::user()->lastname);
-        $user = auth()->id();
-
         $learner = new User();
         $learner->lastname = $request->lastname;
         $learner->firstname = $request->firstname;
@@ -29,11 +22,13 @@ class LearnerController extends Controller
         $learner->zip_code = $request->zip_code;
         $learner->town = $request->town;
         $learner->password = bcrypt($this->generatePassword());
-        $learner->trainer_id = $userid;
+        $learner->trainer_id = 2;
         $learner->save();
 
+       Log::info(Auth::user()->id);
+
         return response()->json([
-            'message' => "Le stagiaire " . $learner->lastname .' '. $learner->firstname. " a été ajouté avec succès.",
+            'message' => "Le stagiaire " . $learner->lastname . ' ' . $learner->firstname . " a été ajouté avec succès.",
             'learner' => $learner
         ], 201);
     }

@@ -17,7 +17,16 @@ export default function useLearners(): {
     const message = ref('');
     const errors = ref('');
     const router = useRouter();
-    const url = '/learners-store';
+    const url = '/api/learners-store';
+    let token = '13|IdNFeS9myRLct9xozncj2KeKODOFS5q4ecFQh4k2'
+    let config = {
+        headers: {
+            'Authorization': 'auth_token ' + token,
+            'accept': "application/json"
+        },
+        timeout: 0
+    };
+
     const getLearners = async (): Promise<void> => {
         let response = await axios.get('/api/learners');
         learners.value = response.data.data;
@@ -32,7 +41,7 @@ export default function useLearners(): {
 
         errors.value = '';
         try {
-            let response = await axios.post(url, data);
+            let response = await axios.post(url, data, config);
             console.log('done')
             message.value = response.data.message;
         } catch (e) {

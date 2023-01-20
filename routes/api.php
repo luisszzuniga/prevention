@@ -21,11 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     return $request->user();
 });
-Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
+
 
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
 
 });
+
+Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
 

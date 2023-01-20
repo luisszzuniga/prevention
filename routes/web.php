@@ -44,9 +44,10 @@ Route::middleware('auth')->group(function () {
         return view('vehicle.create-vehicle');
     });
 
-    Route::get('/learner', function () {
-        return view('learner.add-learner');
-    });
+//    Route::get('/learner', function () {
+//        return view('learner.add-learner');
+//    });
+
 
 
 

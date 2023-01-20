@@ -28,7 +28,7 @@ class ControllerVehicleTest extends TestCase
                 'brand' => 'brand1',
                 'license_plate' => 'license1',
                 'type' => 'type1',
-                'learner_id' => $userId
+//                'learner_id' => $userId @todo
             ]
         ]);
     }

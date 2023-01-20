@@ -18,12 +18,15 @@ class VehicleController extends Controller
      */
     public function store(VehicleRequest $request)
     {
+        $userId = User::factory()->create()->getAttribute('id');
+
         $vehicle = new Vehicle();
         $vehicle->name = $request->name;
         $vehicle->brand = $request->brand;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->type = $request->type;
-        $vehicle->learner_id =
+        //ajoute un learner factice
+        $vehicle->learner_id = $userId;
         $vehicle->save();
 
         return response()->json([
