@@ -3,42 +3,21 @@
 
         <div class="columns">
             <h3>Mes clients</h3>
-            <table >
-            <tr>
-                <td>Contenu de la cellule 1</td>
-                <td>Contenu de la cellule 2</td>
-            </tr>
-            <tr>
-                <td>Contenu de la cellule 3</td>
-                <td>Contenu de la cellule 4</td>
-            </tr>
-            </table>
+            <div id="app">
+                <ListCompanies id="ListCompanies"></ListCompanies>
+            </div>
         </div>
         <div class="columns">
             <h3>Mes Formateurs</h3>
-            <table>
-                <tr>
-                    <td>Contenu de la cellule 1</td>
-                    <td>Contenu de la cellule 2</td>
-                </tr>
-                <tr>
-                    <td>Contenu de la cellule 3</td>
-                    <td>Contenu de la cellule 4</td>
-                </tr>
-            </table>
+            <div id="app">
+                <ListTrainers id="ListTrainers"></ListTrainers>
+            </div>
         </div>
         <div class="columns">
             <h3>Mes Formations</h3>
-            <table>
-                <tr>
-                    <td>Contenu de la cellule 1</td>
-                    <td>Contenu de la cellule 2</td>
-                </tr>
-                <tr>
-                    <td>Contenu de la cellule 3</td>
-                    <td>Contenu de la cellule 4</td>
-                </tr>
-            </table>
+            <div id="app">
+                <ListCourses id="ListCourses"></ListCourses>
+            </div>
         </div>
 
     </div>
@@ -46,9 +25,15 @@
 </template>
 
 <script>
-export default {
-    name: "ListsDashboard"
-}
+
+import {defineComponent} from "vue";
+import ListCompanies from "./ListCompanies.vue";
+import ListTrainers from './ListTrainers.vue';
+import ListCourses from "./ListCourses.vue";
+
+export default defineComponent({
+    components: {ListCourses, ListTrainers, ListCompanies}
+})
 </script>
 
 <style scoped>
@@ -62,6 +47,16 @@ export default {
 .columns h3 {
     text-align: center;
     color: #1b1e21;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.columns td{
+    color: #1b1e21;
+}
+
+#ListCourses, #ListTrainers, #ListCompanies {
+    color: black;
+    width: 100%;
 }
 
 .columns {

@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: "ListTrainers"
+    name: "ListCourses"
 }
 </script>
 

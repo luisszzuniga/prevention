@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class CommandTest extends TestCase
 {
-    public function testLanchData( )
+    public function testLaunchData()
     {
         $this->artisan('create:all');
 
