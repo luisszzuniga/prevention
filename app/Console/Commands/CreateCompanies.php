@@ -35,6 +35,7 @@ class CreateCompanies extends Command
     {
         $companies = [
             [
+                'id' => 1,
                 'name' => 'Lery Technologies',
                 'address' => '1 rue de Paris',
                 'zip_code' => '35510',

@@ -21,7 +21,15 @@ class LaunchData extends Command
     protected $description = 'Command description';
 
     /**
-     * Execute the console command.
+     * Execute the console command.// Arrange
+        $this->app->instance('command.mycommand', new \App\Console\Commands\LaunchData());
+        $this->app->make('Illuminate\Contracts\Console\Kernel')->registerCommand(LaunchData::class);
+
+        // Act
+        $this->artisan('mycommand');
+
+        // Assert
+        // Vérifier que la commande a été exécutée correctement
      *
      * @return int
      */
@@ -30,8 +38,8 @@ class LaunchData extends Command
         $this->call('create:roles');
         $this->call('create:companies');
         $this->call('create:users');
-        $this->call('create:features');
         $this->call('create:offers');
+        $this->call('create:features');
         $this->call('create:themes');
         $this->call('create:criteria');
         $this->call('create:centers');

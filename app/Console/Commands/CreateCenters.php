@@ -31,7 +31,7 @@ class CreateCenters extends Command
      */
     public function handle()
     {
-        $this->line('  <fg=yellow;options=bold>CENTERS :</> <fg=default>Nothing to create</>');
+        $this->line('  <fg=yellow;options=bold>CENTERS :</> <fg=default>Nothing to add</>');
         return 0;
     }
 

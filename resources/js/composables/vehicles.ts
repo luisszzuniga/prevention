@@ -19,6 +19,7 @@ export default function useVehicles(): {
     const errors = ref('');
     const router = useRouter();
 
+
     const getVehicles = async (): Promise<void> => {
         let response = await axios.get('/api/vehicles');
         vehicles.value = response.data.data;
