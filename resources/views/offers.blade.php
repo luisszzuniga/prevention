@@ -9,7 +9,6 @@
 
 @section('content')
 
-
     <div class="pricing-container">
         <div class="box-center">
             <div class="title-offers">
@@ -19,13 +18,13 @@
             </div>
             <div class="gallery-nav">
                 <button>
-                    <span>{{$offer1->name}}</span>
+                    <span>{{$offers[0]->name}}</span>
                 </button>
                 <button class="is-selected">
-                    <span>{{$offer2->name}}</span>
+                    <span>{{$offers[1]->name}}</span>
                 </button>
                 <button>
-                    <span>{{$offer3->name}}</span>
+                    <span>{{$offers[2]->name}}</span>
                 </button>
             </div>
             <section class="section-pricing">
@@ -33,15 +32,15 @@
                     <div class="column-first-offer" id="column-first-offer">
                         <div class="content-first-offer" id="first-offer">
                             <h2 class="h2-first-order">
-                                {{$offer1->name}}
+                                {{$offers[0]->name}}
                             </h2>
                             <p class="description-first-offer">
-                                {{$offer1->description}}
+                                {{$offers[0]->description}}
                             </p>
                             <div class="price-detail-first-offer">
                                 <div class="price-container-first-offer">
                                <span class="span-price-first-offer">
-                                   {{$offer1->price}}
+                                   {{$offers[0]->price}}
                                </span>
                                     <span class="span-sign-first-offer">
                                    €
@@ -66,8 +65,8 @@
                             </div>
                             <div class="list-features-first-offer">
                                 <ul>
-                                    @foreach($offer1->features as $feature)
-                                     <li> {{$feature->text}}</li>
+                                    @foreach($offers[0]->features as $feature)
+                                        <li> {{$feature->text}}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -76,15 +75,15 @@
                     <div class="column-second-offer" id="column-second-offer">
                         <div class="content-second-offer" id="second-offer">
                             <h2 class="h2-second-order">
-                                {{$offer2->name}}
+                                {{$offers[1]->name}}
                             </h2>
                             <p class="description-second-offer">
-                                {{$offer2->description}}
+                                {{$offers[1]->description}}
                             </p>
                             <div class="price-detail-second-offer">
                                 <div class="price-container-second-offer">
                                <span class="span-price-second-offer">
-                                   {{$offer2->price}}
+                                   {{$offers[1]->price}}
                                </span>
                                     <span class="span-sign-second-offer">
                                    €
@@ -109,7 +108,7 @@
                             </div>
                             <div class="list-features-second-offer">
                                 <ul>
-                                    @foreach($offer2->features as $feature)
+                                    @foreach($offers[1]->features as $feature)
                                         <li> {{$feature->text}}</li>
                                     @endforeach
                                 </ul>
@@ -119,15 +118,15 @@
                     <div class="column-third-offer" id="column-third-offer">
                         <div class="content-third-offer" id="third-offer">
                             <h2 class="h2-third-order">
-                                {{$offer3->name}}
+                                {{$offers[2]->name}}
                             </h2>
                             <p class="description-third-offer">
-                                {{$offer3->description}}
+                                {{$offers[2]->description}}
                             </p>
                             <div class="price-detail-third-offer">
                                 <div class="price-container-third-offer">
                                <span class="span-price-third-offer">
-                                {{$offer3->price}}
+                                {{$offers[2]->price}}
                                </span>
                                     <span class="span-sign-third-offer">
                                    €
@@ -152,7 +151,7 @@
                             </div>
                             <div class="list-features-third-offer">
                                 <ul>
-                                    @foreach($offer3->features as $feature)
+                                    @foreach($offers[2]->features as $feature)
                                         <li> {{$feature->text}}</li>
                                     @endforeach
                                 </ul>

@@ -12,10 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('features', function (Blueprint $table) {
-            $table->id();
-            $table->string('text', 50)->unique('text');
-
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->foreign(['learner_id'], 'FK_vehicles_users')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
@@ -26,6 +24,8 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('features');
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->dropForeign('FK_vehicles_users');
+        });
     }
 };

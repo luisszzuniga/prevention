@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
@@ -42,6 +43,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/vehicle', function () {
         return view('vehicle.create-vehicle');
     });
+
+//    Route::get('/learner', function () {
+//        return view('learner.add-learner');
+//    });
+
+
+
 
 
 });

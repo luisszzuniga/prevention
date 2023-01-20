@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->foreign(['company_id'], 'FK_users_companies')->references('id')->on('companies')->onDelete('CASCADE');
             $table->foreign(['role_id'], 'FK_users_roles')->references('id')->on('roles')->onDelete('CASCADE');
+            $table->foreign('trainer_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 

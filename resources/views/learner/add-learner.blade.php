@@ -1,10 +1,10 @@
 @extends('layouts.layout')
-@section('title','new vehicle')
+@section('title','add learner')
 
 @section('content')
 
     <div id="app">
-        <Vehicles></Vehicles>
+        <Learner></Learner>
     </div>
 
 @endsection

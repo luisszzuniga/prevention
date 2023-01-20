@@ -18,8 +18,8 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'role_name' => fake()->name(),
-            'role_code' => fake()->unique()->numberBetween(1, 1000)
+            'name' => fake()->name(),
+            'code' => fake()->unique()->numberBetween(1, 1000)
         ];
     }
 }

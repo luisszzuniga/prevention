@@ -37,7 +37,11 @@ class Center extends Model
         'address',
     ];
 
-
+    /**
+     * The courses that belong to the center.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function courses(){
 
         return $this->hasMany(Course::class);

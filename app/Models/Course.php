@@ -2,8 +2,15 @@
 
 namespace App\Models;
 
+use Database\Factories\CourseFactory;
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Course
@@ -16,30 +23,30 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $center_id
  * @property int $user_id_trainer
  * @property int $user_id_learner
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Center|null $center
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Criterion[] $criteria
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Center|null $center
+ * @property-read Collection|Criterion[] $criteria
  * @property-read int|null $criteria_count
- * @property-read \App\Models\User|null $learners
- * @property-read \App\Models\Offer|null $offers
- * @property-read \App\Models\User|null $trainers
- * @property-read \App\Models\Vehicle|null $vehicles
- * @method static \Database\Factories\CourseFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Course newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Course newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Course query()
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereCenterId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereObservation($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereOfferId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereSeanceCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereUserIdLearner($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereUserIdTrainer($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Course whereVehicleId($value)
- * @mixin \Eloquent
+ * @property-read User|null $learners
+ * @property-read Offer|null $offers
+ * @property-read User|null $trainers
+ * @property-read Vehicle|null $vehicles
+ * @method static CourseFactory factory(...$parameters)
+ * @method static Builder|Course newModelQuery()
+ * @method static Builder|Course newQuery()
+ * @method static Builder|Course query()
+ * @method static Builder|Course whereCenterId($value)
+ * @method static Builder|Course whereCreatedAt($value)
+ * @method static Builder|Course whereId($value)
+ * @method static Builder|Course whereObservation($value)
+ * @method static Builder|Course whereOfferId($value)
+ * @method static Builder|Course whereSeanceCode($value)
+ * @method static Builder|Course whereUpdatedAt($value)
+ * @method static Builder|Course whereUserIdLearner($value)
+ * @method static Builder|Course whereUserIdTrainer($value)
+ * @method static Builder|Course whereVehicleId($value)
+ * @mixin Eloquent
  */
 class Course extends Model
 {
@@ -55,31 +62,51 @@ class Course extends Model
         'seance_code'
     ];
 
+    /**
+     * The criteria that the course belongs to.
+     *
+     * @return BelongsToMany
+     */
     public function criteria()
     {
         return $this->belongsToMany(Criterion::class);
     }
 
+    /**
+     * The offer that the course has.
+     *
+     * @return HasOne
+     */
     public function offers()
     {
         return $this->hasOne(Offer::class);
     }
 
-    public function vehicles()
-    {
-        return $this->hasOne(Vehicle::class);
-    }
-
+    /**
+     * The center that the course belongs to.
+     *
+     * @return HasOne
+     */
     public function center()
     {
         return $this->hasOne(Center::class);
     }
 
+    /**
+     * The trainer that the course has.
+     *
+     * @return HasOne
+     */
     public function trainers()
     {
         return $this->hasOne(User::class);
     }
 
+    /**
+     * The learner that the course has.
+     *
+     * @return HasOne
+     */
     public function learners()
     {
         return $this->hasOne(User::class);

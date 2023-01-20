@@ -26,9 +26,8 @@ return new class extends Migration
             $table->char('zip_code', 5)->nullable();
             $table->string('town', 35)->nullable();
             $table->rememberToken();
-            $table->unsignedBigInteger('company_id')->unique()->nullable();
-            $table->unsignedBigInteger('user_id_trainer')->index('user_id_trainer')->unique()->nullable();
-            $table->unsignedBigInteger('user_id_learner')->index('user_id_learner')->unique()->nullable();
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->unsignedBigInteger('trainer_id')->index('trainer_id')->nullable();
             $table->unsignedBigInteger('role_id')->default(1);
             $table->timestamps();
         });

@@ -1,22 +1,22 @@
 CREATE TABLE roles(
    role_id INT,
-   role_name VARCHAR(50) NOT NULL,
-   role_code INT NOT NULL,
+   name VARCHAR(50) NOT NULL,
+   code INT NOT NULL,
    PRIMARY KEY(role_id),
-   UNIQUE(role_name),
-   UNIQUE(role_code)
+   UNIQUE(name),
+   UNIQUE(code)
 );
 
 CREATE TABLE criteria(
    criterion_id INT,
-   text VARCHAR(100) NOT NULL,
+   text TEXT NOT NULL,
    PRIMARY KEY(criterion_id),
    UNIQUE(text)
 );
 
 CREATE TABLE themes(
    theme_id INT,
-   text VARCHAR(50) NOT NULL,
+   text TEXT NOT NULL,
    PRIMARY KEY(theme_id),
    UNIQUE(text)
 );
@@ -39,64 +39,111 @@ CREATE TABLE progress(
    FOREIGN KEY(theme_id) REFERENCES themes(theme_id)
 );
 
-CREATE TABLE vehicles(
-   vehicule_id VARCHAR(50),
+CREATE TABLE companies(
+   company_id INT,
    name VARCHAR(50) NOT NULL,
-   brand VARCHAR(50),
-   license_Plate VARCHAR(10),
-   type VARCHAR(15),
-   PRIMARY KEY(vehicule_id)
+   contact VARCHAR(50),
+   PRIMARY KEY(company_id),
+   UNIQUE(name)
+);
+
+CREATE TABLE offers(
+   offer_id INT,
+   name VARCHAR(50) NOT NULL,
+   price DECIMAL(3,2) NOT NULL,
+   description VARCHAR(50),
+   PRIMARY KEY(offer_id),
+   UNIQUE(name),
+   UNIQUE(price)
+);
+
+CREATE TABLE features(
+   feature_id INT,
+   text TEXT,
+   offer_id INT NOT NULL,
+   PRIMARY KEY(feature_id),
+   FOREIGN KEY(offer_id) REFERENCES offers(offer_id)
+);
+
+CREATE TABLE centers_acp(
+   center_acp_id INT,
+   name_ VARCHAR(50),
+   address VARCHAR(100),
+   PRIMARY KEY(center_acp_id)
+);
+
+CREATE TABLE training(
+   Id_training COUNTER,
+   seance_code INT,
+   PRIMARY KEY(Id_training)
 );
 
 CREATE TABLE users(
    user_id INT,
-   last_name VARCHAR(50) NOT NULL,
-   first_name VARCHAR(50) NOT NULL,
-   password VARCHAR(50) NOT NULL,
+   lastname VARCHAR(35) NOT NULL,
+   firstname VARCHAR(35) NOT NULL,
+   password VARCHAR(60) NOT NULL,
    email VARCHAR(50) NOT NULL,
    phone VARCHAR(10) NOT NULL,
-   address VARCHAR(50) NOT NULL,
-   zip_code VARCHAR(5),
-   town VARCHAR(50),
-   user_id_Entreprise INT,
+   address VARCHAR(100) NOT NULL,
+   zip_code CHAR(5),
+   town VARCHAR(35),
+   company_id INT NOT NULL,
    user_id_Trainer INT,
+   Id_training INT,
    role_id INT NOT NULL,
    PRIMARY KEY(user_id),
    UNIQUE(email),
    UNIQUE(phone),
-   FOREIGN KEY(user_id_Entreprise) REFERENCES users(user_id),
+   FOREIGN KEY(company_id) REFERENCES companies(company_id),
    FOREIGN KEY(user_id_Trainer) REFERENCES users(user_id),
+   FOREIGN KEY(Id_training) REFERENCES training(Id_training),
    FOREIGN KEY(role_id) REFERENCES roles(role_id)
 );
 
-CREATE TABLE seances(
-   seance_id INT,
-   date_time DATETIME NOT NULL,
-   center_acp_name VARCHAR(50) NOT NULL,
+CREATE TABLE courses(
+   course_id INT,
    observation TEXT,
-   seance_code INT,
-   vehicule_id VARCHAR(50),
-   user_id_Trainer INT,
-   user_id_Learner INT,
-   PRIMARY KEY(seance_id),
-   FOREIGN KEY(vehicule_id) REFERENCES vehicles(vehicule_id),
-   FOREIGN KEY(user_id_Trainer) REFERENCES users(user_id),
+   Id_training INT NOT NULL,
+   center_acp_id INT,
+   offer_id INT NOT NULL,
+   PRIMARY KEY(course_id),
+   FOREIGN KEY(Id_training) REFERENCES training(Id_training),
+   FOREIGN KEY(center_acp_id) REFERENCES centers_acp(center_acp_id),
+   FOREIGN KEY(offer_id) REFERENCES offers(offer_id)
+);
+
+CREATE TABLE vehicles(
+   vehicle_id INT,
+   name VARCHAR(50) NOT NULL,
+   brand VARCHAR(50),
+   license_Plate VARCHAR(10),
+   type VARCHAR(20),
+   user_id_Learner INT NOT NULL,
+   PRIMARY KEY(vehicle_id),
    FOREIGN KEY(user_id_Learner) REFERENCES users(user_id)
 );
 
-CREATE TABLE Possess(
-   seance_id INT,
+CREATE TABLE course_learner(
+   user_id_Learner INT,
+   Id_training INT,
+   PRIMARY KEY(user_id_Learner, Id_training),
+   FOREIGN KEY(user_id_Learner) REFERENCES users(user_id),
+   FOREIGN KEY(Id_training) REFERENCES training(Id_training)
+);
+
+CREATE TABLE course_criterion(
+   course_id INT,
    criterion_id INT,
-   PRIMARY KEY(seance_id, criterion_id),
-   FOREIGN KEY(seance_id) REFERENCES seances(seance_id),
+   PRIMARY KEY(course_id, criterion_id),
+   FOREIGN KEY(course_id) REFERENCES courses(course_id),
    FOREIGN KEY(criterion_id) REFERENCES criteria(criterion_id)
 );
 
-CREATE TABLE H_1(
+CREATE TABLE criterion_theme(
    criterion_id INT,
    theme_id INT,
    PRIMARY KEY(criterion_id, theme_id),
    FOREIGN KEY(criterion_id) REFERENCES criteria(criterion_id),
    FOREIGN KEY(theme_id) REFERENCES themes(theme_id)
 );
-

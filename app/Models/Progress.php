@@ -36,6 +36,11 @@ class Progress extends Model
 
     ];
 
+    /**
+     * Get the Theme that belongs to the Progress.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function themes(){
 
         return $this->hasOne(Theme::class);

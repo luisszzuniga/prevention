@@ -36,11 +36,22 @@ class Criterion extends Model
         'text'
 
     ];
+
+    /**
+     * The courses that the criterion belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function courses()
     {
         return $this->belongsToMany(Course::class);
     }
 
+    /**
+     * The themes that the criterion belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function themes()
     {
         return $this->belongsToMany(Theme::class);
