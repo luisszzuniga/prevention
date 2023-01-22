@@ -28,7 +28,7 @@ class CreateUsers extends Command
      *
      * @var string
      */
-    protected $description = 'Create Users for your App';
+    protected $description = 'Create Users for App';
 
     /**
      * Execute the console command.
