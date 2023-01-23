@@ -24,7 +24,7 @@ class CreateOffers extends Command
      *
      * @var string
      */
-    protected $description = 'Create the attached Offers and features for your App';
+    protected $description = 'Create the attached Offers and features for App';
 
     /**
      * Execute the console command.

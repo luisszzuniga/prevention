@@ -1,20 +1,19 @@
 <template>
     <table>
-        <tr>
-            <td>Contenu de la cellule 1</td>
-            <td>Contenu de la cellule 2</td>
+        <tr v-for="company in companies" :key="company.id">
+            <td>  {{ company.name }}</td>
         </tr>
-        <tr>
-            <td>Contenu de la cellule 3</td>
-            <td>Contenu de la cellule 4</td>
-        </tr>
+
     </table>
 </template>
 
 <script>
 export default {
-    name: "ListCompanies"
+    name: "ListCompanies",
+    props: ['companies']
 }
+
+
 </script>
 
 <style scoped>

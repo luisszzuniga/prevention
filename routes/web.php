@@ -45,9 +45,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
 
-//    Route::get('/learner', function () {
-//        return view('learner.add-learner');
-//    });
+    Route::get('/learner', function () {
+        return view('learner.add-learner');
+    });
 
 
 

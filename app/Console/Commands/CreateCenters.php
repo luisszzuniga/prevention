@@ -22,7 +22,7 @@ class CreateCenters extends Command
      *
      * @var string
      */
-    protected $description = 'Create Centers for your App';
+    protected $description = 'Create Centers for App';
 
     /**
      * Execute the console command.

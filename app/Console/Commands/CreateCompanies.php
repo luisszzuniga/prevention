@@ -24,7 +24,7 @@ class CreateCompanies extends Command
      *
      * @var string
      */
-    protected $description = 'Create Companies for your App';
+    protected $description = 'Create Companies for App';
 
     /**
      * Execute the console command.

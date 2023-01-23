@@ -26,7 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('abilities', function (Blueprint $table) {
-            $table->dropForeign('FK_abilites_roles');
         });
     }
 };

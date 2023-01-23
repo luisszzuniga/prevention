@@ -4,7 +4,7 @@
         <div class="columns">
             <h3>Mes clients</h3>
             <div id="app">
-                <ListCompanies id="ListCompanies"></ListCompanies>
+                <ListCompanies :companies="companies" id="ListCompanies"></ListCompanies>
             </div>
         </div>
         <div class="columns">
