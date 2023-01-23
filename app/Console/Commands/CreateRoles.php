@@ -11,6 +11,13 @@ use Illuminate\Support\Str;
 
 class CreateRoles extends Command
 {
+    const ROLES = [
+        [
+            'id' => 1,
+            'name' => 'super-admin',
+            'code' => '0001',
+        ],
+    ];
     /**
      * The name and signature of the console command.
      *
@@ -23,7 +30,7 @@ class CreateRoles extends Command
      *
      * @var string
      */
-    protected $description = 'Create Roles for your App';
+    protected $description = 'Create Roles for App';
 
     /**
      * Execute the console command.
@@ -40,7 +47,7 @@ class CreateRoles extends Command
             ],
         ];
         try {
-            foreach ($roles as $role) {
+            foreach (self::ROLES as $role) {
                 if (!Role::where('name', $role['name'])->exists()) {
                     DB::table('roles')->insert([
                         $role

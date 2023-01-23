@@ -19,7 +19,7 @@ class CreateThemes extends Command
      *
      * @var string
      */
-    protected $description = 'Create Themes for your App';
+    protected $description = 'Create Themes for App';
 
     /**
      * Execute the console command.
