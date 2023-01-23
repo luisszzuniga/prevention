@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Providers\AbilityProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +15,10 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends BaseController
 {
-    protected AbilityProvider $abilityProvider;
 
-    public function __construct(AbilityProvider $abilityProvider)
+    public function __construct()
     {
-        $this->abilityProvider = $abilityProvider;
+
     }
 
     public function login(Request $request)
@@ -26,10 +26,7 @@ class AuthController extends BaseController
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $auth = Auth::user();
             $success['token'] = $auth->createToken('LaravelSanctumAuth', ['user:get:user'])->plainTextToken;
-            $abilities = $this->abilityProvider->getAbilities($auth);
-            Log::info($abilities[0]);
             $token = $auth->createToken('LaravelSanctumAuth', ['user:get:user']);
-            $success['abilities'] = $token->abilities;
             $success['name'] = $auth->lastname;
 
             return $this->handleResponse($success, 'User logged-in!');
@@ -38,24 +35,15 @@ class AuthController extends BaseController
         }
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'lastname' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'confirm_password' => 'required|same:password',
-        ]);
-
-        if ($validator->fails()) {
-            return $this->handleError($validator->errors());
-        }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $success['token'] = $user->createToken('LaravelSanctumAuth')->plainTextToken;
         $success['name'] = $user->lastname;
+
 
         return $this->handleResponse($success, 'User successfully registered!');
     }

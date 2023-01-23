@@ -31,25 +31,52 @@ class CreateAbilities extends Command
     public function handle()
     {
         $abilities = [
-            '1' => [ // super-admin
+            0 => [ // Super-admin
                 [// ability 1
                     'name' => 'user:get:user',
                     'description' => 'Visualize user\'s info'
                 ],
                 [//ability 2
-                    'name' => 'company:post:create',
+                    'name' => 'company:post:store',
                     'description' => 'Create a company'
-                ]
+                ],
+                [//ability 3
+                    'name' => 'trainer:post:store',
+                    'description' => 'Create a trainer'
+                ],
+                [//ability 3
+                    'name' => 'vehicle:post:store',
+                    'description' => 'Create a vehicle'
+                ],
+            ],
+            1 => [ // Manager
+                [
+                ],
+            ],
+            2 => [ // Admin
+                [
+                ],
+            ],
+            3 => [ // instructor
+                [
+                ],
+            ],
+            4 => [ // Guest
+                [
+                ],
             ],
         ];
-        //todo boucler sur les roles
-        $roleId = Role::where('name', CreateRoles::ROLES[0]['name'])->first()->id;
+        $superAdminId = Role::where('name', CreateRoles::ROLES[0]['name'])->first()->id;
+        $managerId = Role::where('name', CreateRoles::ROLES[1]['name'])->first()->id;
+        $adminId = Role::where('name', CreateRoles::ROLES[2]['name'])->first()->id;
+        $instructorId = Role::where('name', CreateRoles::ROLES[3]['name'])->first()->id;
+        $guestId = Role::where('name', CreateRoles::ROLES[4]['name'])->first()->id;
 
-        foreach($abilities[1] as $ability ) {
+        foreach ($abilities[0] as $ability) {
             DB::table('abilities')->insert([
-                'name'=> $ability['name'],
+                'name' => $ability['name'],
                 'description' => $ability['description'],
-                'role_id' => $roleId
+                'role_id' => $superAdminId
             ]);
         }
         return Command::SUCCESS;

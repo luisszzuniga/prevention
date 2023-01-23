@@ -18,17 +18,15 @@
                     <x-nav-link :href="route('course.create')">
                         {{ __('Course') }}
                     </x-nav-link>
-                    <x-nav-link>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                             onclick="event.preventDefault();
+                        <x-nav-link :href="route('logout')"
+                                         onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-nav-link>
+                            {{ __('Log Out') }}
+                        </x-nav-link>
+                    </form>
                 </div>
             </div>
 

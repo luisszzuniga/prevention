@@ -21,7 +21,7 @@ class CreateCriteria extends Command
      *
      * @var string
      */
-    protected $description = 'Create Criteria for your App';
+    protected $description = 'Create Criteria for App';
 
     /**
      * Execute the console command.

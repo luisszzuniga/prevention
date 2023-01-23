@@ -12,17 +12,19 @@ export default function useLearners(): {
     storeLearner: (data: object) => Promise<void>,
     updateLearner: (id: number) => Promise<void>,
 } {
+    axios.defaults.withCredentials = true;
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
     const router = useRouter();
     const url = '/api/learners-store';
-    let token = '13|IdNFeS9myRLct9xozncj2KeKODOFS5q4ecFQh4k2'
+    let token = "1|018LLF6WZLEarYLAAt5Lg0dSh13QUoMTVA9KGAMo";
+    console.log(token)
     let config = {
         headers: {
-            'Authorization': 'auth_token ' + token,
-            'accept': "application/json"
+            'Content-Type': "application/json",
+            'Authorization': 'Bearer ' + token,
         },
         timeout: 0
     };

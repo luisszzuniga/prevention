@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit;
+namespace Controller;
 
-use App\Models\Offer;
 use Tests\TestCase;
 
 class ControllerOffersTest extends TestCase

@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
     Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
 });
 

@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\OfferInterface;
 use App\Models\Offer;
+use App\Repositories\OfferRepository;
 
 class OfferController extends Controller
 {
+
+    private OfferInterface $offerRepository;
+
+    public function __construct(OfferInterface $offerRepository)
+    {
+        $this->offerRepository = $offerRepository;
+    }
+
     /**
      * Display the listing of the offers.
      *
@@ -13,7 +23,7 @@ class OfferController extends Controller
      */
     public function index()
     {
-        $offers = Offer::all();
+        $offers = $this->offerRepository->getAllOffers();
 
         return view('offers')->with(
             ['offers' => $offers]);
