@@ -2,41 +2,39 @@ import {ref, onMounted} from 'vue'
 import axios from 'axios'
 import {useRouter} from 'vue-router'
 
-export default function useTrainers(): {
+export default function useTrainings(): {
     message: any,
     errors: any,
-    trainer: any,
-    trainers: any,
-    getTrainer: (id: number) => Promise<void>,
-    getTrainers: () => Promise<void>,
-    storeTrainer: (data: object) => Promise<void>,
-    updateTrainer: (id: number) => Promise<void>,
+    training: any,
+    trainings: any,
+    getTraining: (id: number) => Promise<void>,
+    getTrainings: () => Promise<void>,
+    storeTraining: (data: object) => Promise<void>,
+    updateTraining: (id: number) => Promise<void>,
 } {
     axios.defaults.withCredentials = true;
-    const trainer = ref([]);
-    const trainers = ref([]);
+    const training = ref([]);
+    const trainings = ref([]);
     const message = ref('');
     const errors = ref('');
     const router = useRouter();
 
-    const getTrainers = async (): Promise<void> => {
-        let response = await axios.get('/api/trainers');
-        trainers.value = response.data.trainers;
+    const getTrainings = async (): Promise<void> => {
+        let response = await axios.get('/api/trainings');
+        trainings.value = response.data.trainings;
+        console.log(response.data)
     }
 
-
-    const getTrainer = async (id: number): Promise<void> => {
-        let response = await axios.get(`/api/trainers/${id}`);
-        trainer.value = response.data.data;
+    const getTraining = async (id: number): Promise<void> => {
+        let response = await axios.get(`/api/trainings/${id}`);
+        training.value = response.data.data;
 
     }
 
-    const storeTrainer = async (data: object): Promise<void> => {
-
+    const storeTraining = async (data: object): Promise<void> => {
         errors.value = '';
         try {
             let response = await axios.post('', data);
-            console.log('done')
             message.value = response.data.message;
         } catch (e) {
             const error = e as any;
@@ -48,11 +46,11 @@ export default function useTrainers(): {
         }
     }
 
-    const updateTrainer = async (id: number): Promise<void> => {
+    const updateTraining = async (id: number): Promise<void> => {
         errors.value = ''
         try {
-            await axios.patch(`/api/trainers/${id}`, trainer.value);
-            await router.push({name: 'trainers.index'});
+            await axios.patch(`/api/trainings/${id}`, training.value);
+            await router.push({name: 'trainings.index'});
         } catch (e) {
             const error = e as any;
             if (error.response.status === 422) {
@@ -66,11 +64,11 @@ export default function useTrainers(): {
     return {
         message,
         errors,
-        trainer,
-        trainers,
-        getTrainer,
-        getTrainers,
-        storeTrainer,
-        updateTrainer
+        training,
+        trainings,
+        getTraining,
+        getTrainings,
+        storeTraining,
+        updateTraining
     }
 }

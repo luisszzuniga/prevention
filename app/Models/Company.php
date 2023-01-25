@@ -26,6 +26,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Company whereId($value)
  * @method static Builder|Company whereName($value)
  * @mixin Eloquent
+ * @property string|null $address
+ * @property string|null $zip_code
+ * @property string|null $town
+ * @method static Builder|Company whereAddress($value)
+ * @method static Builder|Company whereTown($value)
+ * @method static Builder|Company whereZipCode($value)
  */
 class Company extends Model
 {

@@ -7,11 +7,13 @@ use App\Interfaces\AbilityService as InterfaceAbilityService;
 use App\Interfaces\CompanyInterface;
 use App\Interfaces\OfferInterface;
 use App\Interfaces\TrainerInterface;
+use App\Interfaces\TrainingInterface;
 use App\Providers\AbilityProvider as AbilityServiceProvider;
 use App\Providers\RepositoryProvider as AbilityRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\OfferRepository;
 use App\Repositories\TrainerRepository;
+use App\Repositories\TrainingRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OfferInterface::class, OfferRepository::class);
         $this->app->bind(TrainerInterface::class, TrainerRepository::class);
         $this->app->bind(CompanyInterface::class, CompanyRepository::class);
+        $this->app->bind(TrainingInterface::class, TrainingRepository::class);
     }
 
     /**

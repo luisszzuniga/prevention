@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereType($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\User|null $users
+ * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereLearnerId($value)
  */
 class Vehicle extends Model
 {

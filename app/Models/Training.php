@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
@@ -19,7 +20,6 @@ use Illuminate\Support\Carbon;
  * @property string|null $observation
  * @property int|null $seance_code
  * @property int $offer_id
- * @property int $vehicle_id
  * @property int $center_id
  * @property int $user_id_trainer
  * @property int $user_id_learner
@@ -47,11 +47,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUserIdTrainer($value)
  * @method static Builder|Course whereVehicleId($value)
  * @mixin Eloquent
- * @property int $training_id
- * @property-read \App\Models\Training|null $trainings
- * @method static Builder|Course whereTrainingId($value)
+ * @property string $date
+ * @property-read Collection|\App\Models\Course[] $courses
+ * @property-read int|null $courses_count
+ * @method static Builder|Training whereDate($value)
  */
-class Course extends Model
+class Training extends Model
 {
     use HasFactory;
 
@@ -61,27 +62,57 @@ class Course extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'observation',
+        'seance_code'
     ];
 
     /**
-     * The criteria that the course belongs to.
-     *
-     * @return BelongsToMany
-     */
-    public function criteria()
-    {
-        return $this->belongsToMany(Criterion::class);
-    }
-
-    /**
-     * Get the training that the course belongs to
+     * The offer that the course has.
      *
      * @return HasOne
      */
-    public function trainings()
+    public function offers()
     {
-        return $this->hasOne(Training::class);
+        return $this->hasOne(Offer::class);
+    }
+
+    /**
+     * The center that the course belongs to.
+     *
+     * @return HasOne
+     */
+    public function center()
+    {
+        return $this->hasOne(Center::class);
+    }
+
+    /**
+     * The trainer that the course has.
+     *
+     * @return HasOne
+     */
+    public function trainers()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    /**
+     * The learner that the course has.
+     *
+     * @return HasOne
+     */
+    public function learners()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    /**
+     * The courses that belong to the training.
+     *
+     * @return HasMany
+     */
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
     }
 
 }

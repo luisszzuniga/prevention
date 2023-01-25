@@ -15,8 +15,8 @@
         </div>
         <div class="columns">
             <h3>Mes Formations</h3>
-            <div id="app">
-                <ListCourses id="ListCourses"></ListCourses>
+            <div id="app" class="scrollable-table">
+                <ListTrainings id="ListTrainings"></ListTrainings>
             </div>
         </div>
 
@@ -29,10 +29,10 @@
 import {defineComponent} from "vue";
 import ListCompanies from "./ListCompanies.vue";
 import ListTrainers from './ListTrainers.vue';
-import ListCourses from "./ListCourses.vue";
+import ListTrainings from "./ListTrainings.vue";
 
 export default defineComponent({
-    components: { ListCourses, ListTrainers, ListCompanies },
+    components: {ListTrainings, ListTrainers, ListCompanies },
 
 });
 
@@ -58,7 +58,7 @@ export default defineComponent({
     color: #1b1e21;
 }
 
-#ListCourses, #ListTrainers, #ListCompanies {
+#ListTrainings, #ListTrainers, #ListCompanies {
     color: black;
     width: 100%;
 }

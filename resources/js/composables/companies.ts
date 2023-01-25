@@ -22,7 +22,6 @@ export default function useCompanies(): {
     const getCompanies = async (): Promise<void> => {
         let response = await axios.get('/api/companies');
         companies.value = response.data.companies;
-        console.log(response.data)
     }
 
     const getCompany = async (id: number): Promise<void> => {
