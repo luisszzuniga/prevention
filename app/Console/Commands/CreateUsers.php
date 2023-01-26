@@ -28,7 +28,7 @@ class CreateUsers extends Command
      *
      * @var string
      */
-    protected $description = 'Create Users for your App';
+    protected $description = 'Create Users for App';
 
     /**
      * Execute the console command.
@@ -41,7 +41,7 @@ class CreateUsers extends Command
         $roleId = Role::whereId(self::SUPER_ADMIN)->first()->getAttribute('id');
         $users = [
             [
-                'firstname' => 'stephane',
+                'firstname' => 'Stephane',
                 'lastname' =>Str::ucfirst('pau'),
                 'email' => 'stephane.pau@smartmoov.solutions',
                 'phone' => '0635192778',
@@ -53,8 +53,8 @@ class CreateUsers extends Command
                 'role_id' => $roleId
             ],
             [
-                'firstname' => 'maxime',
-                'lastname' => 'rousseau',
+                'firstname' => 'Maxime',
+                'lastname' => 'Rousseau',
                 'email' => 'maxime.rousseau99@gmail.com',
                 'phone' => '0781726621',
                 'password' => bcrypt('4rCJ6vZ9m4Yk5p'),

@@ -1,19 +1,14 @@
 <?php
 
-use App\Console\Commands\LaunchData;
-use App\Http\Controllers\VehicleController;
-use App\Models\User;
-use App\Models\Vehicle;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+namespace Tests\Feature;
 
+use Tests\TestCase;
 
 class CommandTest extends TestCase
 {
-    public function testLanchData( )
+    public function testLaunchData()
     {
         $this->artisan('create:all');
-
         $this->assertDatabaseHas('users', [
             'lastname' => 'rousseau',
             'firstname' => 'maxime',

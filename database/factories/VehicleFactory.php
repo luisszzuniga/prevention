@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,14 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
+        $learnerId = User::factory()->create()->first()->getAttribute('id');
+
         return [
             'name' => fake()->text(10),
             'brand' => fake()->text(8),
             'license_plate' => fake()->text(10),
-            'type' => fake()->text(20)
+            'type' => fake()->text(20),
+            'learner_id' => $learnerId
         ];
     }
 }

@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereText($value)
  * @mixin \Eloquent
+ * @property int $offer_id
+ * @method static \Illuminate\Database\Eloquent\Builder|Feature whereOfferId($value)
  */
 class Feature extends Model
 {

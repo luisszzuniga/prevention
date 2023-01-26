@@ -23,7 +23,7 @@ class UserFactory extends Factory
     {
 
         return [
-            'lastname' => fake()->name(),
+            'lastname' => fake()->lastName(),
             'firstname' => fake()->firstName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'phone' => fake()->unique()->numberBetween(1, 9999999999),
             'address' => fake()->text(50),
             'zip_code' => fake()->numberBetween(1, 99999),
-            'town' => fake()->text(35),
+            'town' => fake()->city(),
             'company_id' => Company::factory(1)->create()->first()->getAttribute("id"),
             'role_id' => Role::factory(1)->create()->first()->getAttribute("id")
         ];

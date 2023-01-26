@@ -18,7 +18,7 @@ class LaunchData extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Create all data for app ';
 
     /**
      * Execute the console command.// Arrange

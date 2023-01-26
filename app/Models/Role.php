@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * App\Models\Role
  *
  * @property int $id
- * @property string $role_name
- * @property int $role_code
+ * @property string $name
+ * @property string $description
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\RoleFactory factory(...$parameters)
@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleName($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  */
 class Role extends Model
 {
@@ -35,7 +37,7 @@ class Role extends Model
      */
     protected $fillable = [
         'name',
-        'code'
+        'description'
 
     ];
 

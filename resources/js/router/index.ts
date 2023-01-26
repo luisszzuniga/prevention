@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Vehicles from '@/components/Vehicles.vue'
 import Learner from '@/components/Learner.vue'
+import ListsDashboard from '@/components/ListsDashboard.vue'
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         path: '/learner',
         name: 'learner',
         component: Learner
+    },
+    {
+        path: '/lists-dashboard',
+        name: 'lists-dashboard',
+        component: ListsDashboard
     }
 ];
 

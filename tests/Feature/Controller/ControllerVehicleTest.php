@@ -1,8 +1,7 @@
 <?php
 
-namespace Tests\Unit;
+namespace Controller;
 
-use App\Http\Controllers\VehicleController;
 use App\Models\User;
 use Tests\TestCase;
 

@@ -47,6 +47,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUserIdTrainer($value)
  * @method static Builder|Course whereVehicleId($value)
  * @mixin Eloquent
+ * @property int $training_id
+ * @property-read \App\Models\Training|null $trainings
+ * @method static Builder|Course whereTrainingId($value)
  */
 class Course extends Model
 {
@@ -59,7 +62,6 @@ class Course extends Model
      */
     protected $fillable = [
         'observation',
-        'seance_code'
     ];
 
     /**
@@ -73,43 +75,13 @@ class Course extends Model
     }
 
     /**
-     * The offer that the course has.
+     * Get the training that the course belongs to
      *
      * @return HasOne
      */
-    public function offers()
+    public function trainings()
     {
-        return $this->hasOne(Offer::class);
-    }
-
-    /**
-     * The center that the course belongs to.
-     *
-     * @return HasOne
-     */
-    public function center()
-    {
-        return $this->hasOne(Center::class);
-    }
-
-    /**
-     * The trainer that the course has.
-     *
-     * @return HasOne
-     */
-    public function trainers()
-    {
-        return $this->hasOne(User::class);
-    }
-
-    /**
-     * The learner that the course has.
-     *
-     * @return HasOne
-     */
-    public function learners()
-    {
-        return $this->hasOne(User::class);
+        return $this->hasOne(Training::class);
     }
 
 }

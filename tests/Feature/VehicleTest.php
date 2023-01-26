@@ -1,12 +1,10 @@
 <?php
 
-use App\Console\Commands\LaunchData;
-use App\Http\Controllers\VehicleController;
+namespace Tests\Feature;
+
 use App\Models\User;
 use App\Models\Vehicle;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-
 
 class VehicleTest extends TestCase
 {
@@ -20,10 +18,8 @@ class VehicleTest extends TestCase
             'type' => 'essence',
             'learner_id' => $userId
         ];
-
         // Act
         $vehicle = Vehicle::create($data);
-
         // Assert
         $this->assertDatabaseHas('vehicles', $data);
         $this->assertInstanceOf(Vehicle::class, $vehicle);

@@ -21,10 +21,8 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-
     public function store(LoginRequest $request)
     {
-
         Log::info('store');
 
         $request->authenticate();
@@ -32,16 +30,13 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $user = Auth::guard('web')->user();
-        Log::info($request);
 
         // Créez un nouveau token pour l'utilisateur
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
         Log::info($token);
-
         $request->session()->put('token', $token);
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with(['token' => $token]);
-
+        return redirect()->intended(RouteServiceProvider::HOME);
 
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProfileController;
@@ -24,9 +25,7 @@ Route::get('/', function () {
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -44,9 +43,11 @@ Route::middleware('auth')->group(function () {
         return view('vehicle.create-vehicle');
     });
 
-//    Route::get('/learner', function () {
-//        return view('learner.add-learner');
-//    });
+    Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
+
+    Route::get('/learner', function () {
+        return view('learner.add-learner');
+    });
 
 
 
