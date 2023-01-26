@@ -3,20 +3,20 @@
 
         <div class="columns">
             <h3>Mes clients</h3>
-            <div id="app">
-                <ListCompanies :companies="companies" id="ListCompanies"></ListCompanies>
+            <div id="app" class="scrollable-table">
+                <ListCompanies id="ListCompanies"></ListCompanies>
             </div>
         </div>
         <div class="columns">
             <h3>Mes Formateurs</h3>
-            <div id="app">
+            <div id="app" class="scrollable-table">
                 <ListTrainers id="ListTrainers"></ListTrainers>
             </div>
         </div>
         <div class="columns">
             <h3>Mes Formations</h3>
-            <div id="app">
-                <ListCourses id="ListCourses"></ListCourses>
+            <div id="app" class="scrollable-table">
+                <ListTrainings id="ListTrainings"></ListTrainings>
             </div>
         </div>
 
@@ -29,11 +29,15 @@
 import {defineComponent} from "vue";
 import ListCompanies from "./ListCompanies.vue";
 import ListTrainers from './ListTrainers.vue';
-import ListCourses from "./ListCourses.vue";
+import ListTrainings from "./ListTrainings.vue";
 
 export default defineComponent({
-    components: {ListCourses, ListTrainers, ListCompanies}
-})
+    components: {ListTrainings, ListTrainers, ListCompanies },
+
+});
+
+
+
 </script>
 
 <style scoped>
@@ -54,7 +58,7 @@ export default defineComponent({
     color: #1b1e21;
 }
 
-#ListCourses, #ListTrainers, #ListCompanies {
+#ListTrainings, #ListTrainers, #ListCompanies {
     color: black;
     width: 100%;
 }
@@ -74,6 +78,13 @@ export default defineComponent({
 .align-right {
     text-align: right;
 }
+.scrollable-table {
+    overflow-y: scroll;
+    height:200px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
 @media screen and (max-width: 680px) {
     .columns {
         width: 100%;

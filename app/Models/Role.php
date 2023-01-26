@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleName($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  */
 class Role extends Model
 {

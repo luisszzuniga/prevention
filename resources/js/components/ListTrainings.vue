@@ -1,15 +1,15 @@
 <template>
-    <div v-if="companies">
+    <div v-if="trainings">
         <table>
             <thead>
             <tr>
-                <th>Nom</th>
-                <th>Ville</th>
+                <th>Code de session</th>
+                <th>Date</th>
             </tr>
             </thead>
-            <tr v-for="company in companies" :key="company.id">
-                <td>{{ company.name }}</td>
-                <td>{{ company.town }}</td>
+            <tr v-for="training in trainings" :key="training.id">
+                <td>{{ training.seance_code }}</td>
+                <td>{{ training.date}}</td>
             </tr>
         </table>
     </div>
@@ -18,20 +18,20 @@
 <script>
 
 import {defineComponent} from 'vue';
-import useCompanies from '../composables/companies';
+import useTrainings from '../composables/trainings';
 import {onMounted} from 'vue';
 
-const {companies, getCompanies} = useCompanies();
+const {trainings, getTrainings} = useTrainings();
 
 export default defineComponent({
-    name: "ListCompanies",
+    name: "ListTrainings",
     setup() {
-        onMounted(getCompanies);
-        return {companies};
+        onMounted(getTrainings);
+        return {trainings};
     },
     data() {
         return {
-            companies: companies.value
+            companies: trainings.value
         }
     }
 });
@@ -52,3 +52,4 @@ th {
     padding-bottom: 10px;
 }
 </style>
+

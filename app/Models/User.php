@@ -68,6 +68,10 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereUserIdTrainer($value)
  * @method static Builder|User whereZipCode($value)
  * @mixin Eloquent
+ * @property int|null $trainer_id
+ * @property-read Collection|\App\Models\Vehicle[] $vehicles
+ * @property-read int|null $vehicles_count
+ * @method static Builder|User whereTrainerId($value)
  */
 class User extends Authenticatable
 {

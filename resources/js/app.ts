@@ -6,7 +6,7 @@ import Learner from '@/components/Learner.vue';
 import ListsDashboard from "@/components/ListsDashboard.vue";
 import ListCompanies from '@/components/ListCompanies.vue';
 import ListTrainers from '@/components/ListTrainers.vue';
-import ListCourses from "@/components/ListCourses.vue";
+import ListTrainings from "@/components/ListTrainings.vue";
 
 createApp({
     components: {
@@ -15,7 +15,7 @@ createApp({
         ListsDashboard,
         ListCompanies,
         ListTrainers,
-        ListCourses
+        ListTrainings
     }
 }).use(router).mount('#app')
 

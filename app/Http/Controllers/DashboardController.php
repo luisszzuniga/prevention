@@ -15,12 +15,10 @@ class DashboardController extends Controller
     public function create()
     {
         $companies = Company::all();
-        $trainers = User::all();
         $courses = Course::all();
 
         return view('dashboard')->with([
             'companies' => $companies,
-            'trainers' => $trainers,
             'courses' => $courses
         ]);
     }

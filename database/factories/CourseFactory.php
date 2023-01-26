@@ -6,6 +6,7 @@ namespace Database\Factories;
 use App\Models\Center;
 use App\Models\Model;
 use App\Models\Offer;
+use App\Models\Training;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,13 +23,11 @@ class CourseFactory extends Factory
      */
     public function definition()
     {
+        $trainingId = Training::factory()->create()->first()->getAttribute('id');
+
         return [
             'observation' => fake()->text(),
-            'seance_code' => fake()->unique()->numberBetween(1, 1000),
-            'offer_id' => Offer::factory(1)->create()->first(),
-            'center_id' => Center::factory(1)->create()->first(),
-            'user_id_trainer' => User::factory(1)->create()->first()->getAttribute('id'),
-            'user_id_learner' => User::factory(1)->create()->first()->getAttribute('id')
+            'training_id' => $trainingId
         ];
     }
 }
