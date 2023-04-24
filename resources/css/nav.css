@@ -2568,6 +2568,33 @@ hero-btn {
 .header-area .header-top .header-info-right .header-social li a:hover {
     color: #f15f22
 }
+.logo-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-text {
+    margin-left: 1px;
+    color: #ffffff;
+    font-style: italic;
+}
+
+.lery {
+    margin-left: 4px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1px;
+    position: relative; /* Ajout de position relative */
+    bottom: -6px;
+}
+
+.technologies {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 5px;
+}
+
+
 
 .main-header {
     position: relative;
