@@ -46,14 +46,11 @@
 
 .boxed-btn {
     background: #fff;
-    color: #f15f22 !important;
     display: inline-block;
     padding: 18px 44px;
     font-family: "Teko", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    border: 0;
-    border: 1px solid #f15f22;
     letter-spacing: 3px;
     text-align: center;
     color: #f15f22;
@@ -2776,7 +2773,6 @@ hero-btn {
 }
 
 .slider-height {
-    /*background-image: url("/public/img/home/road.jpg");*/
     min-height: 1080px;
     background-repeat: no-repeat;
     background-position: center center;
@@ -2805,13 +2801,6 @@ hero-btn {
     .slider-height {
         min-height: 500px
     }
-}
-
-.slider-height2 {
-    background-image: url(../img/hero/hero2.jpg);
-    min-height: 460px;
-    background-repeat: no-repeat;
-    background-size: cover
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2848,7 +2837,6 @@ hero-btn {
     margin-left: 100px;
     font-size: 80px;
     font-weight: 600;
-    margin-bottom: 14px;
     color: #fff;
     line-height: 95px;
     text-transform: capitalize;
@@ -2901,11 +2889,21 @@ hero-btn {
 }
 
 .col-xl-3{
+    margin-top: -175px;
+    margin-bottom: 250px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
     padding-bottom: 15px;
 }
+
+@media (max-width: 1000px) {
+    .col-xl-3 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
 .col-xl-3 h2{
     font-size: 50px;
     color: #f15f22;
@@ -3015,7 +3013,6 @@ hero-btn {
     color: #fff;
     display: block;
     padding: 15px;
-    border-radius: 0px;
     text-transform: uppercase;
     font-family: "Barlow", sans-serif;
     line-height: 1.2;
@@ -3023,8 +3020,7 @@ hero-btn {
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.03em;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px
+    border-radius: 0px 5px 5px 0px;
 }
 
 @media (max-width: 575px) {
@@ -3237,6 +3233,10 @@ hero-btn {
     z-index: 1
 }
 
+.categories-area .container{
+    max-width: 1200px;
+}
+
 @media (max-width: 575px) {
     .categories-area .single-cat {
         padding: 50px 22px
@@ -3262,6 +3262,23 @@ hero-btn {
     margin-bottom: 30px;
     display: block
 }
+
+.cat-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.cat-cap{
+    margin-top: 30px;
+    flex: 1;
+}
+
 
 .categories-area .single-cat .cat-cap h5 > a {
     font-size: 36px;
@@ -3324,15 +3341,15 @@ hero-btn {
     height: 100%
 }
 
-.categories-area .single-cat:hover .cat-icon span {
-    color: #fff
-}
-
 .categories-area .single-cat:hover .cat-cap h5 {
     color: #fff
 }
 
 .categories-area .single-cat:hover .cat-cap p {
+    color: #fff
+}
+
+.categories-area .single-cat:hover .cat-cap a {
     color: #fff
 }
 
@@ -3604,49 +3621,6 @@ hero-btn {
     color: #fff
 }
 
-.team-social {
-    bottom: 22px;
-    left: 0;
-    right: 0;
-    text-align: center
-}
-
-.team-social li {
-    display: inline-block
-}
-
-.team-social li a {
-    color: #8ba4b1;
-    font-size: 14px;
-    margin: 0 12px;
-    display: inline-block;
-    -webkit-transform: .4s;
-    -ms-transform: .4s;
-    transform: .4s;
-    transform: translateY(60px);
-    opacity: 1;
-    visibility: visible
-}
-
-.team-social li a i {
-    display: inline-block
-}
-
-.team-social li:nth-child(1) a {
-    transition-delay: 0.0s
-}
-
-.team-social li:nth-child(2) a {
-    transition-delay: 0.1s
-}
-
-.team-social li:nth-child(3) a {
-    transition-delay: 0.2s
-}
-
-.team-social li:nth-child(4) a {
-    transition-delay: 0.3s
-}
 
 .testimonial-area .testimonial-caption .testimonial-top-cap svg {
     margin-bottom: 17px
@@ -3988,13 +3962,6 @@ hero-btn {
     margin-bottom: 30px
 }
 
-.home-blog-area .home-blog-single .blog-img img {
-    width: 100%;
-    -webkit-transform: scale 1;
-    -ms-transform: scale 1;
-    transform: scale 1;
-    transition: all 0.5s ease-out 0s
-}
 
 .home-blog-area .home-blog-single .blog-caption .blog-date {
     background: #f5f5f5;
@@ -4136,12 +4103,6 @@ hero-btn {
 
 .latest-blog-area .area-heading {
     margin-bottom: 70px
-}
-
-.blog_area a {
-    color: "Teko", sans-serif !important;
-    text-decoration: none;
-    transition: .4s
 }
 
 .blog_area a:hover, .blog_area a :hover {
@@ -5470,18 +5431,6 @@ hero-btn {
     background-color: #1f2b7b
 }
 
-.breadcam_bg {
-    background-image: url(../img/banner/bradcam.png)
-}
-
-.breadcam_bg_1 {
-    background-image: url(../img/banner/bradcam2.png)
-}
-
-.breadcam_bg_2 {
-    background-image: url(../img/banner/bradcam3.png)
-}
-
 .bradcam_area {
     background-size: cover;
     background-position: center center;
@@ -5816,15 +5765,6 @@ b, sup, sub, u, del {
     border-radius: 20px
 }
 
-.genric-btn.arrow {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center
-}
-
 .genric-btn.arrow span {
     margin-left: 10px
 }
@@ -6066,7 +6006,7 @@ b, sup, sub, u, del {
 
 .progress-table .table-row .percentage .progress {
     width: 80%;
-    border-radius: 0px;
+    border-radius: 0;
     background: transparent
 }
 
@@ -6576,10 +6516,7 @@ b, sup, sub, u, del {
     z-index: 3
 }
 
-.disabled-checkbox input:checked + label {
-    background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
-    border: none
-}
+
 
 .primary-radio {
     width: 16px;
@@ -6614,11 +6551,6 @@ b, sup, sub, u, del {
     border: 1px solid #f1f1f1
 }
 
-.primary-radio input:checked + label {
-    background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
-    border: none
-}
-
 .confirm-radio {
     width: 16px;
     height: 16px;
@@ -6650,11 +6582,6 @@ b, sup, sub, u, del {
     border-radius: 8px;
     cursor: pointer;
     border: 1px solid #f1f1f1
-}
-
-.confirm-radio input:checked + label {
-    background: url(../img/elements/success-radio.png) no-repeat center center/cover;
-    border: none
 }
 
 .disabled-radio {
@@ -6693,11 +6620,6 @@ b, sup, sub, u, del {
 .disabled-radio input:disabled {
     cursor: not-allowed;
     z-index: 3
-}
-
-.disabled-radio input:checked + label {
-    background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
-    border: none
 }
 
 .default-select {
