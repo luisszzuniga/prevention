@@ -16,6 +16,7 @@
                                 <h1>Gestion du risque <span>Routier</span><br> en entreprise !</h1>
                             </div>
                         </div>
+                        @if (!Auth::check())
                         <div class="col-xl-3 col-lg-3">
                             <div class="hero__caption">
                                 <h2>Connexion</h2>
@@ -63,12 +64,68 @@
                                 </div>
                             </form>
                         </div>
+                        @endif
                     </div>
 
                 </div>
                 </div>
             </div>
         </div>
+
+    <!--? Categories Area Start -->
+    <div class="categories-area section-padding30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Section Tittle -->
+                    <div class="section-tittle text-center mb-80">
+                        <span>Nos services </span>
+                        <h2>Ce que nous pouvons vous proposer</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50" id="cat-1">
+                        <div class="cat-icon">
+                            <img src="{{ asset('img/home/services/computer.png') }}" class="services-logo" id="computer">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="{{ route('offers') }}">Digitalisation</a></h5>
+                            <p>Faites gagner du temps à vos formateurs. Plus de saisie papier ou d'interminables fichier Excel à
+                                remplir. Saisissez toutes les informations sur la tablette de formations. <br> <br> <br></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50" id="cat-2">
+                        <div class="cat-icon">
+                            <img src="{{ asset('img/home/services/database.png') }}" class="services-logo" id="database">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="{{ route('offers') }}">LRS</a></h5>
+                            <p>Vos clients vous demandent d'avoir un suivi des formations digitales. Pas de soucis ! Le déroulé de
+                                la formation est intégrée dans un LRS (Learning Record Store) qui peut se connecter au SIRH de
+                                votre client. Le rapport à votre client est entièrement automatisé.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat text-center mb-50" id="cat-3">
+                        <div class="cat-icon">
+                           <img src="{{ asset('img/home/services/dashcam.png') }}" class="services-logo" id="dashcam">
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a href="{{ route('offers') }}">Dashcam</a></h5>
+                            <p>Les études ont montré que de revoir ses erreurs de conduite permet d'améliorer sa conduite. Offrez
+                                cette nouvelle prestation de formation à vos clients. <br> <br> <br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Categories Area End -->
 
 
 
@@ -78,17 +135,7 @@
 
 @section('header')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script>
-
-        $(document).ready(function(){
-            var images = ['road.jpg', 'truck.jpg'];
-            var randomIndex = Math.floor(Math.random() * images.length);
-            var imageUrl = '/img/home/' + images[randomIndex];
-            $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,1) 25%, rgba(108,118,130,0.14329481792717091) 86%, rgba(255,255,255,0.04245448179271705) 100%), url(' + imageUrl + ')');
-        });
-
-    </script>
+    @vite(['resources/js/home.js'])
 
 @endsection
 
