@@ -1,6 +1,10 @@
 @extends('layouts.layout')
 @section('title','Home')
 
+@section('header')
+    @vite(['resources/js/home.js'])
+@endsection
+
 @section('content')
 
 <main>
@@ -133,10 +137,5 @@
 
 @endsection
 
-@section('header')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @vite(['resources/js/home.js'])
-
-@endsection
 
 
