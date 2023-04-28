@@ -1,4 +1,3 @@
-@vite(['resources/css/nav.css'])
 
 <header>
     <!-- Header Start -->

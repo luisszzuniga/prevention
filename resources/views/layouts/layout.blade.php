@@ -22,6 +22,7 @@
 
     @vite(['resources/js/app.ts'])
 
+    @vite(['resources/css/style.css'])
     @vite(['resources/css/layout/bootstrap.min.css'])
     @vite(['resources/css/layout/owl.carousel.min.css'])
     @vite(['resources/css/layout/slicknav.css'])
@@ -50,7 +51,7 @@
 
 
 
-
+    @include('layouts.footer')
 </body>
 
 </html>
