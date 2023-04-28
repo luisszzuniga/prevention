@@ -152,7 +152,7 @@
 @media (max-width: 480px) {
     .auth {
         margin-top: 50px;
-        margin-bottom: 0;
+        margin-bottom: 50px;
         width: 100%;
         padding-left: 15px;
         padding-right: 15px;
@@ -185,3 +185,5 @@
         width: 100%;
     }
 }
+
+

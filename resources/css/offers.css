@@ -16,6 +16,7 @@ body {
 .pricing-container{
     box-sizing: border-box;
     overflow: hidden;
+    transform: scale(0.9);
 }
 .box-center {
     height: 1138px;
