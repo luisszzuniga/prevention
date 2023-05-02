@@ -1,3 +1,4 @@
+@vite(['resources/css/style.css'])
 
 <header>
     <!-- Header Start -->
@@ -8,9 +9,10 @@
                     <div class="row align-items-center">
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
+                            <a href="{{ route('home') }}">
                             <div class="logo-container">
                                 <div class="logo">
-                                    <a href="#"><img src="{{ asset('img/nav/logo.png') }}" alt=""></a>
+                                   <img src="{{ asset('img/nav/logo.png') }}" alt="">
                                 </div>
                                 <div class="logo-text">
                                     <span class="lery">LERY</span>
@@ -18,6 +20,7 @@
                                     <span class="technologies">Technologies</span>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <div class="col-xl-10 col-lg-10">
@@ -27,7 +30,7 @@
                                     <nav>
 
                                             <ul id="navigation">
-{{--                                                <li><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>--}}
+                                                <li><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>
                                                 <li><a href="#">Blog</a>
                                                     <ul class="submenu">
                                                         <li><a href="#">Blog</a></li>
