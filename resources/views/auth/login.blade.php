@@ -20,6 +20,12 @@
                                 <div class="hero__caption">
                                     <h2>Connexion</h2>
                                 </div>
+                                <div class="login-no-account">
+                                    <p>Pas encore de compte ?</p>
+                                    <a href="{{ route('register') }}">
+                                        {{ __('Créer un compte !') }}
+                                    </a>
+                                </div>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
 

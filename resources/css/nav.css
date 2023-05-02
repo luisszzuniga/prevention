@@ -422,7 +422,6 @@
     border-top: 5px solid;
 }
 
-
 .user-icon {
     width: 30px;
     height: 30px;
@@ -462,4 +461,12 @@ li:hover .user-icon::before {
 li:hover .user-icon .user-icon-orange {
     opacity: 1;
 }
+@media (max-width: 991px) {
+    .user-icon::before {
+        background-image: url('/public/img/nav/user-black.png');
+    }
 
+    .user-icon .user-icon-orange {
+        background-image: url('/public/img/nav/user-orange.png');
+    }
+}
