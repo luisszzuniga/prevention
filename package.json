@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "prod": "vite build --mode production",
         "dev": "vite",
         "build": "vite build"
     },

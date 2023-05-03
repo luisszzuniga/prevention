@@ -43,7 +43,8 @@ export default defineComponent({
 <style scoped>
 
 .row {
-    padding-top: 150px;
+    padding-top: 200px;
+    margin-bottom: 250px;
     width: 100%;
     text-align: center;
 }
@@ -69,11 +70,11 @@ export default defineComponent({
     min-width: 280px;
     vertical-align: top;
     display: inline-block;
-    margin: 0 60px 10px 0;
     background-color: #ffffff;
     color: #fff;
     border-radius: 24px;
     box-shadow: 0 5px 20px rgb(0 0 0 / 10%);
+    margin: 0 auto;
 }
 .align-right {
     text-align: right;
