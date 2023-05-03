@@ -3,7 +3,7 @@ $(document).ready(function(){
     const images = ['road.jpg', 'truck.jpg'];
     const randomIndex = Math.floor(Math.random() * images.length);
     const imageUrl = '/img/home/' + images[randomIndex];
-    $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,1) 25%, rgba(108,118,130,0.14329481792717091) 86%, rgba(255,255,255,0.04245448179271705) 100%), url(' + imageUrl + ')');
+    $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,0.9344070391828606) 33%, rgba(47,62,80,0.46381880388874297) 100%), url(' + imageUrl + ')');
 });
 
 document.addEventListener('DOMContentLoaded', function() {

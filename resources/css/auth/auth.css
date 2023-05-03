@@ -9,9 +9,9 @@
     padding-right: 40px;
     width: 40%;
     margin: 100px auto 200px auto; /* center horizontally */
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(14, 14, 23, 0.7);
     border-radius: 10px;
-    box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 50px 80px rgba(14, 14, 23, 0.8);
     padding-bottom: 15px;
 }
 

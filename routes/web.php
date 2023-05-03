@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -20,16 +21,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', [HomeController::class, 'create'])->name('home');
+Route::get('/', [HomeController::class, 'create'])->name('home');
 
 
 Route::get('/offers', [OfferController::class, 'index'])->name('offers');
 
-
+Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 
 
 Route::middleware('auth')->group(function () {

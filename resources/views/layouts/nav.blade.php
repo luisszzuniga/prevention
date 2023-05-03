@@ -38,7 +38,7 @@
                                                        class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a>
                                                 </li>
                                             @endif
-
+                                            <li><a href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
                                             <li><a href="#">
                                                     <div class="user-icon">
                                                         <div class="user-icon-orange"></div>

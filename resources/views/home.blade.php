@@ -25,6 +25,12 @@
                             <div class="hero__caption">
                                 <h2 class="login-title">Connexion</h2>
                             </div>
+                            <div class="login-no-account">
+                                <p>Pas encore de compte ?</p>
+                                <a href="{{ route('register') }}">
+                                    {{ __('Créer un compte !') }}
+                                </a>
+                            </div>
                             <!--Hero form -->
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -50,15 +56,16 @@
                                 <!-- Remember Me -->
                                 <div class="block mt-4">
                                     <label for="remember_me" class="inline-flex items-center">
-                                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                        <input id="remember_me" type="checkbox" class="hidden orange-checkbox" name="remember">
+                                        <span class="custom-checkbox"></span>
                                         <span class="ml-2 text-sm text-white">{{ __('Remember me') }}</span>
                                     </label>
                                 </div>
 
                                 <div class="flex items-center justify-end mt-4">
                                     @if (Route::has('password.request'))
-                                        <a class="underline text-sm text-white hover:text-orange-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                                            {{ __('Forgot your password?') }}
+                                        <a class="underline text-sm text-orange-600 hover:text-orange-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                                            {{ __('Forgot your password ?') }}
                                         </a>
                                     @endif
 

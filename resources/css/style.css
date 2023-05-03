@@ -2489,7 +2489,7 @@ hero-btn {
 }
 
 .slider-height {
-    min-height: 1080px;
+    min-height: 950px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover
@@ -2605,12 +2605,16 @@ hero-btn {
 }
 
 .form-login {
-    margin-top: -175px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-top: -150px;
     margin-bottom: 250px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(1, 1, 12, 0.8);
     border-radius: 10px;
     box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
     padding-bottom: 15px;
+    width: 10000px; /* Ajouter une largeur */
 }
 
 .form-login h2{
@@ -5067,9 +5071,8 @@ hero-btn {
 }
 
 .contact-info .media-body h3 {
-    font-size: 16px;
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 20px;
     color: #2a2a2a
 }
 
@@ -5081,37 +5084,12 @@ hero-btn {
     color: #8a8a8a
 }
 
-.contact-title {
-    font-size: 27px;
-    font-weight: 600;
-    margin-bottom: 20px
-}
-
 .form-contact label {
     font-size: 14px
 }
 
 .form-contact .form-group {
     margin-bottom: 30px
-}
-
-.form-contact .form-control {
-    border: 1px solid #e5e6e9;
-    border-radius: 0px;
-    height: 48px;
-    padding-left: 18px;
-    font-size: 13px;
-    background: transparent
-}
-
-.form-contact .form-control:focus {
-    outline: 0;
-    box-shadow: none
-}
-
-.form-contact .form-control::placeholder {
-    font-weight: 300;
-    color: #999999
 }
 
 .form-contact textarea {
@@ -5158,7 +5136,7 @@ hero-btn {
 }
 
 .contact-section {
-    padding: 130px 0 100px
+    padding: 70px 0 100px
 }
 
 @media (max-width: 991px) {
@@ -6507,4 +6485,63 @@ b, sup, sub, u, del {
 .error-message{
     color: red;
 }
+
+.login-no-account p,
+.login-no-account a {
+    font-size: 14px;
+    display: inline-block;
+    color: white;
+}
+
+.login-no-account a {
+    text-decoration: underline;
+    color: #F15F22;
+}
+
+.login-no-account a:hover {
+    text-decoration: none;
+}
+
+.login-no-account{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.custom-checkbox {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.custom-checkbox::before {
+    font-family: "Font Awesome 5 Free", serif;
+    font-weight: 900;
+    content: '\f00c';
+    position: absolute;
+    font-size: 10px;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+input[type="checkbox"].orange-checkbox:checked + .custom-checkbox {
+    border: 1px solid #000000;
+    background-color: #F15F22;
+}
+
+input[type="checkbox"].orange-checkbox:checked + .custom-checkbox::before {
+    opacity: 1;
+}
+
+
+
+
 
