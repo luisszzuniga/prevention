@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite(['resources/js/layout/vendor/modernizr-3.5.0.min.js'])
     @vite(['resources/js/layout/vendor/jquery-1.12.4.min.js'])
 
