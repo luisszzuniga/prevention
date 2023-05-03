@@ -15,15 +15,15 @@
             <div class="single-slider slider-height d-flex align-items-center">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-9 col-lg-9">
+                        <div class="col-xl-8 col-lg-8 title-home">
                             <div class="hero__caption">
                                 <h1>Gestion du risque <span>Routier</span><br> en entreprise !</h1>
                             </div>
                         </div>
                         @if (!Auth::check())
-                        <div class="col-xl-3 col-lg-3">
+                        <div class="col-xl-3 col-lg-3 form-login">
                             <div class="hero__caption">
-                                <h2>Connexion</h2>
+                                <h2 class="login-title">Connexion</h2>
                             </div>
                             <!--Hero form -->
                             <form method="POST" action="{{ route('login') }}">

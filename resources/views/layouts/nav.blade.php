@@ -1,4 +1,4 @@
-@vite(['resources/css/style.css'])
+@vite(['resources/css/nav.css'])
 
 <header>
     <!-- Header Start -->
@@ -10,16 +10,16 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <a href="{{ route('home') }}">
-                            <div class="logo-container">
-                                <div class="logo">
-                                   <img src="{{ asset('img/nav/logo.png') }}" alt="">
+                                <div class="logo-container">
+                                    <div class="logo">
+                                        <img src="{{ asset('img/nav/logo.png') }}" alt="">
+                                    </div>
+                                    <div class="logo-text">
+                                        <span class="lery">LERY</span>
+                                        <br/>
+                                        <span class="technologies">Technologies</span>
+                                    </div>
                                 </div>
-                                <div class="logo-text">
-                                    <span class="lery">LERY</span>
-                                    <br />
-                                    <span class="technologies">Technologies</span>
-                                </div>
-                            </div>
                             </a>
                         </div>
 
@@ -29,37 +29,50 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
 
-                                            <ul id="navigation">
-                                                <li><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>
-                                                <li><a href="#">Blog</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="#">Blog</a></li>
-                                                        <li><a href="#">Blog Details</a></li>
-                                                        <li><a href="#">Element</a></li>
-                                                    </ul>
+                                        <ul id="navigation">
+                                            <li><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>
+                                            <li><a href="{{ route('offers') }}">{{ __('Offres') }}</a></li>
+
+                                            @if (Auth::check())
+                                                <li><a href="{{ route('dashboard') }}"
+                                                       class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a>
                                                 </li>
-                                                <li><a href="{{ route('offers') }}">{{ __('Offres') }}</a></li>
-                                                @if (Auth::check())
-                                                <li><a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a></li>
-                                                <li><a href="{{ route('profile.edit') }}">{{ __('Profile') }}</a></li>
-                                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a></li>
-                                                <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
-                                                    @csrf
-                                                </form>
-                                                @endif
+                                            @endif
 
-                                            </ul>
+                                            <li><a href="#">
+                                                    <div class="user-icon">
+                                                        <div class="user-icon-orange"></div>
+                                                    </div>
+                                                </a>
+                                                <ul class="submenu">
+                                                    @if (Auth::check())
+                                                        <li><a href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                                                        </li>
 
+                                                        <li><a href="{{ route('logout') }}"
+                                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a>
+                                                        </li>
+                                                        <form id="logout-form" method="POST"
+                                                              action="{{ route('logout') }}" style="display: none;">
+                                                            @csrf
+                                                        </form>
+                                                    @else
+                                                        <li><a href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                                        </li>
+                                                    @endif
 
-
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
-                                <div class="header-right-btn d-none d-lg-block ml-20">
+                                <div class="header-right-btn d-none d-lg-block">
                                     @if (Auth::check())
-                                    <a href="contact.html" class="btn header-btn">Créer une session</a>
-                                        @else
-                                        <a href="{{ route('register') }}" class="btn header-btn">{{ __("S'enregistrer") }}</a>
+                                        <a href="contact.html" class="btn header-btn">Créer une session</a>
+                                    @else
+                                        <a href="{{ route('register') }}"
+                                           class="btn header-btn">{{ __("S'enregistrer") }}</a>
                                     @endif
                                 </div>
                             </div>
