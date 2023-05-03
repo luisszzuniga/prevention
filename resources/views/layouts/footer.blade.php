@@ -23,10 +23,10 @@
                             <div class="footer-tittle">
                                 <h4>ENTREPRISE</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#"> Press & Blog</a></li>
-                                    <li><a href="#"> Privacy Policy</a></li>
+                                    <li><a href="#">À propos</a></li>
+                                    <li><a href="#">Entreprise</a></li>
+                                    <li><a href="#">Presse & Blog</a></li>
+                                    <li><a href="#">Politique de confidentialité</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -45,25 +45,20 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>RESOURCES</h4>
-                                <ul>
-                                    <li><a href="#">Home Insurance</a></li>
-                                    <li><a href="#">Travel Insurance</a></li>
-                                    <li><a href="#"> Car Insurance</a></li>
-                                    <li><a href="#"> Business Insurance</a></li>
-                                    <li><a href="#"> Heal Insurance</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
                         <div class="single-footer-caption mb-50">
-                            <!-- logo -->
-                            <div class="footer-logo">
-                                <a href="index.html"><img src="{{ asset('img/nav/logo.png') }}" alt=""></a>
+                            <div class="logo-container">
+                                <div class="logo">
+                                    <img src="{{ asset('img/nav/logo.png') }}" alt="">
+                                </div>
+                                <div class="logo-text">
+                                    <span class="lery">LERY</span>
+                                    <br/>
+                                    <span class="technologies">Technologies</span>
+                                </div>
                             </div>
+
                             <div class="footer-tittle">
                                 <div class="footer-pera">
                                     <p class="info1">Des solutions de gestion de risque routier personnalisées pour votre entreprise.</p>

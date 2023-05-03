@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
         Log::info($token);
         $request->session()->put('token', $token);
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::DASHBOARD);
 
     }
 
