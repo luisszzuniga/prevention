@@ -59,6 +59,8 @@
                                                     @else
                                                         <li><a href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                                         </li>
+                                                        <li><a href="{{ route('register') }}">{{ __("S'enregistrer") }}</a>
+                                                        </li>
                                                     @endif
 
                                                 </ul>

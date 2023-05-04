@@ -12,7 +12,6 @@ export default defineConfig({
                 'resources/css/auth/auth.css',
                 'resources/js/layout/main.js',
                 'resources/css/style.css',
-                // 'resources/css/layout/bootstrap.min.css',
                 'resources/css/layout/slicknav.css',
                 'resources/css/layout/slick.css',
                 'resources/css/style.css',

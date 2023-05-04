@@ -1,18 +1,9 @@
+var flickityInstance = null;
 
+function initializeCarousel() {
+    var mq = window.matchMedia("(max-width: 1025px)");
 
-
-var mq = window.matchMedia("(max-width: 1025px)");
-
-
-// Gestionnaire d'événement pour l'événement resize sur la fenêtre
-
-window.addEventListener("load", function() {
     if (mq.matches) {
-
-        /*
-           Gestion des boutons de navigation pour carousel Flickity
-         */
-
 
         /*
              Déclaration de la variable $carousel en utilisant la sélection jQuery pour sélectionner la classe "carousel"
@@ -53,13 +44,15 @@ window.addEventListener("load", function() {
             var index = $(this).index();
             $carousel.flickity('select', index);
         });
-
+        flickityInstance = $carousel.data('flickity');
     } else {
-
+        // Si Flickity est initialisé, détruisez l'instance
+        if (flickityInstance) {
+            flickityInstance.destroy();
+            flickityInstance = null;
+        }
     }
-});
-
-
+}
 
 function updateDivClass() {
     if (window.innerWidth < 1025) {
@@ -91,6 +84,12 @@ function updateDivClass() {
     }
 }
 
-updateDivClass();
+window.addEventListener("load", function () {
+    updateDivClass();
+    initializeCarousel();
+});
 
-window.addEventListener('load', updateDivClass);
+window.addEventListener("resize", function () {
+    updateDivClass();
+    initializeCarousel();
+});
