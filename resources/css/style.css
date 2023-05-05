@@ -2632,13 +2632,14 @@ hero-btn {
 .btn-login{
     margin-left: 50px;
     width: 40%;
-    background: #FF5F13;
+    background: #ff5f13;
     padding: 10px;
-    color: #fff;
+    color: #ffffff;
     cursor: pointer;
     text-transform: uppercase;
     font-family: "Barlow", sans-serif;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: 500;
     border-radius: 5px;
     border: 0
 
@@ -3037,7 +3038,7 @@ hero-btn {
 }
 
 
-.categories-area .single-cat .cat-cap h5 > a {
+.categories-area .single-cat .cat-cap h5 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 21px;
@@ -3051,13 +3052,13 @@ hero-btn {
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-    .categories-area .single-cat .cat-cap h5 > a {
+    .categories-area .single-cat .cat-cap h5 {
         font-size: 26px
     }
 }
 
 @media (max-width: 575px) {
-    .categories-area .single-cat .cat-cap h5 > a {
+    .categories-area .single-cat .cat-cap h5 {
         font-size: 26px
     }
 }

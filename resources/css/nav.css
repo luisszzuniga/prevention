@@ -359,7 +359,9 @@
 }
 
 .header-btn {
-    padding: 20px 30px
+    background-color: #ff5f13;
+    padding: 20px 30px;
+    font-weight: 500;
 }
 
 
