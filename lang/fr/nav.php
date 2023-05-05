@@ -5,7 +5,7 @@ return [
     'technologies' => 'Technologies',
     'home' => 'Accueil',
     'offers' => 'Offres',
-    'dashboard' => 'Tableau de bord',
+    'dashboard' => 'Dashboard',
     'contact' => 'Contact',
     'profile' => 'Profile',
     'disconnect' => 'Se déconnecter',

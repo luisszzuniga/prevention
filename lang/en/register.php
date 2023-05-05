@@ -2,7 +2,7 @@
 
 return [
 
-
+    'title' => 'Register',
     'lastname' => 'Last Name',
     'firstname' => 'First Name',
     'email' => 'Email Address',
