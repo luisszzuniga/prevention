@@ -15,9 +15,9 @@
                                         <img src="{{ asset('img/nav/logo.png') }}" alt="">
                                     </div>
                                     <div class="logo-text">
-                                        <span class="lery">LERY</span>
+                                        <span class="lery">{{__('nav.lery') }}</span>
                                         <br/>
-                                        <span class="technologies">Technologies</span>
+                                        <span class="technologies">{{__('nav.technologies') }}</span>
                                     </div>
                                 </div>
                             </a>
@@ -30,15 +30,15 @@
                                     <nav>
 
                                         <ul id="navigation">
-                                            <li><a href="{{ route('home') }}">{{ __('Accueil') }}</a></li>
-                                            <li><a href="{{ route('offers') }}">{{ __('Offres') }}</a></li>
+                                            <li><a href="{{ route('home') }}">{{ __('nav.home') }}</a></li>
+                                            <li><a href="{{ route('offers') }}">{{ __('nav.offers') }}</a></li>
 
                                             @if (Auth::check())
                                                 <li><a href="{{ route('dashboard') }}"
-                                                       class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('Dashboard') }}</a>
+                                                       class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('nav.dashboard') }}</a>
                                                 </li>
                                             @endif
-                                            <li><a href="{{ route('contact') }}">{{ __('Contact') }}</a></li>
+                                            <li><a href="{{ route('contact') }}">{{ __('nav.contact') }}</a></li>
                                             <li><a href="#">
                                                     <div class="user-icon">
                                                         <div class="user-icon-orange"></div>
@@ -46,20 +46,20 @@
                                                 </a>
                                                 <ul class="submenu">
                                                     @if (Auth::check())
-                                                        <li><a href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                                                        <li><a href="{{ route('profile.edit') }}">{{ __('nav.profile') }}</a>
                                                         </li>
 
                                                         <li><a href="{{ route('logout') }}"
-                                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Se déconnecter') }}</a>
+                                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('nav.disconnect') }}</a>
                                                         </li>
                                                         <form id="logout-form" method="POST"
                                                               action="{{ route('logout') }}" style="display: none;">
                                                             @csrf
                                                         </form>
                                                     @else
-                                                        <li><a href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                                        <li><a href="{{ route('login') }}">{{ __('nav.login') }}</a>
                                                         </li>
-                                                        <li><a href="{{ route('register') }}">{{ __("S'enregistrer") }}</a>
+                                                        <li><a href="{{ route('register') }}">{{ __('nav.register') }}</a>
                                                         </li>
                                                     @endif
 
@@ -71,10 +71,10 @@
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block">
                                     @if (Auth::check())
-                                        <a href="contact.html" class="btn header-btn">Créer une session</a>
+                                        <a href="contact.html" class="btn header-btn">{{__('nav.create_session') }}</a>
                                     @else
                                         <a href="{{ route('register') }}"
-                                           class="btn header-btn">{{ __("S'enregistrer") }}</a>
+                                           class="btn header-btn">{{ __('nav.register') }}</a>
                                     @endif
                                 </div>
                             </div>

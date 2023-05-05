@@ -18,12 +18,12 @@
                         <div class="row">
                             <div class="auth">
                                 <div class="hero__caption">
-                                    <h2>Connexion</h2>
+                                    <h2>{{__('login.login') }}</h2>
                                 </div>
                                 <div class="login-no-account">
-                                    <p>Pas encore de compte ?</p>
+                                    <p>{{ __('login.no_account') }}</p>
                                     <a href="{{ route('register') }}">
-                                        {{ __('Créer un compte !') }}
+                                        {{ __('login.create_account') }}
                                     </a>
                                 </div>
                                 <form method="POST" action="{{ route('login') }}">
@@ -31,14 +31,14 @@
 
                                     <!-- Email Address -->
                                     <div>
-                                        <x-input-label for="email" :value="__('Email')" />
+                                        <x-input-label for="email" :value="__('login.email')" />
                                         <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                     </div>
 
                                     <!-- Password -->
                                     <div class="mt-4">
-                                        <x-input-label for="password" :value="__('Password')" />
+                                        <x-input-label for="password" :value="__('login.password')" />
 
                                         <x-text-input id="password" class="block mt-1 w-full"
                                                       type="password"
@@ -51,20 +51,21 @@
                                     <!-- Remember Me -->
                                     <div class="block mt-4">
                                         <label for="remember_me" class="inline-flex items-center">
-                                            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                                            <span class="ml-2 text-sm text-white">{{ __('Remember me') }}</span>
+                                            <input id="remember_me" type="checkbox" class="hidden orange-checkbox" name="remember">
+                                            <span class="custom-checkbox"></span>
+                                            <span class="ml-2 text-sm text-white">{{ __('login.remember_me') }}</span>
                                         </label>
                                     </div>
 
                                     <div class="flex items-center justify-end mt-4">
                                         @if (Route::has('password.request'))
                                             <a class="underline text-sm text-white hover:text-orange-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                                                {{ __('Forgot your password?') }}
+                                                {{ __('login.forgot_password') }}
                                             </a>
                                         @endif
 
                                         <button class="ml-3 btn-login">
-                                            {{ __('Log in') }}
+                                            {{ __('login.btn_login') }}
                                         </button>
                                     </div>
                                 </form>

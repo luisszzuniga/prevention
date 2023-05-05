@@ -12,7 +12,7 @@
         <div class="box-center">
             <div class="title-offers">
                 <h1 class="h1-offers">
-                    Nos offres ACP disponible
+                    {{__('offers.title') }}
                 </h1>
             </div>
             <div class="gallery-nav">
@@ -42,24 +42,24 @@
                                    {{$offers[0]->price}}
                                </span>
                                     <span class="span-sign-first-offer">
-                                   €
+                                   {{__('offers.euro_sign') }}
                                </span>
                                 </div>
                                 <div class="price-description-first-offer">
-                                    <p class="p-price-description-first-offer">par stagiaire</p>
+                                    <p class="p-price-description-first-offer">{{__('offers.learner') }}</p>
                                     <p class="p-price-other-information-first-offer">
-                                        ********
+
                                     </p>
                                 </div>
                             </div>
                             <div class="div-button-first-offer">
-                                <button class="button-first-offer" type="button">Accéder à l'offre</button>
+                                <button class="button-first-offer" type="button">{{__('offers.access_offer') }}</button>
                             </div>
                         </div>
                         <div class="features-content-first-offer">
                             <div class="title-features-first-offer">
                                 <h2 class="h2-title-features-first-offer">
-                                    Caractéristiques :
+                                    {{__('offers.features') }}
                                 </h2>
                             </div>
                             <div class="list-features-first-offer">
@@ -85,24 +85,24 @@
                                    {{$offers[1]->price}}
                                </span>
                                     <span class="span-sign-second-offer">
-                                   €
+                                   {{__('offers.euro_sign') }}
                                </span>
                                 </div>
                                 <div class="price-description-second-offer">
-                                    <p class="p-price-description-second-offer">par stagiaire</p>
+                                    <p class="p-price-description-second-offer">{{__('offers.learner') }}</p>
                                     <p class="p-price-other-information-second-offer">
-                                        ********
+
                                     </p>
                                 </div>
                             </div>
                             <div class="div-button-second-offer">
-                                <button class="button-second-offer" type="button">Accéder à l'offre</button>
+                                <button class="button-second-offer" type="button">{{__('offers.access_offer') }}</button>
                             </div>
                         </div>
                         <div class="features-content-second-offer">
                             <div class="title-features-second-offer">
                                 <h2 class="h2-title-features-second-offer">
-                                    Caractéristiques :
+                                    {{__('offers.features') }}
                                 </h2>
                             </div>
                             <div class="list-features-second-offer">
@@ -128,24 +128,24 @@
                                 {{$offers[2]->price}}
                                </span>
                                     <span class="span-sign-third-offer">
-                                   €
+                                   {{__('offers.euro_sign') }}
                                </span>
                                 </div>
                                 <div class="price-description-third-offer">
-                                    <p class="p-price-description-third-offer">par stagiaire</p>
+                                    <p class="p-price-description-third-offer">{{__('offers.learner') }}</p>
                                     <p class="p-price-other-information-third-offer">
-                                        ********
+
                                     </p>
                                 </div>
                             </div>
                             <div class="div-button-third-offer">
-                                <button class="button-third-offer" type="button">Accéder à l'offre</button>
+                                <button class="button-third-offer" type="button">{{__('offers.access_offer') }}</button>
                             </div>
                         </div>
                         <div class="features-content-third-offer">
                             <div class="title-features-third-offer">
                                 <h2 class="h2-title-features-third-offer">
-                                    Caractéristiques :
+                                    {{__('offers.features') }}
                                 </h2>
                             </div>
                             <div class="list-features-third-offer">

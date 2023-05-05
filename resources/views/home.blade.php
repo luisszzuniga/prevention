@@ -8,42 +8,39 @@
 @section('content')
 
 <main>
-    <!--? slider Area Start-->
     <div class="slider-area ">
         <div class="slider-active">
-            <!-- Single Slider -->
             <div class="single-slider slider-height d-flex align-items-center">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 title-home">
                             <div class="hero__caption">
-                                <h1>Gestion du risque <span>Routier</span><br> en entreprise !</h1>
+                                <h1>{{__('home.title_1') }}<span>{{__('home.road') }}</span><br>{{__('home.title_2') }}</h1>
                             </div>
                         </div>
                         @if (!Auth::check())
                         <div class="col-xl-3 col-lg-3 form-login">
                             <div class="hero__caption">
-                                <h2 class="login-title">Connexion</h2>
+                                <h2 class="login-title">{{__('login.login') }}</h2>
                             </div>
                             <div class="login-no-account">
-                                <p>Pas encore de compte ?</p>
+                                <p>{{ __('login.no_account') }}</p>
                                 <a href="{{ route('register') }}">
-                                    {{ __('Créer un compte !') }}
+                                    {{ __('login.create_account') }}
                                 </a>
                             </div>
-                            <!--Hero form -->
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <!-- Email Address -->
                                 <div>
-                                    <x-input-label for="email" :value="__('Adresse Email')" class="label"/>
+                                    <x-input-label for="email" :value="__('login.email')" class="label"/>
                                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                 </div>
 
                                 <!-- Password -->
                                 <div class="mt-4">
-                                    <x-input-label for="password" :value="__('Mot de Passe')" class="label" />
+                                    <x-input-label for="password" :value="__('login.password')" class="label" />
 
                                     <x-text-input id="password" class="block mt-1 w-full"
                                                   type="password"
@@ -58,19 +55,19 @@
                                     <label for="remember_me" class="inline-flex items-center">
                                         <input id="remember_me" type="checkbox" class="hidden orange-checkbox" name="remember">
                                         <span class="custom-checkbox"></span>
-                                        <span class="ml-2 text-sm text-white">{{ __('Se souvenir de moi') }}</span>
+                                        <span class="ml-2 text-sm text-white">{{ __('login.remember_me') }}</span>
                                     </label>
                                 </div>
 
                                 <div class="flex items-center justify-end mt-4">
                                     @if (Route::has('password.request'))
                                         <a class="underline text-sm text-orange-600 hover:text-orange-600 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                                            {{ __('Mot de passe oublié?') }}
+                                            {{ __('login.forgot_password') }}
                                         </a>
                                     @endif
 
                                     <button class="ml-3 btn-login">
-                                        {{ __('Se connecter') }}
+                                        {{ __('login.btn_login') }}
                                     </button>
                                 </div>
                             </form>
@@ -90,8 +87,8 @@
                 <div class="col-lg-12">
                     <!-- Section Tittle -->
                     <div class="section-tittle text-center mb-80">
-                        <span>Nos services </span>
-                        <h2>Ce que nous pouvons vous proposer</h2>
+                        <span>{{__('home.services') }}</span>
+                        <h2> {{__('home.services_title') }}</h2>
                     </div>
                 </div>
             </div>
@@ -104,9 +101,12 @@
                             <img src="{{ asset('img/home/services/computer.png') }}" class="services-logo" id="computer">
                         </div>
                         <div class="cat-cap">
-                            <h5>Digitalisation</h5>
-                            <p>Faites gagner du temps à vos formateurs. Plus de saisie papier ou d'interminables fichier Excel à
-                                remplir. Saisissez toutes les informations sur la tablette de formations. <br> <br> <br></p>
+                            <h5>{{__('home.service_1_title') }}</h5>
+                            <p>{{__('home.service_1_description') }}
+                                <br>
+                                <br>
+                                <br>
+                            </p>
                         </div>
                     </div>
                     </a>
@@ -120,10 +120,8 @@
                             <img src="{{ asset('img/home/services/database.png') }}" class="services-logo" id="database">
                         </div>
                         <div class="cat-cap">
-                            <h5>LRS</h5>
-                            <p>Vos clients vous demandent d'avoir un suivi des formations digitales. Pas de soucis ! Le déroulé de
-                                la formation est intégrée dans un LRS (Learning Record Store) qui peut se connecter au SIRH de
-                                votre client. Le rapport à votre client est entièrement automatisé.</p>
+                            <h5>{{__('home.service_2_title') }}</h5>
+                            <p>{{__('home.service_2_description') }}</p>
                         </div>
                     </div>
                     </a>
@@ -135,9 +133,12 @@
                            <img src="{{ asset('img/home/services/dashcam.png') }}" class="services-logo" id="dashcam">
                         </div>
                         <div class="cat-cap">
-                            <h5>Dashcam</h5>
-                            <p>Les études ont montré que de revoir ses erreurs de conduite permet d'améliorer sa conduite. Offrez
-                                cette nouvelle prestation de formation à vos clients. <br> <br> <br></p>
+                            <h5>{{__('home.service_3_title') }}</h5>
+                            <p>{{__('home.service_3_description') }}
+                                <br>
+                                <br>
+                                <br>
+                            </p>
                         </div>
                     </div>
                 </a>
@@ -146,8 +147,6 @@
         </div>
     </div>
     <!-- Categories Area End -->
-
-
 
 </main>
 
