@@ -2683,6 +2683,7 @@ hero-btn {
     .form-login {
         max-width: 90%;
         padding-top: 0;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
     }
     .form-login h2 {
         margin-bottom: 15px;
