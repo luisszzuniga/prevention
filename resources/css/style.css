@@ -2610,7 +2610,7 @@ hero-btn {
     margin-left: 50px;
     margin-top: -150px;
     margin-bottom: 250px;
-    background-color: rgba(1, 1, 12, 0.8);
+    background-color: rgba(0, 8, 23, 0.8);
     border-radius: 10px;
     box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
     padding-bottom: 15px;
@@ -2681,12 +2681,15 @@ hero-btn {
 
 @media (max-width: 500px) {
     .form-login {
-        max-width: 100%;
+        max-width: 90%;
         padding-top: 0;
     }
     .form-login h2 {
         margin-bottom: 15px;
         font-size: 35px;
+    }
+    .section-tittle {
+        margin-top: 80px;
     }
 }
 
@@ -6543,7 +6546,8 @@ input[type="checkbox"].orange-checkbox:checked + .custom-checkbox::before {
     opacity: 1;
 }
 
-
-
-
-
+.form-login input:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 1px #FF5F13;
+    border-color: #FF5F13 !important;
+}
