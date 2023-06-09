@@ -1,8 +1,13 @@
 
-$(document).ready(function(){
+$(document).ready(function() {
     const images = ['road.jpg', 'truck.jpg'];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    const imageUrl = '/img/home/' + images[randomIndex];
+    let imageUrl = '/img/default_gradient.png'; // image par défaut avec le gradient souhaité
+
+    if (images.length > 0) {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        imageUrl = '/img/home/' + images[randomIndex];
+    }
+
     $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,0.9344070391828606) 33%, rgba(47,62,80,0.46381880388874297) 100%), url(' + imageUrl + ')');
 });
 
