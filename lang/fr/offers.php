@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'Nos offres ACP disponible',
+    'title' => 'Nos offres disponible',
     'learner' => 'par stagiaire *',
     'access_offer' => 'Accéder à l\'offre',
     'features' => 'Caractéristiques ',
