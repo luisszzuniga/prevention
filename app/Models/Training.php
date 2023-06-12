@@ -90,7 +90,7 @@ class Training extends Model
      *
      * @return HasOne
      */
-    public function trainers()
+    public function trainer()
     {
         return $this->hasOne(User::class);
     }
@@ -98,11 +98,11 @@ class Training extends Model
     /**
      * The learner that the course has.
      *
-     * @return HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function learners()
+    public function learner()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     /**

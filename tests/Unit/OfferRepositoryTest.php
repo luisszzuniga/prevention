@@ -15,8 +15,6 @@ class OfferRepositoryTest extends TestCase
 
     public function testGetAllOffers()
     {
-        gc_collect_cycles();
-        echo ini_get('memory_limit');
         $offerMock = Mockery::mock(Offer::class);
         $offerMock->shouldReceive('all')->once()->andReturn(new Collection);
 
