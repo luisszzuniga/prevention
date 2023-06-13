@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Offer
@@ -12,9 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property float $price
  * @property string|null $description
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
+ * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Feature[] $features
+ * @property-read Collection|Feature[] $features
  * @property-read int|null $features_count
  * @method static \Database\Factories\OfferFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newModelQuery()
@@ -24,7 +26,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer wherePrice($value)
- * @mixin \Eloquent
  */
 class Offer extends Model
 {
@@ -44,21 +45,22 @@ class Offer extends Model
     ];
 
     /**
-     * Get the Courses that belongs to the offer.
+     * Get the trainings that belongs to the offer.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function courses(){
+    public function trainings(): HasMany
+    {
 
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Training::class);
     }
 
     /**
      * Get the Features that belongs to the offer.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function features()
+    public function features(): HasMany
     {
         return $this->hasMany(Feature::class);
     }

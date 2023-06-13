@@ -19,7 +19,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_fillable_attributes()
+    public function test_fillable_attributes(): void
     {
         $user = new User([
             'lastname' => 'Doe',
@@ -43,7 +43,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_trainings_learners_relation()
+    public function test_trainings_learners_relation(): void
     {
         $user = User::factory()->create();
         Training::factory()->count(3)->create(['user_id_learner' => $user->id]);
@@ -57,7 +57,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_trainings_trainers_relation()
+    public function test_trainings_trainers_relation(): void
     {
         $user = User::factory()->create();
         Training::factory()->count(3)->create(['user_id_trainer' => $user->id]);
@@ -71,7 +71,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_company_relation()
+    public function test_company_relation(): void
     {
         $company = Company::factory()->create();
         $user = User::factory()->create(['company_id' => $company->id]);
@@ -85,7 +85,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_roles_relation()
+    public function test_roles_relation(): void
     {
         $role = Role::factory()->create();
         $user = User::factory()->create(['role_id' => $role->id]);
@@ -99,7 +99,7 @@ class UserTest extends TestCase
      *
      * @return void
      */
-    public function test_vehicles_relation()
+    public function test_vehicles_relation(): void
     {
         $user = User::factory()->create();
         Vehicle::factory()->count(3)->create(['learner_id' => $user->id]);
@@ -107,6 +107,5 @@ class UserTest extends TestCase
         $this->assertEquals(3, $user->vehicles->count());
         $this->assertInstanceOf(Vehicle::class, $user->vehicles->first());
     }
-
 
 }

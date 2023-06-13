@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use App\Models\Ability;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +17,7 @@ class RoleTest extends TestCase
      *
      * @return void
      */
-    public function test_fillable_attributes()
+    public function test_fillable_attributes(): void
     {
         $role = new Role([
             'name' => 'Admin',
@@ -32,7 +33,7 @@ class RoleTest extends TestCase
      *
      * @return void
      */
-    public function test_users_relation()
+    public function test_users_relation(): void
     {
         $role = Role::factory()->create();
         User::factory()->count(3)->create(['role_id' => $role->id]);
@@ -40,5 +41,20 @@ class RoleTest extends TestCase
         $this->assertEquals(3, $role->users->count());
         $this->assertInstanceOf(User::class, $role->users->first());
     }
+
+    /**
+     * Test abilities relation.
+     *
+     * @return void
+     */
+    public function test_abilities_relation(): void
+    {
+        $role = Role::factory()->create();
+        Ability::factory()->count(3)->create(['role_id' => $role->id]);
+
+        $this->assertEquals(3, $role->abilities->count());
+        $this->assertInstanceOf(Ability::class, $role->abilities->first());
+    }
+
 }
 

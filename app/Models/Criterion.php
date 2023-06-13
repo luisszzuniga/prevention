@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\Criterion
  *
  * @property int $id
  * @property string $text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
+ * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Theme[] $themes
+ * @property-read Collection|Theme[] $themes
  * @property-read int|null $themes_count
  * @method static \Database\Factories\CriterionFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Criterion newModelQuery()
@@ -20,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Criterion query()
  * @method static \Illuminate\Database\Eloquent\Builder|Criterion whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Criterion whereText($value)
- * @mixin \Eloquent
  */
 class Criterion extends Model
 {
@@ -40,9 +41,9 @@ class Criterion extends Model
     /**
      * The courses that the criterion belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function courses()
+    public function courses(): BelongsToMany
     {
         return $this->belongsToMany(Course::class);
     }
@@ -50,9 +51,9 @@ class Criterion extends Model
     /**
      * The themes that the criterion belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function themes()
+    public function themes(): BelongsToMany
     {
         return $this->belongsToMany(Theme::class);
     }

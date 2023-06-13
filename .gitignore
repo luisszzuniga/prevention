@@ -20,3 +20,4 @@ composer.lock
 package-lock.json
 /documents/phpdoc
 /reports
+documents/phpunit

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Database\Factories\CompanyFactory;
-use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,7 +24,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static Builder|Company whereContact($value)
  * @method static Builder|Company whereId($value)
  * @method static Builder|Company whereName($value)
- * @mixin Eloquent
  * @property string|null $address
  * @property string|null $zip_code
  * @property string|null $town
@@ -59,7 +57,7 @@ class Company extends Model
      *
      * @return HasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }

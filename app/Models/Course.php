@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use Database\Factories\CourseFactory;
-use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
 /**
@@ -46,9 +45,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUserIdLearner($value)
  * @method static Builder|Course whereUserIdTrainer($value)
  * @method static Builder|Course whereVehicleId($value)
- * @mixin Eloquent
  * @property int $training_id
- * @property-read \App\Models\Training|null $trainings
+ * @property-read Training|null $trainings
  * @method static Builder|Course whereTrainingId($value)
  */
 class Course extends Model
@@ -69,7 +67,7 @@ class Course extends Model
      *
      * @return BelongsToMany
      */
-    public function criteria()
+    public function criteria(): BelongsToMany
     {
         return $this->belongsToMany(Criterion::class);
     }
@@ -77,11 +75,11 @@ class Course extends Model
     /**
      * Get the training that the course belongs to
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function trainings()
+    public function training(): BelongsTo
     {
-        return $this->hasOne(Training::class);
+        return $this->belongsTo(Training::class);
     }
 
 }

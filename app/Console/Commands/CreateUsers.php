@@ -89,6 +89,6 @@ class CreateUsers extends Command
                 '<fg=red;options=bold>Failed to insert users</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

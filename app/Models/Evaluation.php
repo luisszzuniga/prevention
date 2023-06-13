@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Evaluation
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $note
  * @property int $theme_id
- * @property-read \App\Models\Theme|null $themes
+ * @property-read Theme|null $themes
  * @method static \Database\Factories\EvaluationFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Evaluation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Evaluation newQuery()
@@ -19,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Evaluation whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Evaluation whereNote($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Evaluation whereThemeId($value)
- * @mixin \Eloquent
  */
 class Evaluation extends Model
 {
@@ -39,10 +39,10 @@ class Evaluation extends Model
     /**
      * The theme that the evaluation belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function themes(){
-
-        return $this->hasOne(Theme::class);
+    public function theme(): BelongsTo
+    {
+        return $this->belongsTo(Theme::class);
     }
 }

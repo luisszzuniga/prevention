@@ -1,11 +1,12 @@
 <?php
 
+namespace Repositories;
 
 use App\Models\Offer;
 use App\Repositories\OfferRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
+use Mockery;
 use Tests\TestCase;
 
 class OfferRepositoryTest extends TestCase
@@ -13,6 +14,11 @@ class OfferRepositoryTest extends TestCase
 
     use RefreshDatabase;
 
+    /**
+     * Test the GetAllOffers method of OfferRepository.
+     *
+     * @return void
+     */
     public function testGetAllOffers()
     {
         $offerMock = Mockery::mock(Offer::class);
@@ -24,4 +30,5 @@ class OfferRepositoryTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $result);
     }
+
 }
