@@ -3,11 +3,12 @@
 namespace Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class HomePageTest extends TestCase
+class HomeControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the home page.
      *
@@ -20,4 +21,5 @@ class HomePageTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('home');
     }
+
 }

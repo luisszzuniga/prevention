@@ -5,7 +5,7 @@ namespace Controllers;
 use App\Models\Offer;
 use Tests\TestCase;
 
-class OffersPageTest extends TestCase
+class OfferControllerTest extends TestCase
 {
     /**
      * Test the offers page.

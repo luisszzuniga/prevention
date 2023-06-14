@@ -18,4 +18,5 @@ class CreateCriteriaTest extends TestCase
 
         $this->assertStringContainsString('CRITERIA : Nothing to add', $output);
     }
+
 }

@@ -3,7 +3,6 @@
 namespace Commands;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class LaunchDataTest extends TestCase
@@ -23,6 +22,6 @@ class LaunchDataTest extends TestCase
         $this->assertDatabaseCount('themes', 0);
         $this->assertDatabaseCount('criteria', 0);
         $this->assertDatabaseCount('centers', 0);
-
     }
+
 }

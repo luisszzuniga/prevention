@@ -23,6 +23,6 @@ class CreateAbilitiesTest extends TestCase
             'description' => 'Visualize user\'s info',
             'role_id' => 1,
         ]);
-
     }
+
 }

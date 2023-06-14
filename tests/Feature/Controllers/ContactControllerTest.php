@@ -3,11 +3,12 @@
 namespace Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ContactPageTest extends TestCase
+class ContactControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the contact page.
      *
@@ -20,4 +21,5 @@ class ContactPageTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('contact');
     }
+
 }

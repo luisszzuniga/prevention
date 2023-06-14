@@ -3,7 +3,6 @@
 namespace Commands;
 
 use App\Console\Commands\CreateFeatures;
-use App\Models\Offer;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -34,4 +33,5 @@ class CreateFeaturesTest extends TestCase
 
         $this->assertStringContainsString('EXISTS', $output);
     }
+
 }

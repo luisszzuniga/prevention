@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class DashboardTest extends TestCase
+class DashboardControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -20,5 +20,6 @@ class DashboardTest extends TestCase
 
         $response->assertSuccessful();
     }
+
 }
 

@@ -3,7 +3,6 @@
 namespace Commands;
 
 use App\Console\Commands\CreateOffers;
-use App\Models\Offer;
 use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

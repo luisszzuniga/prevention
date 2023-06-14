@@ -18,4 +18,5 @@ class CreateThemesTest extends TestCase
 
         $this->assertStringContainsString('THEMES : Nothing to add', $output);
     }
+
 }
