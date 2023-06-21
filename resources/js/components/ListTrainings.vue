@@ -17,9 +17,8 @@
 
 <script>
 
-import {defineComponent} from 'vue';
+import {defineComponent, onMounted} from 'vue';
 import useTrainings from '../composables/trainings';
-import {onMounted} from 'vue';
 
 const {trainings, getTrainings} = useTrainings();
 

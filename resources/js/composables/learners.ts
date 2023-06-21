@@ -1,6 +1,5 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
-import {useRouter} from 'vue-router'
 
 export default function useLearners(): {
     message: any,
@@ -10,16 +9,15 @@ export default function useLearners(): {
     getLearner: (id: number) => Promise<void>,
     getLearners: () => Promise<void>,
     storeLearner: (data: object) => Promise<void>,
-    updateLearner: (id: number) => Promise<void>,
 } {
     axios.defaults.withCredentials = true;
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
-    const router = useRouter();
     const url = '/api/learners-store';
     let token = "1|018LLF6WZLEarYLAAt5Lg0dSh13QUoMTVA9KGAMo";
+
     console.log(token)
     let config = {
         headers: {
@@ -56,21 +54,6 @@ export default function useLearners(): {
         }
     }
 
-    const updateLearner = async (id: number): Promise<void> => {
-        errors.value = ''
-        try {
-            await axios.patch(`/api/learners/${id}`, learner.value);
-            await router.push({name: 'learners.index'});
-        } catch (e) {
-            const error = e as any;
-            if (error.response.status === 422) {
-                for (const key in error.response.data.errors) {
-                    errors.value = error.response.data.errors;
-                }
-            }
-        }
-    }
-
     return {
         message,
         errors,
@@ -78,7 +61,6 @@ export default function useLearners(): {
         learners,
         getLearner,
         getLearners,
-        storeLearner,
-        updateLearner
+        storeLearner
     }
 }
