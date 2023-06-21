@@ -4,7 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
@@ -19,25 +19,15 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register(): void
     {
-        $role =
-            [
-                'id' => 1,
-                'name' => 'super-admin',
-                'description' => 'Salarié Lery technologies. Peut ajouter, supprimer des clients et ajouter des domaines autorisés (nouveau client par exemple)'
-            ];
-        DB::table('roles')->insert([
-            $role
-        ]);
+        Artisan::call('create:roles');
+
         $response = $this->post('/register', [
-            'lastname' => 'lastname',
-            'firstname' => 'firstname',
+            'company_name' => 'Lery',
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'phone' => 'phone',
-            'address' => 'address',
-            'zip_code' => '12345',
-            'town' => 'TownName',
+            'phone' => '0781726633',
+
         ]);
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::DASHBOARD);

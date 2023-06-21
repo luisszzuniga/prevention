@@ -14,7 +14,7 @@ return [
     'confirm_password' => 'Confirmation du mot de passe',
     'already_registered' => 'Déjà enregistré ?',
     'register' => 'Enregistrer',
-
+    'company_name' => 'Nom de la société'
 
 
 ];

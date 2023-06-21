@@ -14,9 +14,7 @@ return [
     'confirm_password' => 'Confirm Password',
     'already_registered' => 'Already Registered?',
     'register' => 'Register',
-
-
-
+    'company_name' => 'Company name'
 
 
 ];
