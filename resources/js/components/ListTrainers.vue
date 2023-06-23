@@ -18,26 +18,13 @@
 </template>
 
 
-<script>
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
+import { onMounted } from 'vue';
 import useTrainers from '../composables/trainers';
-import {onMounted} from 'vue';
 
-const {trainers, getTrainers} = useTrainers();
+const { trainers, getTrainers } = useTrainers();
 
-export default defineComponent({
-    name: "ListTrainers",
-    setup() {
-        onMounted(getTrainers);
-        return {trainers};
-    },
-    data() {
-        return {
-            trainers: trainers.value
-        }
-    }
-});
-
+onMounted(getTrainers);
 </script>
 
 
