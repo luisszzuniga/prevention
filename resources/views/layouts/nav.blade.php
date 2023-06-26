@@ -12,7 +12,7 @@
                             <a href="{{ route('home') }}">
                                 <div class="logo-container">
                                     <div class="logo">
-                                        <img src="{{ asset('img/nav/logo.png') }}" alt="">
+                                        <img src="{{ asset('img/nav/lery-logo-web.png') }}" alt="">
                                     </div>
                                     <div class="logo-text">
                                         <span class="lery">{{__('nav.lery') }}</span>
