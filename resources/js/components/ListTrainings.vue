@@ -15,26 +15,13 @@
     </div>
 </template>
 
-<script>
-
-import {defineComponent, onMounted} from 'vue';
+<script lang="ts" setup>
+import { onMounted } from 'vue';
 import useTrainings from '../composables/trainings';
 
-const {trainings, getTrainings} = useTrainings();
+const { trainings, getTrainings } = useTrainings();
 
-export default defineComponent({
-    name: "ListTrainings",
-    setup() {
-        onMounted(getTrainings);
-        return {trainings};
-    },
-    data() {
-        return {
-            companies: trainings.value
-        }
-    }
-});
-
+onMounted(getTrainings);
 </script>
 
 <style scoped>

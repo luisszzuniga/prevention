@@ -59,7 +59,7 @@
 
 <script setup>
 
-import useVehicles from '../composables/vehicles.ts'
+import useVehicles from '../../composables/vehicles.ts'
 import {reactive} from 'vue'
 
 const form = reactive({

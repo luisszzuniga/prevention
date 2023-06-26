@@ -1,13 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 
-import Vehicles from '@/components/Vehicles.vue'
-import Learner from '@/components/Learner.vue'
-import ListsDashboard from '@/components/ListsDashboard.vue'
+import Vehicles from '@/components/views/Vehicles.vue'
+import Learner from '@/components/views/Learner.vue'
+import Dashboard from '@/components/views/Dashboard.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
-        path: '/offers',
-        name: 'offers',
+        path: '/vehicles',
+        name: 'vehicles',
         component: Vehicles
     },
     {
@@ -16,10 +16,11 @@ const routes = [
         component: Learner
     },
     {
-        path: '/lists-dashboard',
-        name: 'lists-dashboard',
-        component: ListsDashboard
-    }
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard
+    },
+
 ];
 
 export default createRouter({

@@ -15,22 +15,13 @@
     </div>
 </template>
 
-<script>
-import { defineComponent, onMounted } from 'vue';
+<script lang="ts" setup>
+import { onMounted } from 'vue';
 import useCompanies from '../composables/companies';
 
-export default defineComponent({
-    name: "ListCompanies",
-    setup() {
-        const { companies, getCompanies } = useCompanies();
+const { companies, getCompanies } = useCompanies();
 
-        onMounted(getCompanies);
-
-        return {
-            companies
-        };
-    }
-});
+onMounted(getCompanies);
 </script>
 
 <style scoped>
