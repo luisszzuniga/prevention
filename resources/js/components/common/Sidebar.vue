@@ -1,5 +1,4 @@
 <template>
-    <v-app>
         <v-navigation-drawer app class="sidebar">
             <v-list dense>
                 <v-list-item v-for="(link, i) in links" :key="i" class="link-item"
@@ -15,7 +14,6 @@
                 </v-list-item>
             </v-list>
         </v-navigation-drawer>
-    </v-app>
 </template>
 
 
@@ -37,6 +35,7 @@ const links = ref([
 </script>
 
 <style scoped>
+
 .sidebar {
     background: #11223D;
 }
