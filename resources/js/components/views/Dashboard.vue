@@ -1,26 +1,13 @@
 <template>
     <v-row>
-        <v-col>
-            <h3>Mes clients</h3>
-            <div class="scrollable-table">
-                <ListCompanies></ListCompanies>
-            </div>
+        <v-col cols="4">
+            <ListTrainings></ListTrainings>
         </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-            <h3>Mes Formateurs</h3>
-            <div class="scrollable-table">
-                <ListTrainers></ListTrainers>
-            </div>
+        <v-col cols="4">
+            <ListCompanies></ListCompanies>
         </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-            <h3>Mes Formations</h3>
-            <div class="scrollable-table">
-                <ListTrainings></ListTrainings>
-            </div>
+        <v-col cols="4">
+            <ListTrainers></ListTrainers>
         </v-col>
     </v-row>
 </template>
