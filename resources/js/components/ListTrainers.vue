@@ -62,10 +62,11 @@ const selectTrainer = (index: string | number) => {
 }
 
 .table-container {
-    margin-left: 30px;
-    margin-right: 60px;
+    margin-left: 60px;
+    margin-right: 30px;
     margin-top: 30px;
-    max-height: 21em;
+    max-height: 336px;
+    width: 424px;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -117,7 +118,7 @@ const selectTrainer = (index: string | number) => {
 .footer {
     position: sticky;
     bottom: 0;
-    background-color: rgba(28, 51, 86, 0.9);
+    background-color: rgba(28, 51, 86, 0.8);
     border-radius: 10px;
     padding: 8px;
     border: 1px solid #000;
@@ -168,6 +169,13 @@ const selectTrainer = (index: string | number) => {
 
 .button-delete:hover {
     background-color: #a02e2e;
+}
+
+@media (max-width: 975px) {
+    .table-container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }
 </style>
 

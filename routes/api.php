@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\TrainerController;
@@ -36,4 +37,5 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('/trainers', [TrainerController::class, 'index']);
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/trainings', [TrainingController::class, 'index']);
+Route::get('/centers', [CenterController::class, 'index']);
 

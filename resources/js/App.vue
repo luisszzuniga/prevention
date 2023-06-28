@@ -1,11 +1,9 @@
 <template>
     <v-app>
         <Navbar />
-        <v-main>
+        <v-main class="main-background">
             <v-row no-gutters>
-
                     <Sidebar />
-
                 <v-col cols="12">
                     <router-view />
                 </v-col>
@@ -23,3 +21,9 @@ export default defineComponent({
     components: {TableHome, Sidebar, Navbar }
 })
 </script>
+
+<style scoped>
+.main-background {
+    background-color: #F5F5F5;
+}
+</style>
