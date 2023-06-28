@@ -13,8 +13,6 @@
 
     @vite(['resources/css/style.css'])
     @vite(['resources/css/layout/slicknav.css'])
-    @vite(['resources/css/layout/slick.css'])
-    @vite(['resources/css/style.css'])
     @vite(['resources/css/app.css'])
 
     <title> @yield('title','Base')</title>
