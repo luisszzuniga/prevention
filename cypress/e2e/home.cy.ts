@@ -6,12 +6,10 @@ describe('Homepage', () => {
         cy.visit('/')
     })
 
-    // Vérifier le titre
     it('should render the title correctly', () => {
         cy.get('.title-home .hero__caption h1').should('contain', 'Gestion du risque ')
     })
 
-    // Vérifier que le formulaire de connexion est affiché
     it('should display the login form if user is not logged in', () => {
         // Vérifier que l'utilisateur n'est pas connecté
         cy.window().then((win: Window & typeof globalThis & { localStorage: Storage }) => {
@@ -23,7 +21,6 @@ describe('Homepage', () => {
 
     })
 
-    // Vérifier que les services sont affichés
     it('should display the services correctly', () => {
         cy.get('#cat-1').should('exist')
         cy.get('#cat-2').should('exist')

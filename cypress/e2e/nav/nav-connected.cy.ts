@@ -1,6 +1,5 @@
 describe('Navigation bar', () => {
     beforeEach(() => {
-        // Se connecter avant chaque test
         cy.login('maxime.rousseau99@gmail.com', '4rCJ6vZ9m4Yk5p')
         cy.visit('/')
         cy.viewport(1280, 720)
