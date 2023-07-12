@@ -9,9 +9,9 @@
     padding-right: 40px;
     width: 40%;
     margin: 100px auto 200px auto; /* center horizontally */
-    background-color: rgba(14, 14, 23, 0.7);
+    background-color: rgba(0, 8, 23, 0.8);
     border-radius: 10px;
-    box-shadow: 0 50px 80px rgba(14, 14, 23, 0.8);
+    box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
     padding-bottom: 15px;
 }
 
@@ -45,7 +45,8 @@
 
 .auth input:focus {
     outline: none !important;
-    box-shadow: 0 0 0 2px #FF5F13;
+    box-shadow: 0 0 0 1px #FF5F13;
+    border-color: #FF5F13 !important;
 }
 
 .btn-register {
@@ -72,14 +73,14 @@
 
 .btn-login {
     margin-left: 50px;
-    width: 20% !important;
+    width: 25% !important;
     background: #ea4c00;
     padding: 10px;
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
     font-family: "Barlow", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     border-radius: 5px;
     border: 0
 
@@ -124,57 +125,16 @@
 
 @media (max-width: 480px) {
     .auth {
-        margin-top: 50px;
-        margin-bottom: 0;
-        width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
+        width: 90%;
     }
 
-    .auth h2 {
-        margin-top: 0;
-        font-size: 36px;
-    }
-
-    .auth label {
-        font-size: 14px;
-    }
-
-    .auth input {
-        font-size: 16px;
-    }
-
-    .btn-register {
-        margin-left: 20px
-    }
 }
 
 @media (max-width: 480px) {
     .auth {
-        margin-top: 50px;
         margin-bottom: 50px;
-        width: 100%;
-        padding-left: 15px;
-        padding-right: 15px;
     }
 
-    .auth h2 {
-        margin-top: 0;
-        font-size: 36px;
-    }
-
-    .auth label {
-        font-size: 14px;
-    }
-
-    .auth input {
-        font-size: 16px;
-    }
-
-    .btn-register {
-        margin-left: 20px;
-        width: 30%;
-    }
     .flex{
         margin-left: -200px;
         margin-right: 20px;
@@ -185,5 +145,6 @@
         width: 100%;
     }
 }
+
 
 

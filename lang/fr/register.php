@@ -2,7 +2,7 @@
 
 return [
 
-
+    'title' => 'Inscription',
     'lastname' => 'Nom',
     'firstname' => 'Prénom',
     'email' => 'Adresse email',
