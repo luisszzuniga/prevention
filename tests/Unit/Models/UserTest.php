@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Company;
 use App\Models\Role;
@@ -8,6 +8,7 @@ use App\Models\Training;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -46,9 +47,13 @@ class UserTest extends TestCase
     public function test_trainings_learners_relation(): void
     {
         $user = User::factory()->create();
-        Training::factory()->count(3)->create(['user_id_learner' => $user->id]);
+        $training = Training::factory()->create();
+        DB::table('course_learner')->insert([
+            'user_id_Learner' => $user->id,
+            'training_id' => $training->id
+        ]);
 
-        $this->assertEquals(3, $user->trainingsLearners->count());
+        $this->assertEquals(1, $user->trainingsLearners->count());
         $this->assertInstanceOf(Training::class, $user->trainingsLearners->first());
     }
 
@@ -102,7 +107,7 @@ class UserTest extends TestCase
     public function test_vehicles_relation(): void
     {
         $user = User::factory()->create();
-        Vehicle::factory()->count(3)->create(['learner_id' => $user->id]);
+        Vehicle::factory()->count(3)->create(['user_id_Learner' => $user->id]);
 
         $this->assertEquals(3, $user->vehicles->count());
         $this->assertInstanceOf(Vehicle::class, $user->vehicles->first());

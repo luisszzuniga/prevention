@@ -12,10 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('criterion_theme', function (Blueprint $table) {
-            $table->unsignedBigInteger('criterion_id');
-            $table->unsignedBigInteger('theme_id');
-            $table->primary(['criterion_id', 'theme_id']);
+        Schema::create('courses', function (Blueprint $table) {
+            $table->id();
+            $table->text('observation')->nullable();
+            $table->unsignedBigInteger('training_id');
+            $table->unsignedBigInteger('grid_id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('criterion_theme');
+        Schema::dropIfExists('courses');
     }
 };

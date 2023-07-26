@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
@@ -59,7 +60,8 @@ class Training extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'seance_code'
+        'seance_code',
+        'user_id_trainer'
     ];
 
     /**
@@ -93,13 +95,13 @@ class Training extends Model
     }
 
     /**
-     * The learner that the training has.
+     * The learners that the training has.
      *
-     * @return BelongsTo
+     * @return BelongsToMany
      */
-    public function learner(): BelongsTo
+    public function learners(): BelongsToMany
     {
-        return $this->belongsTo(User::class,'user_id_learner');
+        return $this->belongsToMany(User::class, 'course_learner', 'training_id', 'user_id_learner');
     }
 
     /**
