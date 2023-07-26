@@ -12,9 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('course_criterion', function (Blueprint $table) {
-            $table->foreign('criterion_id')->references('id')->on('criteria')->onDelete('CASCADE');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('CASCADE');
+        Schema::create('vehicles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50);
+            $table->string('brand', 50)->nullable();
+            $table->string('license_plate', 10)->nullable();
+            $table->string('type', 20)->nullable();
+            $table->unsignedBigInteger('user_id_Learner');
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::drop('course_criterion');
+        Schema::dropIfExists('vehicles');
     }
 };

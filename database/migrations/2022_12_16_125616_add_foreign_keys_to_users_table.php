@@ -13,9 +13,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign(['company_id'], 'FK_users_companies')->references('id')->on('companies')->onDelete('CASCADE');
-            $table->foreign(['role_id'], 'FK_users_roles')->references('id')->on('roles')->onDelete('CASCADE');
-            $table->foreign('trainer_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('trainer_id')->references('id')->on('users');
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 
@@ -27,8 +27,9 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('FK_users_companies');
-            $table->dropForeign('FK_users_roles');
+            $table->dropForeign('users_company_id_foreign');
+            $table->dropForeign('users_user_id_Trainer_foreign');
+            $table->dropForeign('users_role_id_foreign');
         });
     }
 };

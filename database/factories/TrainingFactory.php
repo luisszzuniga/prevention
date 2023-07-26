@@ -25,7 +25,6 @@ class TrainingFactory extends Factory
             'offer_id' => Offer::factory(1)->create()->first(),
             'center_id' => Center::factory(1)->create()->first(),
             'user_id_trainer' => User::factory(1)->create()->first()->getAttribute('id'),
-            'user_id_learner' => User::factory(1)->create()->first()->getAttribute('id'),
             'date' => fake()->date()
         ];
     }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -63,17 +62,7 @@ class Course extends Model
     ];
 
     /**
-     * The criteria that the course belongs to.
-     *
-     * @return BelongsToMany
-     */
-    public function criteria(): BelongsToMany
-    {
-        return $this->belongsToMany(Criterion::class);
-    }
-
-    /**
-     * Get the training that the course belongs to
+     * Get the training that the course belongs to.
      *
      * @return BelongsTo
      */
@@ -82,5 +71,14 @@ class Course extends Model
         return $this->belongsTo(Training::class);
     }
 
+    /**
+     * Get the grid that the course belongs to.
+     *
+     * @return BelongsTo
+     */
+    public function grid(): BelongsTo
+    {
+        return $this->belongsTo(Grid::class);
+    }
 }
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Center;
 use App\Models\Course;
+use App\Models\Grid;
 use App\Models\Offer;
 use App\Models\Training;
 use App\Models\User;
@@ -63,11 +64,16 @@ class TrainingTest extends TestCase
      */
     public function test_trainingsLearners_relation(): void
     {
-        $user = User::factory()->create();
-        $training = Training::factory()->create(['user_id_learner' => $user->id]);
+        $training = Training::factory()->create();
+        $users = User::factory()->count(3)->create();
 
-        $this->assertInstanceOf(User::class, $training->learner);
-        $this->assertEquals($user->id, $training->learner->id);
+        foreach ($users as $user) {
+            $training->learners()->attach($user->id);
+        }
+
+        foreach ($users as $user) {
+            $this->assertContains($user->id, $training->learners->pluck('id')->toArray());
+        }
     }
 
     /**
@@ -92,7 +98,8 @@ class TrainingTest extends TestCase
     public function test_courses_relation(): void
     {
         $training = Training::factory()->create();
-        $course = Course::factory()->create(['training_id' => $training->id]);
+        $grid = Grid::factory()->create();
+        $course = Course::factory()->create(['training_id' => $training->id, 'grid_id' => $grid->id]);
 
         $this->assertInstanceOf(Course::class, $training->courses->first());
         $this->assertEquals($course->id, $training->courses->first()->id);

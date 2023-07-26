@@ -12,10 +12,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('progress', function (Blueprint $table) {
+        Schema::create('trainings', function (Blueprint $table) {
             $table->id();
-            $table->text('text')->nullable();
-            $table->unsignedBigInteger('theme_id')->unique('theme_id');
+            $table->integer('seance_code')->nullable();
+            $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('center_id');
+            $table->unsignedBigInteger('user_id_trainer')->index();
+            $table->date('date');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('progress');
+        Schema::dropIfExists('trainings');
     }
 };
