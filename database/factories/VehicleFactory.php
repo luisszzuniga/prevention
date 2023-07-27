@@ -25,7 +25,7 @@ class VehicleFactory extends Factory
             'brand' => fake()->text(8),
             'license_plate' => fake()->text(10),
             'type' => fake()->text(20),
-            'learner_id' => $learnerId
+            'user_id_Learner' => $learnerId
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace Tests\Feature\Controllers;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -40,7 +40,7 @@ class VehicleControllerTest extends TestCase
                     'brand',
                     'license_plate',
                     'type',
-                    'learner_id'
+                    'user_id_Learner'
                 ],
             ])
             ->assertJson([

@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $brand
  * @property string|null $license_plate
  * @property string|null $type
- * @property int $learner_id
+ * @property int $user_id_Learner
  * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
  * @method static \Database\Factories\VehicleFactory factory(...$parameters)
@@ -45,7 +45,7 @@ class Vehicle extends Model
         'brand',
         'license_plate',
         'type',
-        'learner_id'
+        'user_id_Learner'
     ];
 
     /**
@@ -55,6 +55,6 @@ class Vehicle extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class,'learner_id');
+        return $this->belongsTo(User::class,'user_id_Learner');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Course;
 use App\Models\Criterion;
 use App\Models\Grid;
 use App\Models\Theme;
@@ -28,23 +27,6 @@ class CriterionTest extends TestCase
     }
 
     /**
-     * Test courses relation.
-     *
-     * @return void
-     */
-    public function test_courses_relation(): void
-    {
-        $criterion = Criterion::factory()->create();
-        $grid = Grid::factory()->create();
-        $course = Course::factory()->create(['grid_id' => $grid->id]);
-
-        $criterion->grids()->attach($grid->id);
-
-        $this->assertInstanceOf(Course::class, $criterion->grids->first()->courses->first());
-        $this->assertEquals($course->id, $criterion->grids->first()->courses->first()->id);
-    }
-
-    /**
      * Test grids relation.
      *
      * @return void
@@ -58,6 +40,22 @@ class CriterionTest extends TestCase
 
         $this->assertInstanceOf(Grid::class, $criterion->grids->first());
         $this->assertEquals($grid->id, $criterion->grids->first()->id);
+    }
+
+    /**
+     * Test themes relation.
+     *
+     * @return void
+     */
+    public function test_themes_relation(): void
+    {
+        $criterion = Criterion::factory()->create();
+        $themes = Theme::factory()->count(3)->create();
+
+        $criterion->themes()->attach($themes);
+
+        $this->assertEquals(3, $criterion->themes->count());
+        $this->assertInstanceOf(Theme::class, $criterion->themes->first());
     }
 
 }

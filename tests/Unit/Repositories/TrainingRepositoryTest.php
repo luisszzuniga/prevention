@@ -1,6 +1,6 @@
 <?php
 
-namespace Repositories;
+namespace Tests\Unit\Repositories;
 
 use App\Models\Training;
 use App\Repositories\TrainingRepository;
