@@ -1,26 +1,22 @@
 <template>
-    <div v-if="companies" class="table-container">
-        <div class="header">Mes Clients</div>
+    <div v-if="centers" class="table-container">
+        <div class="header">Mes Centres</div>
         <table class="styled-table">
             <thead>
             <tr>
                 <th class="col-name">Nom</th>
-                <th class="col-town">Ville</th>
-                <th class="col-address">Adresse</th>
-                <th class="col-contact">Contact</th>
+                <th class="col-town">Addresse</th>
             </tr>
             </thead>
             <tbody>
             <tr
-                v-for="(company, index) in filledCompanies"
+                v-for="(center, index) in filledCenters"
                 :key="index"
-                :class="{ 'selected': company.selected }"
-                @click="selectCompany(index)"
+                :class="{ 'selected': center.selected }"
+                @click="selectCenter(index)"
             >
-                <td class="col-name">{{ company.name }}</td>
-                <td class="col-town">{{ company.town }}</td>
-                <td class="col-address">{{ company.address }}</td>
-                <td class="col-contact">{{ company.contact }}</td>
+                <td class="col-name">{{ center.name }}</td>
+                <td class="col-town">{{ center.address }}</td>
             </tr>
             </tbody>
         </table>
@@ -32,22 +28,29 @@
     </div>
 </template>
 
-
 <script lang="ts" setup>
 import { onMounted, computed, ref } from 'vue';
-import useCompanies from '../composables/companies';
+import useCenters from '../composables/centers';
 
-const { companies, getCompanies } = useCompanies();
+interface Center {
+    name: string;
+    address: string;
+    selected?: boolean;
+}
 
-onMounted(getCompanies);
+const {  getCenters } = useCenters();
 
-const filledCompanies = computed(() => {
-    const fillLength = 6 - companies.value.length;
-    return fillLength > 0 ? companies.value.concat(Array(fillLength).fill({})) : companies.value;
+onMounted(getCenters);
+
+const centers = ref<Center[]>([]);
+
+const filledCenters = computed(() => {
+    const fillLength = 6 - centers.value.length;
+    return fillLength > 0 ? [...centers.value, ...Array<Center>(fillLength).fill({name: '', address: ''})] : centers.value;
 });
 
-const selectCompany = (index: string | number) => {
-    filledCompanies.value[index].selected = !filledCompanies.value[index].selected;
+const selectCenter = (index: number) => {
+    filledCenters.value[index].selected = !filledCenters.value[index].selected;
 }
 </script>
 
@@ -66,9 +69,10 @@ const selectCompany = (index: string | number) => {
 }
 
 .table-container {
-    margin-right: 60px;
+    margin-left: 80px;
     margin-top: 30px;
     max-height: 336px;
+    width: 424px;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -110,18 +114,11 @@ const selectCompany = (index: string | number) => {
 }
 
 .col-name {
-    width: 25%;
+    width: 50%;
 }
 
 .col-town {
-    width: 25%;
-}
-.col-address {
-    width: 25%;
-}
-
-.col-contact {
-    width: 25%;
+    width: 50%;
 }
 
 .footer {
@@ -137,7 +134,7 @@ const selectCompany = (index: string | number) => {
     font-weight: bold;
     height: 3em;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .footer-button {
@@ -154,7 +151,6 @@ const selectCompany = (index: string | number) => {
     margin: 0 10px;
     outline: none !important;
     box-shadow: none !important;
-    max-width: 115px;
 }
 
 .button-add {
@@ -185,11 +181,6 @@ const selectCompany = (index: string | number) => {
     .table-container {
         margin-left: 20px;
         margin-right: 20px;
-        width: 424px;
     }
 }
-
 </style>
-
-
-
