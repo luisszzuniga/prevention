@@ -26,7 +26,7 @@ class VehicleController extends Controller
         $vehicle->brand = $request->brand;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->type = $request->type;
-        $vehicle->learner_id = $userId;
+        $vehicle->user_id_Learner = $userId;
         $vehicle->save();
 
         return response()->json([

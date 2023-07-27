@@ -3,7 +3,6 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Course;
-use App\Models\Criterion;
 use App\Models\Grid;
 use App\Models\Training;
 use Illuminate\Foundation\Testing\RefreshDatabase;

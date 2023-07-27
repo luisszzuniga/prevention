@@ -1,6 +1,6 @@
 <?php
 
-namespace Commands;
+namespace Tests\Feature\Commands;
 
 use App\Console\Commands\CreateCompanies;
 use Illuminate\Foundation\Testing\RefreshDatabase;

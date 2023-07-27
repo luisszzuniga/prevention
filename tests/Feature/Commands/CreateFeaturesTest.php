@@ -1,6 +1,6 @@
 <?php
 
-namespace Commands;
+namespace Tests\Feature\Commands;
 
 use App\Console\Commands\CreateFeatures;
 use Illuminate\Support\Facades\Artisan;

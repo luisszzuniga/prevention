@@ -1,10 +1,8 @@
 <?php
 
-namespace Repositories;
+namespace Tests\Unit\Repositories;
 
-use App\Models\Offer;
 use App\Models\User;
-use App\Repositories\OfferRepository;
 use App\Repositories\TrainerRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
