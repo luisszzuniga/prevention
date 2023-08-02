@@ -83,12 +83,12 @@ class CreateUsers extends Command
                 }
             }
         } catch (Exception $e) {
-
             with(new TwoColumnDetail($this->getOutput()))->render(
                 '<fg=red;options=bold>Error: </>'. $e->getMessage(),
                 '<fg=red;options=bold>Failed to insert users</>'
             );
+            return Command::FAILURE;
         }
-        return 0;
+        return Command::SUCCESS;
     }
 }
