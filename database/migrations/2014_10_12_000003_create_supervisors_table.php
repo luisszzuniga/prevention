@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('trainers', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->primary();
-            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+        Schema::create('supervisors', function (Blueprint $table) {
+            $table->bigInteger('id')->unsigned()->primary();
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trainers');
+        Schema::dropIfExists('supervisors');
     }
 };
