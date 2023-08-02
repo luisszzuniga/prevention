@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('town', 35)->nullable();
             $table->rememberToken();
             $table->unsignedBigInteger('company_id')->nullable();
-            $table->unsignedBigInteger('trainer_id')->index('trainer_id')->nullable();
             $table->unsignedBigInteger('role_id')->default(3);
             $table->timestamps();
         });
