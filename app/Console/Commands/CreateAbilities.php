@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Ability;
 use App\Models\Role;
 use Illuminate\Console\Command;
+use Illuminate\Console\View\Components\TwoColumnDetail;
 use Illuminate\Support\Facades\DB;
 
 class CreateAbilities extends Command
@@ -73,11 +74,22 @@ class CreateAbilities extends Command
         $guestId = Role::where('name', CreateRoles::ROLES[4]['name'])->first()->id;
 
         foreach ($abilities[0] as $ability) {
-            DB::table('abilities')->insert([
-                'name' => $ability['name'],
-                'description' => $ability['description'],
-                'role_id' => $superAdminId
-            ]);
+            if (!Ability::where('name', $ability['name']->exists())) {
+                DB::table('abilities')->insert([
+                    'name' => $ability['name'],
+                    'description' => $ability['description'],
+                    'role_id' => $superAdminId
+                ]);
+                with(new TwoColumnDetail($this->getOutput()))->render(
+                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'],
+                    '<fg=yellow;options=bold>ADDED</>'
+                );
+            } else {
+                with(new TwoColumnDetail($this->getOutput()))->render(
+                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'],
+                    '<fg=red;options=bold>EXISTS</>'
+                );
+            }
         }
         return Command::SUCCESS;
     }

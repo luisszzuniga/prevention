@@ -1,14 +1,18 @@
 
 $(document).ready(function() {
     const images = ['road.jpg', 'truck.jpg'];
-    let imageUrl = '/img/default_gradient.png'; // image par défaut avec le gradient souhaité
+    const randomIndex = Math.floor(Math.random() * images.length);
+    let imageUrl = '/img/home/' + images[randomIndex];
+    const img = new Image();
+    img.src = imageUrl;
 
-    if (images.length > 0) {
-        const randomIndex = Math.floor(Math.random() * images.length);
-        imageUrl = '/img/home/' + images[randomIndex];
-    }
+    img.onload = function() {
+        $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,0.9344070391828606) 33%, rgba(47,62,80,0.46381880388874297) 100%), url(' + imageUrl + ')');
+    };
 
-    $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,0.9344070391828606) 33%, rgba(47,62,80,0.46381880388874297) 100%), url(' + imageUrl + ')');
+    img.onerror = function() {
+        $('.slider-height').css('background-image', 'linear-gradient(90deg, rgba(10,27,47,1) 0%, rgba(16,32,52,0.9344070391828606) 33%, rgba(47,62,80,0.46381880388874297) 100%)');
+    };
 });
 
 document.addEventListener('DOMContentLoaded', function() {
