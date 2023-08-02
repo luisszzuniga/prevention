@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('brand', 50)->nullable();
             $table->string('license_plate', 10)->nullable();
             $table->string('type', 20)->nullable();
-            $table->unsignedBigInteger('user_id_Learner');
+            $table->unsignedBigInteger('learner_id');
         });
     }
 
