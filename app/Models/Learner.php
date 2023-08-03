@@ -36,7 +36,7 @@ class Learner extends User
      */
     public function trainings(): BelongsToMany
     {
-        return $this->belongsToMany(Training::class, 'training_learner');
+        return $this->belongsToMany(Training::class, 'training_learner', 'learner_id', 'training_id');
     }
 
 }

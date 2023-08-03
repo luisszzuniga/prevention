@@ -67,19 +67,13 @@ class TrainingTest extends TestCase
      */
     public function test_a_learner_belongs_to_many_trainings()
     {
-        // Create a learner
         $learner = Learner::factory()->create();
-        echo 'Learner ID: ', $learner->user_id, PHP_EOL;  // Print the learner ID
 
-        // Create two trainings
         $trainings = Training::factory()->count(2)->create();
-        echo 'Training IDs: ', implode(', ', $trainings->pluck('id')->toArray()), PHP_EOL;  // Print the training IDs
 
-        // Attach the trainings to the learner
-        $learner->trainings()->attach($trainings);
+        $learner->trainings()->attach($trainings->pluck('id'));
 
-        // Assert the learner has the expected trainings
-        $this->assertEquals(2, $learner->trainings->count());
+        $this->assertCount(2, $learner->refresh()->trainings);
         $this->assertTrue($learner->trainings->contains($trainings[0]));
         $this->assertTrue($learner->trainings->contains($trainings[1]));
     }
@@ -91,10 +85,9 @@ class TrainingTest extends TestCase
      */
     public function test_trainingsTrainers_relation(): void
     {
-        $training = Training::factory()->create();
-        $trainer = Trainer::factory()->create(['training_id' => $training->id]);
+        $trainer = Trainer::factory()->create();
+        $training = Training::factory()->for($trainer)->create();
 
-        $this->assertInstanceOf(Trainer::class, $training->trainer);
         $this->assertEquals($trainer->id, $training->trainer->id);
     }
 
