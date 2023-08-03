@@ -19,7 +19,6 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
             'lastname' => fake()->lastName(),
             'firstname' => fake()->firstName(),
@@ -30,11 +29,11 @@ class UserFactory extends Factory
             'address' => fake()->text(50),
             'zip_code' => fake()->numberBetween(1, 99999),
             'town' => fake()->city(),
-            'company_id' => Company::factory(1)->create()->first()->getAttribute("id"),
-            'role_id' => Role::factory(1)->create()->first()->getAttribute("id")
+            'company_id' => Company::factory()->create()->id,
+            'role_id' => Role::factory()->create()->id
         ];
-
     }
+
 
     /**
      * Indicate that the model's email address should be unverified.
