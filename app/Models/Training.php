@@ -90,7 +90,7 @@ class Training extends Model
      */
     public function trainer(): BelongsTo
     {
-        return $this->belongsTo(Trainer::class,'user_id');
+        return $this->belongsTo(Trainer::class);
     }
 
     /**
@@ -100,7 +100,7 @@ class Training extends Model
      */
     public function learners(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'training_learner', 'training_id', 'learner_id');
+        return $this->belongsToMany(Learner::class, 'training_learner', 'training_id', 'learner_id');
     }
 
     /**

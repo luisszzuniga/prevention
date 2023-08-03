@@ -21,7 +21,6 @@ class TrainerFactory extends Factory
     {
         return [
             'user_id' => User::factory()->create()->id,
-            'training_id' => Training::factory()->create()->id,
         ];
     }
 }
