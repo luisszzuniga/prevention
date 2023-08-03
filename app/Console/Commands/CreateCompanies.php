@@ -12,6 +12,17 @@ use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class CreateCompanies extends Command
 {
+
+    const COMPANIES = [
+        [
+            'id' => 1,
+            'name' => 'Lery Technologies',
+            'address' => '1 rue de Paris',
+            'zip_code' => '35510',
+            'town' => ' Cesson Sévigné'
+        ],
+    ];
+
     /**
      * The name and signature of the console command.
      *
@@ -31,19 +42,11 @@ class CreateCompanies extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $companies = [
-            [
-                'id' => 1,
-                'name' => 'Lery Technologies',
-                'address' => '1 rue de Paris',
-                'zip_code' => '35510',
-                'town' => ' Cesson Sévigné'
-            ],
-        ];
+
         try {
-            foreach ($companies as $company) {
+            foreach (self::COMPANIES as $company) {
                 if (!Company::where('name', $company['name'])->exists()) {
                     DB::table('companies')->insert([
                         $company
@@ -66,6 +69,6 @@ class CreateCompanies extends Command
                 '<fg=red;options=bold>Failed to insert users</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

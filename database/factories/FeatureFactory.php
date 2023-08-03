@@ -4,9 +4,10 @@ namespace Database\Factories;
 
 use App\Models\Offer;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends Factory<Model>
  */
 class FeatureFactory extends Factory
 {
@@ -15,7 +16,7 @@ class FeatureFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
        $offerId = Offer::factory()->create()->first()->getAttribute('id');
 

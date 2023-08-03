@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Role
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string $description
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users
+ * @property-read Collection|User[] $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\RoleFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
@@ -20,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleName($value)
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
  */
@@ -44,10 +45,20 @@ class Role extends Model
     /**
      * Get the Users that belongs to the Role.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
+    }
+
+    /**
+     * Get the abilities that belongs to the Role.
+     *
+     * @return HasMany
+     */
+    public function abilities(): HasMany
+    {
+        return $this->hasMany(Ability::class);
     }
 }

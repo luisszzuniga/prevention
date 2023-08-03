@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-
 use App\Models\Center;
 use App\Models\Offer;
 use App\Models\User;
@@ -19,7 +18,7 @@ class TrainingFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'seance_code' => fake()->unique()->numberBetween(1, 1000),

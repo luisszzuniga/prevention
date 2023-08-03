@@ -14,6 +14,30 @@ class CreateFeatures extends Command
     const OFFER_BUSINESS = 2;
     const OFFER_ENTERPRISE = 3;
 
+    const FEATURES = [
+        [
+            'text' => 'Gérer les stagiaires',
+            'offer_id' => self::OFFER_PLUS,
+        ],
+        [
+            'text' => 'Saisir les informations',
+            'offer_id' => self::OFFER_PLUS,
+        ],
+        [
+            'text' => 'Données envoyées en interne',
+            'offer_id' => self::OFFER_BUSINESS,
+        ],
+        [
+            'text' => 'Données envoyées sur le LRS',
+            'offer_id' => self::OFFER_ENTERPRISE,
+        ],
+        [
+            'text' => 'Interface et gestion des données sur demande',
+            'offer_id' => self::OFFER_ENTERPRISE,
+        ],
+    ];
+
+
     /**
      * The name and signature of the console command.
      *
@@ -33,32 +57,11 @@ class CreateFeatures extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $features = [
-            [
-                'text' => 'Gérer les stagiaires',
-                'offer_id' => self::OFFER_PLUS
-            ],
-            [
-                'text' => 'Saisir les informations',
-                'offer_id' => self::OFFER_PLUS
-            ],
-            [
-                'text' => 'Données envoyées en interne',
-                'offer_id' => self::OFFER_BUSINESS
-            ],
-            [
-                'text' => 'Données envoyées sur le LRS',
-                'offer_id' => self::OFFER_ENTERPRISE
-            ],
-            [
-                'text' => 'interface et gestion des données sur demande',
-                'offer_id' => self::OFFER_ENTERPRISE
-            ],
-        ];
+
         try {
-            foreach ($features as $feature) {
+            foreach (self::FEATURES as $feature) {
                 if (!Feature::where('text', $feature['text'])->exists()) {
                     DB::table('features')->insert([
                         $feature
@@ -81,6 +84,6 @@ class CreateFeatures extends Command
                 '<fg=red;options=bold>Failed to insert features</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

@@ -31,7 +31,7 @@ class AuthController extends BaseController
 
             return $this->handleResponse($success, 'User logged-in!');
         } else {
-            return $this->handleError('Unauthorised.', ['error' => 'Unauthorised']);
+            return $this->handleError('Unauthorised.', ['error' => 'Unauthorised'])->setStatusCode(401);
         }
     }
 

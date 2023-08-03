@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Progress
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string|null $text
  * @property int $theme_id
- * @property-read \App\Models\Theme|null $themes
+ * @property-read Theme|null $themes
  * @method static \Database\Factories\ProgressFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Progress newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Progress newQuery()
@@ -19,7 +21,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Progress whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Progress whereText($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Progress whereThemeId($value)
- * @mixin \Eloquent
  */
 class Progress extends Model
 {
@@ -39,10 +40,11 @@ class Progress extends Model
     /**
      * Get the Theme that belongs to the Progress.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function themes(){
-
-        return $this->hasOne(Theme::class);
+    public function theme(): BelongsTo
+    {
+      return $this->belongsTo(Theme::class);
     }
+
 }

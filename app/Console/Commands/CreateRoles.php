@@ -64,6 +64,7 @@ class CreateRoles extends Command
                 '<fg=red;options=bold>Failed to insert roles</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }
+

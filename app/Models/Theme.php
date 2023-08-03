@@ -2,25 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Theme
  *
  * @property int $id
  * @property string $text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Criterion[] $criteria
+ * @property-read Collection|Criterion[] $criteria
  * @property-read int|null $criteria_count
- * @property-read \App\Models\Evaluation|null $evaluations
- * @property-read \App\Models\Progress|null $progress
+ * @property-read Evaluation|null $evaluations
+ * @property-read Progress|null $progress
  * @method static \Database\Factories\ThemeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme query()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Theme whereText($value)
- * @mixin \Eloquent
  */
 class Theme extends Model
 {
@@ -40,9 +42,9 @@ class Theme extends Model
     /**
      * Get the Criteria that belongs to the Theme.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function criteria()
+    public function criteria(): BelongsToMany
     {
         return $this->belongsToMany(Criterion::class);
     }
@@ -50,9 +52,9 @@ class Theme extends Model
     /**
      * Get the Evaluation that belongs to the Theme.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function evaluations()
+    public function evaluation(): HasOne
     {
         return $this->hasOne(Evaluation::class);
     }
@@ -60,9 +62,9 @@ class Theme extends Model
     /**
      * Get the Progress that belongs to the Theme.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return HasOne
      */
-    public function progress()
+    public function progress(): HasOne
     {
         return $this->hasOne(Progress::class);
     }

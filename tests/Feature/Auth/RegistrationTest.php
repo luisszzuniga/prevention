@@ -23,7 +23,7 @@ class RegistrationTest extends TestCase
             [
                 'id' => 1,
                 'name' => 'super-admin',
-                'code' => '0001',
+                'description' => 'Salarié Lery technologies. Peut ajouter, supprimer des clients et ajouter des domaines autorisés (nouveau client par exemple)'
             ];
         DB::table('roles')->insert([
             $role
@@ -35,9 +35,11 @@ class RegistrationTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'phone' => 'phone',
-            'address' => 'address'
+            'address' => 'address',
+            'zip_code' => '12345',
+            'town' => 'TownName',
         ]);
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $response->assertRedirect(RouteServiceProvider::DASHBOARD);
     }
 }

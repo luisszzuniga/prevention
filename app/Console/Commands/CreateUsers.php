@@ -89,6 +89,6 @@ class CreateUsers extends Command
             );
             return Command::FAILURE;
         }
-        return Command::SUCCESS;
+        return self::SUCCESS;
     }
 }

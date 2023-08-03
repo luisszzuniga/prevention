@@ -3,13 +3,9 @@
 namespace Database\Factories;
 
 
-use App\Models\Center;
-use App\Models\Model;
-use App\Models\Offer;
 use App\Models\Training;
-use App\Models\User;
-use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @extends Factory<Model>
@@ -21,7 +17,7 @@ class CourseFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         $trainingId = Training::factory()->create()->first()->getAttribute('id');
 

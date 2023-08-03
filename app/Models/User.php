@@ -7,6 +7,7 @@ use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
@@ -69,7 +70,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereZipCode($value)
  * @mixin Eloquent
  * @property int|null $trainer_id
- * @property-read Collection|\App\Models\Vehicle[] $vehicles
+ * @property-read Collection|Vehicle[] $vehicles
  * @property-read int|null $vehicles_count
  * @method static Builder|User whereTrainerId($value)
  */
@@ -113,43 +114,43 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the courses that the user is learner
+     * Get the trainings that the user is learner
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function coursesLearners()
+    public function trainingsLearners(): HasMany
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Training::class, 'user_id_learner');
     }
 
     /**
-     * Get the courses that the user is trainer
+     * Get the trainings that the user is trainer
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function coursesTrainers()
+    public function trainingsTrainers(): HasMany
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Training::class,'user_id_trainer');
     }
 
     /**
      * Get the company that the user belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function companies()
+    public function company(): BelongsTo
     {
-        return $this->hasOne(Company::class);
+        return $this->belongsTo(Company::class);
     }
 
     /**
      * Get the role that the user belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function roles()
+    public function role(): BelongsTo
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     /**
@@ -157,9 +158,9 @@ class User extends Authenticatable
      *
      * @return HasMany
      */
-    public function vehicles()
+    public function vehicles(): HasMany
     {
-        return $this->hasMany(Vehicle::class);
+        return $this->hasMany(Vehicle::class,'learner_id');
     }
 
 }

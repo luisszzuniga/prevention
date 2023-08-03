@@ -2,8 +2,10 @@
 
 namespace App\Interfaces;
 
+use Illuminate\Database\Eloquent\Collection;
+
 interface TrainingInterface
 {
-    public function getTrainings();
-
+    public function getTrainings(): Collection;
 }
+

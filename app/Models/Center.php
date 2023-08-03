@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Center
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $name
  * @property string|null $address
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
+ * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
  * @method static \Database\Factories\CenterFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Center newModelQuery()
@@ -20,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Center whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Center whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Center whereName($value)
- * @mixin \Eloquent
  */
 class Center extends Model
 {
@@ -40,10 +41,11 @@ class Center extends Model
     /**
      * The courses that belong to the center.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function courses(){
+    public function trainings(): HasMany
+    {
 
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Training::class);
     }
 }

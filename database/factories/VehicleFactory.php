@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @extends Factory<Model>
@@ -16,7 +16,7 @@ class VehicleFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         $learnerId = User::factory()->create()->first()->getAttribute('id');
 

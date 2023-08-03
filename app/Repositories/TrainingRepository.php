@@ -4,12 +4,20 @@ namespace App\Repositories;
 
 use App\Interfaces\TrainingInterface;
 use App\Models\Training;
+use Illuminate\Database\Eloquent\Collection;
 
 class TrainingRepository implements TrainingInterface
 {
-    public function getTrainings()
+    protected Training $training;
+
+    public function __construct(Training $training)
     {
-        return Training::all();
+        $this->training = $training;
+    }
+
+    public function getTrainings(): Collection
+    {
+        return $this->training->all();
     }
 
 }

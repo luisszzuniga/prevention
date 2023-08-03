@@ -2,8 +2,9 @@
 
 namespace App\Interfaces;
 
+use Illuminate\Database\Eloquent\Collection;
+
 interface CompanyInterface
 {
-    public function getCompanies();
-
+    public function getCompanies(): Collection;
 }
