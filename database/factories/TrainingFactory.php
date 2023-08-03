@@ -24,7 +24,6 @@ class TrainingFactory extends Factory
             'seance_code' => fake()->unique()->numberBetween(1, 1000),
             'offer_id' => Offer::factory(1)->create()->first(),
             'center_id' => Center::factory(1)->create()->first(),
-            'user_id_trainer' => User::factory(1)->create()->first()->getAttribute('id'),
             'date' => fake()->date()
         ];
     }

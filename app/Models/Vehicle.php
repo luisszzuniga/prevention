@@ -45,16 +45,16 @@ class Vehicle extends Model
         'brand',
         'license_plate',
         'type',
-        'user_id_Learner'
+        'learner_id'
     ];
 
     /**
-     * Get the user that the vehicle belongs to
+     * Get the learner that the vehicle belongs to
      *
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function learner(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id_Learner');
+        return $this->belongsTo(Learner::class);
     }
 }

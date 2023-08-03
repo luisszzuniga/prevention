@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+/**
+ * App\Models\Trainer
+ *
+ */
+class Trainer extends User
+{
+    use HasFactory;
+
+    /**
+     * The trainings that belong to the trainer.
+     */
+    public function trainings(): HasMany
+    {
+        return $this->hasMany(Training::class);
+    }
+
+    /**
+     * The learners that belong to the trainer.
+     */
+    public function learners(): BelongsToMany
+    {
+        return $this->belongsToMany(Learner::class);
+    }
+
+    /**
+     * The companies that belong to the trainer.
+     */
+    public function companies(): BelongsToMany
+    {
+        return $this->belongsToMany(Company::class, 'trainer_company');
+    }
+}

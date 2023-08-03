@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('supervisors', function (Blueprint $table) {
-            $table->bigInteger('id')->unsigned()->primary();
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->bigInteger('user_id')->unsigned()->primary();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
