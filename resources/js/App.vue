@@ -1,15 +1,13 @@
 <template>
     <v-app>
         <Navbar />
-        <v-main>
-        <v-row no-gutters>
-            <v-col cols="3">
-                <Sidebar />
-            </v-col>
-            <v-col cols="9">
-                <router-view />
-            </v-col>
-        </v-row>
+        <v-main class="main-background">
+            <v-row no-gutters>
+                    <Sidebar />
+                <v-col cols="12">
+                    <router-view />
+                </v-col>
+            </v-row>
         </v-main>
     </v-app>
 </template>
@@ -23,3 +21,9 @@ export default defineComponent({
     components: {TableHome, Sidebar, Navbar }
 })
 </script>
+
+<style scoped>
+.main-background {
+    background-color: #F5F5F5;
+}
+</style>

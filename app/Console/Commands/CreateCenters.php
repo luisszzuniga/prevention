@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class CreateCenters extends Command
 {
+    const CENTERS = [
+        ['id' => 1, 'name' => 'Lery technologies', 'address' => '1 Rue de Paris 35510, Cesson-Sévigné',]
+    ];
+
     /**
      * The name and signature of the console command.
      *
@@ -31,7 +35,30 @@ class CreateCenters extends Command
      */
     public function handle(): int
     {
-        $this->line('  <fg=yellow;options=bold>CENTERS :</> <fg=default>Nothing to add</>');
+        try {
+            foreach (self::CENTERS as $center) {
+                if (!Center::where('name', $center['name'])->exists()) {
+                    DB::table('centers')->insert([
+                        $center
+                    ]);
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>CENTER : </>' . $center['name'],
+                        '<fg=yellow;options=bold>ADDED</>'
+                    );
+                } else {
+                    with(new TwoColumnDetail($this->getOutput()))->render(
+                        '<fg=yellow;options=bold>CENTER : </>' . $center['name'],
+                        '<bg=red;options=bold>EXISTS</>'
+                    );
+                }
+            }
+        } catch (Exception $e) {
+
+            with(new TwoColumnDetail($this->getOutput()))->render(
+                '<fg=red;options=bold>Error: </>' . $e->getMessage(),
+                '<fg=red;options=bold>Failed to insert centers</>'
+            );
+        }
         return self::SUCCESS;
     }
 

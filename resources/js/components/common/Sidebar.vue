@@ -1,6 +1,17 @@
 <template>
-        <v-navigation-drawer app class="sidebar">
-            <v-list dense>
+    <v-app-bar-nav-icon
+        class="fixed-nav-icon"
+        color="white"
+        @click="drawer = !drawer"
+        v-if="!drawer"
+    ></v-app-bar-nav-icon>
+    <v-navigation-drawer
+        :model-value="drawer"
+        @update:model-value="drawer = $event"
+        app clipped
+        class="sidebar"
+    >
+        <v-list dense>
                 <v-list-item v-for="(link, i) in links" :key="i" class="link-item"
                              :class="{'link-item-active': link.active, 'link-item-inactive': !link.active}"
                              :to="link.route">
@@ -16,25 +27,47 @@
         </v-navigation-drawer>
 </template>
 
-
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const links = ref([
     { icon: 'mdi-view-dashboard', text: 'Dashboard', active: computed(() => route.path === '/dashboard'), route: '/dashboard' },
-    { icon: 'mdi-clock-outline', text: 'Sessions', active: computed(() => route.path === '/'), route: '/' },
-    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/' },
-    { icon: 'mdi-human-male-board', text: 'Formateurs', active: computed(() => route.path === '/'), route: '/' },
+    { icon: 'mdi-clock-outline', text: 'Sessions', active: computed(() => route.path === '/'), route: '/dashboard' },
+    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/dashboard' },
+    { icon: 'mdi-human-male-board', text: 'Formateurs', active: computed(() => route.path === '/'), route: '/dashboard' },
     { icon: 'mdi-account-group-outline', text: 'Stagiaires', active: computed(() => route.path === '/learner'), route: '/learner' },
     { icon: 'mdi-car', text: 'Véhicules', active: computed(() => route.path === '/vehicles'), route: '/vehicles' },
-    { icon: 'mdi-cog-outline', text: 'Paramètres', active: computed(() => route.path === '/'), route: '/' },
+    { icon: 'mdi-cog-outline', text: 'Paramètres', active: computed(() => route.path === '/'), route: '/dashboard' },
 ]);
+const drawer = ref(window.innerWidth > 1268);
+
+const updateDrawer = () => {
+    drawer.value = window.innerWidth > 1268;
+};
+
+onMounted(() => {
+    window.addEventListener('resize', updateDrawer);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('resize', updateDrawer);
+});
 
 </script>
 
 <style scoped>
+
+.fixed-nav-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 10px;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgba(17, 34, 61, 0.9);
+}
 
 .sidebar {
     background: #11223D;

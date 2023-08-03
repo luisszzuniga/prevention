@@ -1,26 +1,18 @@
 <template>
     <v-row>
-        <v-col>
-            <h3>Mes clients</h3>
-            <div class="scrollable-table">
-                <ListCompanies></ListCompanies>
-            </div>
+        <v-col cols="12" sm="12" md="6" lg="5">
+            <ListTrainings></ListTrainings>
+        </v-col>
+        <v-col cols="12" sm="12" md="6" lg="7">
+            <ListCompanies></ListCompanies>
         </v-col>
     </v-row>
     <v-row>
         <v-col>
-            <h3>Mes Formateurs</h3>
-            <div class="scrollable-table">
-                <ListTrainers></ListTrainers>
-            </div>
+            <ListTrainers></ListTrainers>
         </v-col>
-    </v-row>
-    <v-row>
         <v-col>
-            <h3>Mes Formations</h3>
-            <div class="scrollable-table">
-                <ListTrainings></ListTrainings>
-            </div>
+            <ListCenters></ListCenters>
         </v-col>
     </v-row>
 </template>
@@ -29,6 +21,7 @@
 import ListCompanies from "../ListCompanies.vue";
 import ListTrainers from "../ListTrainers.vue";
 import ListTrainings from "../ListTrainings.vue";
+import ListCenters from "../ListCenters.vue";
 </script>
 
 <style scoped>
