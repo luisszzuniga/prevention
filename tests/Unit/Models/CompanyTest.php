@@ -3,7 +3,6 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -12,32 +11,27 @@ class CompanyTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test fillable attributes.
+     * Test create company.
      *
      * @return void
      */
-    public function test_fillable_attributes(): void
+    public function test_can_create_company()
     {
-        $company = new Company([
+        $company = Company::create([
             'name' => 'Test Company',
+            'address' => '123 Test Street',
+            'zip_code' => '12345',
+            'town' => 'Test Town',
+            'contact' => 'Test Contact',
         ]);
 
-        $this->assertEquals('Test Company', $company->name);
-    }
-
-    /**
-     * Test users relation.
-     *
-     * @return void
-     */
-    public function test_users_relation(): void
-    {
-        $company = Company::factory()->create();
-        $user = User::factory()->create(['company_id' => $company->id]);
-
-        $this->assertInstanceOf(User::class, $company->users->first());
-        $this->assertEquals($user->id, $company->users->first()->id);
+        $this->assertDatabaseHas('companies', [
+            'name' => 'Test Company',
+            'address' => '123 Test Street',
+            'zip_code' => '12345',
+            'town' => 'Test Town',
+            'contact' => 'Test Contact',
+        ]);
     }
 
 }
-

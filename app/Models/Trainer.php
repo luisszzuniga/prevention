@@ -31,10 +31,10 @@ class Trainer extends User
     }
 
     /**
-     * The companies that belong to the trainer.
+     * The subclients that belong to the trainer.
      */
-    public function companies(): BelongsToMany
+    public function subclients(): BelongsToMany
     {
-        return $this->belongsToMany(Company::class, 'trainer_company');
+        return $this->belongsToMany(Subclient::class, 'trainer_subclient', 'trainer_id', 'subclient_id');
     }
 }

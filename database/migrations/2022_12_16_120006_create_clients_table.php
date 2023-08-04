@@ -12,13 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('trainer_company', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('user_id');
-            $table->primary(['company_id', 'user_id']);
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // assuming trainers are also users
-            $table->timestamps();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('trainer_company');
+        Schema::dropIfExists('clients');
     }
 };
