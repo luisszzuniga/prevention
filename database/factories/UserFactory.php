@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
@@ -29,11 +30,10 @@ class UserFactory extends Factory
             'address' => fake()->text(50),
             'zip_code' => fake()->numberBetween(1, 99999),
             'town' => fake()->city(),
-            'company_id' => Company::factory()->create()->id,
+            'client_id' => Client::factory()->create()->id,
             'role_id' => Role::factory()->create()->id
         ];
     }
-
 
     /**
      * Indicate that the model's email address should be unverified.

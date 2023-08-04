@@ -12,9 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('role_id')->references('id')->on('roles');
+        Schema::create('subclients', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
@@ -25,9 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_client_id_foreign');
-            $table->dropForeign('users_role_id_foreign');
-        });
+        Schema::dropIfExists('clients');
     }
 };

@@ -117,9 +117,9 @@ class User extends Authenticatable
      *
      * @return BelongsTo
      */
-    public function company(): BelongsTo
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Client::class);
     }
 
     /**
