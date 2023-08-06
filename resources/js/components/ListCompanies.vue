@@ -16,30 +16,24 @@
 </template>
 
 <script>
-
-import {defineComponent} from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import useCompanies from '../composables/companies';
-import {onMounted} from 'vue';
-
-const {companies, getCompanies} = useCompanies();
 
 export default defineComponent({
     name: "ListCompanies",
     setup() {
+        const { companies, getCompanies } = useCompanies();
+
         onMounted(getCompanies);
-        return {companies};
-    },
-    data() {
+
         return {
-            companies: companies.value
-        }
+            companies
+        };
     }
 });
-
 </script>
 
 <style scoped>
-
 table {
     width: 100%;
 }
