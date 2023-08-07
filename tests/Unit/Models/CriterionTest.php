@@ -20,10 +20,10 @@ class CriterionTest extends TestCase
     public function test_fillable_attributes(): void
     {
         $criterion = new Criterion([
-            'text' => 'Test Text',
+            'label' => 'Test Text',
         ]);
 
-        $this->assertEquals('Test Text', $criterion->text);
+        $this->assertEquals('Test Text', $criterion->label);
     }
 
     /**

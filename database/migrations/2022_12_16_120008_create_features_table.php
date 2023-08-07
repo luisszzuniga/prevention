@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->string('text', 50)->unique('text');
+            $table->string('label', 50)->unique('label');
             $table->unsignedBigInteger('offer_id');
         });
     }

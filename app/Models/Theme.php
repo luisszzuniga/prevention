@@ -32,7 +32,7 @@ class Theme extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text',
+        'label',
         'evaluation',
         'progress'
     ];

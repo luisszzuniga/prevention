@@ -2,8 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Company;
-use App\Models\Role;
 use App\Models\User;
 use Exception;
 use Illuminate\Console\Command;
@@ -13,8 +11,8 @@ use Illuminate\Support\Str;
 
 class CreateUsers extends Command
 {
-    const SUPER_ADMIN = 1;
-    const LERY_TECHNOLOGIES = 1;
+    const SUPER_ADMIN = CreateRoles::ROLE_SUPER_ADMIN;
+    const LERY_TECHNOLOGIES = CreateClients::LERY_TECHNOLOGIES;
 
     /**
      * The name and signature of the console command.
@@ -35,10 +33,8 @@ class CreateUsers extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $companyId = Company::whereId(self::LERY_TECHNOLOGIES)->first()->getAttribute('id');
-        $roleId = Role::whereId(self::SUPER_ADMIN)->first()->getAttribute('id');
         $users = [
             [
                 'firstname' => 'Stephane',
@@ -49,8 +45,8 @@ class CreateUsers extends Command
                 'address' => '9 SQ. du roi arthur',
                 'zip_code' => '35000',
                 'town' => 'Rennes',
-                'company_id' => $companyId,
-                'role_id' => $roleId
+                'client_id' => self::LERY_TECHNOLOGIES,
+                'role_id' => self::SUPER_ADMIN
             ],
             [
                 'firstname' => 'Maxime',
@@ -61,8 +57,8 @@ class CreateUsers extends Command
                 'address' => '19 la croix quinquis',
                 'zip_code' => '22290',
                 'town' => 'pleguien',
-                'company_id' => $companyId,
-                'role_id' => $roleId
+                'client_id' => self::LERY_TECHNOLOGIES,
+                'role_id' => self::SUPER_ADMIN
             ],
         ];
         try {

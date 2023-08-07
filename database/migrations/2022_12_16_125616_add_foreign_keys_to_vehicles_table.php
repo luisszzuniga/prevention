@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('vehicles', function (Blueprint $table) {
-            $table->foreign('learner_id')->references('user_id')->on('learners');
+            $table->foreign('learner_id')->references('id')->on('learners');
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('vehicles', function (Blueprint $table) {
-            $table->dropForeign('vehicles_user_id_Learner_foreign');
+            $table->dropForeign('vehicles_learner_id_foreign');
         });
     }
 };

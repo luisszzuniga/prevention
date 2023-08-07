@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * App\Models\Client
  *
  */
-class Client extends Company
+    class Client extends Company
 {
     use HasFactory;
+
+    protected $fillable = ['company_id'];
 
     /**
      * The users that belong to the company.
