@@ -7,12 +7,17 @@
 .auth {
     padding-left: 30px;
     padding-right: 40px;
-    width: 40%;
+    width: 35%;
     margin: 100px auto 200px auto; /* center horizontally */
     background-color: rgba(0, 8, 23, 0.8);
     border-radius: 10px;
     box-shadow: 0 50px 80px rgba(0, 0, 0, 0.8);
     padding-bottom: 15px;
+}
+
+.register{
+    width: 30%;
+
 }
 
 @media (max-width: 1000px) {
@@ -36,7 +41,7 @@
 
 .auth input {
     max-width: 100%;
-    font-size: 20px;
+    font-size: 18px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 8px;
