@@ -77,9 +77,9 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 
-import useLearners from '../composables/learners.ts'
+import useLearners from '../../composables/learners'
 import {reactive} from 'vue'
 
 const form = reactive({

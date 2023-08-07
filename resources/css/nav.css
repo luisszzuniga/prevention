@@ -18,7 +18,7 @@
 
 .header-area {
     background: #000c20;
-    padding-bottom: 5px;
+    /*padding-bottom: 5px;*/
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -72,6 +72,13 @@
 .header-area .header-top .header-info-right .header-social li a:hover {
     color: #f15f22
 }
+
+.logo {
+    width: 70px;
+    height: 100%;
+    margin-right: 15px;
+}
+
 .logo-container {
     display: inline-flex;
     align-items: center;
@@ -88,7 +95,7 @@
     font-weight: bold;
     font-size: 24px;
     line-height: 1px;
-    position: relative; /* Ajout de position relative */
+    position: relative;
     bottom: -6px;
 }
 
@@ -98,11 +105,10 @@
     line-height: 5px;
 }
 
-
-
 .main-header {
     position: relative;
-    z-index: 3
+    z-index: 3;
+    height: auto;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
@@ -117,8 +123,6 @@
     z-index: 1;
     margin-left: 5px;
 }
-
-
 
 .main-header .main-menu ul li a {
     color: #fff;
@@ -278,8 +282,10 @@
 .mobile_menu .slicknav_menu .slicknav_nav .slicknav_item a {
     padding: 0 !important
 }
-/* Header left right padding */
-.header-area .header-bottom {
+
+.header-bottom {
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 1199.98px) {
