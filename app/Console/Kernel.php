@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -15,12 +14,16 @@ class Kernel extends ConsoleKernel
 
     protected $commands = [
 
-        Commands\CreateUsers::class,
-        Commands\CreateCompanies::class,
+        Commands\CreateAbilities::class,
+        Commands\CreateCenters::class,
+        Commands\CreateClients::class,
         Commands\CreateCriteria::class,
+        Commands\CreateFeatures::class,
         Commands\CreateOffers::class,
         Commands\CreateRoles::class,
         Commands\CreateThemes::class,
+        Commands\CreateUsers::class,
+        Commands\LaunchData::class
     ];
 
     /**

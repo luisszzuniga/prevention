@@ -48,7 +48,6 @@ class Company extends Model
         'zip_code',
         'town',
         'contact',
-        'zip_code',
     ];
 
 }

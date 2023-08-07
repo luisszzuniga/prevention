@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\Client;
 use App\Models\Company;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -41,11 +42,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-
         $company = Company::create([
             'name' => $request->company_name,
         ]);
-        $user->company()->associate($company);
+        $client = Client::create([
+            'company_id' => $company->id,
+        ]);
+
+        $user->client()->associate($client);
         $user->save();
 
         event(new Registered($user));

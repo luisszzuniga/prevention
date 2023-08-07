@@ -19,10 +19,10 @@ class ThemeTest extends TestCase
     public function test_fillable_attributes(): void
     {
         $theme = new Theme([
-            'text' => 'Test Text',
+            'label' => 'Test Text',
         ]);
 
-        $this->assertEquals('Test Text', $theme->text);
+        $this->assertEquals('Test Text', $theme->label);
     }
 
     /**

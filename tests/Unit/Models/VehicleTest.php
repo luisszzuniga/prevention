@@ -41,7 +41,8 @@ class VehicleTest extends TestCase
      */
     public function test_learner_relation(): void
     {
-        $learner = Learner::factory()->create();
+        $user = User::factory()->create();
+        $learner = Learner::factory()->create(['user_id' => $user->id]);
         $vehicle = Vehicle::factory()->create(['learner_id' => $learner->id]);
 
         $this->assertInstanceOf(Learner::class, $vehicle->learner);

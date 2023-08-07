@@ -26,7 +26,7 @@ class CreateThemes extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->line('  <fg=yellow;options=bold>THEMES :</> <fg=default>Nothing to add</>');
         return self::SUCCESS;
