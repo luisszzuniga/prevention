@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('subclient_id');
             $table->unsignedBigInteger('trainer_id');
             $table->primary(['subclient_id', 'trainer_id']);
-            $table->foreign('subclient_id')->references('id')->on('subclients')->onDelete('cascade');
-            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade'); // assuming trainers are also users
+            $table->foreign('subclient_id')->references('id')->on('subclients')->name('subclient_id_trainer_subclient')->onDelete('cascade');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->name('tranier_id_trainer_subclient')->onDelete('cascade'); // assuming trainers are also users
             $table->timestamps();
         });
     }

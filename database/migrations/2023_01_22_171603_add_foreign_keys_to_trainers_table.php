@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('trainers', function (Blueprint $table) {
-            $table->foreign('user_id', 'trainers_users_id_foreign')->references('id')->on('users');
+            $table->foreign('user_id', 'trainers_users_id_foreign')->references('id')->on('users')->name('user_id_trainer');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('trainers', function (Blueprint $table) {
-            $table->dropForeign('trainers_users_id_foreign');
+//            $table->dropForeign('trainers_users_id_foreign');
         });
     }
 };

@@ -13,8 +13,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->foreign('grid_id')->references('id')->on('grids');
-            $table->foreign('training_id')->references('id')->on('trainings');
+            $table->foreign('grid_id')->references('id')->on('grids')->name('grid_id_courses');
+            $table->foreign('training_id')->references('id')->on('trainings')->name('training_id_courses');
         });
     }
 
@@ -26,8 +26,8 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('courses', function (Blueprint $table) {
-            $table->dropForeign('courses_grid_id_foreign');
-            $table->dropForeign('courses_training_id_foreign');
+//            $table->dropForeign('courses_grid_id_foreign');
+//            $table->dropForeign('courses_training_id_foreign');
         });
     }
 };

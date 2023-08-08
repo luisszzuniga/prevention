@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('trainer_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->name('user_id_of_trainer')->onDelete('cascade');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->name('trainer_id_learner');
             $table->timestamps();
         });
     }

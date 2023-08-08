@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned()->primary();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->name('user_id_supervisor')->onDelete('cascade');
         });
     }
 

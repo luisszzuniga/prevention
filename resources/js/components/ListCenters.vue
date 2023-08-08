@@ -54,7 +54,6 @@ const selectCenter = (index: number) => {
 }
 </script>
 
-
 <style scoped>
 .header {
     position: sticky;
