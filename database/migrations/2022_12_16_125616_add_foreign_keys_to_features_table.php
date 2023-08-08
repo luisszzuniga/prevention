@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('features', function (Blueprint $table) {
-            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('CASCADE');
+            $table->foreign('offer_id')->references('id')->on('offers')->name('offer_id_feature')->onDelete('CASCADE');
         });
     }
 
@@ -24,8 +24,8 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('features', function (Blueprint $table) {
-            $table->dropForeign('features_offer_id_foreign');
+/*        Schema::table('features', function (Blueprint $table) {
+            $table->dropForeign('offer_id_feature');
         });
-    }
+*/    }
 };

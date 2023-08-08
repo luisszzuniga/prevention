@@ -18,8 +18,8 @@ return new class extends Migration {
 
             $table->primary(['criterion_id', 'grid_id']);
 
-            $table->foreign('criterion_id')->references('id')->on('criteria')->onDelete('cascade');
-            $table->foreign('grid_id')->references('id')->on('grids')->onDelete('cascade');
+            $table->foreign('criterion_id')->references('id')->on('criteria')->name('criterion_id_criterion_grid')->onDelete('cascade');
+            $table->foreign('grid_id')->references('id')->on('grids')->name('grid_id_criterion_grid')->onDelete('cascade');
         });
     }
 
@@ -30,11 +30,11 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('grid_criterion', function (Blueprint $table) {
-            $table->dropForeign(['criterion_id']);
-            $table->dropForeign(['grid_id']);
+/*        Schema::table('grid_criterion', function (Blueprint $table) {
+            $table->dropForeign(['criterion_id_criterion_grid']);
+            $table->dropForeign(['grid_id_criterion_grid']);
         });
-
+*/
         Schema::dropIfExists('grid_criterion');
     }
 };
