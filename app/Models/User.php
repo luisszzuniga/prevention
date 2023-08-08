@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -114,33 +113,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the trainings that the user is learner
-     *
-     * @return HasMany
-     */
-    public function trainingsLearners(): HasMany
-    {
-        return $this->hasMany(Training::class, 'user_id_learner');
-    }
-
-    /**
-     * Get the trainings that the user is trainer
-     *
-     * @return HasMany
-     */
-    public function trainingsTrainers(): HasMany
-    {
-        return $this->hasMany(Training::class,'user_id_trainer');
-    }
-
-    /**
      * Get the company that the user belongs to
      *
      * @return BelongsTo
      */
-    public function company(): BelongsTo
+    public function client(): BelongsTo
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Client::class);
     }
 
     /**
@@ -151,16 +130,6 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
-    }
-
-    /**
-     * The vehicles that belong to the user.
-     *
-     * @return HasMany
-     */
-    public function vehicles(): HasMany
-    {
-        return $this->hasMany(Vehicle::class,'learner_id');
     }
 
 }

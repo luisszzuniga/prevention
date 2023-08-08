@@ -1,9 +1,9 @@
 <?php
 
-namespace Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Course;
-use App\Models\Criterion;
+use App\Models\Grid;
 use App\Models\Training;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -27,19 +27,17 @@ class CourseTest extends TestCase
     }
 
     /**
-     * Test criteria relation.
+     * Test grid relation.
      *
      * @return void
      */
-    public function test_criteria_relation(): void
+    public function test_grid_relation(): void
     {
-        $course = Course::factory()->create();
-        $criterion = Criterion::factory()->create();
+        $grid = Grid::factory()->create();
+        $course = Course::factory()->create(['grid_id' => $grid->id]);
 
-        $course->criteria()->attach($criterion->id);
-
-        $this->assertInstanceOf(Criterion::class, $course->criteria->first());
-        $this->assertEquals($criterion->id, $course->criteria->first()->id);
+        $this->assertInstanceOf(Grid::class, $course->grid);
+        $this->assertEquals($grid->id, $course->grid->id);
     }
 
     /**
@@ -49,8 +47,13 @@ class CourseTest extends TestCase
      */
     public function test_training_relation(): void
     {
+        $grid = Grid::factory()->create();
         $training = Training::factory()->create();
-        $course = Course::factory()->create(['training_id' => $training->id]);
+        $course = Course::factory()->create([
+            'training_id' => $training->id,
+            'grid_id' => $grid->id,
+            'observation' => 'Some observation'
+        ]);
 
         $this->assertInstanceOf(Training::class, $course->training);
         $this->assertEquals($training->id, $course->training->id);

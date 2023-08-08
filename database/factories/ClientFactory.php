@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Theme;
+use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Client>
  */
-class ProgressFactory extends Factory
+class ClientFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,7 @@ class ProgressFactory extends Factory
     public function definition(): array
     {
         return [
-            'text' => fake()->text,
-            'theme_id' => Theme::factory(1)->create()->first()->getAttribute("id"),
+            'company_id' => Company::factory()->create()->id,
         ];
     }
 }

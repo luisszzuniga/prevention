@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -26,8 +25,7 @@ return new class extends Migration
             $table->char('zip_code', 5)->nullable();
             $table->string('town', 35)->nullable();
             $table->rememberToken();
-            $table->unsignedBigInteger('company_id')->nullable();
-            $table->unsignedBigInteger('trainer_id')->index('trainer_id')->nullable();
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('role_id')->default(3);
             $table->timestamps();
         });

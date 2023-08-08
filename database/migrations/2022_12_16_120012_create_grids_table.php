@@ -12,8 +12,9 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('progress', function (Blueprint $table) {
-            $table->foreign(['theme_id'], 'FK_progress_themes')->references('id')->on('themes')->onDelete('CASCADE');
+        Schema::create('grids', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
         });
     }
 
@@ -24,8 +25,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('progress', function (Blueprint $table) {
-            $table->dropForeign('FK_progress_themes');
-        });
+        Schema::dropIfExists('grids');
     }
 };

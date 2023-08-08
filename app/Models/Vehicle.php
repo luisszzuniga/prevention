@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $brand
  * @property string|null $license_plate
  * @property string|null $type
- * @property int $learner_id
+ * @property int $user_id_Learner
  * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
  * @method static \Database\Factories\VehicleFactory factory(...$parameters)
@@ -49,12 +49,12 @@ class Vehicle extends Model
     ];
 
     /**
-     * Get the user that the vehicle belongs to
+     * Get the learner that the vehicle belongs to
      *
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function learner(): BelongsTo
     {
-        return $this->belongsTo(User::class,'learner_id');
+        return $this->belongsTo(Learner::class);
     }
 }

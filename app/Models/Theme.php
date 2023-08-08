@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * App\Models\Theme
@@ -15,8 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $text
  * @property-read Collection|Criterion[] $criteria
  * @property-read int|null $criteria_count
- * @property-read Evaluation|null $evaluations
- * @property-read Progress|null $progress
  * @method static \Database\Factories\ThemeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newQuery()
@@ -35,8 +32,9 @@ class Theme extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text'
-
+        'label',
+        'evaluation',
+        'progress'
     ];
 
     /**
@@ -46,28 +44,7 @@ class Theme extends Model
      */
     public function criteria(): BelongsToMany
     {
-        return $this->belongsToMany(Criterion::class);
+        return $this->belongsToMany(Criterion::class, 'criterion_theme', 'theme_id', 'criterion_id');
     }
-
-    /**
-     * Get the Evaluation that belongs to the Theme.
-     *
-     * @return HasOne
-     */
-    public function evaluation(): HasOne
-    {
-        return $this->hasOne(Evaluation::class);
-    }
-
-    /**
-     * Get the Progress that belongs to the Theme.
-     *
-     * @return HasOne
-     */
-    public function progress(): HasOne
-    {
-        return $this->hasOne(Progress::class);
-    }
-
 
 }

@@ -12,15 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('trainings', function (Blueprint $table) {
+        Schema::create('features', function (Blueprint $table) {
             $table->id();
-            $table->integer('seance_code')->nullable();
+            $table->string('label', 50)->unique('label');
             $table->unsignedBigInteger('offer_id');
-            $table->unsignedBigInteger('center_id');
-            $table->unsignedBigInteger('user_id_trainer')->index();
-            $table->unsignedBigInteger('user_id_learner')->index();
-            $table->date('date');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('features');
     }
 };

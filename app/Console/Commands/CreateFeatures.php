@@ -16,23 +16,23 @@ class CreateFeatures extends Command
 
     const FEATURES = [
         [
-            'text' => 'Gérer les stagiaires',
+            'label' => 'Gérer les stagiaires',
             'offer_id' => self::OFFER_PLUS,
         ],
         [
-            'text' => 'Saisir les informations',
+            'label' => 'Saisir les informations',
             'offer_id' => self::OFFER_PLUS,
         ],
         [
-            'text' => 'Données envoyées en interne',
+            'label' => 'Données envoyées en interne',
             'offer_id' => self::OFFER_BUSINESS,
         ],
         [
-            'text' => 'Données envoyées sur le LRS',
+            'label' => 'Données envoyées sur le LRS',
             'offer_id' => self::OFFER_ENTERPRISE,
         ],
         [
-            'text' => 'Interface et gestion des données sur demande',
+            'label' => 'Interface et gestion des données sur demande',
             'offer_id' => self::OFFER_ENTERPRISE,
         ],
     ];
@@ -62,17 +62,17 @@ class CreateFeatures extends Command
 
         try {
             foreach (self::FEATURES as $feature) {
-                if (!Feature::where('text', $feature['text'])->exists()) {
+                if (!Feature::where('label', $feature['label'])->exists()) {
                     DB::table('features')->insert([
                         $feature
                     ]);
                     with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['text'],
+                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['label'],
                         '<fg=yellow;options=bold>ADDED</>'
                     );
                 } else {
                     with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['text'],
+                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['label'],
                         '<bg=red;options=bold>EXISTS</>'
                     );
                 }

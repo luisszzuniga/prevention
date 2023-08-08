@@ -15,7 +15,11 @@ return new class extends Migration {
         Schema::create('criterion_theme', function (Blueprint $table) {
             $table->unsignedBigInteger('criterion_id');
             $table->unsignedBigInteger('theme_id');
+
             $table->primary(['criterion_id', 'theme_id']);
+
+            $table->foreign('criterion_id')->references('id')->on('criteria')->name('criterion_id_criterion_theme')->onDelete('cascade');
+            $table->foreign('theme_id')->references('id')->on('themes')->name('theme_id_criterion_theme')->onDelete('cascade');
         });
     }
 
@@ -26,6 +30,11 @@ return new class extends Migration {
      */
     public function down()
     {
+/*        Schema::table('criterion_theme', function (Blueprint $table) {
+            $table->dropForeign(['criterion_id']);
+            $table->dropForeign(['theme_id']);
+        });
+*/
         Schema::dropIfExists('criterion_theme');
     }
 };

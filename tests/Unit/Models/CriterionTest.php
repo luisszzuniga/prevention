@@ -1,9 +1,9 @@
 <?php
 
-namespace Models;
+namespace Tests\Unit\Models;
 
-use App\Models\Course;
 use App\Models\Criterion;
+use App\Models\Grid;
 use App\Models\Theme;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -20,26 +20,26 @@ class CriterionTest extends TestCase
     public function test_fillable_attributes(): void
     {
         $criterion = new Criterion([
-            'text' => 'Test Text',
+            'label' => 'Test Text',
         ]);
 
-        $this->assertEquals('Test Text', $criterion->text);
+        $this->assertEquals('Test Text', $criterion->label);
     }
 
     /**
-     * Test courses relation.
+     * Test grids relation.
      *
      * @return void
      */
-    public function test_courses_relation(): void
+    public function test_grids_relation(): void
     {
         $criterion = Criterion::factory()->create();
-        $course = Course::factory()->create();
+        $grid = Grid::factory()->create();
 
-        $criterion->courses()->attach($course->id);
+        $criterion->grids()->attach($grid->id);
 
-        $this->assertInstanceOf(Course::class, $criterion->courses->first());
-        $this->assertEquals($course->id, $criterion->courses->first()->id);
+        $this->assertInstanceOf(Grid::class, $criterion->grids->first());
+        $this->assertEquals($grid->id, $criterion->grids->first()->id);
     }
 
     /**
@@ -50,12 +50,12 @@ class CriterionTest extends TestCase
     public function test_themes_relation(): void
     {
         $criterion = Criterion::factory()->create();
-        $theme = Theme::factory()->create();
+        $themes = Theme::factory()->count(3)->create();
 
-        $criterion->themes()->attach($theme->id);
+        $criterion->themes()->attach($themes);
 
+        $this->assertEquals(3, $criterion->themes->count());
         $this->assertInstanceOf(Theme::class, $criterion->themes->first());
-        $this->assertEquals($theme->id, $criterion->themes->first()->id);
     }
 
 }

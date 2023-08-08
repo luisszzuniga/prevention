@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,10 +13,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('evaluations', function (Blueprint $table) {
-            $table->id();
-            $table->integer('note');
-            $table->unsignedBigInteger('theme_id')->unique('theme_id');
+        Schema::table('trainers', function (Blueprint $table) {
+            $table->foreign('user_id', 'trainers_users_id_foreign')->references('id')->on('users')->name('user_id_trainer');
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('evaluations');
+        Schema::table('trainers', function (Blueprint $table) {
+//            $table->dropForeign('trainers_users_id_foreign');
+        });
     }
 };

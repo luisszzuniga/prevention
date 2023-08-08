@@ -12,9 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('course_criterion', function (Blueprint $table) {
-            $table->foreign('criterion_id')->references('id')->on('criteria')->onDelete('CASCADE');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('CASCADE');
+        Schema::create('subclients', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->name('company_id_subclient')->onDelete('cascade');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::drop('course_criterion');
+        Schema::dropIfExists('subclients');
     }
 };

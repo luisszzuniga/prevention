@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,12 +13,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('course_criterion', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('criterion_id');
-            $table->primary(['course_id', 'criterion_id']);
+        Schema::create('supervisors', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->primary();
+            $table->foreign('user_id')->references('id')->on('users')->name('user_id_supervisor')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -26,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('course_criterion');
+        Schema::dropIfExists('supervisors');
     }
 };

@@ -13,10 +13,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('trainings', function (Blueprint $table) {
-            $table->foreign(['center_id'], 'FK_trainings_centers')->references('id')->on('centers')->onDelete('CASCADE');
-            $table->foreign(['user_id_learner'], 'FK_trainings_users_learner')->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreign(['offer_id'], 'FK_offers_trainings')->references('id')->on('offers')->onDelete('CASCADE');
-            $table->foreign(['user_id_trainer'], 'FK_trainings_users_trainer')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('offer_id')->references('id')->on('offers')->name('offer_id_training')->onDelete('CASCADE');
+            $table->foreign('center_id')->references('id')->on('centers')->name('center_id_training')->onDelete('CASCADE');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->name('trainer_id_training')->onDelete('CASCADE');
         });
     }
 
@@ -27,11 +26,10 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('trainings', function (Blueprint $table) {
-            $table->dropForeign('FK_trainings_centers');
-            $table->dropForeign('FK_trainings_users_learner');
-            $table->dropForeign('FK_offers_trainings');
-            $table->dropForeign('FK_trainings_users_trainer');
+/*        Schema::table('trainings', function (Blueprint $table) {
+            $table->dropForeign('trainings_offer_id_foreign');
+            $table->dropForeign('trainings_center_id_foreign');
+            $table->dropForeign('trainings_trainer_id_foreign');
         });
-    }
+*/    }
 };

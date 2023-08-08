@@ -12,10 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('progress', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->text('text')->nullable();
-            $table->unsignedBigInteger('theme_id')->unique('theme_id');
+            $table->text('observation')->nullable();
+            $table->unsignedBigInteger('training_id');
+            $table->unsignedBigInteger('grid_id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('progress');
+        Schema::dropIfExists('courses');
     }
 };

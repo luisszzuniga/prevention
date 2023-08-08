@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Theme;
+use App\Models\Grid;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Grid>
  */
-class EvaluationFactory extends Factory
+class GridFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,9 +18,7 @@ class EvaluationFactory extends Factory
     public function definition(): array
     {
         return [
-            'note' => fake()->numberBetween(1, 10),
-            'theme_id' => Theme::factory(1)->create()->first()->getAttribute("id"),
-
+            'name' => $this->faker->word(),
         ];
     }
 }

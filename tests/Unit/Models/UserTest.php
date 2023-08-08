@@ -1,13 +1,16 @@
 <?php
 
-namespace Models;
+namespace Tests\Unit\Models;
 
+use App\Models\Client;
 use App\Models\Company;
+use App\Models\Learner;
 use App\Models\Role;
 use App\Models\Training;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -39,73 +42,31 @@ class UserTest extends TestCase
     }
 
     /**
-     * Test trainingsLearners relation.
+     * Test user-client relationship.
      *
      * @return void
      */
-    public function test_trainings_learners_relation(): void
+    public function test_user_has_client(): void
     {
-        $user = User::factory()->create();
-        Training::factory()->count(3)->create(['user_id_learner' => $user->id]);
+        $client = Client::factory()->create();
+        $user = User::factory()->create(['client_id' => $client->id]);
 
-        $this->assertEquals(3, $user->trainingsLearners->count());
-        $this->assertInstanceOf(Training::class, $user->trainingsLearners->first());
+        $this->assertInstanceOf(Client::class, $user->client);
+        $this->assertEquals($client->id, $user->client->id);
     }
 
     /**
-     * Test trainingsTrainers relation.
+     * Test user-role relationship.
      *
      * @return void
      */
-    public function test_trainings_trainers_relation(): void
-    {
-        $user = User::factory()->create();
-        Training::factory()->count(3)->create(['user_id_trainer' => $user->id]);
-
-        $this->assertEquals(3, $user->trainingsTrainers->count());
-        $this->assertInstanceOf(Training::class, $user->trainingsTrainers->first());
-    }
-
-    /**
-     * Test company relation.
-     *
-     * @return void
-     */
-    public function test_company_relation(): void
-    {
-        $company = Company::factory()->create();
-        $user = User::factory()->create(['company_id' => $company->id]);
-
-        $this->assertInstanceOf(Company::class, $user->company);
-        $this->assertEquals($company->id, $user->company->id);
-    }
-
-    /**
-     * Test roles relation.
-     *
-     * @return void
-     */
-    public function test_roles_relation(): void
+    public function test_user_has_role(): void
     {
         $role = Role::factory()->create();
         $user = User::factory()->create(['role_id' => $role->id]);
 
         $this->assertInstanceOf(Role::class, $user->role);
         $this->assertEquals($role->id, $user->role->id);
-    }
-
-    /**
-     * Test vehicles relation.
-     *
-     * @return void
-     */
-    public function test_vehicles_relation(): void
-    {
-        $user = User::factory()->create();
-        Vehicle::factory()->count(3)->create(['learner_id' => $user->id]);
-
-        $this->assertEquals(3, $user->vehicles->count());
-        $this->assertInstanceOf(Vehicle::class, $user->vehicles->first());
     }
 
 }
