@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,14 +13,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('themes', function (Blueprint $table) {
-            $table->id();
-            $table->text('label')->unique();
-            $table->tinyInteger('evaluation');
-            $table->text('progress');
-            $table->timestamps();
+        Schema::create('supervisors', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->primary();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::dropIfExists('supervisors');
     }
 };

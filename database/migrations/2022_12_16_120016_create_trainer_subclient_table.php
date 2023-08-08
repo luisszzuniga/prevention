@@ -12,13 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('trainings', function (Blueprint $table) {
-            $table->id();
-            $table->integer('seance_code')->nullable();
-            $table->unsignedBigInteger('offer_id');
-            $table->unsignedBigInteger('center_id');
+        Schema::create('trainer_subclient', function (Blueprint $table) {
+            $table->unsignedBigInteger('subclient_id');
             $table->unsignedBigInteger('trainer_id');
-            $table->date('date');
+            $table->primary(['subclient_id', 'trainer_id']);
+            $table->foreign('subclient_id')->references('id')->on('subclients')->onDelete('cascade');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade'); // assuming trainers are also users
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('trainer_subclient');
     }
 };

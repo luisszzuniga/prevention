@@ -2,13 +2,15 @@
 
 namespace Database\Factories;
 
+use App\Models\Trainer;
+use App\Models\Training;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Trainer>
  */
-class CriterionFactory extends Factory
+class TrainerFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +20,7 @@ class CriterionFactory extends Factory
     public function definition(): array
     {
         return [
-            'label'=> fake()->text()
+            'user_id' => User::factory()->create()->id,
         ];
     }
 }

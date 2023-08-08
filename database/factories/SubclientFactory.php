@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
+use App\Models\Subclient;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<Subclient>
  */
-class CriterionFactory extends Factory
+class SubclientFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +19,7 @@ class CriterionFactory extends Factory
     public function definition(): array
     {
         return [
-            'label'=> fake()->text()
+            'company_id' => Company::factory()->create()->id,
         ];
     }
 }

@@ -12,12 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('themes', function (Blueprint $table) {
+        Schema::create('subclients', function (Blueprint $table) {
             $table->id();
-            $table->text('label')->unique();
-            $table->tinyInteger('evaluation');
-            $table->text('progress');
-            $table->timestamps();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('themes');
+        Schema::dropIfExists('subclients');
     }
 };

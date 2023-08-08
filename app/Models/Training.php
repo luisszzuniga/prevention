@@ -60,8 +60,7 @@ class Training extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'seance_code',
-        'user_id_trainer'
+        'seance_code'
     ];
 
     /**
@@ -91,7 +90,7 @@ class Training extends Model
      */
     public function trainer(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id_trainer');
+        return $this->belongsTo(Trainer::class);
     }
 
     /**
@@ -101,7 +100,7 @@ class Training extends Model
      */
     public function learners(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'course_learner', 'training_id', 'user_id_learner');
+        return $this->belongsToMany(Learner::class, 'training_learner', 'training_id', 'learner_id');
     }
 
     /**

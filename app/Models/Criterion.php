@@ -43,7 +43,7 @@ class Criterion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text',
+        'label',
     ];
 
     /**

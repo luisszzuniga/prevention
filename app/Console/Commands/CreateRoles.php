@@ -7,16 +7,20 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\View\Components\TwoColumnDetail;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CreateRoles extends Command
 {
+    const ROLE_SUPER_ADMIN = 1;
+    const ROLE_MANAGER = 2;
+    const ROLE_ADMIN = 3;
+    const ROLE_INSTRUCTOR = 4;
+    const ROLE_GUEST = 5;
     const ROLES = [
-        ['id' => 1, 'name' => 'super-admin', 'description' => 'Salarié Lery technologies. Peut ajouter, supprimer des clients et ajouter des domaines autorisés (nouveau client par exemple)',],
-        ['id' => 2, 'name' => 'manager', 'description' => 'Accès aux pages statistiques globales, factures et contrats',],
-        ['id' => 3, 'name' => 'admin', 'description' => 'Salarié de l\'entreprise de formation. Peut voir et ajouter des formateurs',],
-        ['id' => 4, 'name' => 'instructor', 'description' => 'Peut ajouter des leçons et des apprenants',],
-        ['id' => 5, 'name' => 'guest', 'description' => 'Peut avoir accès aux informations de ses stages. C\'est par exemple un apprenant',],
+        ['id' => self::ROLE_SUPER_ADMIN, 'name' => 'super-admin', 'description' => 'Salarié Lery technologies. Peut ajouter, supprimer des clients et ajouter des domaines autorisés (nouveau client par exemple)',],
+        ['id' => self::ROLE_MANAGER, 'name' => 'manager', 'description' => 'Accès aux pages statistiques globales, factures et contrats',],
+        ['id' => self::ROLE_ADMIN, 'name' => 'admin', 'description' => 'Salarié de l\'entreprise de formation. Peut voir et ajouter des formateurs',],
+        ['id' => self::ROLE_INSTRUCTOR, 'name' => 'instructor', 'description' => 'Peut ajouter des leçons et des apprenants',],
+        ['id' => self::ROLE_GUEST, 'name' => 'guest', 'description' => 'Peut avoir accès aux informations de ses stages. C\'est par exemple un apprenant',],
     ];
 
     /**
@@ -38,7 +42,7 @@ class CreateRoles extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         try {
             foreach (self::ROLES as $role) {

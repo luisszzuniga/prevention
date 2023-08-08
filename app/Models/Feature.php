@@ -34,7 +34,7 @@ class Feature extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text'
+        'label'
     ];
 
     /**

@@ -12,7 +12,7 @@ class CreateUsersTest extends TestCase
 
     public function testCreateUsersCommand()
     {
-        Artisan::call('create:companies');
+        Artisan::call('create:clients');
         Artisan::call('create:roles');
 
         $this->artisan('create:users')
@@ -27,7 +27,7 @@ class CreateUsersTest extends TestCase
 
     public function testUserExists()
     {
-        Artisan::call('create:companies');
+        Artisan::call('create:clients');
         Artisan::call('create:roles');
         Artisan::call('create:users');
         Artisan::call('create:users');

@@ -15,7 +15,7 @@ class LaunchDataTest extends TestCase
             ->assertExitCode(0);
 
         $this->assertDatabaseCount('roles', 5);
-        $this->assertDatabaseCount('companies', 1);
+        $this->assertDatabaseCount('clients', 1);
         $this->assertDatabaseCount('users', 2);
         $this->assertDatabaseCount('offers', 3);
         $this->assertDatabaseCount('features', 5);
