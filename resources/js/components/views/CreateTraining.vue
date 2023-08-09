@@ -9,21 +9,11 @@
             <v-col cols="12">
                 <v-form ref="form">
                     <v-text-field label="Client" v-model="entreprise" required></v-text-field>
-                    <v-date-picker label="Date" v-model="date" required></v-date-picker>
-                    <v-text-field label="Liste de stagiaires" v-model="stagiaires" required></v-text-field>
-                    <v-select
-                        :items="centres"
-                        label="Centre de formation"
-                        v-model="centre"
-                        required
-                    ></v-select>
-                    <v-text-field label="Offre" v-model="offre" readonly></v-text-field>
-                    <v-select
-                        :items="grilles"
-                        label="Grille de notation"
-                        v-model="grille"
-                        required
-                    ></v-select>
+
+                    <v-text-field label="Nom de la formation" v-model="nomFormation" required></v-text-field>
+
+                    <v-date-picker label="Date de formation" v-model="dateFormation" required></v-date-picker>
+
                     <v-btn @click="submitForm">Créer la session</v-btn>
                 </v-form>
             </v-col>
@@ -35,13 +25,8 @@
 import { ref } from 'vue';
 
 const entreprise = ref('');
-const date = ref('');
-const stagiaires = ref('');
-const centres = ref(['Centre 1', 'Centre 2', 'Centre 3']); // Mettez ici la liste de vos centres
-const centre = ref('');
-const offre = ref('Offre Business');
-const grilles = ref(['Grille 1', 'Grille 2', 'Grille 3']); // Mettez ici la liste de vos grilles de notation
-const grille = ref('');
+const nomFormation = ref(''); // Champ pour le nom de la formation
+const dateFormation = ref(''); // Calendrier pour choisir une date de formation
 
 const submitForm = () => {
     // Logique de soumission du formulaire
