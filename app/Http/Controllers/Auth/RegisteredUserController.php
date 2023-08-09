@@ -58,8 +58,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        Mail::to($user)
-            ->send(new WelcomeMail($user));
+//        Mail::to($user)
+//            ->send(new WelcomeMail($user));
 
         return redirect(RouteServiceProvider::DASHBOARD);
     }
