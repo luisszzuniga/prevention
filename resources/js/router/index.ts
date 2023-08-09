@@ -3,8 +3,8 @@ import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Vehicles from '@/components/views/Vehicles.vue'
 import Learner from '@/components/views/Learner.vue'
 import Dashboard from '@/components/views/Dashboard.vue'
-import Course from '@/components/views/Course.vue'
-import CreateCourse from '@/components/views/CreateCourse.vue'
+import Training from '@/components/views/Training.vue'
+import CreateTraining from '@/components/views/CreateTraining.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -23,14 +23,14 @@ const routes: Array<RouteRecordRaw> = [
         component: Dashboard
     },
     {
-        path: '/course',
-        name: 'course',
-        component: Course
+        path: '/training',
+        name: 'training',
+        component: Training
     },
     {
-        path: '/create-course',
-        name: 'create-course',
-        component: CreateCourse
+        path: '/create-training',
+        name: 'create-training',
+        component: CreateTraining
     },
 
 ];

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
@@ -19,7 +20,6 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
             'lastname' => fake()->lastName(),
             'firstname' => fake()->firstName(),
@@ -30,10 +30,9 @@ class UserFactory extends Factory
             'address' => fake()->text(50),
             'zip_code' => fake()->numberBetween(1, 99999),
             'town' => fake()->city(),
-            'company_id' => Company::factory(1)->create()->first()->getAttribute("id"),
-            'role_id' => Role::factory(1)->create()->first()->getAttribute("id")
+            'client_id' => Client::factory()->create()->id,
+            'role_id' => Role::factory()->create()->id
         ];
-
     }
 
     /**

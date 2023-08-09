@@ -5,10 +5,13 @@ namespace Tests\Unit\Models;
 use App\Models\Center;
 use App\Models\Course;
 use App\Models\Grid;
+use App\Models\Learner;
 use App\Models\Offer;
+use App\Models\Trainer;
 use App\Models\Training;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Log;
 use Tests\TestCase;
 
 class TrainingTest extends TestCase
@@ -58,22 +61,21 @@ class TrainingTest extends TestCase
     }
 
     /**
-     * Test trainingsLearners relation.
+     * Test learners relation.
      *
      * @return void
      */
-    public function test_trainingsLearners_relation(): void
+    public function test_a_learner_belongs_to_many_trainings()
     {
-        $training = Training::factory()->create();
-        $users = User::factory()->count(3)->create();
+        $learner = Learner::factory()->create();
 
-        foreach ($users as $user) {
-            $training->learners()->attach($user->id);
-        }
+        $trainings = Training::factory()->count(2)->create();
 
-        foreach ($users as $user) {
-            $this->assertContains($user->id, $training->learners->pluck('id')->toArray());
-        }
+        $learner->trainings()->attach($trainings->pluck('id'));
+
+        $this->assertCount(2, $learner->refresh()->trainings);
+        $this->assertTrue($learner->trainings->contains($trainings[0]));
+        $this->assertTrue($learner->trainings->contains($trainings[1]));
     }
 
     /**
@@ -83,11 +85,10 @@ class TrainingTest extends TestCase
      */
     public function test_trainingsTrainers_relation(): void
     {
-        $user = User::factory()->create();
-        $training = Training::factory()->create(['user_id_trainer' => $user->id]);
+        $trainer = Trainer::factory()->create();
+        $training = Training::factory()->for($trainer)->create();
 
-        $this->assertInstanceOf(User::class, $training->trainer);
-        $this->assertEquals($user->id, $training->trainer->id);
+        $this->assertEquals($trainer->id, $training->trainer->id);
     }
 
     /**

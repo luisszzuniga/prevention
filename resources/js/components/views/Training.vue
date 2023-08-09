@@ -8,7 +8,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const createCourse = () => {
-    router.push({ name: 'create-course' });
+    router.push({ name: 'create-training' });
 };
 </script>
 

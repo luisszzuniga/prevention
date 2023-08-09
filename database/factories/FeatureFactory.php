@@ -21,8 +21,8 @@ class FeatureFactory extends Factory
        $offerId = Offer::factory()->create()->first()->getAttribute('id');
 
         return [
-            'text'=> fake()->realTextBetween(1, 50),
-                'offer_id' => $offerId
+            'label' => fake()->realTextBetween(1, 50),
+            'offer_id' => $offerId
         ];
     }
 }

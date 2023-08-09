@@ -18,7 +18,7 @@ class ThemeFactory extends Factory
     public function definition(): array
     {
         return [
-            'text' => $this->faker->sentence(),
+            'label' => $this->faker->sentence(),
             'evaluation' => $this->faker->randomDigit(),
             'progress' => $this->faker->word(),
         ];

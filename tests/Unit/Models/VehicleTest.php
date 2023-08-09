@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Learner;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,28 +24,29 @@ class VehicleTest extends TestCase
             'brand' => 'Toyota',
             'license_plate' => '123ABC',
             'type' => 'Sedan',
-            'user_id_Learner' => 1,
+            'learner_id' => 1,
         ]);
 
         $this->assertEquals('Car', $vehicle->name);
         $this->assertEquals('Toyota', $vehicle->brand);
         $this->assertEquals('123ABC', $vehicle->license_plate);
         $this->assertEquals('Sedan', $vehicle->type);
-        $this->assertEquals(1, $vehicle->user_id_Learner);
+        $this->assertEquals(1, $vehicle->learner_id);
     }
 
     /**
-     * Test user relation.
+     * Test learner relation.
      *
      * @return void
      */
-    public function test_user_relation(): void
+    public function test_learner_relation(): void
     {
         $user = User::factory()->create();
-        $vehicle = Vehicle::factory()->create(['user_id_Learner' => $user->id]);
+        $learner = Learner::factory()->create(['user_id' => $user->id]);
+        $vehicle = Vehicle::factory()->create(['learner_id' => $learner->id]);
 
-        $this->assertInstanceOf(User::class, $vehicle->user);
-        $this->assertEquals($user->id, $vehicle->user->id);
+        $this->assertInstanceOf(Learner::class, $vehicle->learner);
+        $this->assertEquals($learner->id, $vehicle->learner->id);
     }
 
 }

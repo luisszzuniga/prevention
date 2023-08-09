@@ -23,7 +23,6 @@ class CompanyFactory extends Factory
             'address' => fake()->address(),
             'zip_code' => fake()->randomNumber(5),
             'town' => fake()->city()
-
         ];
     }
 }

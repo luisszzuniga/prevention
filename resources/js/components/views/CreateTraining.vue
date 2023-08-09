@@ -8,7 +8,7 @@
         <v-row>
             <v-col cols="12">
                 <v-form ref="form">
-                    <v-text-field label="Entreprise" v-model="entreprise" required></v-text-field>
+                    <v-text-field label="Client" v-model="entreprise" required></v-text-field>
                     <v-date-picker label="Date" v-model="date" required></v-date-picker>
                     <v-text-field label="Liste de stagiaires" v-model="stagiaires" required></v-text-field>
                     <v-select

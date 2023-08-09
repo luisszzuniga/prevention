@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->integer('seance_code')->nullable();
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('center_id');
-            $table->unsignedBigInteger('user_id_trainer')->index();
+            $table->unsignedBigInteger('trainer_id');
             $table->date('date');
             $table->timestamps();
         });
