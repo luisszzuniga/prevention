@@ -5,10 +5,11 @@
                 <a href="/">
                     <v-img
                         class="mx-2"
-                        src="/img/nav/lery-logo-web.png"
-                        alt="Logo"
-                        height="70"
-                        contain
+                        :src="logo"
+                    alt="Logo lery technologies"
+                    height="70"
+                        width="70"
+                    contain
                     />
                 </a>
             </v-col>
@@ -21,15 +22,22 @@
             </v-col>
             <v-spacer></v-spacer>
             <v-btn icon class="user">
-                <img src="/img/nav/user.png" alt="user" style="height: 32px; width: 32px;">
+                <img :src="user" alt="user" style="height: 32px; width: 32px;">
             </v-btn>
         </v-row>
     </v-app-bar>
 </template>
 
 <script>
+import logo from '../../images/nav/lery-logo-web.png';
+import user from '../../images/nav/user.png';
 export default {
-    name: "Navbar"
+    data() {
+        return {
+            logo: logo,
+            user: user
+        }
+    }
 }
 </script>
 

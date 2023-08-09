@@ -105,7 +105,7 @@
                     <a href="{{ route('offers') }}">
                     <div class="single-cat text-center mb-50" id="cat-1">
                         <div class="cat-icon">
-                            <img src="{{ asset('img/home/services/computer.png') }}" class="services-logo" id="computer">
+                            <img src="{{ asset('images/home/services/computer.png') }}" class="services-logo" id="computer">
                         </div>
                         <div class="cat-cap">
                             <h5>{{__('home.service_1_title') }}</h5>
@@ -124,7 +124,7 @@
                     <a href="{{ route('offers') }}">
                     <div class="single-cat text-center mb-50" id="cat-2">
                         <div class="cat-icon">
-                            <img src="{{ asset('img/home/services/database.png') }}" class="services-logo" id="database">
+                            <img src="{{ asset('images/home/services/database.png') }}" class="services-logo" id="database">
                         </div>
                         <div class="cat-cap">
                             <h5>{{__('home.service_2_title') }}</h5>
@@ -137,7 +137,7 @@
                     <a href="{{ route('offers') }}">
                     <div class="single-cat text-center mb-50" id="cat-3">
                         <div class="cat-icon">
-                           <img src="{{ asset('img/home/services/dashcam.png') }}" class="services-logo" id="dashcam">
+                           <img src="{{ asset('images/home/services/dashcam.png') }}" class="services-logo" id="dashcam">
                         </div>
                         <div class="cat-cap">
                             <h5>{{__('home.service_3_title') }}</h5>
