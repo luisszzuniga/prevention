@@ -14,7 +14,6 @@ export default defineConfig({
                 'resources/js/layout/main.js',
                 'resources/css/style.css',
                 'resources/css/layout/slicknav.css',
-                'resources/css/layout/slick.css',
                 'resources/css/style.css',
                 'resources/css/app.css',
                 'resources/css/contact.css',
