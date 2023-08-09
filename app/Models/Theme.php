@@ -2,25 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * App\Models\Theme
  *
  * @property int $id
  * @property string $text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Criterion[] $criteria
+ * @property-read Collection|Criterion[] $criteria
  * @property-read int|null $criteria_count
- * @property-read \App\Models\Evaluation|null $evaluations
- * @property-read \App\Models\Progress|null $progress
  * @method static \Database\Factories\ThemeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme query()
  * @method static \Illuminate\Database\Eloquent\Builder|Theme whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Theme whereText($value)
- * @mixin \Eloquent
  */
 class Theme extends Model
 {
@@ -33,39 +32,19 @@ class Theme extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text'
-
+        'label',
+        'evaluation',
+        'progress'
     ];
 
     /**
      * Get the Criteria that belongs to the Theme.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function criteria()
+    public function criteria(): BelongsToMany
     {
-        return $this->belongsToMany(Criterion::class);
+        return $this->belongsToMany(Criterion::class, 'criterion_theme', 'theme_id', 'criterion_id');
     }
-
-    /**
-     * Get the Evaluation that belongs to the Theme.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function evaluations()
-    {
-        return $this->hasOne(Evaluation::class);
-    }
-
-    /**
-     * Get the Progress that belongs to the Theme.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function progress()
-    {
-        return $this->hasOne(Progress::class);
-    }
-
 
 }

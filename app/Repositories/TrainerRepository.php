@@ -4,12 +4,20 @@ namespace App\Repositories;
 
 use App\Interfaces\TrainerInterface;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 class TrainerRepository implements TrainerInterface
 {
-    public function getTrainers()
+    protected User $user;
+
+    public function __construct(User $user)
     {
-        return User::all();
+        $this->user = $user;
+    }
+
+    public function getTrainers(): Collection
+    {
+        return $this->user->all();
     }
 
 }

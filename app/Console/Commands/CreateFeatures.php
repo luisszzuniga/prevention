@@ -14,6 +14,30 @@ class CreateFeatures extends Command
     const OFFER_BUSINESS = 2;
     const OFFER_ENTERPRISE = 3;
 
+    const FEATURES = [
+        [
+            'label' => 'Gérer les stagiaires',
+            'offer_id' => self::OFFER_PLUS,
+        ],
+        [
+            'label' => 'Saisir les informations',
+            'offer_id' => self::OFFER_PLUS,
+        ],
+        [
+            'label' => 'Données envoyées en interne',
+            'offer_id' => self::OFFER_BUSINESS,
+        ],
+        [
+            'label' => 'Données envoyées sur le LRS',
+            'offer_id' => self::OFFER_ENTERPRISE,
+        ],
+        [
+            'label' => 'Interface et gestion des données sur demande',
+            'offer_id' => self::OFFER_ENTERPRISE,
+        ],
+    ];
+
+
     /**
      * The name and signature of the console command.
      *
@@ -33,43 +57,22 @@ class CreateFeatures extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $features = [
-            [
-                'text' => 'Gérer les stagiaires',
-                'offer_id' => self::OFFER_PLUS
-            ],
-            [
-                'text' => 'Saisir les informations',
-                'offer_id' => self::OFFER_PLUS
-            ],
-            [
-                'text' => 'Données envoyées en interne',
-                'offer_id' => self::OFFER_BUSINESS
-            ],
-            [
-                'text' => 'Données envoyées sur le LRS',
-                'offer_id' => self::OFFER_ENTERPRISE
-            ],
-            [
-                'text' => 'interface et gestion des données sur demande',
-                'offer_id' => self::OFFER_ENTERPRISE
-            ],
-        ];
+
         try {
-            foreach ($features as $feature) {
-                if (!Feature::where('text', $feature['text'])->exists()) {
+            foreach (self::FEATURES as $feature) {
+                if (!Feature::where('label', $feature['label'])->exists()) {
                     DB::table('features')->insert([
                         $feature
                     ]);
                     with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['text'],
+                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['label'],
                         '<fg=yellow;options=bold>ADDED</>'
                     );
                 } else {
                     with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['text'],
+                        '<fg=yellow;options=bold>FEATURE : </>' . $feature['label'],
                         '<bg=red;options=bold>EXISTS</>'
                     );
                 }
@@ -81,6 +84,6 @@ class CreateFeatures extends Command
                 '<fg=red;options=bold>Failed to insert features</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

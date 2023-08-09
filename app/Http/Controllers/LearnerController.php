@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Learner;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
@@ -21,8 +22,8 @@ class LearnerController extends Controller
         $learner->address = $request->address;
         $learner->zip_code = $request->zip_code;
         $learner->town = $request->town;
-        $learner->password = bcrypt($this->generatePassword());
-        $learner->trainer_id = 2;
+        $learner->password = bcrypt("gh4:fe9*px");
+        $learner->trainer_id = $request->trainer_id;
         $learner->save();
 
        Log::info(Auth::user()->id);
@@ -33,15 +34,4 @@ class LearnerController extends Controller
         ], 201);
     }
 
-    private function generatePassword()
-    {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array();
-        $alphaLength = strlen($alphabet) - 1;
-        for ($i = 0; $i < 12; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass);
-    }
 }

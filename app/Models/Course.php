@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use Database\Factories\CourseFactory;
-use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -46,9 +44,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUserIdLearner($value)
  * @method static Builder|Course whereUserIdTrainer($value)
  * @method static Builder|Course whereVehicleId($value)
- * @mixin Eloquent
  * @property int $training_id
- * @property-read \App\Models\Training|null $trainings
+ * @property-read Training|null $trainings
  * @method static Builder|Course whereTrainingId($value)
  */
 class Course extends Model
@@ -65,24 +62,23 @@ class Course extends Model
     ];
 
     /**
-     * The criteria that the course belongs to.
+     * Get the training that the course belongs to.
      *
-     * @return BelongsToMany
+     * @return BelongsTo
      */
-    public function criteria()
+    public function training(): BelongsTo
     {
-        return $this->belongsToMany(Criterion::class);
+        return $this->belongsTo(Training::class);
     }
 
     /**
-     * Get the training that the course belongs to
+     * Get the grid that the course belongs to.
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function trainings()
+    public function grid(): BelongsTo
     {
-        return $this->hasOne(Training::class);
+        return $this->belongsTo(Grid::class);
     }
-
 }
 

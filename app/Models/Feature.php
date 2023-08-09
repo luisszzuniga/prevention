@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Feature
  *
  * @property int $id
  * @property string $text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Offer[] $offers
+ * @property-read Collection|Offer[] $offers
  * @property-read int|null $offers_count
  * @method static \Database\Factories\FeatureFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Feature newModelQuery()
@@ -18,7 +20,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Feature query()
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereText($value)
- * @mixin \Eloquent
  * @property int $offer_id
  * @method static \Illuminate\Database\Eloquent\Builder|Feature whereOfferId($value)
  */
@@ -33,17 +34,17 @@ class Feature extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text'
+        'label'
     ];
 
     /**
      * The offers that the feature belongs to.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function offers()
+    public function offer(): BelongsTo
     {
-        return $this->hasOne(Offer::class);
+        return $this->belongsTo(Offer::class);
     }
 
 }

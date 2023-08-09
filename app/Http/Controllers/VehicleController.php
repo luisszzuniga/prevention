@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VehicleRequest;
 use App\Models\User;
 use App\Models\Vehicle;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +14,8 @@ class VehicleController extends Controller
     /**
      * Store a newly created vehicle in storage.
      *
-     * @param  \App\Http\Requests\VehicleRequest  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param VehicleRequest $request
+     * @return JsonResponse
      */
     public function store(VehicleRequest $request)
     {
@@ -25,8 +26,7 @@ class VehicleController extends Controller
         $vehicle->brand = $request->brand;
         $vehicle->license_plate = $request->license_plate;
         $vehicle->type = $request->type;
-        //ajoute un learner factice
-        $vehicle->learner_id = $userId;
+        $vehicle->user_id_Learner = $userId;
         $vehicle->save();
 
         return response()->json([

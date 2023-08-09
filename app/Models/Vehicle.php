@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Vehicle
@@ -13,8 +15,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $brand
  * @property string|null $license_plate
  * @property string|null $type
- * @property int $learner_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
+ * @property int $user_id_Learner
+ * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
  * @method static \Database\Factories\VehicleFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle newModelQuery()
@@ -25,8 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereLicensePlate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereType($value)
- * @mixin \Eloquent
- * @property-read \App\Models\User|null $users
+ * @property-read User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|Vehicle whereLearnerId($value)
  */
 class Vehicle extends Model
@@ -48,12 +49,12 @@ class Vehicle extends Model
     ];
 
     /**
-     * Get the user that the vehicle belongs to
+     * Get the learner that the vehicle belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function users()
+    public function learner(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(Learner::class);
     }
 }

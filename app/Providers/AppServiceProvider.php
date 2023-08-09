@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Interfaces\AbilityRepository as InterfaceAbilityRepository;
 use App\Interfaces\AbilityService as InterfaceAbilityService;
+use App\Interfaces\CenterInterface;
 use App\Interfaces\CompanyInterface;
 use App\Interfaces\OfferInterface;
 use App\Interfaces\TrainerInterface;
 use App\Interfaces\TrainingInterface;
 use App\Providers\AbilityProvider as AbilityServiceProvider;
 use App\Providers\RepositoryProvider as AbilityRepository;
+use App\Repositories\CenterRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\OfferRepository;
 use App\Repositories\TrainerRepository;
@@ -23,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(InterfaceAbilityService::class, AbilityServiceProvider::class);
         $this->app->bind(InterfaceAbilityRepository::class, AbilityRepository::class);
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TrainerInterface::class, TrainerRepository::class);
         $this->app->bind(CompanyInterface::class, CompanyRepository::class);
         $this->app->bind(TrainingInterface::class, TrainingRepository::class);
+        $this->app->bind(CenterInterface::class, CenterRepository::class);
     }
 
     /**
@@ -42,4 +45,5 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
 }

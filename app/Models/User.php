@@ -7,7 +7,7 @@ use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -69,7 +69,7 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereZipCode($value)
  * @mixin Eloquent
  * @property int|null $trainer_id
- * @property-read Collection|\App\Models\Vehicle[] $vehicles
+ * @property-read Collection|Vehicle[] $vehicles
  * @property-read int|null $vehicles_count
  * @method static Builder|User whereTrainerId($value)
  */
@@ -113,53 +113,23 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the courses that the user is learner
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function coursesLearners()
-    {
-        return $this->hasMany(Course::class);
-    }
-
-    /**
-     * Get the courses that the user is trainer
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function coursesTrainers()
-    {
-        return $this->hasMany(Course::class);
-    }
-
-    /**
      * Get the company that the user belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function companies()
+    public function client(): BelongsTo
     {
-        return $this->hasOne(Company::class);
+        return $this->belongsTo(Client::class);
     }
 
     /**
      * Get the role that the user belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return BelongsTo
      */
-    public function roles()
+    public function role(): BelongsTo
     {
-        return $this->hasOne(Role::class);
-    }
-
-    /**
-     * The vehicles that belong to the user.
-     *
-     * @return HasMany
-     */
-    public function vehicles()
-    {
-        return $this->hasMany(Vehicle::class);
+        return $this->belongsTo(Role::class);
     }
 
 }

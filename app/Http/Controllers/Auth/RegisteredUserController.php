@@ -4,22 +4,24 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\Client;
+use App\Models\Company;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('auth.register');
     }
@@ -27,24 +29,28 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param RegisterRequest $request
+     * @return RedirectResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(RegisterRequest $request)
+    public function store(RegisterRequest $request): RedirectResponse
     {
 
         $user = User::create([
-            'lastname' => $request->lastname,
-            'firstname' => $request->firstname,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'address' => $request->address,
-            'zip_code' => $request->zip_code,
-            'town' => $request->town,
         ]);
+
+        $company = Company::create([
+            'name' => $request->company_name,
+        ]);
+        $client = Client::create([
+            'company_id' => $company->id,
+        ]);
+
+        $user->client()->associate($client);
+        $user->save();
 
         event(new Registered($user));
 
@@ -52,4 +58,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::DASHBOARD);
     }
+
 }

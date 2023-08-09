@@ -33,10 +33,10 @@ class LaunchData extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         $this->call('create:roles');
-        $this->call('create:companies');
+        $this->call('create:clients');
         $this->call('create:users');
         $this->call('create:offers');
         $this->call('create:features');
@@ -44,6 +44,6 @@ class LaunchData extends Command
         $this->call('create:criteria');
         $this->call('create:centers');
 
-        return 0;
+        return self::SUCCESS;
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpFoundation\Response;
 
 class TrainerController extends Controller
 {
@@ -19,12 +20,11 @@ class TrainerController extends Controller
     }
     public function index()
     {
-
         $trainers = $this->trainerRepository->getTrainers();
 
         return response()->json([
             'trainers' => $trainers
-        ], 201);
+        ], Response::HTTP_CREATED);
     }
 
 }

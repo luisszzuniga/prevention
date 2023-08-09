@@ -2,30 +2,40 @@
 
 namespace App\Models;
 
+use Database\Factories\CriterionFactory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Criterion
  *
- * @property int $id
+ * @property int $criterion_id
  * @property string $text
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Course[] $courses
- * @property-read int|null $courses_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Theme[] $themes
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Collection|Grid[] $grids
+ * @property-read int|null $grids_count
+ * @property-read Collection|Theme[] $themes
  * @property-read int|null $themes_count
- * @method static \Database\Factories\CriterionFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Criterion newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Criterion newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Criterion query()
- * @method static \Illuminate\Database\Eloquent\Builder|Criterion whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Criterion whereText($value)
- * @mixin \Eloquent
+ * @method static CriterionFactory factory(...$parameters)
+ * @method static Builder|Criterion newModelQuery()
+ * @method static Builder|Criterion newQuery()
+ * @method static Builder|Criterion query()
+ * @method static Builder|Criterion whereCriterionId($value)
+ * @method static Builder|Criterion whereText($value)
+ * @method static Builder|Criterion whereCreatedAt($value)
+ * @method static Builder|Criterion whereUpdatedAt($value)
  */
 class Criterion extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -33,28 +43,26 @@ class Criterion extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'text'
-
+        'label',
     ];
 
     /**
-     * The courses that the criterion belongs to.
+     * The grids that belong to the criterion.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function courses()
+    public function grids(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Grid::class, 'grid_criterion', 'criterion_id', 'grid_id');
     }
 
     /**
-     * The themes that the criterion belongs to.
+     * The themes that belong to the criterion.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function themes()
+    public function themes(): BelongsToMany
     {
-        return $this->belongsToMany(Theme::class);
+        return $this->belongsToMany(Theme::class, 'criterion_theme', 'criterion_id', 'theme_id');
     }
-
 }

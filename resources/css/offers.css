@@ -109,15 +109,18 @@ body {
 
 .content-first-offer{
     /*background-color: #e8e8e8;*/
-    background-color: rgba(218, 218, 218, 0.56);
+    background-color: rgba(255, 191, 146, 0.56);
+    /*background-color: #FDC29EFF;*/
 }
 .content-second-offer{
-    background-color: #fa9e69
+    background-color: #fa9e69;
+    /*background-color: #FB8C47FF*/
 }
 .content-third-offer{
     /*border-style: none;*/
     border-color: #f8dacb;
-    background: rgb(255,95,19);
+    /*background: rgb(255,95,19);*/
+    background: #f15f22;
     background: linear-gradient(35deg, rgba(255,95,19,1) 10%, rgba(251,140,71,1) 43%, rgba(253,194,158,1) 65%, rgba(255,255,255,0.04245448179271705) 100%);
 
 }

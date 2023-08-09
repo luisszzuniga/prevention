@@ -9,9 +9,31 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\View\Components\TwoColumnDetail;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Self_;
 
 class CreateOffers extends Command
 {
+    const OFFERS = [
+        [
+            'id' => 1,
+            'name' => 'Plus',
+            'price' => 4.99,
+            'description' => 'Saisie des données du stagiaire'
+        ],
+        [
+            'id' => 2,
+            'name' => 'Business',
+            'price' => 9.99,
+            'description' => 'Envoi automatique des données'
+        ],
+        [
+            'id' => 3,
+            'name' => 'Enterprise',
+            'price' => 14.99,
+            'description' => 'Suivre les formations des stagiaires dans leur SIRH'
+        ],
+    ];
+
     /**
      * The name and signature of the console command.
      *
@@ -34,25 +56,8 @@ class CreateOffers extends Command
     public function handle()
     {
 
-        $offers = [
-            [
-                'name' => 'Plus',
-                'price' => 4.99,
-                'description' => 'Saisie des données du stagiaire'
-            ],
-            [
-                'name' => 'Business',
-                'price' => 9.99,
-                'description' => 'Envoi automatique des données'
-            ],
-            [
-                'name' => 'Enterprise',
-                'price' => 14.99,
-                'description' => 'Suivre les formations des stagiaires dans leur SIRH'
-            ],
-        ];
         try {
-            foreach ($offers as $offer) {
+            foreach (self::OFFERS as $offer) {
                 if (!Offer::where('name', $offer['name'])->exists()) {
                     DB::table('offers')->insert([
                         $offer
@@ -75,6 +80,6 @@ class CreateOffers extends Command
                 '<fg=red;options=bold>Failed to insert users</>'
             );
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

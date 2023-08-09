@@ -14,7 +14,10 @@ return new class extends Migration {
     {
         Schema::create('themes', function (Blueprint $table) {
             $table->id();
-            $table->text('text')->unique('text');
+            $table->text('label')->unique();
+            $table->tinyInteger('evaluation');
+            $table->text('progress');
+            $table->timestamps();
         });
     }
 

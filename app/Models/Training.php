@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Database\Factories\CourseFactory;
-use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
 
 /**
@@ -46,9 +45,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Course whereUserIdLearner($value)
  * @method static Builder|Course whereUserIdTrainer($value)
  * @method static Builder|Course whereVehicleId($value)
- * @mixin Eloquent
  * @property string $date
- * @property-read Collection|\App\Models\Course[] $courses
+ * @property-read Collection|Course[] $courses
  * @property-read int|null $courses_count
  * @method static Builder|Training whereDate($value)
  */
@@ -68,41 +66,41 @@ class Training extends Model
     /**
      * The offer that the course has.
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function offers()
+    public function offer(): BelongsTo
     {
-        return $this->hasOne(Offer::class);
+        return $this->belongsTo(Offer::class);
     }
 
     /**
-     * The center that the course belongs to.
+     * The center that the training belongs to.
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function center()
+    public function center(): BelongsTo
     {
-        return $this->hasOne(Center::class);
+        return $this->belongsTo(Center::class);
     }
 
     /**
-     * The trainer that the course has.
+     * The trainer that the training has.
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function trainers()
+    public function trainer(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(Trainer::class);
     }
 
     /**
-     * The learner that the course has.
+     * The learners that the training has.
      *
-     * @return HasOne
+     * @return BelongsToMany
      */
-    public function learners()
+    public function learners(): BelongsToMany
     {
-        return $this->hasOne(User::class);
+        return $this->belongsToMany(Learner::class, 'training_learner', 'training_id', 'learner_id');
     }
 
     /**
@@ -110,7 +108,7 @@ class Training extends Model
      *
      * @return HasMany
      */
-    public function courses()
+    public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
     }
