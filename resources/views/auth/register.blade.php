@@ -3,7 +3,7 @@
 
 @section('header')
 
-    @vite(['resources/css/auth/auth.css'])
+    @vite(['resources/css/auth.css'])
 
 @endsection
 
