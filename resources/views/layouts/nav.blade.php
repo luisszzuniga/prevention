@@ -12,7 +12,7 @@
                             <a href="{{ route('home') }}">
                                 <div class="logo-container">
                                     <div class="logo">
-                                        <img src="{{ asset('img/nav/lery-logo-web.png') }}" alt="">
+                                        <img src="{{ asset('images/nav/lery-logo-web.png') }}" alt="">
                                     </div>
                                     <div class="logo-text">
                                         <span class="lery">{{__('nav.lery') }}</span>
@@ -71,7 +71,7 @@
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block">
                                     @if (Auth::check())
-                                        <a href="contact.html" class="btn header-btn">{{__('nav.create_session') }}</a>
+                                        <a href="{{ route('dashboard') }}" class="btn header-btn">{{__('nav.create_session') }}</a>
                                     @else
                                         <a href="{{ route('register') }}"
                                            class="btn header-btn">{{ __('nav.register') }}</a>
