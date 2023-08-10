@@ -119,7 +119,6 @@
                     </a>
                 </div>
 
-
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="{{ route('offers') }}">
                     <div class="single-cat text-center mb-50" id="cat-2">

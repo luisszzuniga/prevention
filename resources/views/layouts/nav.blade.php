@@ -71,7 +71,7 @@
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block">
                                     @if (Auth::check())
-                                        <a href="contact.html" class="btn header-btn">{{__('nav.create_session') }}</a>
+                                        <a href="{{ route('dashboard') }}" class="btn header-btn">{{__('nav.create_session') }}</a>
                                     @else
                                         <a href="{{ route('register') }}"
                                            class="btn header-btn">{{ __('nav.register') }}</a>
