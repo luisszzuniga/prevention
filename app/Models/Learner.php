@@ -16,11 +16,13 @@ class Learner extends User
     use HasFactory;
 
     /**
-     * The trainer that the learner belongs to.
+     * The users that belong to the learner.
+     *
+     * @return BelongsTo
      */
-    public function trainer(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Trainer::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -29,6 +31,14 @@ class Learner extends User
     public function vehicle(): HasOne
     {
         return $this->hasOne(Vehicle::class);
+    }
+
+    /**
+     * The subclient that belongs to the learner .
+     */
+    public function subclient(): BelongsTo
+    {
+        return $this->belongsTo(Subclient::class, 'subclient_id');
     }
 
     /**

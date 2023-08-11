@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Learner;
+use App\Models\Subclient;
 use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,7 +21,8 @@ class LearnerFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory()->create()->id
+            'user_id' => User::factory()->create()->id,
+            'subclient_id' => Subclient::factory()->create()->id
         ];
     }
 }

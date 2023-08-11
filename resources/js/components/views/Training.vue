@@ -8,8 +8,10 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 
 const createCourse = () => {
-    router.push({ name: 'create-training' });
+    const currentPath = router.currentRoute.value.path;
+    router.push(currentPath + '/create-training');
 };
+
 </script>
 
 <style scoped>

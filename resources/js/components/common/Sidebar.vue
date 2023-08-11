@@ -34,7 +34,8 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const links = ref([
     { icon: 'mdi-view-dashboard', text: 'Dashboard', active: computed(() => route.path === '/dashboard'), route: '/dashboard' },
-    { icon: 'mdi-clock-outline', text: 'Sessions', active: computed(() => route.path === '/training' || route.path === '/create-training'), route: '/training' },    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/' },
+    { icon: 'mdi-clock-outline', text: 'Formations', active: computed(() => route.path === '/training' || route.path === '/create-training'), route: '/training' },
+    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/' },
     { icon: 'mdi-human-male-board', text: 'Formateurs', active: computed(() => route.path === '/'), route: '/' },
     { icon: 'mdi-account-group-outline', text: 'Stagiaires', active: computed(() => route.path === '/learner'), route: '/learner' },
     { icon: 'mdi-car', text: 'Véhicules', active: computed(() => route.path === '/vehicles'), route: '/vehicles' },

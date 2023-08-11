@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +21,7 @@ class CenterFactory extends Factory
         return [
             'name' => fake()->text(10),
             'address' => fake()->address(),
+            'client_id' => Client::factory()->create()->id
         ];
     }
 }

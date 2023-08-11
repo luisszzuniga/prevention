@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 
 import Vehicles from '@/components/views/Vehicles.vue'
 import Learner from '@/components/views/Learner.vue'
@@ -28,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Training
     },
     {
-        path: '/create-training',
+        path: '/training/create-training',
         name: 'create-training',
         component: CreateTraining
     },
@@ -36,7 +36,6 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 export default createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
-

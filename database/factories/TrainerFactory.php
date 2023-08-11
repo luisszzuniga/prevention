@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Trainer;
-use App\Models\Training;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

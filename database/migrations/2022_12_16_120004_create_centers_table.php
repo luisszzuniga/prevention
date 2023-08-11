@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name', 50);
             $table->string('address', 100)->nullable();
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->name('client_id_center');
         });
     }
 

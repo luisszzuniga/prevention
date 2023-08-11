@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\VehicleController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TrainingController;
-use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
