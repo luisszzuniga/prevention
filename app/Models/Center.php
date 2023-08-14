@@ -37,6 +37,7 @@ class Center extends Model
     protected $fillable = [
         'name',
         'address',
+        'client_id'
     ];
 
     /**

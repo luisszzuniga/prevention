@@ -12,7 +12,10 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
+use Mailjet\LaravelMailjet\Facades\Mailjet;
+use Mailjet\Resources;
 
 class RegisteredUserController extends Controller
 {
@@ -35,17 +38,17 @@ class RegisteredUserController extends Controller
      */
     public function store(RegisterRequest $request): RedirectResponse
     {
-
         $user = User::create([
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
 
-        $company = Company::create([
+        $company = Company::firstOrCreate([
             'name' => $request->company_name,
-        ]);
-        $client = Client::create([
+            ]);
+
+        $client = Client::FristOrCreate([
             'company_id' => $company->id,
         ]);
 
@@ -53,10 +56,35 @@ class RegisteredUserController extends Controller
         $user->save();
 
         event(new Registered($user));
-
         Auth::login($user);
 
+        $this->sendMail($user);
+
         return redirect(RouteServiceProvider::DASHBOARD);
+    }
+
+    protected function sendMail(User $user)
+    {
+        $mj = Mailjet::getClient();
+
+        $body = [
+            'FromEmail' => "stephane@lery.cc",
+            'FromName' => "Stephane",
+            'Subject' => "Welcome",
+            'MJ-TemplateID' => 5017483,
+            'MJ-TemplateLanguage' => true,
+            'Vars' =>['name'=>'Stephane'],
+            'Recipients' => [['Email' => "stephane@lery.cc"]]
+        ];
+
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+
+        if($response->success()){
+            Log::info('email sent'.$response->getReasonPhrase());
+        } else {
+            Log::error('not sent'.$response->getReasonPhrase());
+        }
+
     }
 
 }

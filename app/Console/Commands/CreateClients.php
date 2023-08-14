@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class CreateClients extends Command
 {
-    const LERY_TECHNOLOGIES = 1;
+    public const LERY_TECHNOLOGIES = 1;
     const CLIENTS = [
         [
             'id' => self::LERY_TECHNOLOGIES,
