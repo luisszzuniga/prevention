@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Center;
 use App\Models\Client;
+use App\Models\Company;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\View\Components\TwoColumnDetail;
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\DB;
 class CreateCenters extends Command
 {
     const CENTERS = [
-        ['name' => 'Lery technologies', 'address' => '1 Rue de Paris 35510, Cesson-Sévigné',]
+        [
+            'name' => 'Circuit de Rennes',
+            'address' => '1 Rue de Paris 35510, Cesson-Sévigné',
+        ],
     ];
 
     /**
@@ -37,7 +41,7 @@ class CreateCenters extends Command
     public function handle(): int
     {
         try {
-            $client = Client::findOrFail(CreateClients::LERY_TECHNOLOGIES);
+            $client = Company::where('name', 'Lery Technologies')->firstOrFail();
             foreach (self::CENTERS as $center) {
                 $center['client_id'] = $client->id;
                 if (!Center::where('name', $center['name'])->exists()) {

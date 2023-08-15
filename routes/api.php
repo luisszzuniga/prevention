@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::view('/swagger', 'swagger-upkg');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
 Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
-    Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
 });
 
 Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');

@@ -32,4 +32,10 @@ class RegistrationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::DASHBOARD);
     }
+
+/*    public function test_new_users_with_from_enterprise_can_regsiter(): void
+    {
+
+
+    }*/
 }
