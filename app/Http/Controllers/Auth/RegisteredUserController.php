@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'name' => $request->company_name,
             ]);
 
-        $client = Client::FristOrCreate([
+        $client = Client::firstOrCreate([
             'company_id' => $company->id,
         ]);
 

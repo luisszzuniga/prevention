@@ -16,7 +16,7 @@ class CreateClients extends Command
         [
             'id' => self::LERY_TECHNOLOGIES,
             'name' => 'Lery Technologies',
-            'address' => '1 rue de Paris',
+            'address_line_1' => '1 rue de Paris',
             'zip_code' => '35510',
             'town' => 'Cesson Sévigné'
         ],

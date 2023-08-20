@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Scopes\WithUserScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -28,6 +28,8 @@ class Learner extends User
 {
     use HasFactory;
 
+    protected $with = ['user'];
+
     /**
      * The users that belong to the learner.
      *
@@ -35,7 +37,7 @@ class Learner extends User
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -60,13 +62,6 @@ class Learner extends User
     public function trainings(): BelongsToMany
     {
         return $this->belongsToMany(Training::class, 'training_learner', 'learner_id', 'training_id');
-    }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope(new WithUserScope());
     }
 }
 

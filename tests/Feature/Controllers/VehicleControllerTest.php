@@ -19,7 +19,7 @@ class VehicleControllerTest extends TestCase
     public function test_store_vehicle()
     {
 
-/*        Artisan::call('create:roles');
+        Artisan::call('create:roles');
 
         $trainer = User::factory()->create();
         $this->actingAs($trainer);
@@ -41,7 +41,7 @@ class VehicleControllerTest extends TestCase
                     'brand',
                     'license_plate',
                     'type',
-                    'user_id_Learner'
+                    'learner_id'
                 ],
             ])
             ->assertJson([
@@ -52,7 +52,5 @@ class VehicleControllerTest extends TestCase
                     'type' => "Car"
                 ]
             ]);
-*/
     }
-
 }

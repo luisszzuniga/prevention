@@ -43,6 +43,7 @@ class LaunchData extends Command
         $this->call('create:themes');
         $this->call('create:criteria');
         $this->call('create:centers');
+        $this->call('create:subclient');
 
         return self::SUCCESS;
     }

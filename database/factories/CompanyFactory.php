@@ -20,7 +20,8 @@ class CompanyFactory extends Factory
         return [
             'name' => fake()->unique()->company(),
             'contact' => fake()->userName(),
-            'address' => fake()->address(),
+            'address_line_1' => fake()->streetAddress(),
+            'address_line_2'=> fake()->streetAddress(),
             'zip_code' => fake()->randomNumber(5),
             'town' => fake()->city()
         ];

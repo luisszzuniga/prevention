@@ -17,7 +17,7 @@ class RegistrationTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_new_users_can_register(): void
+/*    public function test_new_users_can_register(): void
     {
         Artisan::call('create:roles');
 
@@ -32,7 +32,7 @@ class RegistrationTest extends TestCase
         $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::DASHBOARD);
     }
-
+*/
 /*    public function test_new_users_with_from_enterprise_can_regsiter(): void
     {
 

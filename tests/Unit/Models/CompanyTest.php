@@ -19,7 +19,8 @@ class CompanyTest extends TestCase
     {
         $company = Company::create([
             'name' => 'Test Company',
-            'address' => '123 Test Street',
+            'address_line_1' => '123 Test Street',
+            'address_line_2'=>fake()->streetAddress(),
             'zip_code' => '12345',
             'town' => 'Test Town',
             'contact' => 'Test Contact',
@@ -27,7 +28,7 @@ class CompanyTest extends TestCase
 
         $this->assertDatabaseHas('companies', [
             'name' => 'Test Company',
-            'address' => '123 Test Street',
+            'address_line_1' => '123 Test Street',
             'zip_code' => '12345',
             'town' => 'Test Town',
             'contact' => 'Test Contact',

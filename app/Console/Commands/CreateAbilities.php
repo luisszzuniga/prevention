@@ -50,8 +50,9 @@ class CreateAbilities extends Command
                     'description' => 'Create a vehicle'
                 ],
             ],
-            1 => [ // Manager
+            1 => [ // Client Manager
                 [
+                    'name'=>''
                 ],
             ],
             2 => [ // Admin
@@ -74,7 +75,7 @@ class CreateAbilities extends Command
         $guestId = Role::where('name', CreateRoles::ROLES[4]['name'])->first()->id;
 
         foreach ($abilities[0] as $ability) {
-            if (!Ability::where('name', $ability['name']->exists())) {
+            if (!Ability::where('name', $ability['name'])->exists()) {
                 DB::table('abilities')->insert([
                     'name' => $ability['name'],
                     'description' => $ability['description'],

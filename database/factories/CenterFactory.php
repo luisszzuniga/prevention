@@ -20,7 +20,7 @@ class CenterFactory extends Factory
     {
         return [
             'name' => fake()->text(10),
-            'address' => fake()->address(),
+            'address' => fake()->streetAddress(),
             'client_id' => Client::factory()->create()->id
         ];
     }

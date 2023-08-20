@@ -15,6 +15,10 @@ class Subclient extends Company
 {
     use HasFactory;
 
+    protected $fillable = [
+        'company_id',
+        'client_id',
+    ];
     /**
      * The company that belong to the subclients.
      */
@@ -38,5 +42,4 @@ class Subclient extends Company
     {
         return $this->hasMany(Learner::class, 'subclient_id');
     }
-
 }
