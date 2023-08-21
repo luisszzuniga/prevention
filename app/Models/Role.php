@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,14 +18,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read Collection|User[] $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\RoleFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|Role newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Role newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Role query()
- * @method static \Illuminate\Database\Eloquent\Builder|Role whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Role whereRoleName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Role whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Role whereName($value)
+ * @method static Builder|Role newModelQuery()
+ * @method static Builder|Role newQuery()
+ * @method static Builder|Role query()
+ * @method static Builder|Role whereId($value)
+ * @method static Builder|Role whereRoleCode($value)
+ * @method static Builder|Role whereRoleName($value)
+ * @method static Builder|Role whereDescription($value)
+ * @method static Builder|Role whereName($value)
+ * @mixin Eloquent
  */
 class Role extends Model
 {

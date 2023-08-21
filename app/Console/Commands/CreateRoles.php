@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\DB;
 class CreateRoles extends Command
 {
     const ROLE_SUPER_ADMIN = 1;
-    const ROLE_MANAGER = 2;
-    const ROLE_ADMIN = 3;
-    const ROLE_INSTRUCTOR = 4;
-    const ROLE_GUEST = 5;
+    const ROLE_LERY_ADMIN= 2;
+    const ROLE_CLIENT_MANAGER = 3;
+    const ROLE_CLIENT_INSTRUCTOR = 4;
+    const ROLE_CLIENT_TRAINEE = 5;
     const ROLES = [
         ['id' => self::ROLE_SUPER_ADMIN, 'name' => 'super-admin', 'description' => 'Salarié Lery technologies. Peut ajouter, supprimer des clients et ajouter des domaines autorisés (nouveau client par exemple)',],
-        ['id' => self::ROLE_MANAGER, 'name' => 'manager', 'description' => 'Accès aux pages statistiques globales, factures et contrats',],
-        ['id' => self::ROLE_ADMIN, 'name' => 'admin', 'description' => 'Salarié de l\'entreprise de formation. Peut voir et ajouter des formateurs',],
-        ['id' => self::ROLE_INSTRUCTOR, 'name' => 'instructor', 'description' => 'Peut ajouter des leçons et des apprenants',],
-        ['id' => self::ROLE_GUEST, 'name' => 'guest', 'description' => 'Peut avoir accès aux informations de ses stages. C\'est par exemple un apprenant',],
+        ['id' => self::ROLE_LERY_ADMIN, 'name' => 'admin', 'description' => 'Salarié de l\'entreprise de formation. Peut voir et ajouter des formateurs',],
+        ['id' => self::ROLE_CLIENT_MANAGER, 'name' => 'manager', 'description' => 'Accès aux pages statistiques globales, factures et contrats',],
+        ['id' => self::ROLE_CLIENT_INSTRUCTOR, 'name' => 'instructor', 'description' => 'Peut ajouter des leçons et des apprenants',],
+        ['id' => self::ROLE_CLIENT_TRAINEE, 'name' => 'guest', 'description' => 'Peut avoir accès aux informations de ses stages. C\'est par exemple un apprenant',],
     ];
 
     /**
