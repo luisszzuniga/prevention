@@ -37,7 +37,7 @@
                         <div class="single-footer-caption mb-50">
                             <div class="logo-container">
                                 <div class="logo">
-                                    <img src="{{ asset('img/nav/lery-logo-web.png') }}" alt="">
+                                    <img src="{{ asset('images/nav/lery-logo-web.png') }}" alt="">
                                 </div>
                                 <div class="logo-text">
                                     <span class="lery">{{__('footer.lery') }}</span>

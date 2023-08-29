@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Mail\WelcomeMail;
 use App\Models\Client;
 use App\Models\Company;
 use App\Models\User;

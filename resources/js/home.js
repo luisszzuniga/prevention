@@ -1,8 +1,10 @@
+import roadImage from './images/home/road.jpg';
+import truckImage from './images/home/truck.jpg';
 
 $(document).ready(function() {
-    const images = ['road.jpg', 'truck.jpg'];
+    const images = [roadImage, truckImage];
     const randomIndex = Math.floor(Math.random() * images.length);
-    let imageUrl = '/img/home/' + images[randomIndex];
+    const imageUrl = images[randomIndex];
     const img = new Image();
     img.src = imageUrl;
 
@@ -29,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
         element.addEventListener('mouseenter', function() {
             clearTimeout(timeout);
             timeout = setTimeout(function() {
-                image.src = 'img/home/services/' + image.id + '-w.png';
+                image.src = 'images/home/services/' + image.id + '-w.png';
             }, 300);
         });
 
         element.addEventListener('mouseleave', function() {
             clearTimeout(timeout);
-            image.src = 'img/home/services/' + image.id + '.png';
+            image.src = 'images/home/services/' + image.id + '.png';
         });
     }
 

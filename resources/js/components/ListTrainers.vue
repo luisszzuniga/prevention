@@ -16,9 +16,9 @@
                 :class="{ 'selected': trainer.selected }"
                 @click="selectTrainer(index)"
             >
-                <td class="col-lastname">{{ trainer.lastname }}</td>
-                <td class="col-firstname">{{ trainer.firstname }}</td>
-                <td class="col-phone">{{ trainer.phone }}</td>
+<!--                <td class="col-lastname">{{ trainer.lastname }}</td>-->
+<!--                <td class="col-firstname">{{ trainer.firstname }}</td>-->
+<!--                <td class="col-phone">{{ trainer.phone }}</td>-->
             </tr>
             </tbody>
         </table>
