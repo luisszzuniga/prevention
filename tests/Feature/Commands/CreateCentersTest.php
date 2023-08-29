@@ -16,7 +16,7 @@ class CreateCentersTest extends TestCase
 
         $output = Artisan::output();
 
-        $this->assertStringContainsString('CENTERS : Nothing to add', $output);
+        $this->assertStringContainsString('Failed to insert centers', $output);
     }
 
 }

@@ -1,8 +1,10 @@
-import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
+import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 
 import Vehicles from '@/components/views/Vehicles.vue'
 import Learner from '@/components/views/Learner.vue'
 import Dashboard from '@/components/views/Dashboard.vue'
+import Training from '@/components/views/Training.vue'
+import CreateTraining from '@/components/views/CreateTraining.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -20,11 +22,20 @@ const routes: Array<RouteRecordRaw> = [
         name: 'dashboard',
         component: Dashboard
     },
+    {
+        path: '/training',
+        name: 'training',
+        component: Training
+    },
+    {
+        path: '/training/create-training',
+        name: 'create-training',
+        component: CreateTraining
+    },
 
 ];
 
 export default createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
-

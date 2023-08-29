@@ -113,5 +113,16 @@ class Training extends Model
         return $this->hasMany(Course::class);
     }
 
-}
+    /**
+     * Get the subclients of learners associated with the training.
+     *
+     * @return Collection
+     */
+    public function subclients(): Collection
+    {
+        return $this->learners->map(function($learner) {
+            return $learner->subclient;
+        });
+    }
 
+}

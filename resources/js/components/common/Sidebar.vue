@@ -12,19 +12,19 @@
         class="sidebar"
     >
         <v-list dense>
-                <v-list-item v-for="(link, i) in links" :key="i" class="link-item"
-                             :class="{'link-item-active': link.active, 'link-item-inactive': !link.active}"
-                             :to="link.route">
-                    <div class="content-container">
-                        <div class="indicator" v-if="link.active"></div>
-                        <v-icon class="mr-3 link-icon">{{ link.icon }}</v-icon>
-                        <v-list-item-content>
-                            <v-list-item-title class="sidebar-link">{{ link.text }}</v-list-item-title>
-                        </v-list-item-content>
-                    </div>
-                </v-list-item>
-            </v-list>
-        </v-navigation-drawer>
+            <v-list-item v-for="(link, i) in links" :key="i" class="link-item"
+                         :class="{'link-item-active': link.active, 'link-item-inactive': !link.active}"
+                         :to="link.route">
+                <div class="content-container">
+                    <div class="indicator" v-if="link.active"></div>
+                    <v-icon class="mr-3 link-icon">{{ link.icon }}</v-icon>
+                    <v-list-item-content>
+                        <v-list-item-title class="sidebar-link">{{ link.text }}</v-list-item-title>
+                    </v-list-item-content>
+                </div>
+            </v-list-item>
+        </v-list>
+    </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
@@ -34,12 +34,13 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const links = ref([
     { icon: 'mdi-view-dashboard', text: 'Dashboard', active: computed(() => route.path === '/dashboard'), route: '/dashboard' },
-    { icon: 'mdi-clock-outline', text: 'Sessions', active: computed(() => route.path === '/'), route: '/dashboard' },
-    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/dashboard' },
-    { icon: 'mdi-human-male-board', text: 'Formateurs', active: computed(() => route.path === '/'), route: '/dashboard' },
+    { icon: 'mdi-clock-outline', text: 'Formations', active: computed(() => route.path === '/training' || route.path === '/create-training'), route: '/training' },
+    { icon: 'mdi-account-multiple', text: 'Clients', active: computed(() => route.path === '/'), route: '/' },
+    { icon: 'mdi-human-male-board', text: 'Formateurs', active: computed(() => route.path === '/'), route: '/' },
     { icon: 'mdi-account-group-outline', text: 'Stagiaires', active: computed(() => route.path === '/learner'), route: '/learner' },
     { icon: 'mdi-car', text: 'Véhicules', active: computed(() => route.path === '/vehicles'), route: '/vehicles' },
-    { icon: 'mdi-cog-outline', text: 'Paramètres', active: computed(() => route.path === '/'), route: '/dashboard' },
+    { icon: 'mdi-cog-outline', text: 'Paramètres', active: computed(() => route.path === '/'), route: '/' },
+
 ]);
 const drawer = ref(window.innerWidth > 1268);
 

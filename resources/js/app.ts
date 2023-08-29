@@ -6,10 +6,23 @@ import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import '@mdi/font/css/materialdesignicons.css'
+import DateFnsAdapter from '@date-io/date-fns'
+import frLocale from 'date-fns/locale/fr'
+import { fr } from 'vuetify/locale';
 
 const vuetify = createVuetify({
     components,
-    directives
+    directives,
+    date: {
+        adapter: DateFnsAdapter,
+        locale: {
+            fr: frLocale,
+        },
+    },
+    locale: {
+        locale: 'fr',
+        messages: { fr },
+    },
 });
 
 createApp(App)

@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\DB;
 
 class CreateClients extends Command
 {
-    const LERY_TECHNOLOGIES = 1;
+    public const LERY_TECHNOLOGIES = 1;
     const CLIENTS = [
         [
             'id' => self::LERY_TECHNOLOGIES,
             'name' => 'Lery Technologies',
-            'address' => '1 rue de Paris',
+            'address_line_1' => '1 rue de Paris',
             'zip_code' => '35510',
             'town' => 'Cesson Sévigné'
         ],

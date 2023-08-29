@@ -21,7 +21,7 @@ class LaunchDataTest extends TestCase
         $this->assertDatabaseCount('features', 5);
         $this->assertDatabaseCount('themes', 0);
         $this->assertDatabaseCount('criteria', 0);
-        $this->assertDatabaseCount('centers', 0);
+        $this->assertDatabaseCount('centers', 1);
     }
 
 }

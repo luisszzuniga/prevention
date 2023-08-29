@@ -198,6 +198,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Mailjet\LaravelMailjet\MailjetServiceProvider::class,
+//        Mailjet\LaravelMailjet\MailjetMailServiceProvider::class,
     ],
 
     /*
@@ -212,6 +214,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Mailjet' => Mailjet\LaravelMailjet\Facades\Mailjet::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

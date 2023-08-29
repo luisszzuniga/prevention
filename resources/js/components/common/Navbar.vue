@@ -21,9 +21,28 @@
                 </a>
             </v-col>
             <v-spacer></v-spacer>
-            <v-btn icon class="user">
-                <img :src="user" alt="user" style="height: 32px; width: 32px;">
-            </v-btn>
+
+            <!-- Menu déroulant de l'utilisateur -->
+            <v-menu style="z-index: 9999;" offset-y>
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <img src="/img/nav/user.png" alt="user" style="height: 32px; width: 32px;">
+                    </v-btn>
+                </template>
+
+                <v-list>
+                    <v-list-item link="" href="/profile">
+                        <v-list-item-title>Profile</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item link="" href="/formateurs">
+                        <v-list-item-title>Formateurs</v-list-item-title>
+                    </v-list-item>
+                    <v-list-item link="" href="/centres">
+                        <v-list-item-title>Centres</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
+
         </v-row>
     </v-app-bar>
 </template>
@@ -40,6 +59,7 @@ export default {
     }
 }
 </script>
+
 
 <style scoped>
 

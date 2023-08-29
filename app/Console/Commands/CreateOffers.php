@@ -30,7 +30,7 @@ class CreateOffers extends Command
             'id' => 3,
             'name' => 'Enterprise',
             'price' => 14.99,
-            'description' => 'Suivre les formations des stagiaires dans leur SIRH'
+            'description' => 'Intégration des formations des stagiaires dans leur SIRH'
         ],
     ];
 

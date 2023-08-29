@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Str;
 
 /**
  * App\Models\Company
@@ -30,7 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|Company whereTown($value)
  * @method static Builder|Company whereZipCode($value)
  */
-class Company extends Model
+class Company extends InheritedModel
 {
     use HasFactory;
 
@@ -42,12 +45,11 @@ class Company extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-
         'name',
-        'address',
+        'address_line_1',
+        'address_line_2',
         'zip_code',
         'town',
         'contact',
     ];
-
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
@@ -62,5 +63,15 @@ class Grid extends Model
     public function criteria(): BelongsToMany
     {
         return $this->belongsToMany(Criterion::class, 'grid_criterion', 'grid_id', 'criterion_id');
+    }
+
+    /**
+     * Get the client that belong to this grid.
+     *
+     * @return BelongsTo
+     */
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
     }
 }

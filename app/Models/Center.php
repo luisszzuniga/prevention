@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -36,10 +37,11 @@ class Center extends Model
     protected $fillable = [
         'name',
         'address',
+        'client_id'
     ];
 
     /**
-     * The courses that belong to the center.
+     * The trainings that belong to the center.
      *
      * @return HasMany
      */
@@ -47,5 +49,15 @@ class Center extends Model
     {
 
         return $this->hasMany(Training::class);
+    }
+
+    /**
+     * The client that belong to the center.
+     *
+     * @return BelongsTo
+     */
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
     }
 }

@@ -4,9 +4,12 @@ namespace App\Console\Commands;
 
 use App\Models\Ability;
 use App\Models\Role;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Console\View\Components\TwoColumnDetail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\Console\Command\Command as CommandAlias;
 
 class CreateAbilities extends Command
 {
@@ -29,68 +32,117 @@ class CreateAbilities extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
-        $abilities = [
-            0 => [ // Super-admin
-                [// ability 1
+        $abilitiesByRole = [
+            CreateRoles::ROLE_SUPER_ADMIN => [ // Super-admin
+                [// ability
                     'name' => 'user:get:user',
                     'description' => 'Visualize user\'s info'
                 ],
-                [//ability 2
+                [//ability
                     'name' => 'company:post:store',
                     'description' => 'Create a company'
                 ],
-                [//ability 3
-                    'name' => 'trainer:post:store',
-                    'description' => 'Create a trainer'
+                [//ability
+                    'name' => 'company:delete',
+                    'description' => 'Create a company'
                 ],
-                [//ability 3
+                [//ability
+                    'name' => 'company:patch',
+                    'description' => 'Create a company'
+                ],
+                [//ability
                     'name' => 'vehicle:post:store',
                     'description' => 'Create a vehicle'
                 ],
             ],
-            1 => [ // Manager
-                [
+            CreateRoles::ROLE_LERY_ADMIN => [ // Admin
+                [//ability
+                    'name' => 'trainer:post:store',
+                    'description' => 'Create a trainer'
                 ],
             ],
-            2 => [ // Admin
-                [
+            CreateRoles::ROLE_CLIENT_MANAGER => [ // Client Manager
+                [//ability
+                    'name' => 'trainer:post:lesson',
+                    'description' => 'Add lessons'
                 ],
             ],
-            3 => [ // instructor
-                [
+            CreateRoles::ROLE_CLIENT_INSTRUCTOR => [ // instructor
+                [//ability
+                    'name' => 'trainer:post:session',
+                    'description' => 'Create session'
                 ],
             ],
-            4 => [ // Guest
-                [
+            CreateRoles::ROLE_CLIENT_TRAINEE => [ // trainee
+                [//ability
+                    'name' => 'trainee:get:lessons',
+                    'description' => 'See lessons'
                 ],
             ],
         ];
-        $superAdminId = Role::where('name', CreateRoles::ROLES[0]['name'])->first()->id;
-        $managerId = Role::where('name', CreateRoles::ROLES[1]['name'])->first()->id;
-        $adminId = Role::where('name', CreateRoles::ROLES[2]['name'])->first()->id;
-        $instructorId = Role::where('name', CreateRoles::ROLES[3]['name'])->first()->id;
-        $guestId = Role::where('name', CreateRoles::ROLES[4]['name'])->first()->id;
 
-        foreach ($abilities[0] as $ability) {
-            if (!Ability::where('name', $ability['name']->exists())) {
+        try {
+            // Populate database with abilities
+            // warning : no break between case. case order matters !
+            foreach ($abilitiesByRole as $role => $abilities) {
+                switch ($role) {
+                    /** @noinspection PhpMissingBreakStatementInspection */
+                    case 5:
+                        $this->addAbilities(abilities: $abilities, role: Role::find(CreateRoles::ROLE_CLIENT_TRAINEE));
+                    /** @noinspection PhpMissingBreakStatementInspection */
+                    case 4:
+                        $this->addAbilities($abilities, Role::find(CreateRoles::ROLE_CLIENT_INSTRUCTOR));
+                    /** @noinspection PhpMissingBreakStatementInspection */
+                    case 3:
+                        $this->addAbilities($abilities, Role::find(CreateRoles::ROLE_CLIENT_MANAGER));
+                    /** @noinspection PhpMissingBreakStatementInspection */
+                    case 2:
+                        $this->addAbilities($abilities, Role::find(CreateRoles::ROLE_LERY_ADMIN));
+                    case 1:
+                        $this->addAbilities($abilities, Role::find(CreateRoles::ROLE_SUPER_ADMIN));
+                        break;
+                    default:
+                        throw new Exception("No abilities defined for role ".$role);
+                }
+            }
+        } catch(Exception $e) {
+            Log::error($e->getMessage());
+            with(new TwoColumnDetail($this->getOutput()))->render(
+                '<fg=yellow;options=bold>Warning : </>' . $e->getMessage(),
+                '<fg=red;options=bold>ERROR</>');
+            return CommandAlias::FAILURE;
+        }
+        return CommandAlias::SUCCESS;
+    }
+
+    /**
+     * @param array $abilities
+     * @param Role $role
+     * @return void
+     */
+    protected function addAbilities(array $abilities, Role $role): void
+    {
+        foreach ($abilities as $ability) {
+            if (!Ability::where('name', $ability['name'])
+                ->where('role_id', $role->id)
+                ->exists()) {
                 DB::table('abilities')->insert([
                     'name' => $ability['name'],
                     'description' => $ability['description'],
-                    'role_id' => $superAdminId
+                    'role_id' => $role->id
                 ]);
                 with(new TwoColumnDetail($this->getOutput()))->render(
-                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'],
+                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'].' for '.$role->name,
                     '<fg=yellow;options=bold>ADDED</>'
                 );
             } else {
                 with(new TwoColumnDetail($this->getOutput()))->render(
-                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'],
+                    '<fg=yellow;options=bold>Ability : </>' . $ability['name'].' for '.$role->name,
                     '<fg=red;options=bold>EXISTS</>'
                 );
             }
         }
-        return Command::SUCCESS;
     }
 }

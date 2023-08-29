@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('learners', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('trainer_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->name('user_id_of_trainer')->onDelete('cascade');
-            $table->foreign('trainer_id')->references('id')->on('trainers')->name('trainer_id_learner');
+            $table->unsignedBigInteger('subclient_id');
+            $table->foreign('user_id')->references('id')->on('users')->name('user_id_of_learner')->onDelete('cascade');
+            $table->foreign('subclient_id')->references('id')->on('subclients')->name('user_id_of_learner')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

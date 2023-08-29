@@ -2,8 +2,12 @@
 
 namespace Tests\Feature\Controllers;
 
+use App\Models\Client;
+use App\Models\Company;
+use App\Models\Subclient;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -17,9 +21,15 @@ class LearnerControllerTest extends TestCase
     public function test_store_learner()
     {
         Artisan::call('create:roles');
+        Artisan::call('create:clients');
 
         $trainer = User::factory()->create();
         $this->actingAs($trainer);
+
+        $client = Company::where('name', 'Lery Technologies')->first();
+        $subClient = Subclient::factory([
+            'client_id'=>$client->id,
+        ])->create();
 
         $learnerData = [
             "lastname" => "Doe",
@@ -29,23 +39,24 @@ class LearnerControllerTest extends TestCase
             "address" => "123 Test St",
             "zip_code" => "12345",
             "town" => "Test town",
-            'trainer_id' => $trainer->id,
+            'subclient_id' => $subClient->id,
         ];
 
         $response = $this->json('POST', '/api/learners-store', $learnerData);
 
-        $response->assertStatus(201)
+        $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([
                 'message',
                 'learner' => [
-                    'lastname',
-                    'firstname',
-                    'email',
-                    'phone',
-                    'address',
-                    'zip_code',
-                    'town',
-                    'trainer_id'
+                    'user' => [
+                        'lastname',
+                        'firstname',
+                        'email',
+                        'phone',
+                        'address',
+                        'zip_code',
+                        'town',
+                    ],
                 ],
             ]);
     }

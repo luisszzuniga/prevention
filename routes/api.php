@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\VehicleController;
 use App\Http\Controllers\CenterController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TrainingController;
-use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::view('/swagger', 'swagger-upkg');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -39,3 +40,4 @@ Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/trainings', [TrainingController::class, 'index']);
 Route::get('/centers', [CenterController::class, 'index']);
 
+Route::post('client/create', [ClientController::class, 'store']);

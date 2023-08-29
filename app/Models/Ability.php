@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,6 +21,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Ability whereRoleId($value)
+ * @mixin Eloquent
+ *
  */
 class Ability extends Model
 {

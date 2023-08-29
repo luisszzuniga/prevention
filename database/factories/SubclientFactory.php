@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\Company;
 use App\Models\Subclient;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,6 +21,7 @@ class SubclientFactory extends Factory
     {
         return [
             'company_id' => Company::factory()->create()->id,
+            'client_id' => Client::factory()->create()->id,
         ];
     }
 }

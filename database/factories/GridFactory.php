@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use App\Models\Grid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class GridFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
+            'client_id' => Client::factory()->create()->id
         ];
     }
 }

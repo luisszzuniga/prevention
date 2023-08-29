@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Barryvdh\LaravelIdeHelper\Eloquent;
@@ -15,9 +16,65 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
+use OpenApi\Annotations as OA;
 
 /**
  * App\Models\User
+ *
+ * @OA\Schema (
+ *       schema="User",
+ *       required={"mail"},
+ *
+ *       @OA\Property(
+ *           property="lastname",
+ *           type="string",
+ *           example="Doe",
+ *           description="User's lastname"
+ *       ),
+ *       @OA\Property(
+ *           property="firstname",
+ *           type="string",
+ *           example="John",
+ *           description="User's firstname"
+ *       ),
+ *       @OA\Property(
+ *            property="mail",
+ *            type="string",
+ *            example="john.doe@example.com",
+ *            description="User's email. Could be enterprise generic email address. Must be unique"
+ *       ),
+ *      @OA\Property(
+ *            property="phone",
+ *            type="string",
+ *            maxLength=10,
+ *            example="0123456789",
+ *            description="User's phone. Could be entreprise standard phone number"
+ *       ),
+ *       @OA\Property(
+ *            property="address",
+ *            type="string",
+ *            maxLength=100,
+ *            example="0123456789",
+ *            description="User's phone. Could be entreprise standard phone number"
+ *        ),
+*        @OA\Property(
+ *             property="zip_code",
+ *             type="string",
+ *             maxLength=5,
+ *             minLength=5,
+ *             example="2B500",
+ *             description="User's zip code"
+ *         ),
+ *       @OA\Property(
+ *             property="town",
+ *             type="string",
+ *             maxLength=35,
+ *             example="Toulouse",
+ *             description="User's town"
+ *         ),
+ *       @OA\Property(property="created_at", type="string", format="date-time", description="Initial creation timestamp", readOnly=true),
+ *       @OA\Property(property="updated_at", type="string", format="date-time", description="Last update timestamp", readOnly=true),
+ *   ),
  *
  * @property int $id
  * @property string $lastname

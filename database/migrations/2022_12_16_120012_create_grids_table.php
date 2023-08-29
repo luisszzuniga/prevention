@@ -15,6 +15,9 @@ return new class extends Migration {
         Schema::create('grids', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign('client_id')->references('id')->on('clients')
+                ->onDelete('set null')->name('client_id_grid');
         });
     }
 
