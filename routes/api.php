@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\LearnerController;
+use App\Http\Controllers\API\SubClientController;
 use App\Http\Controllers\API\VehicleController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\LearnerController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Http\Request;
@@ -27,9 +28,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
-    Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
-});
+Route::middleware(['auth:sanctum'])
+    ->group(function () {
+    });
+Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
+Route::get('/getSubClients', [SubClientController::class, 'getSubClientsForCurrentUser']);
 
 Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
 

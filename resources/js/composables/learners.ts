@@ -1,28 +1,30 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
 
+axios.defaults.withCredentials = true;
+
 export default function useLearners(): {
     message: any,
     errors: any,
     learner: any,
     learners: any,
+    subclients: any,
     getLearner: (id: number) => Promise<void>,
     getLearners: () => Promise<void>,
     storeLearner: (data: object) => Promise<void>,
+    getSubclients: () => Promise<void>,
 } {
     axios.defaults.withCredentials = true;
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
+    const subclients = ref([]);
     const url = '/api/learners-store';
-    let token = "1|018LLF6WZLEarYLAAt5Lg0dSh13QUoMTVA9KGAMo";
 
-    console.log(token)
     let config = {
         headers: {
             'Content-Type': "application/json",
-            'Authorization': 'Bearer ' + token,
         },
         timeout: 0
     };
@@ -54,13 +56,24 @@ export default function useLearners(): {
         }
     }
 
+    const getSubclients = async () => {
+        try {
+            const response = await axios.get('/api/getSubClients');
+            subclients.value = response.data;
+        } catch (error) {
+            console.error('Erreur lors de la récupération des subclients:', error);
+        }
+    };
+
     return {
         message,
         errors,
         learner,
         learners,
+        subclients,
         getLearner,
         getLearners,
-        storeLearner
+        storeLearner,
+        getSubclients
     }
 }

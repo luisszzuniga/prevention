@@ -66,6 +66,17 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="subclient" class="col-md-4 col-form-label text-md-right">Subclient</label>
+                                <div class="col-md-6">
+                                    <select id="subclient" v-model="form.subclient_id" required>
+                                        <option v-for="subclient in subclients" :value="subclient.id" :key="subclient.id">
+                                            {{ subclient.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <button type="submit">
                                 Ajouter
                             </button>
@@ -78,9 +89,10 @@
 </template>
 
 <script lang="ts" setup>
-
+import { onMounted } from 'vue';
 import useLearners from '../../composables/learners'
 import {reactive} from 'vue'
+import {ref} from "vue/dist/vue";
 
 const form = reactive({
     lastname: '',
@@ -89,14 +101,17 @@ const form = reactive({
     phone: '',
     address: '',
     zip_code: '',
-    town: ''
+    town: '',
+    subclient_id: null
 })
 
-const {errors, storeLearner, message} = useLearners()
+const {errors, storeLearner, message, getSubclients, subclients } = useLearners()
 
 const saveLearner = async () => {
     await storeLearner({...form})
 }
+
+onMounted(getSubclients);
 
 </script>
 

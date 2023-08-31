@@ -32,11 +32,15 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::guard('web')->user();
 
         // Créez un nouveau token pour l'utilisateur
-        $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
-        Log::info($token);
-        $request->session()->put('token', $token);
+//        $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
+//        Log::info($token);
+//        $request->session()->put('token', $token);
+//
+//        return redirect()->intended(RouteServiceProvider::DASHBOARD);
 
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        $token = $user->createToken('LaravelSanctumAuth', ['user-get-user']);
+        // Envoyer une réponse avec le cookie
+        return redirect()->intended(RouteServiceProvider::DASHBOARD)->withCookie(cookie('auth_token', $token->plainTextToken, 60)); // 60 minutes par exemple
 
     }
 
@@ -54,6 +58,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->withCookie(cookie('auth_token', '', -1));;
     }
 }
