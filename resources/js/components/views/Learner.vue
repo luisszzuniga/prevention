@@ -71,7 +71,7 @@
                                 <div class="col-md-6">
                                     <select id="subclient" v-model="form.subclient_id" required>
                                         <option v-for="subclient in subclients" :value="subclient.id" :key="subclient.id">
-                                            {{ subclient.name }}
+                                            {{ subclient.company.name }}
                                         </option>
                                     </select>
                                 </div>

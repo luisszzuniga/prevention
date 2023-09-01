@@ -39,7 +39,7 @@ class AuthenticatedSessionController extends Controller
 //        return redirect()->intended(RouteServiceProvider::DASHBOARD);
 
         $token = $user->createToken('LaravelSanctumAuth', ['user-get-user']);
-        // Envoyer une réponse avec le cookie
+
         return redirect()->intended(RouteServiceProvider::DASHBOARD)->withCookie(cookie('auth_token', $token->plainTextToken, 60)); // 60 minutes par exemple
 
     }

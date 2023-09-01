@@ -1,8 +1,6 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
 
-axios.defaults.withCredentials = true;
-
 export default function useLearners(): {
     message: any,
     errors: any,
@@ -14,7 +12,6 @@ export default function useLearners(): {
     storeLearner: (data: object) => Promise<void>,
     getSubclients: () => Promise<void>,
 } {
-    axios.defaults.withCredentials = true;
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');

@@ -43,54 +43,31 @@ class LearnerController extends Controller
      *     ),
      * )
      */
-    public function store(StoreLearnerRequest $request): JsonResponse
+    public function store(StoreLearnerRequest $request):JsonResponse
     {
-        try {
-            Log::info('Entering store function');
+        $user = new User();
+        $user->lastname = $request->lastname;
+        $user->firstname = $request->firstname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->zip_code = $request->zip_code;
+        $user->town = $request->town;
+        $user->password = bcrypt(Str::random(10));
+        $user->save();
 
-            $user = new User();
-            $user->lastname = $request->lastname;
-            $user->firstname = $request->firstname;
-            $user->email = $request->email;
-            $user->phone = $request->phone;
-            $user->address = $request->address;
-            $user->zip_code = $request->zip_code;
-            $user->town = $request->town;
-            $user->password = bcrypt(Str::random(10));
-            $user->save();
+        $learner = new Learner();
+        $learner->user()->associate($user);
+        $subClient = Subclient::findOrFail($request->subclient_id);
+        $learner->subclient()->associate($subClient);
+        $learner->save();
 
-            Log::info('User saved', ['user_id' => $user->id]);
+//       Log::info(Auth::user()->id);
 
-            $learner = new Learner();
-            $learner->user()->associate($user);
-
-            $subClient = Subclient::findOrFail($request->subclient_id);
-            Log::info('Subclient found', ['subclient_id' => $subClient->id]);
-
-            $learner->subclient()->associate($subClient);
-            $learner->save();
-
-            Log::info('Learner saved', ['learner_id' => $learner->id]);
-
-            return response()->json([
-                'message' => "Le stagiaire " . $learner->user->lastname . ' ' . $learner->user->firstname . " a été ajouté avec succès.",
-                'learner' => $learner
-            ], Response::HTTP_CREATED);
-
-        } catch (\Exception $e) {
-            // Log the exception message and file
-            Log::error('Exception caught in store function', [
-                'message' => $e->getMessage(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine()
-            ]);
-
-            return response()->json([
-                'error' => 'Une erreur est survenue lors de l\'ajout du stagiaire.',
-                'details' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        return response()->json([
+            'message' => "Le stagiaire " . $learner->user->lastname . ' ' . $learner->user->firstname . " a été ajouté avec succès.",
+            'learner' => $learner
+        ], Response::HTTP_CREATED);
     }
-
 
 }

@@ -9,6 +9,17 @@ import '@mdi/font/css/materialdesignicons.css'
 import DateFnsAdapter from '@date-io/date-fns'
 import frLocale from 'date-fns/locale/fr'
 import { fr } from 'vuetify/locale';
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+const tokenElement = document.head.querySelector('meta[name="csrf-token"]');
+
+if (!tokenElement) {
+    console.error('CSRF token not found.');
+} else {
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = (tokenElement as HTMLMetaElement).content;
+
+}
 
 const vuetify = createVuetify({
     components,
