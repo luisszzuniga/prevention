@@ -21,6 +21,10 @@
                 </a>
             </v-col>
             <v-spacer></v-spacer>
+            <v-col cols="auto" class="user-greeting">
+                Bonjour, {{ firstname }} {{ lastname }}
+            </v-col>
+
 
             <!-- Menu déroulant de l'utilisateur -->
             <v-menu style="z-index: 9999;" offset-y>
@@ -54,8 +58,14 @@ export default {
     data() {
         return {
             logo: logo,
-            user: user
-        }
+            user: user,
+            firstname: '',
+            lastname: ''
+        };
+    },
+    mounted() {
+        this.firstname = localStorage.getItem('user-firstname') || '';
+        this.lastname = localStorage.getItem('user-lastname') || '';
     }
 }
 </script>
@@ -80,5 +90,11 @@ export default {
     outline: none !important;
     box-shadow: none !important;
 }
+
+.user-greeting {
+    color: white;
+    margin-right: 10px;
+}
+
 
 </style>

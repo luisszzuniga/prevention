@@ -24,6 +24,13 @@
 
 </html>
 
-<style>
+@if(isset($token))
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            localStorage.setItem('auth-token', '{{$token}}');
+            localStorage.setItem('user-firstname', '{{$firstname}}');
+            localStorage.setItem('user-lastname', '{{$lastname}}');
+        });
+    </script>
+@endif
 
-</style>

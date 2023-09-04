@@ -11,14 +11,24 @@ import frLocale from 'date-fns/locale/fr'
 import { fr } from 'vuetify/locale';
 import axios from 'axios';
 
-axios.defaults.withCredentials = true;
-const tokenElement = document.head.querySelector('meta[name="csrf-token"]');
+axios.interceptors.request.use(config => {
+    const tokenAuth = localStorage.getItem('auth-token');
 
-if (!tokenElement) {
-    console.error('CSRF token not found.');
-} else {
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = (tokenElement as HTMLMetaElement).content;
+    if (tokenAuth) {
+        config.headers['Authorization'] = `Bearer ${tokenAuth}`;
+    } else {
+        delete config.headers['Authorization'];
+    }
 
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+
+const tokenCsrf = document.head.querySelector('meta[name="csrf-token"]');
+
+if (tokenCsrf) {
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = (tokenCsrf as HTMLMetaElement).content;
 }
 
 const vuetify = createVuetify({

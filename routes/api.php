@@ -32,7 +32,9 @@ Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
     Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
 });
 
-Route::get('/getSubClients', [SubClientController::class, 'getSubClientsForCurrentUser']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/getSubClients', [SubClientController::class, 'getSubClientsForCurrentUser']);
+});
 
 Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
 
