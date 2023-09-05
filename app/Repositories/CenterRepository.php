@@ -15,9 +15,9 @@ class CenterRepository implements CenterInterface
         $this->center = $center;
     }
 
-    public function getCenters(): Collection
+    public function getCentersByClientId($clientId): Collection
     {
-        return $this->center->all();
+        return Center::where('client_id', $clientId)->get();
     }
 
 }

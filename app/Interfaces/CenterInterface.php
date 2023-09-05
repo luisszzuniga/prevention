@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface CenterInterface
 {
-    public function getCenters(): Collection;
+    public function getCentersByClientId($clientId): Collection;
 }
 

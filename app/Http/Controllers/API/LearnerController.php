@@ -62,8 +62,6 @@ class LearnerController extends Controller
         $learner->subclient()->associate($subClient);
         $learner->save();
 
-//       Log::info(Auth::user()->id);
-
         return response()->json([
             'message' => "Le stagiaire " . $learner->user->lastname . ' ' . $learner->user->firstname . " a été ajouté avec succès.",
             'learner' => $learner

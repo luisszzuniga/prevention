@@ -38,11 +38,9 @@ interface Center {
     selected?: boolean;
 }
 
-const {  getCenters } = useCenters();
+const { centers, getCenters } = useCenters();
 
 onMounted(getCenters);
-
-const centers = ref<Center[]>([]);
 
 const filledCenters = computed(() => {
     const fillLength = 6 - centers.value.length;

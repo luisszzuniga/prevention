@@ -34,6 +34,7 @@ Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/getSubClients', [SubClientController::class, 'getSubClientsForCurrentUser']);
+    Route::get('/getCenters', [CenterController::class, 'getCentersForCurrentUser']);
 });
 
 Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');

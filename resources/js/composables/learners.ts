@@ -6,17 +6,14 @@ export default function useLearners(): {
     errors: any,
     learner: any,
     learners: any,
-    subclients: any,
     getLearner: (id: number) => Promise<void>,
     getLearners: () => Promise<void>,
     storeLearner: (data: object) => Promise<void>,
-    getSubclients: () => Promise<void>,
 } {
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
-    const subclients = ref([]);
     const url = '/api/learners-store';
 
     let config = {
@@ -53,24 +50,13 @@ export default function useLearners(): {
         }
     }
 
-    const getSubclients = async () => {
-        try {
-            const response = await axios.get('/api/getSubClients');
-            subclients.value = response.data;
-        } catch (error) {
-            console.error('Erreur lors de la récupération des subclients:', error);
-        }
-    };
-
     return {
         message,
         errors,
         learner,
         learners,
-        subclients,
         getLearner,
         getLearners,
         storeLearner,
-        getSubclients
     }
 }
