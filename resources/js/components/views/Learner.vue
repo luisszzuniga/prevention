@@ -5,7 +5,6 @@
                 <br>
                 <br>
                 <br>
-
                 <div class="card">
                     <div class="card-header">Ajouter un Stagiaire</div>
                     <div class="card-body">

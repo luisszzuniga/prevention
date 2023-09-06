@@ -60,6 +60,7 @@ class Training extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'seance_code'
     ];
 

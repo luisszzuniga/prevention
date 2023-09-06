@@ -1,5 +1,6 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import { postData } from '../apiUtils'
 
 export default function useLearners(): {
     message: any,
@@ -34,21 +35,13 @@ export default function useLearners(): {
     }
 
     const storeLearner = async (data: object): Promise<void> => {
-
-        errors.value = '';
-        try {
-            let response = await axios.post(url, data, config);
-            console.log('done')
-            message.value = response.data.message;
-        } catch (e) {
-            const error = e as any;
-            if (error.response.status === 422) {
-                for (const key in error.response.data.errors) {
-                    errors.value = error.response.data.errors;
-                }
-            }
+        const { response, error } = await postData(url, data);
+        if (response) {
+            message.value = response.message;
+        } else if (error) {
+            errors.value = error;
         }
-    }
+    };
 
     return {
         message,

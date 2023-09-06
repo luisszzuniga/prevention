@@ -1,5 +1,6 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import { postData } from '../apiUtils'
 
 export default function useTrainings(): {
     message: any,
@@ -8,13 +9,20 @@ export default function useTrainings(): {
     trainings: any,
     getTraining: (id: number) => Promise<void>,
     getTrainings: () => Promise<void>,
-    storeTraining: (data: object) => Promise<void>,
+    createTraining: (data: object) => Promise<void>,
 } {
     axios.defaults.withCredentials = true;
     const training = ref([]);
     const trainings = ref([]);
     const message = ref('');
     const errors = ref('');
+    const url = '/api/training/create';
+    let config = {
+        headers: {
+            'Content-Type': "application/json",
+        },
+        timeout: 0
+    };
 
     const getTrainings = async (): Promise<void> => {
         let response = await axios.get('/api/trainings');
@@ -27,20 +35,14 @@ export default function useTrainings(): {
 
     }
 
-    const storeTraining = async (data: object): Promise<void> => {
-        errors.value = '';
-        try {
-            let response = await axios.post('', data);
-            message.value = response.data.message;
-        } catch (e) {
-            const error = e as any;
-            if (error.response.status === 422) {
-                for (const key in error.response.data.errors) {
-                    errors.value = error.response.data.errors;
-                }
-            }
+    const createTraining = async (data: object): Promise<void> => {
+        const { response, error } = await postData(url, data);
+        if (response) {
+            message.value = response.message;
+        } else if (error) {
+            errors.value = error;
         }
-    }
+    };
 
     return {
         message,
@@ -49,6 +51,6 @@ export default function useTrainings(): {
         trainings,
         getTraining,
         getTrainings,
-        storeTraining
+        createTraining
     }
 }

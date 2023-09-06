@@ -32,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Training
     },
     {
-        path: '/training/create-training',
+        path: '/training/create',
         name: 'create-training',
         component: CreateTraining
     },

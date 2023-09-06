@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class CreateGrids extends Command
 {
-    const GRIDS = [
-        [
-            'name' => 'Grille A',
-        ],
-    ];
-
     /**
      * The name and signature of the console command.
      *
@@ -38,31 +32,8 @@ class CreateGrids extends Command
      */
     public function handle(): int
     {
-        try {
-            $client = Company::where('name', 'Lery Technologies')->firstOrFail();
-            foreach (self::GRIDS as $grid) {
-                $grid['client_id'] = $client->id;
-                if (!Grid::where('title', $grid['title'])->exists()) {
-                    DB::table('grids')->insert([
-                        $grid
-                    ]);
-                    with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>GRID : </>' . $grid['title'],
-                        '<fg=yellow;options=bold>ADDED</>'
-                    );
-                } else {
-                    with(new TwoColumnDetail($this->getOutput()))->render(
-                        '<fg=yellow;options=bold>GRID : </>' . $grid['title'],
-                        '<bg=red;options=bold>EXISTS</>'
-                    );
-                }
-            }
-        } catch (Exception $e) {
-            with(new TwoColumnDetail($this->getOutput()))->render(
-                '<fg=red;options=bold>GRID: </>' . $e->getMessage(),
-                '<fg=red;options=bold>Failed to insert grids</>'
-            );
-        }
+        $this->call('create:grid-acp-driving-pl');
+
         return self::SUCCESS;
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->integer('seance_code')->nullable();
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('center_id');

@@ -9,7 +9,7 @@ const router = useRouter();
 
 const createCourse = () => {
     const currentPath = router.currentRoute.value.path;
-    router.push(currentPath + '/create-training');
+    router.push(currentPath + '/create');
 };
 
 </script>

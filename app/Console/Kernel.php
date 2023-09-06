@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
         Commands\CreateClients::class,
         Commands\CreateCriteria::class,
         Commands\CreateFeatures::class,
+        Commands\CreateGrids::class,
         Commands\CreateOffers::class,
         Commands\CreateRoles::class,
         Commands\CreateThemes::class,

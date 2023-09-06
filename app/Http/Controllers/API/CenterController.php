@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Interfaces\CenterInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;

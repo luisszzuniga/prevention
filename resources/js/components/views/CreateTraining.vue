@@ -24,11 +24,20 @@
                             </option>
                         </select>
                     </div>
+                    <div class="form-group row">
+                        <label for="grid" class="col-form-label">Grille de notation</label>
+                        <select id="grid" v-model="selectedGrid" class="form-control" required>
+                            <option v-for="grid in grids" :value="grid.id" :key="grid.id">
+                                {{ grid.name }}
+                            </option>
+                        </select>
+                    </div>
                     <v-text-field label="Nom de la formation" v-model="nomFormation" required></v-text-field>
 
                     <v-locale-provider :lang="{ current: 'fr' }">
-                        <v-date-picker></v-date-picker>
+                        <v-date-picker v-model="dateFormation"></v-date-picker>
                     </v-locale-provider>
+
 
                     <br>
                     <v-btn @click="submitForm">Créer la session</v-btn>
@@ -43,6 +52,8 @@ import useCenters from '../../composables/centers';
 import { ref, onMounted } from 'vue';
 import { VDatePicker } from 'vuetify/labs/VDatePicker'
 import useSubclients from '../../composables/subclients';
+import useGrids from '../../composables/grids';
+import useTrainings from '../../composables/trainings';
 
 const entreprise = ref('');
 const nomFormation = ref('');
@@ -50,16 +61,29 @@ const dateFormation = ref('');
 const menu = ref(false);
 const selectedSubclient = ref(null);
 const selectedCenter = ref(null);
+const selectedGrid = ref(null);
 const { getSubclients, subclients } = useSubclients();
 const { getCenters, centers } = useCenters();
+const { getGrids, grids } = useGrids();
+const { createTraining, message, errors } = useTrainings();
 
-onMounted(() => {
-    getSubclients();
-    getCenters();
+onMounted(async () => {
+    await getSubclients();
+
+    await getCenters();
+
+    await getGrids();
 });
 
-const submitForm = () => {
-
+const submitForm = async () => {
+    const trainingData = {
+        subclient_id: selectedSubclient.value,
+        center_id: selectedCenter.value,
+        grid_id: selectedGrid.value,
+        training_name: nomFormation.value,
+        training_date: dateFormation.value
+    };
+    await createTraining(trainingData);
 };
 
 defineExpose({
@@ -69,7 +93,9 @@ defineExpose({
     dateFormation,
     menu,
     selectedSubclient,
-    selectedCenter
+    selectedCenter,
+    selectedGrid,
+    grids
 });
 </script>
 

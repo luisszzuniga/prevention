@@ -15,6 +15,7 @@ class Trainer extends User
 {
     use HasFactory;
 
+    protected $fillable = ['user_id'];
 
     /**
      * The users that belong to the trainer.
