@@ -198,6 +198,11 @@ return [
         'already_registered' => 'déjà enregistré ?',
         'register' => 'enregistrer',
         'company_name' => 'le nom de la société',
+        'training_name' => 'nom de la formation',
+        'training_date' => 'date de formation',
+        'subclient_id' => 'client',
+        'grid_id' => 'grille',
+        'center_id' => 'centre',
     ],
 
 ];

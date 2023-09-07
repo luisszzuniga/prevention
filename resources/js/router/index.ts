@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Dashboard
     },
     {
-        path: '/training',
+        path: '/training/:message?',
         name: 'training',
         component: Training
     },

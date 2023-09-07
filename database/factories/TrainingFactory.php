@@ -22,6 +22,7 @@ class TrainingFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' => fake()->word(),
             'seance_code' => fake()->unique()->numberBetween(1, 1000),
             'offer_id' => Offer::factory(1)->create()->first(),
             'center_id' => Center::factory(1)->create()->first(),

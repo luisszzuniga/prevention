@@ -22,7 +22,11 @@ class CreateTrainingRequest extends ApiRequest
     public function rules(): array
     {
         return [
-
+            'subclient_id'  => 'required|exists:subclients,id',
+            'center_id'     => 'required|exists:centers,id',
+            'grid_id'       => 'required|exists:grids,id',
+            'training_name' => 'required|string|max:255',
+            'training_date' => 'required',
         ];
     }
 

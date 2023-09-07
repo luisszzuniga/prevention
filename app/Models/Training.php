@@ -17,9 +17,11 @@ use Illuminate\Support\Carbon;
  *
  * @property int $id
  * @property string|null $observation
+ * @property string $name
  * @property int|null $seance_code
  * @property int $offer_id
  * @property int $center_id
+ * @property int $trainer_id
  * @property int $user_id_trainer
  * @property int $user_id_learner
  * @property Carbon|null $created_at

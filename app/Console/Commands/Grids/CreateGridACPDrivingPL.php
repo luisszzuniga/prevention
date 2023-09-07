@@ -52,8 +52,46 @@ class CreateGridACPDrivingPL extends Command
                     ],
                     'Identifier les situations dangereuses' => [
                         'vigilance / attention', 'observation', 'rétroviseurs', 'angles-morts', 'risque arrière'
+                    ],
+                    'anticipation' => [
+                        'voir', 'prévoir', 'décider'
+                    ],
+                    'communiquer' => [
+                        'appel de frein', 'utiliser ses clignotants', 'autres'
+                    ],
+                    'respect' => [
+                        'règles', 'autres usagers', 'environnement', 'matériel'
+                    ],
+                    'respecter et adapter les distances de sécurité' => [
+                        'à l\'arrêt', 'en circulation', 'adaptation', 'latérales'
+                    ],
+                    's\'adapter à la visibilité' => [
+                        'tracé de la route', 'intersection', 'situations particulières', 'conditions météo'
+                    ],
+                    'adapter sa vitesse' => [
+                        'environnement', 'adhérence', 'trafic', 'utilisation technologie'
+                    ],
+                    'franchir les intersectons' => [
+                        'détection', 'pied face au frein', 'respect priorité', 'allure'
+                    ],
+                    'croisement' => [
+                        'allure', 'sécurité'
+                    ],
+                    'dépasser' => [
+                        'prise de décision', 'rabattement'
+                    ],
+                    'manœuvre' => [
+                        'en circulation', 'stationnement', 'précision', 'technologie'
+                    ],
+                    'spécificités conduite PL' => [
+                        'prise de poste', 'montée / descente', 'contrôle pression air', 'gestion boite de vitesse',
+                        'respect zone verte', 'position sur la chaussée', 'franchir les giratoires', 'gabarit',
+                        'porte à faux av et ar', 'utilisation ralentisseurs', 'antéviseur', 'principaux',
+                        'grand angle', 'accostage', 'mise à quai', 'équipement particulier', 'énergie cinétique',
+                        'centre de gravité', 'force centrifuge'
                     ]
                 ];
+
 
                 foreach ($criteria as $criterionName => $themes) {
                     $criterion = Criterion::firstOrCreate(['label' => $criterionName]);

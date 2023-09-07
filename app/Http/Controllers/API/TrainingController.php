@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTrainingRequest;
 use App\Interfaces\TrainingInterface;
 use App\Models\Offer;
 use App\Models\Trainer;
 use App\Models\Training;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrainingController extends Controller
@@ -28,16 +31,24 @@ class TrainingController extends Controller
         ], 201);
     }
 
+    /**
+     * Create a new training.
+     *
+     * @param CreateTrainingRequest $request
+     *
+     * @return JsonResponse
+     *
+     * @throws Exception
+     */
     public function create(CreateTrainingRequest $request): JsonResponse
     {
         $offer = Offer::where('name', 'Plus')->first();
         $trainer = Trainer::where('user_id', Auth::id())->first();
-        $formattedDate = Carbon::parse($request['training_date'])->format('Y-m-d H:i:s');
-
+//        $formattedDate = Carbon::parse($request['training_date'])->format('Y-m-d H:i:s');
         $training = new Training;
         $training->name = $request['training_name'];
         $training->center_id = $request['center_id'];
-        $training->date = $formattedDate;
+        $training->date = $request['training_date'];
         $training->offer_id = $offer->id;
         $training->trainer_id = $trainer->id;
         $training->save();

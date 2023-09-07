@@ -15,7 +15,7 @@ export default function useLearners(): {
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
-    const url = '/api/learners-store';
+    const url = '/api/learners/store';
 
     let config = {
         headers: {

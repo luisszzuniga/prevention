@@ -66,6 +66,7 @@ class CreateUsers extends Command
             foreach ($users as $user) {
                 if (!User::where('email', $user['email'])->exists()) {
                     $createdUser = User::create($user);
+                    // Les users deviennent des trainers
                     Trainer::create(['user_id' => $createdUser->id]);
                     with(new TwoColumnDetail($this->getOutput()))->render(
                         '<fg=yellow;options=bold>USER : </>'. $user['firstname'].' '.$user['lastname'],

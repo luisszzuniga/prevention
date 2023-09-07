@@ -1,15 +1,21 @@
 <template>
+    <p v-if="routeMessage">{{ routeMessage }}</p>
     <button class="create-button" @click="createCourse">Créer une journée de formation</button>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import useTrainings from '../../composables/trainings';
+import { watch } from 'vue';
+import { ref } from 'vue';
 
 const router = useRouter();
+const { message } = useTrainings();
+
+let routeMessage = ref(router.currentRoute.value.params.message);
 
 const createCourse = () => {
-    const currentPath = router.currentRoute.value.path;
-    router.push(currentPath + '/create');
+    router.push({ name: 'create-training' });
 };
 
 </script>

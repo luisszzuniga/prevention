@@ -19,9 +19,8 @@ class LaunchDataTest extends TestCase
         $this->assertDatabaseCount('users', 2);
         $this->assertDatabaseCount('offers', 3);
         $this->assertDatabaseCount('features', 5);
-        $this->assertDatabaseCount('themes', 0);
-        $this->assertDatabaseCount('criteria', 0);
         $this->assertDatabaseCount('centers', 1);
+        $this->assertDatabaseCount('grids', 1);
     }
 
 }

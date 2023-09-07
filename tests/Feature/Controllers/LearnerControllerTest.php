@@ -42,7 +42,7 @@ class LearnerControllerTest extends TestCase
             'subclient_id' => $subClient->id,
         ];
 
-        $response = $this->json('POST', '/api/learners-store', $learnerData);
+        $response = $this->json('POST', '/api/learners/store', $learnerData);
 
         $response->assertStatus(Response::HTTP_CREATED)
             ->assertJsonStructure([

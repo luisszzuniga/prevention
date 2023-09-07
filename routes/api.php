@@ -5,11 +5,11 @@ use App\Http\Controllers\API\CenterController;
 use App\Http\Controllers\API\GridController;
 use App\Http\Controllers\API\LearnerController;
 use App\Http\Controllers\API\SubClientController;
+use App\Http\Controllers\API\TrainingController;
 use App\Http\Controllers\API\VehicleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\TrainingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
-    Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
+    Route::post('/learners/store', [LearnerController::class, 'store'])->name('learners-store');
     Route::post('/training/create', [TrainingController::class, 'create'])->name('training-create');
 });
 
