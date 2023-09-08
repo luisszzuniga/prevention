@@ -1,21 +1,24 @@
 <template>
-    <p v-if="routeMessage">{{ routeMessage }}</p>
-    <button class="create-button" @click="createCourse">Créer une journée de formation</button>
+    <div>
+        <div class="route-message" v-if="routeMessage">{{ routeMessage }}</div>
+        <div>
+            <button class="create-button" @click="createCourse">Créer une journée de formation</button>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import {useRouter} from 'vue-router';
 import useTrainings from '../../composables/trainings';
-import { watch } from 'vue';
-import { ref } from 'vue';
+import {ref} from 'vue';
 
 const router = useRouter();
-const { message } = useTrainings();
+const {message} = useTrainings();
 
 let routeMessage = ref(router.currentRoute.value.params.message);
 
 const createCourse = () => {
-    router.push({ name: 'create-training' });
+    router.push({name: 'create-training'});
 };
 
 </script>
@@ -36,6 +39,18 @@ const createCourse = () => {
 
 .create-button:hover {
     background-color: #1C3356;
+}
+
+.route-message {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: #64d268;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    width: 40%;
 }
 </style>
 
