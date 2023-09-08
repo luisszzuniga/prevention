@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('criteria', function (Blueprint $table) {
             $table->id();
-            $table->text('label')->unique('label');
+            $table->text('label')->unique();
         });
     }
 

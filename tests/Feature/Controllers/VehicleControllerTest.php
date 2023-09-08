@@ -31,7 +31,7 @@ class VehicleControllerTest extends TestCase
             "type" => "Car"
         ];
 
-        $response = $this->json('POST', '/api/vehicles-store', $vehicleData);
+        $response = $this->json('POST', '/api/vehicles/store', $vehicleData);
 
         $response->assertStatus(201)
             ->assertJsonStructure([

@@ -16,7 +16,7 @@ export default function useTrainings(): {
     const trainings = ref([]);
     const message = ref('');
     const errors = ref('');
-    const url = '/api/training/create';
+    const url = '/api/trainings/create';
     let config = {
         headers: {
             'Content-Type': "application/json",

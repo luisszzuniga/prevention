@@ -5,14 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTrainingRequest;
 use App\Interfaces\TrainingInterface;
-use App\Models\Offer;
-use App\Models\Trainer;
-use App\Models\Training;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrainingController extends Controller
@@ -23,6 +17,29 @@ class TrainingController extends Controller
     {
         $this->trainingRepository = $trainingRepository;
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/trainings",
+     *     summary="Récupère la liste des formations",
+     *     tags={"Trainings"},
+     *     @OA\Response(
+     *         response=201,
+     *         description="Opération réussie",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="trainings", type="array", @OA\Items(ref="#/components/schemas/Training"))
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erreur serveur",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="errors", type="object")
+     *         ),
+     *     ),
+     * )
+     */
     public function index()
     {
         $trainings = $this->trainingRepository->getTrainings();
@@ -32,26 +49,36 @@ class TrainingController extends Controller
     }
 
     /**
-     * Create a new training.
-     *
-     * @param CreateTrainingRequest $request
-     *
-     * @return JsonResponse
-     *
-     * @throws Exception
+     * @OA\Post(
+     *     path="/api/trainings",
+     *     summary="Crée une nouvelle formation",
+     *     tags={"Trainings"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Données pour ajouter une nouvelle formation",
+     *         @OA\JsonContent(ref="#/components/schemas/CreateTrainingRequest")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Formation créée avec succès",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="training", ref="#/components/schemas/Training")
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Erreur de validation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="errors", type="object")
+     *         ),
+     *     ),
+     * )
      */
     public function create(CreateTrainingRequest $request): JsonResponse
     {
-        $offer = Offer::where('name', 'Plus')->first();
-        $trainer = Trainer::where('user_id', Auth::id())->first();
-//        $formattedDate = Carbon::parse($request['training_date'])->format('Y-m-d H:i:s');
-        $training = new Training;
-        $training->name = $request['training_name'];
-        $training->center_id = $request['center_id'];
-        $training->date = $request['training_date'];
-        $training->offer_id = $offer->id;
-        $training->trainer_id = $trainer->id;
-        $training->save();
+        $training = $this->trainingRepository->createTraining($request->all());
 
         return response()->json([
             'message' => "La Formation " . $training->name . " a été crée avec succès.",

@@ -50,4 +50,32 @@ class AuthenticationTest extends TestCase
 
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
+
+    public function test_access_with_correct_ability()
+    {
+        // Créez un utilisateur
+        $userWithAbility = User::factory()->create();
+
+        // Créez un token pour cet utilisateur avec la bonne ability
+        $token = $userWithAbility->createToken('TestToken', ['user-get-user'])->plainTextToken;
+
+        // Utilisez le token pour faire une demande
+        $headers = ['Authorization' => 'Bearer ' . $token];
+
+        // Testez l'accès à la route
+        $response = $this->json('POST', '/api/learners/store', $headers);
+        $response->assertStatus(201); // Ou tout autre code de statut que vous attendez
+    }
+
+    public function test_access_with_incorrect_ability()
+    {
+        $userWithoutAbility = User::factory()->create();
+
+        $token = $userWithoutAbility->createToken('TestToken', ['wrong-ability'])->plainTextToken;
+
+        $headers = ['Authorization' => 'Bearer ' . $token];
+
+        $response = $this->json('POST', '/api/learners/store', $headers);
+        $response->assertStatus(401);
+    }
 }

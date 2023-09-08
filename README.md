@@ -11,6 +11,7 @@ This section covers the first installation of the project, including the setup o
 `composer create-project laravel/laravel`  
 
 ### installation of BREEZE
+Authentication starter kit
 
 `php artisan breeze:install`
 
@@ -40,13 +41,9 @@ from the projet : https://github.com/barryvdh/laravel-ide-helper.git
 
 This section describes the steps required to install the project in a development environment. It is important to note that the project uses a Gitflow architecture for better organization. This means that development is done on a dedicated branch and production updates are merged onto another branch.  
 
-#### Clone the project 
+#### Clone the project on develop branch
 
-`git clone git@gitlab.com:maxime22440/acprevention.git`
-
-#### Switch to the develop branch
-
-`git checkout develop`
+`git clone https://gitlab.com/mobility-service-provider/prestations/acp/prevention/-/tree/develop`
 
 #### Install the composer dependencies
 
@@ -57,13 +54,13 @@ This section describes the steps required to install the project in a developmen
 `DB_CONNECTION=mysql`  
 `DB_HOST=127.0.0.1`  
 `DB_PORT=3306`  
-`DB_DATABASE=ACPreventionDB`  
+`DB_DATABASE=prevention`  
 `DB_USERNAME=`  
 `DB_PASSWORD=`
 
 #### Create the database ACPreventionDB by running the sql command
 
-`CREATE DATABASE ACPreventionDB;`
+`CREATE DATABASE prevention;`
 
 #### Run the migrations to create the database tables
 

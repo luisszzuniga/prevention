@@ -26,13 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const cat2 = document.getElementById('cat-2');
     const cat3 = document.getElementById('cat-3');
 
-    function changeImagesOnHover(element, image) {
+    const timeToCoordinateImages = 300;
+
+    function switchImagesOrangetoWhite(element, image) {
         let timeout;
         element.addEventListener('mouseenter', function() {
             clearTimeout(timeout);
             timeout = setTimeout(function() {
                 image.src = 'images/home/services/' + image.id + '-w.png';
-            }, 300);
+            }, timeToCoordinateImages);
         });
 
         element.addEventListener('mouseleave', function() {
@@ -41,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    changeImagesOnHover(cat1, computer);
-    changeImagesOnHover(cat2, database);
-    changeImagesOnHover(cat3, dashcam);
+    switchImagesOrangetoWhite(cat1, computer);
+    switchImagesOrangetoWhite(cat2, database);
+    switchImagesOrangetoWhite(cat3, dashcam);
 });

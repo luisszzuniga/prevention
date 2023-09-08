@@ -30,8 +30,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
-    Route::post('/learners/store', [LearnerController::class, 'store'])->name('learners-store');
-    Route::post('/training/create', [TrainingController::class, 'create'])->name('training-create');
+    Route::post('/learners/store', [LearnerController::class, 'store'])->name('learners.store');
+    Route::post('/trainings/create', [TrainingController::class, 'create'])->name('trainings.create');
+    Route::post('/vehicles/store', [VehicleController::class, 'store'])->name('vehicles.store');
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -40,10 +41,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/getGrids', [GridController::class, 'getGridsForCurrentUser']);
 });
 
-Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
-
+//Route auth pour l'application mobile
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
+
 Route::get('/trainers', [TrainerController::class, 'index']);
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/trainings', [TrainingController::class, 'index']);

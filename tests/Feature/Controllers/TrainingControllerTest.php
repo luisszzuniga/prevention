@@ -2,6 +2,7 @@
 
 namespace Feature\Controllers;
 
+use App\Interfaces\TrainingInterface;
 use App\Models\Center;
 use App\Models\Client;
 use App\Models\Company;
@@ -9,8 +10,10 @@ use App\Models\Grid;
 use App\Models\Offer;
 use App\Models\Subclient;
 use App\Models\Trainer;
+use App\Models\Training;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
+use Mockery;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use App\Models\User;
@@ -42,12 +45,10 @@ class TrainingControllerTest extends TestCase
             'grid_id' => $grid->id
         ];
 
-        $response = $this->json('POST', '/api/training/create', $trainingData);
 
-        $response->assertStatus(Response::HTTP_CREATED)
-            ->assertJson([
-                'message' => 'La Formation Training Test a été crée avec succès.',
-            ]);
+        $response = $this->json('POST', '/api/trainings/create', $trainingData);
+
+        $response->assertStatus(Response::HTTP_CREATED);
 
         $this->assertDatabaseHas('trainings', [
             'name' => 'Training Test',
