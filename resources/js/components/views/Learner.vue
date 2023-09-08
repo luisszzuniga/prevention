@@ -2,6 +2,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <br>
+                <br>
+                <br>
+
                 <div class="card">
                     <div class="card-header">Ajouter un Stagiaire</div>
                     <div class="card-body">
@@ -66,6 +70,17 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="subclient" class="col-md-4 col-form-label text-md-right">Subclient</label>
+                                <div class="col-md-6">
+                                    <select id="subclient" v-model="form.subclient_id" class="form-control" required>
+                                        <option v-for="subclient in subclients" :value="subclient.id" :key="subclient.id">
+                                            {{ subclient.company.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <button type="submit">
                                 Ajouter
                             </button>
@@ -78,9 +93,10 @@
 </template>
 
 <script lang="ts" setup>
-
+import { onMounted } from 'vue';
 import useLearners from '../../composables/learners'
 import {reactive} from 'vue'
+import {ref} from "vue/dist/vue";
 
 const form = reactive({
     lastname: '',
@@ -89,14 +105,79 @@ const form = reactive({
     phone: '',
     address: '',
     zip_code: '',
-    town: ''
+    town: '',
+    subclient_id: null
 })
 
-const {errors, storeLearner, message} = useLearners()
+const {errors, storeLearner, message, getSubclients, subclients } = useLearners()
 
 const saveLearner = async () => {
     await storeLearner({...form})
 }
 
+onMounted(getSubclients);
+
 </script>
 
+<style>
+
+.form-control {
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    background-color: #f7f7f7;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.form-control:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0px 2px 8px rgba(66, 153, 225, 0.6);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    box-shadow: 1px 1px 1px 1px #808080;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+
+}
+
+select.form-control {
+    padding-right: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-color: #f7f7f7;
+}
+
+select.form-control:focus {
+    box-shadow: 0px 2px 8px rgba(66, 153, 225, 0.6);
+}
+
+</style>

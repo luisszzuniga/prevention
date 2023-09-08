@@ -9,6 +9,27 @@ import '@mdi/font/css/materialdesignicons.css'
 import DateFnsAdapter from '@date-io/date-fns'
 import frLocale from 'date-fns/locale/fr'
 import { fr } from 'vuetify/locale';
+import axios from 'axios';
+
+axios.interceptors.request.use(config => {
+    const tokenAuth = localStorage.getItem('auth-token');
+
+    if (tokenAuth) {
+        config.headers['Authorization'] = `Bearer ${tokenAuth}`;
+    } else {
+        delete config.headers['Authorization'];
+    }
+
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+
+const tokenCsrf = document.head.querySelector('meta[name="csrf-token"]');
+
+if (tokenCsrf) {
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = (tokenCsrf as HTMLMetaElement).content;
+}
 
 const vuetify = createVuetify({
     components,

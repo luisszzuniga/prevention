@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Str;
 use OpenApi\Annotations as OA;
 
 /**
@@ -63,5 +64,6 @@ class Learner extends User
     {
         return $this->belongsToMany(Training::class, 'training_learner', 'learner_id', 'training_id');
     }
+
 }
 

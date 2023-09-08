@@ -8,6 +8,10 @@ import CreateTraining from '@/components/views/CreateTraining.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
+        path: '/',
+        redirect: '/dashboard'
+    },
+    {
         path: '/vehicles',
         name: 'vehicles',
         component: Vehicles

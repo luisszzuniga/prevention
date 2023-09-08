@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -26,25 +27,20 @@ class AuthenticatedSessionController extends Controller
         Log::info('store');
 
         $request->authenticate();
-
         $request->session()->regenerate();
 
         $user = Auth::guard('web')->user();
 
-        // Créez un nouveau token pour l'utilisateur
         $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
-        Log::info($token);
-        $request->session()->put('token', $token);
 
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
-
+        return view('dashboard', ['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
     }
 
     /**
      * Destroy an authenticated session.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function destroy(Request $request)
     {
@@ -54,6 +50,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/dashboard');
+        return redirect(RouteServiceProvider::HOME);
     }
 }
