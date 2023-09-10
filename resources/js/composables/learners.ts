@@ -1,23 +1,21 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import { postData } from '../apiUtils'
 
 export default function useLearners(): {
     message: any,
     errors: any,
     learner: any,
     learners: any,
-    subclients: any,
     getLearner: (id: number) => Promise<void>,
     getLearners: () => Promise<void>,
     storeLearner: (data: object) => Promise<void>,
-    getSubclients: () => Promise<void>,
 } {
     const learner = ref([]);
     const learners = ref([]);
     const message = ref('');
     const errors = ref('');
-    const subclients = ref([]);
-    const url = '/api/learners-store';
+    const url = '/api/learners/store';
 
     let config = {
         headers: {
@@ -37,28 +35,11 @@ export default function useLearners(): {
     }
 
     const storeLearner = async (data: object): Promise<void> => {
-
-        errors.value = '';
-        try {
-            let response = await axios.post(url, data, config);
-            console.log('done')
-            message.value = response.data.message;
-        } catch (e) {
-            const error = e as any;
-            if (error.response.status === 422) {
-                for (const key in error.response.data.errors) {
-                    errors.value = error.response.data.errors;
-                }
-            }
-        }
-    }
-
-    const getSubclients = async () => {
-        try {
-            const response = await axios.get('/api/getSubClients');
-            subclients.value = response.data;
-        } catch (error) {
-            console.error('Erreur lors de la récupération des subclients:', error);
+        const { response, error } = await postData(url, data);
+        if (response) {
+            message.value = response.message;
+        } else if (error) {
+            errors.value = error;
         }
     };
 
@@ -67,10 +48,8 @@ export default function useLearners(): {
         errors,
         learner,
         learners,
-        subclients,
         getLearner,
         getLearners,
         storeLearner,
-        getSubclients
     }
 }

@@ -5,7 +5,6 @@
                 <br>
                 <br>
                 <br>
-
                 <div class="card">
                     <div class="card-header">Ajouter un Stagiaire</div>
                     <div class="card-body">
@@ -95,6 +94,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
 import useLearners from '../../composables/learners'
+import useSubclients from '../../composables/subclients'
 import {reactive} from 'vue'
 import {ref} from "vue/dist/vue";
 
@@ -109,7 +109,9 @@ const form = reactive({
     subclient_id: null
 })
 
-const {errors, storeLearner, message, getSubclients, subclients } = useLearners()
+const {errors, storeLearner, message } = useLearners()
+
+const { getSubclients, subclients } = useSubclients()
 
 const saveLearner = async () => {
     await storeLearner({...form})

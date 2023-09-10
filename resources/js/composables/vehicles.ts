@@ -33,7 +33,7 @@ export default function useVehicles(): {
     const storeVehicle = async (data: object): Promise<void> => {
         errors.value = '';
         try {
-            let response = await axios.post('/api/vehicles-store', data);
+            let response = await axios.post('/api/vehicles/store', data);
             message.value = response.data.message;
         } catch (e) {
             const error = e as any;

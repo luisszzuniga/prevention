@@ -6,6 +6,7 @@ use App\Interfaces\AbilityRepository as InterfaceAbilityRepository;
 use App\Interfaces\AbilityService as InterfaceAbilityService;
 use App\Interfaces\CenterInterface;
 use App\Interfaces\CompanyInterface;
+use App\Interfaces\GridInterface;
 use App\Interfaces\OfferInterface;
 use App\Interfaces\TrainerInterface;
 use App\Interfaces\TrainingInterface;
@@ -13,6 +14,7 @@ use App\Providers\AbilityProvider as AbilityServiceProvider;
 use App\Providers\RepositoryProvider as AbilityRepository;
 use App\Repositories\CenterRepository;
 use App\Repositories\CompanyRepository;
+use App\Repositories\GridRepository;
 use App\Repositories\OfferRepository;
 use App\Repositories\TrainerRepository;
 use App\Repositories\TrainingRepository;
@@ -34,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CompanyInterface::class, CompanyRepository::class);
         $this->app->bind(TrainingInterface::class, TrainingRepository::class);
         $this->app->bind(CenterInterface::class, CenterRepository::class);
+        $this->app->bind(GridInterface::class, GridRepository::class);
     }
 
     /**

@@ -148,6 +148,8 @@ class User extends Authenticatable
         'address',
         'zip_code',
         'town',
+        'client_id',
+        'role_id'
     ];
 
     /**

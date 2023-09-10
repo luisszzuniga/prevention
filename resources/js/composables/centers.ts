@@ -9,7 +9,7 @@ export default function useCenters() {
     const errors = ref('');
 
     const getCenters = async () => {
-        let response = await axios.get('/api/centers');
+        let response = await axios.get('/api/getCenters');
         centers.value = response.data.centers;
     }
 

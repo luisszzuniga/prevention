@@ -29,6 +29,7 @@
         "@mdi/font": "^7.2.96",
         "@vue/compiler-sfc": "^3.2.45",
         "@vueuse/core": "^9.10.0",
+        "bootstrap": "^5.3.1",
         "date-fns": "^2.30.0",
         "store": "^2.0.12",
         "vue": "^3.2.36",

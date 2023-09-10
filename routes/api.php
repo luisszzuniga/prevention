@@ -1,14 +1,15 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CenterController;
+use App\Http\Controllers\API\GridController;
 use App\Http\Controllers\API\LearnerController;
 use App\Http\Controllers\API\SubClientController;
+use App\Http\Controllers\API\TrainingController;
 use App\Http\Controllers\API\VehicleController;
-use App\Http\Controllers\CenterController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\TrainingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,17 +30,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum','ability:user-get-user'])->group(function () {
-    Route::post('/learners-store', [LearnerController::class, 'store'])->name('learners-store');
+    Route::post('/learners/store', [LearnerController::class, 'store'])->name('learners.store');
+    Route::post('/trainings/create', [TrainingController::class, 'create'])->name('trainings.create');
+    Route::post('/vehicles/store', [VehicleController::class, 'store'])->name('vehicles.store');
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/getSubClients', [SubClientController::class, 'getSubClientsForCurrentUser']);
+    Route::get('/getCenters', [CenterController::class, 'getCentersForCurrentUser']);
+    Route::get('/getGrids', [GridController::class, 'getGridsForCurrentUser']);
 });
 
-Route::post('/vehicles-store', [VehicleController::class, 'store'])->name('vehicles.store');
-
+//Route auth pour l'application mobile
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
+
 Route::get('/trainers', [TrainerController::class, 'index']);
 Route::get('/companies', [CompanyController::class, 'index']);
 Route::get('/trainings', [TrainingController::class, 'index']);

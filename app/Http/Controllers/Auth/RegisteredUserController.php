@@ -10,6 +10,8 @@ use App\Models\Company;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -34,10 +36,10 @@ class RegisteredUserController extends Controller
      * Handle an incoming registration request.
      *
      * @param RegisterRequest $request
-     * @return RedirectResponse
+     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      *
      */
-    public function store(RegisterRequest $request): RedirectResponse
+    public function store(RegisterRequest $request): Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
         $user = User::create([
             'email' => $request->email,
@@ -58,10 +60,10 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         Auth::login($user);
+        $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
+//        $this->sendMail($user);
 
-        $this->sendMail($user);
-
-        return redirect(RouteServiceProvider::DASHBOARD);
+        return view('dashboard', ['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
     }
 
     protected function sendMail(User $user)

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Interfaces\CenterInterface;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class CenterController extends Controller
 {
@@ -13,12 +15,15 @@ class CenterController extends Controller
     {
         $this->centerRepository = $centerRepository;
     }
-    public function index(): JsonResponse
+    public function getCentersForCurrentUser(): JsonResponse
     {
-        $centers = $this->centerRepository->getCenters();
+        $user = Auth::user();
+        $clientId = $user->client_id;
+        $centers = $this->centerRepository->getCentersByClientId($clientId);
+
         return response()->json([
             'centers' => $centers
-        ], 201);
+        ]);
     }
 
 }

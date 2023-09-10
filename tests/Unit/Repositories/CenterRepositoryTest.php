@@ -3,6 +3,7 @@
 namespace Tests\Unit\Repositories;
 
 use App\Models\Center;
+use App\Models\Client;
 use App\Repositories\CenterRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -14,20 +15,24 @@ class CenterRepositoryTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test the getCenters method of CenterRepository.
+     * Test the getCentersByClientId method of CenterRepository.
      *
      * @return void
      */
-    public function testGetCenters()
+    public function testGetCentersByClientId()
     {
-        $centerMock = Mockery::mock(Center::class);
-        $centerMock->shouldReceive('all')->once()->andReturn(new Collection);
+        $client = Client::factory()->create();
 
-        $centerRepository = new CenterRepository($centerMock);
+        $center1 = Center::factory()->create(['client_id' => $client->id]);
+        $center2 = Center::factory()->create(['client_id' => $client->id]);
+        $center3 = Center::factory()->create(['client_id' => $client->id]);
 
-        $result = $centerRepository->getCenters();
+        $centerRepository = new CenterRepository(new Center());
 
-        $this->assertInstanceOf(Collection::class, $result);
+        $centers = $centerRepository->getCentersByClientId($client->id);
+
+        $this->assertInstanceOf(Collection::class, $centers);
+        $this->assertCount(3, $centers);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Trainer;
 use App\Models\User;
 use Exception;
 use Illuminate\Console\Command;
@@ -64,9 +65,9 @@ class CreateUsers extends Command
         try {
             foreach ($users as $user) {
                 if (!User::where('email', $user['email'])->exists()) {
-                    DB::table('users')->insert([
-                        $user
-                    ]);
+                    $createdUser = User::create($user);
+                    // Les users deviennent des trainers
+                    Trainer::create(['user_id' => $createdUser->id]);
                     with(new TwoColumnDetail($this->getOutput()))->render(
                         '<fg=yellow;options=bold>USER : </>'. $user['firstname'].' '.$user['lastname'],
                         '<fg=yellow;options=bold>ADDED</>'
