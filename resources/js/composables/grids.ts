@@ -11,10 +11,11 @@ export default function useGrids(): {
     const message = ref('');
     const errors = ref('');
     const grids = ref([]);
+    const urlGetGrids = '/api/getGrids';
 
     const getGrids = async () => {
         try {
-            const response = await axios.get('/api/getGrids');
+            const response = await axios.get(urlGetGrids);
             grids.value = response.data.grids;
         } catch (error) {
             console.error('Erreur lors de la récupération des grilles:', error);

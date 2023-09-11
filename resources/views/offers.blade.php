@@ -3,7 +3,7 @@
 @section('title', 'offers')
 
 @section('header')
-    @vite(['resources/css/offers.css','resources/js/offers.js'])
+    @vite(['resources/css/offers.css','resources/js/offers.ts'])
 @endsection
 
 @section('content')

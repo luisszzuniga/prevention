@@ -7,14 +7,16 @@ export default function useCenters() {
     const centers = ref([]);
     const message = ref('');
     const errors = ref('');
+    const urlGetCenters = '/api/getCenters';
+    const urlGetCenter = '/api/centers/${id}';
 
     const getCenters = async () => {
-        let response = await axios.get('/api/getCenters');
+        let response = await axios.get(urlGetCenters);
         centers.value = response.data.centers;
     }
 
     const getCenter = async (id: number) => {
-        let response = await axios.get(`/api/centers/${id}`);
+        let response = await axios.get(urlGetCenter);
         center.value = response.data.data;
     }
 

@@ -2,7 +2,7 @@
 @section('title','Home')
 
 @section('header')
-    @vite(['resources/js/home.js'])
+    @vite(['resources/js/home.ts'])
 @endsection
 
 @section('content')
