@@ -1,15 +1,14 @@
 <?php
 
-namespace Tests\Feature\Controllers;
+namespace Tests\Feature\Controllers\Api;
 
-use App\Models\Client;
 use App\Models\Company;
 use App\Models\Subclient;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
-use App\Models\User;
 
 class LearnerControllerTest extends TestCase
 {

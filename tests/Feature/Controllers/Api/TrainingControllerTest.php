@@ -1,22 +1,16 @@
 <?php
 
-namespace Feature\Controllers;
+namespace Tests\Feature\Controllers\Api;
 
-use App\Interfaces\TrainingInterface;
 use App\Models\Center;
-use App\Models\Client;
-use App\Models\Company;
 use App\Models\Grid;
 use App\Models\Offer;
 use App\Models\Subclient;
 use App\Models\Trainer;
-use App\Models\Training;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Artisan;
-use Mockery;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
-use App\Models\User;
 
 class TrainingControllerTest extends TestCase
 {

@@ -2,9 +2,12 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Company;
+use App\Models\Subclient;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -53,18 +56,30 @@ class AuthenticationTest extends TestCase
 
     public function test_access_with_correct_ability()
     {
-        // Créez un utilisateur
         $userWithAbility = User::factory()->create();
-
-        // Créez un token pour cet utilisateur avec la bonne ability
         $token = $userWithAbility->createToken('TestToken', ['user-get-user'])->plainTextToken;
-
-        // Utilisez le token pour faire une demande
         $headers = ['Authorization' => 'Bearer ' . $token];
 
-        // Testez l'accès à la route
-        $response = $this->json('POST', '/api/learners/store', $headers);
-        $response->assertStatus(201); // Ou tout autre code de statut que vous attendez
+        Artisan::call('create:roles');
+        Artisan::call('create:clients');
+        $trainer = User::factory()->create();
+        $this->actingAs($trainer);
+        $client = Company::where('name', 'Lery Technologies')->first();
+        $subClient = Subclient::factory(['client_id' => $client->id])->create();
+
+        $learnerData = [
+            "lastname" => "Doe",
+            "firstname" => "John",
+            "email" => "johndoe@example.com",
+            "phone" => "1234567890",
+            "address" => "123 Test St",
+            "zip_code" => "12345",
+            "town" => "Test town",
+            'subclient_id' => $subClient->id,
+        ];
+        $response = $this->withHeaders($headers)->postJson('/api/learners/store', $learnerData);
+
+        $response->assertStatus(201);
     }
 
     public function test_access_with_incorrect_ability()
@@ -75,7 +90,7 @@ class AuthenticationTest extends TestCase
 
         $headers = ['Authorization' => 'Bearer ' . $token];
 
-        $response = $this->json('POST', '/api/learners/store', $headers);
-        $response->assertStatus(401);
+        $response = $this->withHeaders($headers)->postJson('/api/learners/store');
+        $response->assertStatus(403);
     }
 }
