@@ -1,4 +1,5 @@
 @vite(['resources/css/nav.css'])
+@vite(['resources/js/nav.ts'])
 
 <header>
     <!-- Header Start -->

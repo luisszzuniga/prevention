@@ -1,5 +1,5 @@
-import roadImage from './images/home/road.jpg';
-import truckImage from './images/home/truck.jpg';
+import roadImage from '../images/home/road.jpg';
+import truckImage from '../images/home/truck.jpg';
 
 document.addEventListener('DOMContentLoaded', () => {
     const images: string[] = [roadImage, truckImage];

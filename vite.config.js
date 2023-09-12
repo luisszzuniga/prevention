@@ -7,13 +7,12 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/js/main.ts',
                 'resources/css/app.css',
                 'resources/js/app.ts',
                 'resources/css/nav.css',
+                'resources/js/nav.ts',
                 'resources/css/auth.css',
-                'resources/js/main.ts',
-                'resources/css/style.css',
-                'resources/css/layout/slicknav.css',
                 'resources/css/style.css',
                 'resources/css/app.css',
                 'resources/css/contact.css',

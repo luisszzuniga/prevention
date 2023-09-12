@@ -15,7 +15,7 @@
                 :class="{ 'selected': training.selected }"
                 @click="selectTraining(index)"
             >
-                <td class="col-code">{{ training.seance_code }}</td>
+                <td class="col-code">{{ training.name }}</td>
                 <td class="col-date">{{ training.date }}</td>
             </tr>
             </tbody>

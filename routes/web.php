@@ -26,7 +26,6 @@ Route::get('/offers', [OfferController::class, 'index'])->name('offers');
 
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 
-
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -48,10 +47,11 @@ Route::middleware('auth')->group(function () {
         return view('learner.add-learner');
     });
 
-
-
-
-
 });
+
+// Redirection pour Vue
+Route::get('/{any}', function () {
+    return view('dashboard');
+})->where('any', '.*');
 
 require __DIR__.'/auth.php';
