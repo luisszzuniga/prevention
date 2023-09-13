@@ -1,4 +1,5 @@
 @vite(['resources/css/nav.css'])
+@vite(['resources/js/nav.ts'])
 
 <header>
     <!-- Header Start -->
@@ -21,6 +22,9 @@
                                     </div>
                                 </div>
                             </a>
+                        </div>
+                        <div id="burger-menu">
+                            <span></span>
                         </div>
 
                         <div class="col-xl-10 col-lg-10">
@@ -79,9 +83,39 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Mobile Menu -->
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                        <!-- mobile version -->
+                        <div id="menu">
+                            <ul>
+                                <li><a href="{{ route('home') }}">{{ __('nav.home') }}</a></li>
+                                <li><a href="{{ route('offers') }}">{{ __('nav.offers') }}</a></li>
+
+                                @if (Auth::check())
+                                    <li><a href="{{ route('dashboard') }}"
+                                           class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __('nav.dashboard') }}</a>
+                                    </li>
+                                @endif
+                                <li><a href="{{ route('contact') }}">{{ __('nav.contact') }}</a></li>
+                                <li>
+                                    <ul class="submenu">
+                                        @if (Auth::check())
+                                            <li><a href="{{ route('profile.edit') }}">{{ __('nav.profile') }}</a>
+                                            </li>
+
+                                            <li><a href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('nav.disconnect') }}</a>
+                                            </li>
+                                            <form id="logout-form" method="POST"
+                                                  action="{{ route('logout') }}" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        @else
+                                            <li><a href="{{ route('login') }}">{{ __('nav.login') }}</a>
+                                            </li>
+                                            <li><a href="{{ route('register') }}">{{ __('nav.register') }}</a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                            </ul>
                         </div>
                     </div>
                 </div>

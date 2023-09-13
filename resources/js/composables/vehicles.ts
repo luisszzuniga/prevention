@@ -18,22 +18,26 @@ export default function useVehicles(): {
     const message = ref('');
     const errors = ref('');
     const router = useRouter();
+    const urlGetVehicles = '/api/vehicles';
+    const urlGetVehicle = '/api/vehicles/${id}';
+    const urlStoreVehicle = '/api/vehicles/store';
+    const urlUpdateVehicle = '/api/vehicles/${id}';
 
 
     const getVehicles = async (): Promise<void> => {
-        let response = await axios.get('/api/vehicles');
+        let response = await axios.get(urlGetVehicles);
         vehicles.value = response.data.data;
     }
 
     const getVehicle = async (id: number): Promise<void> => {
-        let response = await axios.get(`/api/vehicles/${id}`);
+        let response = await axios.get(urlGetVehicle);
         vehicle.value = response.data.data;
     }
 
     const storeVehicle = async (data: object): Promise<void> => {
         errors.value = '';
         try {
-            let response = await axios.post('/api/vehicles/store', data);
+            let response = await axios.post(urlStoreVehicle, data);
             message.value = response.data.message;
         } catch (e) {
             const error = e as any;
@@ -48,7 +52,7 @@ export default function useVehicles(): {
     const updateVehicle = async (id: number): Promise<void> => {
         errors.value = ''
         try {
-            await axios.patch(`/api/vehicles/${id}`, vehicle.value);
+            await axios.patch(urlUpdateVehicle, vehicle.value);
             await router.push({name: 'vehicles.index'});
         } catch (e) {
             const error = e as any;

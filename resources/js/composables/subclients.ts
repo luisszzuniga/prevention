@@ -11,10 +11,11 @@ export default function useLearners(): {
     const message = ref('');
     const errors = ref('');
     const subclients = ref([]);
+    const urlGetSubclients = '/api/getSubClients';
 
     const getSubclients = async () => {
         try {
-            const response = await axios.get('/api/getSubClients');
+            const response = await axios.get(urlGetSubclients);
             subclients.value = response.data;
         } catch (error) {
             console.error('Erreur lors de la récupération des subclients:', error);

@@ -36,10 +36,10 @@ class RegisteredUserController extends Controller
      * Handle an incoming registration request.
      *
      * @param RegisterRequest $request
-     * @return Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return RedirectResponse
      *
      */
-    public function store(RegisterRequest $request): Application|Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+    public function store(RegisterRequest $request): RedirectResponse
     {
         $user = User::create([
             'email' => $request->email,
@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
         $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
 //        $this->sendMail($user);
 
-        return view('dashboard', ['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
+        return redirect()->route('dashboard')->with(['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
     }
 
     protected function sendMail(User $user)

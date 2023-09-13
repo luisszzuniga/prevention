@@ -15,14 +15,16 @@
         const companies = ref([]);
         const message = ref('');
         const errors = ref('');
+        const urlGetCompanies = '/api/companies';
+        const urlGetCompany = '/api/companies/${id}';
 
         const getCompanies = async (): Promise<void> => {
-            let response = await axios.get('/api/companies');
+            let response = await axios.get(urlGetCompanies);
             companies.value = response.data.companies;
         }
 
         const getCompany = async (id: number): Promise<void> => {
-            let response = await axios.get(`/api/companies/${id}`);
+            let response = await axios.get(urlGetCompany);
             company.value = response.data.data;
 
         }

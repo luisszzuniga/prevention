@@ -1,5 +1,4 @@
-
-@extends('layouts.layout')
+@extends('layouts.base')
 
 @section('title', config('app.name', 'Laravel'))
 

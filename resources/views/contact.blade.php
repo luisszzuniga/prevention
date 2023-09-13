@@ -1,10 +1,10 @@
-@extends('layouts.layout')
+@extends('layouts.base')
 @section('title','Contact')
 
 @section('header')
     @parent
     @vite(['resources/css/contact.css'])
-    @vite(['resources/js/contact.js'])
+    @vite(['resources/js/contact.ts'])
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
           integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
           crossorigin=""/>
@@ -24,7 +24,8 @@
                             <h2>{{ __('contact.title') }}</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('contact.home') }}</a></li>
+                                    <li class="breadcrumb-item"><a
+                                            href="{{ route('home') }}">{{ __('contact.home') }}</a></li>
                                     <li class="breadcrumb-item"><a href="#">{{ __('contact.contact') }}</a></li>
                                 </ol>
                             </nav>
@@ -42,26 +43,39 @@
                     <h2 class="contact-title">{{ __('contact.contact_title') }}</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="#" method="get" id="contactForm" novalidate="novalidate">
+                    <form class="form-contact contact_form" action="#" method="get" id="contactForm"
+                          novalidate="novalidate">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ __('contact.subject') }}'" placeholder="{{ __('contact.subject') }}">
+                                    <input class="form-control" name="subject" id="subject" type="text"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = '{{ __('contact.subject') }}'"
+                                           placeholder="{{ __('contact.subject') }}">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ __('contact.message') }}'" placeholder="{{ __('contact.message') }}"></textarea>
+                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
+                                              onfocus="this.placeholder = ''"
+                                              onblur="this.placeholder = '{{ __('contact.message') }}'"
+                                              placeholder="{{ __('contact.message') }}"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ __('contact.name') }}'" placeholder="{{ __('contact.name') }}">
+                                    <input class="form-control valid" name="name" id="name" type="text"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = '{{ __('contact.name') }}'"
+                                           placeholder="{{ __('contact.name') }}">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = '{{ __('contact.email') }}'" placeholder="{{ __('contact.email') }}">
+                                    <input class="form-control valid" name="email" id="email" type="email"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = '{{ __('contact.email') }}'"
+                                           placeholder="{{ __('contact.email') }}">
                                 </div>
                             </div>
                         </div>

@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import logo from '../../images/nav/lery-logo-web.png';
-import user from '../../images/nav/user.png';
+import logo from '../../../images/nav/lery-logo-web.png';
+import user from '../../../images/nav/user.png';
 export default {
     data() {
         return {

@@ -15,15 +15,17 @@ export default function useTrainers(): {
     const trainers = ref([]);
     const message = ref('');
     const errors = ref('');
+    const urlGetTrainers = '/api/trainers';
+    const urlGetTrainer = '/api/trainers/${id}';
 
     const getTrainers = async (): Promise<void> => {
-        let response = await axios.get('/api/trainers');
+        let response = await axios.get(urlGetTrainers);
         trainers.value = response.data.trainers;
     }
 
 
     const getTrainer = async (id: number): Promise<void> => {
-        let response = await axios.get(`/api/trainers/${id}`);
+        let response = await axios.get(urlGetTrainer);
         trainer.value = response.data.data;
 
     }

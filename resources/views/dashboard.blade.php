@@ -6,8 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-lery.png') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @vite(['resources/js/layout/main.js'])
+    @vite(['resources/js/main.ts'])
     @vite(['resources/js/app.ts'])
 
     <title>Dashboard</title>
@@ -24,12 +23,12 @@
 
 </html>
 
-@if(isset($token))
+@if(session('token'))
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            localStorage.setItem('auth-token', '{{$token}}');
-            localStorage.setItem('user-firstname', '{{$firstname}}');
-            localStorage.setItem('user-lastname', '{{$lastname}}');
+            localStorage.setItem('auth-token', '{{ session("token") }}');
+            localStorage.setItem('user-firstname', '{{ session("firstname") }}');
+            localStorage.setItem('user-lastname', '{{ session("lastname") }}');
         });
     </script>
 @endif
