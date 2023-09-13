@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         $token = $user->createToken('LaravelSanctumAuth', ['user-get-user'])->plainTextToken;
 
-        return view('dashboard', ['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
+        return redirect()->route('dashboard')->with(['token' => $token, 'firstname' => $user->firstname, 'lastname' => $user->lastname]);
     }
 
     /**

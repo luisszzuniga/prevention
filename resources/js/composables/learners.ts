@@ -1,6 +1,6 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
-import { postData } from './apiUtils'
+import { postData } from '../utils/apiUtils'
 
 export default function useLearners(): {
     message: any,
