@@ -1,22 +1,25 @@
 {
+  "__commonjsHelpers-725317a4.js": {
+    "file": "assets/_commonjsHelpers-725317a4.js"
+  },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
-    "file": "assets/materialdesignicons-webfont-67d24abe.eot",
+    "file": "assets/materialdesignicons-webfont-5159a347.eot",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
   },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf": {
-    "file": "assets/materialdesignicons-webfont-a58ecb54.ttf",
+    "file": "assets/materialdesignicons-webfont-be825c12.ttf",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf"
   },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff": {
-    "file": "assets/materialdesignicons-webfont-80bb28b3.woff",
+    "file": "assets/materialdesignicons-webfont-28c8f97f.woff",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff"
   },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2": {
-    "file": "assets/materialdesignicons-webfont-c1c004a9.woff2",
+    "file": "assets/materialdesignicons-webfont-31010194.woff2",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-418721a0.css",
+    "file": "assets/app-48066ade.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -30,13 +33,8 @@
     "isEntry": true,
     "src": "resources/css/contact.css"
   },
-  "resources/css/layout/slicknav.css": {
-    "file": "assets/slicknav-a04428a0.css",
-    "isEntry": true,
-    "src": "resources/css/layout/slicknav.css"
-  },
   "resources/css/nav.css": {
-    "file": "assets/nav-065e945e.css",
+    "file": "assets/nav-171f3528.css",
     "isEntry": true,
     "src": "resources/css/nav.css"
   },
@@ -46,80 +44,87 @@
     "src": "resources/css/offers.css"
   },
   "resources/css/style.css": {
-    "file": "assets/style-b83679e5.css",
+    "file": "assets/style-b9b10d99.css",
     "isEntry": true,
     "src": "resources/css/style.css"
   },
+  "resources/images/home/road.jpg": {
+    "file": "assets/road-d8d3fec3.jpg",
+    "src": "resources/images/home/road.jpg"
+  },
+  "resources/images/home/truck.jpg": {
+    "file": "assets/truck-87e39f7c.jpg",
+    "src": "resources/images/home/truck.jpg"
+  },
+  "resources/images/nav/lery-logo-web.png": {
+    "file": "assets/lery-logo-web-4c61391d.png",
+    "src": "resources/images/nav/lery-logo-web.png"
+  },
+  "resources/images/nav/user-orange.png": {
+    "file": "assets/user-orange-c4c06c5a.png",
+    "src": "resources/images/nav/user-orange.png"
+  },
+  "resources/images/nav/user.png": {
+    "file": "assets/user-93a398ee.png",
+    "src": "resources/images/nav/user.png"
+  },
+  "resources/images/road.jpg": {
+    "file": "assets/road-e9effa58.jpg",
+    "src": "resources/images/road.jpg"
+  },
   "resources/js/app.css": {
-    "file": "assets/app-8aafae17.css",
+    "file": "assets/app-42eeadd7.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.ts": {
     "assets": [
       "assets/lery-logo-web-4c61391d.png",
       "assets/user-93a398ee.png",
-      "assets/materialdesignicons-webfont-67d24abe.eot",
-      "assets/materialdesignicons-webfont-c1c004a9.woff2",
-      "assets/materialdesignicons-webfont-80bb28b3.woff",
-      "assets/materialdesignicons-webfont-a58ecb54.ttf"
+      "assets/materialdesignicons-webfont-5159a347.eot",
+      "assets/materialdesignicons-webfont-31010194.woff2",
+      "assets/materialdesignicons-webfont-28c8f97f.woff",
+      "assets/materialdesignicons-webfont-be825c12.ttf"
     ],
     "css": [
-      "assets/app-8aafae17.css"
+      "assets/app-42eeadd7.css"
     ],
-    "file": "assets/app-1d5ff635.js",
+    "file": "assets/app-6549241b.js",
+    "imports": [
+      "__commonjsHelpers-725317a4.js"
+    ],
     "isEntry": true,
     "src": "resources/js/app.ts"
   },
-  "resources/js/contact.js": {
-    "file": "assets/contact-fd184fe1.js",
+  "resources/js/contact.ts": {
+    "file": "assets/contact-e02809e6.js",
+    "imports": [
+      "__commonjsHelpers-725317a4.js"
+    ],
     "isEntry": true,
-    "src": "resources/js/contact.js"
+    "src": "resources/js/contact.ts"
   },
-  "resources/js/home.js": {
+  "resources/js/home.ts": {
     "assets": [
       "assets/road-d8d3fec3.jpg",
       "assets/truck-87e39f7c.jpg"
     ],
-    "file": "assets/home-13d88b83.js",
+    "file": "assets/home-efd03634.js",
     "isEntry": true,
-    "src": "resources/js/home.js"
+    "src": "resources/js/home.ts"
   },
-  "resources/js/images/home/road.jpg": {
-    "file": "assets/road-d8d3fec3.jpg",
-    "src": "resources/js/images/home/road.jpg"
-  },
-  "resources/js/images/home/truck.jpg": {
-    "file": "assets/truck-87e39f7c.jpg",
-    "src": "resources/js/images/home/truck.jpg"
-  },
-  "resources/js/images/nav/lery-logo-web.png": {
-    "file": "assets/lery-logo-web-4c61391d.png",
-    "src": "resources/js/images/nav/lery-logo-web.png"
-  },
-  "resources/js/images/nav/user-black.png": {
-    "file": "assets/user-black-7b8fb3c0.png",
-    "src": "resources/js/images/nav/user-black.png"
-  },
-  "resources/js/images/nav/user-orange.png": {
-    "file": "assets/user-orange-c4c06c5a.png",
-    "src": "resources/js/images/nav/user-orange.png"
-  },
-  "resources/js/images/nav/user.png": {
-    "file": "assets/user-93a398ee.png",
-    "src": "resources/js/images/nav/user.png"
-  },
-  "resources/js/images/road.jpg": {
-    "file": "assets/road-e9effa58.jpg",
-    "src": "resources/js/images/road.jpg"
-  },
-  "resources/js/layout/main.js": {
-    "file": "assets/main-dde0d79d.js",
+  "resources/js/main.ts": {
+    "file": "assets/main-4896be11.js",
     "isEntry": true,
-    "src": "resources/js/layout/main.js"
+    "src": "resources/js/main.ts"
   },
-  "resources/js/offers.js": {
-    "file": "assets/offers-9f2243bb.js",
+  "resources/js/nav.ts": {
+    "file": "assets/nav-dd6ec4af.js",
     "isEntry": true,
-    "src": "resources/js/offers.js"
+    "src": "resources/js/nav.ts"
+  },
+  "resources/js/offers.ts": {
+    "file": "assets/offers-1e216947.js",
+    "isEntry": true,
+    "src": "resources/js/offers.ts"
   }
 }
