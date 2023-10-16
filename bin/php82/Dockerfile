@@ -48,7 +48,6 @@ RUN docker-php-ext-install gettext
 RUN docker-php-ext-install calendar
 RUN docker-php-ext-install exif
 
-
 # Enable apache modules
 RUN a2enmod rewrite headers
 
@@ -87,10 +86,16 @@ RUN composer i
 RUN npm i
 
 # RUN Laravel commands
-# RUN php artisan migrate
 RUN php artisan storage:link
 RUN php artisan key:generate
+
+# Set permissions
+RUN chown -R prevention:www-data ./public
+RUN chown -R prevention:www-data ./storage
 
 # Change user to non-root
 USER $user:$user
 USER $uid
+
+# Build assets
+RUN npm run build
